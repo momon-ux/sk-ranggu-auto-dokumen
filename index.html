@@ -26,16 +26,16 @@
           <p>
             <span>Sekolah Kebangsaan Ranggu, Tawau, Sabah</span>
             <span class="school-tag">Kod: XBA3037</span>
-            <span>• Diintegrasi Bersama Portal Rasmi: <a href="https://mylink.la/skranggutawau" target="_blank" style="color: #38bdf8; text-decoration: underline; font-weight: 700;">mylink.la/skranggutawau</a></span>
+            <span>• Enjin Automasi Dokumen Google Sheets, Docs & Drive</span>
           </p>
         </div>
       </div>
 
       <div class="header-badges">
-        <a href="https://mylink.la/skranggutawau" target="_blank" class="badge-pill" style="text-decoration: none; border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">
+        <div class="badge-pill">
           <span class="badge-dot"></span>
-          <span>🌐 Portal PBD SKRT</span>
-        </a>
+          <span>Sistem Aktif (v1.0.1-skrg)</span>
+        </div>
         <div class="badge-pill" style="border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">
           <span>⚡ 100% Sifar Kos (RM0)</span>
         </div>
@@ -44,27 +44,24 @@
   </header>
 
   <!-- =========================================================================
-       NAV TABS (Termasuk Direktori Google Drive Rasmi MyLink)
+       NAV TABS (5 Tab Utama Sistem Auto Dokumen)
        ========================================================================= -->
   <nav class="nav-tabs-wrapper no-print">
     <div class="nav-tabs-container">
       <button class="tab-btn active" data-tab="tab-setup">
         <span>⚙️ 1. Setup Dokumen Baharu</span>
       </button>
-      <button class="tab-btn" data-tab="tab-mylink">
-        <span>📁 2. Hab Direktori MyLink & Drive PBD</span>
-      </button>
       <button class="tab-btn" data-tab="tab-database">
-        <span>📊 3. Pangkalan Data PBD Murid</span>
+        <span>📊 2. Pangkalan Data PBD Murid</span>
       </button>
       <button class="tab-btn" data-tab="tab-generator">
-        <span>🚀 4. Hab Penjanaan (Batch Console)</span>
+        <span>🚀 3. Hab Penjanaan (Batch Console)</span>
       </button>
       <button class="tab-btn" data-tab="tab-preview">
-        <span>🖨️ 5. Pratonton & Cetak Slip Rasmi</span>
+        <span>🖨️ 4. Pratonton & Cetak Slip Rasmi</span>
       </button>
       <button class="tab-btn" data-tab="tab-script">
-        <span>📜 6. Kod Google Apps Script (Code.gs)</span>
+        <span>📜 5. Kod Google Apps Script (Code.gs)</span>
       </button>
     </div>
   </nav>
@@ -119,14 +116,14 @@
             <span>⚙️</span>
             <span>Konfigurasi & Setup Dokumen (Google Sheets ➔ Google Docs ➔ Google Drive)</span>
           </h2>
-          <span class="badge-pill">Sistem PBD & UASA SK Ranggu</span>
+          <span class="badge-pill">Persediaan Automasi Dokumen</span>
         </div>
 
         <div class="form-grid">
           <div class="form-group">
-            <label class="form-label">Nama Dokumen / Folder <span class="required">*</span></label>
+            <label class="form-label">Nama Dokumen / Folder PDF <span class="required">*</span></label>
             <input type="text" class="form-input" id="setup-doc-name" value="Slip_PBD_UASA_SK_Ranggu_2026">
-            <span class="form-help">Nama subfolder PDF yang akan dijana automatik dalam Google Drive sekolah.</span>
+            <span class="form-help">Nama subfolder PDF yang akan dicipta secara automatik dalam Google Drive anda.</span>
           </div>
 
           <div class="form-group">
@@ -135,12 +132,12 @@
               <option value="PDF_EMAIL" selected>Simpan PDF + Emel Ibu Bapa (Auto Email)</option>
               <option value="PDF_ONLY">Simpan PDF Sahaja (Arkib Google Drive)</option>
             </select>
-            <span class="form-help">Pilih sama ada mahu simpan PDF sahaja atau terus emel ke ibu bapa murid.</span>
+            <span class="form-help">Pilih sama ada mahu simpan fail PDF sahaja atau terus hantar ke e-mel penjaga.</span>
           </div>
 
           <div class="form-group">
             <label class="form-label">Subjek Emel (Sokong placeholder cth: ((NAMA_MURID)))</label>
-            <input type="text" class="form-input" id="setup-email-subject" value="Slip Pentaksiran Bilik Darjah (PBD) ((NAMA_MURID)) - SK Ranggu">
+            <input type="text" class="form-input" id="setup-email-subject" value="Slip Pelaporan PBD & UASA ((NAMA_MURID)) - SK Ranggu">
           </div>
 
           <div class="form-group">
@@ -149,7 +146,7 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label">Reply-To (Emel Rasmi Sekolah)</label>
+            <label class="form-label">Reply-To (Emel Rasmi Balas)</label>
             <input type="email" class="form-input" id="setup-reply-to" value="skranggu.tawau@moe.gov.my">
           </div>
 
@@ -165,134 +162,50 @@ Berikut dilampirkan Slip Pelaporan Pentaksiran Bilik Darjah (PBD) & UASA bagi an
 
 Sila rujuk dokumen PDF yang dilampirkan untuk perincian Tahap Penguasaan (TP) setiap mata pelajaran dan ulasan guru kelas.
 
-Portal Rasmi PBD SK Ranggu: https://mylink.la/skranggutawau
 Sekian, terima kasih.
-Unit Pentaksiran Sekolah Kebangsaan Ranggu, Tawau</textarea>
+Unit Pentaksiran Sekolah Kebangsaan Ranggu, Tawau (XBA3037)</textarea>
             <span class="form-help">Gunakan tag seperti <code>((NAMA_MURID))</code>, <code>((KELAS))</code>, <code>((GURU_KELAS))</code>, <code>((TOTAL))</code>, <code>((PURATA))</code>, <code>((POSISI))</code>.</span>
           </div>
 
           <div class="form-group">
             <label class="form-label">Pautan Google Sheet (Pangkalan Data) <span class="required">*</span></label>
-            <input type="url" class="form-input" id="setup-sheet-url" value="https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit">
+            <input type="url" class="form-input" id="setup-sheet-url" placeholder="https://docs.google.com/spreadsheets/d/.../edit" value="https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit">
             <span class="form-help">Import fail CSV <code>Data_Murid_SK_Ranggu_Peperiksaan.csv</code> ke sheet ini.</span>
           </div>
 
           <div class="form-group">
             <label class="form-label">Pautan Templat Google Docs <span class="required">*</span></label>
-            <input type="url" class="form-input" id="setup-template-url" value="https://docs.google.com/document/d/1aPJ6V2EzQDozJ8988E7-k6a8gkJXVv-idjwu-bcGl1g/edit">
+            <input type="url" class="form-input" id="setup-template-url" placeholder="https://docs.google.com/document/d/.../edit" value="https://docs.google.com/document/d/1aPJ6V2EzQDozJ8988E7-k6a8gkJXVv-idjwu-bcGl1g/edit">
             <span class="form-help">Templat dengan tag <code>&lt;&lt;NAMA_MURID&gt;&gt;</code>, <code>&lt;&lt;BM_TP&gt;&gt;</code>, dll.</span>
           </div>
 
           <div class="form-group full-width">
-            <label class="form-label">Pautan Folder Google Drive PBD SK Ranggu <span class="required">*</span></label>
-            <input type="url" class="form-input" id="setup-drive-url" value="https://drive.google.com/drive/folders/1tB8xmHRwcFsNinQTJogKpZd_dWf-njCn">
-            <span class="form-help">Folder rasmi PBD Akhir Tahun SK Ranggu daripada portal <code>https://mylink.la/skranggutawau</code>.</span>
+            <label class="form-label">Pautan Folder Google Drive Sasaran (Penyimpanan PDF) <span class="required">*</span></label>
+            <input type="url" class="form-input" id="setup-drive-url" placeholder="https://drive.google.com/drive/folders/..." value="https://drive.google.com/drive/folders/1QM--2YKLssnYGaqfiidrwrl_xPJGh_Ob">
+            <span class="form-help">Folder Google Drive anda tempat PDF setiap murid akan disimpan kemas.</span>
           </div>
         </div>
 
         <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-          <button class="btn btn-primary" onclick="alert('✅ Tetapan Dokumen PBD SK Ranggu Berjaya Disimpan!')">
+          <button class="btn btn-primary" onclick="alert('✅ Tetapan Dokumen Berjaya Disimpan!')">
             <span>💾 Simpan Tetapan Dokumen</span>
           </button>
-          <button class="btn btn-outline" onclick="document.querySelector('[data-tab=\'tab-mylink\']').click()">
-            <span>Lihat Hab Direktori MyLink ➔</span>
+          <button class="btn btn-outline" onclick="document.querySelector('[data-tab=\'tab-database\']').click()">
+            <span>Seterusnya: Semak Data Murid ➔</span>
           </button>
         </div>
       </div>
     </section>
 
     <!-- =======================================================================
-         TAB 2: HAB DIREKTORI MYLINK & GOOGLE DRIVE PBD RASMI SK RANGGU
-         ======================================================================= -->
-    <section id="tab-mylink" class="tab-panel">
-      <div class="card-box">
-        <div class="card-box-header">
-          <h2 class="card-box-title">
-            <span>🌐</span>
-            <span>Hab Direktori Portal Rasmi: mylink.la/skranggutawau</span>
-          </h2>
-          <a href="https://mylink.la/skranggutawau" target="_blank" class="btn btn-primary btn-sm">
-            <span>Buka Laman MyLink Asal ↗</span>
-          </a>
-        </div>
-
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
-          Semua pautan di bawah diambil secara langsung daripada portal rasmi <strong>PENTAKSIRAN BILIK DARJAH TAHUN 2026 SEKOLAH KEBANGSAAN RANGGU</strong>. Guru-guru boleh mengakses folder Google Drive rasmi setiap tingkatan dan fail Headcount dengan satu klik:
-        </p>
-
-        <!-- Grid 4 Butang Rasmi MyLink -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-          
-          <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 12px; padding: 1.25rem;">
-            <div style="font-size: 0.8rem; color: #f59e0b; font-weight: 700; text-transform: uppercase;">01 • MODUL HEADCOUNT</div>
-            <h3 style="font-size: 1.1rem; margin: 0.4rem 0; color: #fff;">HEADCOUNT MATAPELAJARAN 2026</h3>
-            <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem;">Mengandungi fail HC Tahun 1 hingga Tahun 6, TOV, OTI 1, OTI 2 & ETR SKRT.</p>
-            <a href="https://drive.google.com/drive/folders/14VY56lMLFpjOgRk2Gq1Z-fZP18M5vew2" target="_blank" class="btn btn-warning btn-sm" style="width: 100%;">
-              <span>Buka Folder Headcount ↗</span>
-            </a>
-          </div>
-
-          <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 12px; padding: 1.25rem;">
-            <div style="font-size: 0.8rem; color: #10b981; font-weight: 700; text-transform: uppercase;">02 • PBD PERTENGAHAN TAHUN</div>
-            <h3 style="font-size: 1.1rem; margin: 0.4rem 0; color: #fff;">PBD PERTENGAHAN TAHUN 2026</h3>
-            <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem;">Subfolder Tahun 1 – 6 (Fail pelaporan .xlsm kelas Mumtaz, Jayyid, Iltizam, Khoir).</p>
-            <a href="https://drive.google.com/drive/folders/1KFuS0kHENNXujHSr7cDdQ_pqEnZAVguF" target="_blank" class="btn btn-success btn-sm" style="width: 100%;">
-              <span>Buka Folder PBD Pertengahan ↗</span>
-            </a>
-          </div>
-
-          <div style="background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.4); border-radius: 12px; padding: 1.25rem;">
-            <div style="font-size: 0.8rem; color: #f43f5e; font-weight: 700; text-transform: uppercase;">03 • PBD AKHIR TAHUN</div>
-            <h3 style="font-size: 1.1rem; margin: 0.4rem 0; color: #fff;">PBD AKHIR TAHUN 2026</h3>
-            <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem;">Folder utama pelaporan akhir sesi akademik PASA SK Ranggu bagi semua 24 kelas.</p>
-            <a href="https://drive.google.com/drive/folders/1tB8xmHRwcFsNinQTJogKpZd_dWf-njCn" target="_blank" class="btn btn-primary btn-sm" style="width: 100%; background: linear-gradient(135deg, #f43f5e, #be123c);">
-              <span>Buka Folder PBD Akhir ↗</span>
-            </a>
-          </div>
-
-          <div style="background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 12px; padding: 1.25rem;">
-            <div style="font-size: 0.8rem; color: #a855f7; font-weight: 700; text-transform: uppercase;">04 • ARKIB SEJARAH</div>
-            <h3 style="font-size: 1.1rem; margin: 0.4rem 0; color: #fff;">PBD 2025 (ARKIB)</h3>
-            <p style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem;">Rekod rujukan pencapaian murid tahun lepas untuk perbandingan peningkatan ETR.</p>
-            <a href="https://drive.google.com/drive/folders/1U7RT5LYHKY2RsHoW-4xxStgfsn1OxJBc" target="_blank" class="btn btn-outline btn-sm" style="width: 100%;">
-              <span>Buka Folder Arkib 2025 ↗</span>
-            </a>
-          </div>
-
-        </div>
-
-        <!-- Perincian Struktur Kelas Sebenar Tahun 6 SK Ranggu -->
-        <h3 style="font-size: 1rem; color: #38bdf8; margin-bottom: 0.75rem;">Struktur Kelas & Guru Kelas Rasmi Tahun 6 (SK Ranggu Tawau):</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
-          <div style="background: #0f172a; border: 1px solid var(--border); padding: 0.75rem 1rem; border-radius: 8px;">
-            <strong style="color: #38bdf8;">🌟 6 MUMTAZ</strong>
-            <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem;">Guru Kelas: Pn. Nurul Anisa binti Saparudin</p>
-          </div>
-          <div style="background: #0f172a; border: 1px solid var(--border); padding: 0.75rem 1rem; border-radius: 8px;">
-            <strong style="color: #38bdf8;">🔷 6 JAYYID</strong>
-            <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem;">Guru Kelas: AgKu Kemainddra bin Pg Mohd Taib</p>
-          </div>
-          <div style="background: #0f172a; border: 1px solid var(--border); padding: 0.75rem 1rem; border-radius: 8px;">
-            <strong style="color: #38bdf8;">🟢 6 ILTIZAM</strong>
-            <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem;">Guru Kelas: Pn. Noze binti Tukijan</p>
-          </div>
-          <div style="background: #0f172a; border: 1px solid var(--border); padding: 0.75rem 1rem; border-radius: 8px;">
-            <strong style="color: #38bdf8;">🔶 6 KHOIR</strong>
-            <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem;">Guru Kelas: Pn. Bajam binti Ladung</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =======================================================================
-         TAB 3: PANGKALAN DATA PBD MURID
+         TAB 2: PANGKALAN DATA PBD MURID
          ======================================================================= -->
     <section id="tab-database" class="tab-panel">
       <div class="card-box">
         <div class="card-box-header">
           <h2 class="card-box-title">
             <span>📊</span>
-            <span>Pangkalan Data Murid & Pelaporan PBD (Tahun 6 SK Ranggu)</span>
+            <span>Pangkalan Data Murid & Pelaporan PBD (SK Ranggu Tawau)</span>
           </h2>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
             <button class="btn btn-outline btn-sm" onclick="exportStudentsCSV()">
@@ -309,7 +222,7 @@ Unit Pentaksiran Sekolah Kebangsaan Ranggu, Tawau</textarea>
           <div class="filter-group">
             <label class="form-label" style="margin: 0;">Kelas SK Ranggu:</label>
             <select class="form-select" id="filter-class" style="padding: 0.4rem 0.6rem;">
-              <option value="ALL">Semua Kelas (6 Mumtaz, Jayyid, Iltizam, Khoir)</option>
+              <option value="ALL">Semua Kelas (6 MUMTAZ, 6 JAYYID, 6 ILTIZAM, 6 KHOIR)</option>
               <option value="6 MUMTAZ">6 MUMTAZ</option>
               <option value="6 JAYYID">6 JAYYID</option>
               <option value="6 ILTIZAM">6 ILTIZAM</option>
@@ -359,7 +272,7 @@ Unit Pentaksiran Sekolah Kebangsaan Ranggu, Tawau</textarea>
     </section>
 
     <!-- =======================================================================
-         TAB 4: HAB PENJANAAN DOKUMEN (Batch Generator Console)
+         TAB 3: HAB PENJANAAN DOKUMEN (Batch Generator Console)
          ======================================================================= -->
     <section id="tab-generator" class="tab-panel">
       <div class="card-box">
@@ -374,7 +287,7 @@ Unit Pentaksiran Sekolah Kebangsaan Ranggu, Tawau</textarea>
         </div>
 
         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
-          Pilih murid daripada senarai atau klik <strong>"Jana Semua Belum Diproses"</strong>. Sistem akan mengambil templat Google Docs, menggantikan maklumat murid SK Ranggu, menukar kepada PDF dalam Google Drive, dan menghantar ke emel ibu bapa secara automatik.
+          Pilih murid daripada senarai atau klik <strong>"Jana Semua Belum Diproses"</strong>. Sistem akan mengambil templat Google Docs, menggantikan maklumat murid SK Ranggu, menukar kepada PDF dalam Google Drive, dan menghantar ke e-mel ibu bapa secara automatik.
         </p>
 
         <!-- Action Control Buttons -->
@@ -427,7 +340,7 @@ Unit Pentaksiran Sekolah Kebangsaan Ranggu, Tawau</textarea>
     </section>
 
     <!-- =======================================================================
-         TAB 5: PRATONTON & CETAK SLIP RASMI SK RANGGU
+         TAB 4: PRATONTON & CETAK SLIP RASMI SK RANGGU
          ======================================================================= -->
     <section id="tab-preview" class="tab-panel">
       <div class="card-box no-print">
@@ -462,7 +375,6 @@ Unit Pentaksiran Sekolah Kebangsaan Ranggu, Tawau</textarea>
               <h2>KEMENTERIAN PENDIDIKAN MALAYSIA</h2>
               <h3>SEKOLAH KEBANGSAAN RANGGU, TAWAU</h3>
               <p>PETI SURAT 61576, 91124 TAWAU, SABAH • KOD SEKOLAH: XBA3037</p>
-              <p style="font-size: 0.75rem; color: #0284c7; margin-top: 2px;">Portal PBD: mylink.la/skranggutawau</p>
             </div>
             <img src="assets/logo_skrg.png" alt="Logo SK Ranggu" class="slip-logo">
           </div>
@@ -489,7 +401,7 @@ Unit Pentaksiran Sekolah Kebangsaan Ranggu, Tawau</textarea>
             </div>
             <div class="biodata-item">
               <span class="biodata-label">GURU KELAS:</span>
-              <span class="biodata-val" id="slip-guru-kelas">Pn. Nurul Anisa binti Saparudin</span>
+              <span class="biodata-val" id="slip-guru-kelas">Pn. Bajam binti Ladung (Guru Kelas)</span>
             </div>
           </div>
 
@@ -614,7 +526,7 @@ Unit Pentaksiran Sekolah Kebangsaan Ranggu, Tawau</textarea>
     </section>
 
     <!-- =======================================================================
-         TAB 6: KOD GOOGLE APPS SCRIPT (Code.gs)
+         TAB 5: KOD GOOGLE APPS SCRIPT (Code.gs)
          ======================================================================= -->
     <section id="tab-script" class="tab-panel">
       <div class="card-box">
@@ -629,14 +541,13 @@ Unit Pentaksiran Sekolah Kebangsaan Ranggu, Tawau</textarea>
         </div>
 
         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
-          Tampal kod ini ke dalam <strong>Google Sheets ➔ Extensions ➔ Apps Script</strong> untuk membolehkan Google Sheets menjana berpuluh-puluh slip PDF terus ke Google Drive sekolah secara automatik.
+          Tampal kod ini ke dalam <strong>Google Sheets ➔ Extensions ➔ Apps Script</strong> untuk membolehkan Google Sheets menjana berpuluh-puluh slip PDF terus ke Google Drive anda secara automatik.
         </p>
 
         <pre id="gas-code-block" style="background: #090d16; border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #38bdf8; overflow-x: auto; max-height: 500px; line-height: 1.6;">
 /**
  * SISTEM AUTO DOKUMEN & PENJANA SLIP PBD SK RANGGU, TAWAU (XBA3037)
  * Pembangun: Cikgu Mohammad Fikrey bin Abdul Gapar
- * Diintegrasi bersama: https://mylink.la/skranggutawau
  */
 
 const CONFIG = {
@@ -644,20 +555,14 @@ const CONFIG = {
   senderName: "Unit Pentaksiran SK Ranggu, Tawau",
   replyTo: "skranggu.tawau@moe.gov.my",
   emailSubject: "Slip Pelaporan PBD ((NAMA_MURID)) - SK Ranggu",
-  safeBatchLimit: 25,
-  pbdFolders: {
-    headcount: "14VY56lMLFpjOgRk2Gq1Z-fZP18M5vew2",
-    midYear: "1KFuS0kHENNXujHSr7cDdQ_pqEnZAVguF",
-    finalYear: "1tB8xmHRwcFsNinQTJogKpZd_dWf-njCn",
-    archive2025: "1U7RT5LYHKY2RsHoW-4xxStgfsn1OxJBc"
-  }
+  safeBatchLimit: 25
 };
 
 function setupSheetStructure() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheet = ss.getActiveSheet();
   const headers = [
-    "BIL", "NO_MURID", "NAMA_MURID", "KELAS", "GURU_KELAS", "SESI",
+    "BIL", "NO_MURID", "NAMA_MURID", "KELAS", "GURU_KELAS",
     "BM_M", "BM_G", "BM_TP", "BI_M", "BI_G", "BI_TP",
     "MT_M", "MT_G", "MT_TP", "SN_M", "SN_G", "SN_TP",
     "SEJ_M", "SEJ_G", "SEJ_TP", "PI_M", "PI_G", "PI_TP",
@@ -665,6 +570,10 @@ function setupSheetStructure() {
     "STATUS_JANA", "TARIKH_JANA", "CATATAN_JANA", "LINK_PDF"
   ];
   sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+}
+
+function janaSlipsBatch(options) {
+  // Enjin automatik salin template Docs, gantikan tag <<NAMA_MURID>>, eksport PDF ke Drive & hantar emel
 }
         </pre>
       </div>
