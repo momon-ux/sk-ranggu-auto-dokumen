@@ -794,3 +794,177 @@ body {
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   MULTI-YEAR TOOLBAR & TEACHER MARK ENTRY STYLES
+   ========================================================================== */
+.year-toolbar {
+  background: #0f172a;
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.year-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.year-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.selector-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.selector-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.select-styled {
+  background: #1e293b;
+  border: 1px solid var(--border);
+  color: #f8fafc;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.select-styled:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25);
+}
+
+.select-styled option {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+/* Teacher Mark Entry In-Table Styles */
+.mark-cell-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.mark-input {
+  width: 58px;
+  background: #1e293b;
+  border: 1px solid var(--border);
+  color: #38bdf8;
+  border-radius: 6px;
+  padding: 0.35rem 0.3rem;
+  font-size: 0.85rem;
+  text-align: center;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.mark-input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+  background: #090d16;
+}
+
+.mark-input::-webkit-outer-spin-button,
+.mark-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.mark-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.gred-text-mini {
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: inline-block;
+  min-width: 16px;
+  text-align: center;
+  color: #fbbf24;
+}
+
+.tp-badge-mini {
+  font-size: 0.65rem;
+  font-weight: 600;
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  white-space: nowrap;
+}
+
+.info-banner {
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  border-radius: 10px;
+  padding: 0.85rem 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.info-banner-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+/* Toast Notification */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  background: #0f172a;
+  color: #f8fafc;
+  border: 1px solid #38bdf8;
+  padding: 0.85rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: auto;
+  animation: slideInUp 0.3s ease;
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
