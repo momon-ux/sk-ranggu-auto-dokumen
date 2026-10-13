@@ -2836,7 +2836,7 @@ async function executeBatchProcess(items) {
   const progressText = document.getElementById("batch-progress-text");
   const mode = document.getElementById("setup-mode")?.value || "PDF_EMAIL";
   
-  logMessage(`▶️ MEMULAKAN BATCH [Tahun ${currentYear}]: Memproses ${items.length} rekod PBD murid SK Ranggu...`, "normal");
+  logMessage(`▶️ Memulakan proses penjanaan dokumen untuk ${items.length} orang murid Tahun ${currentYear}...`, "normal");
   
   let completed = 0;
   for (const st of items) {
@@ -2849,17 +2849,17 @@ async function executeBatchProcess(items) {
     if (mode === "PDF_EMAIL") {
       if (st.email && st.email.includes("@")) {
         st.status = "BERJAYA";
-        st.catatan = `[kod v1.0.1-skrg] Slip PDF Tahun ${currentYear} dijana & diemel ke: ${st.email}`;
-        logMessage(`[${timeStr}] ✅ ${st.name} (${st.kelas}): Slip PDF dijana & diemel ke ${st.email}`, "success");
+        st.catatan = `Slip PDF Tahun ${currentYear} dijana & diemel ke: ${st.email}`;
+        logMessage(`[${timeStr}] ✅ ${st.name} (${st.kelas}): Slip PDF berjaya dijana & diemel.`, "success");
       } else {
         st.status = "BERJAYA - TIDAK DIEMEL";
-        st.catatan = `[kod v1.0.1-skrg] Slip PDF disimpan ke Drive. (Emel tiada/tidak didaftarkan)`;
-        logMessage(`[${timeStr}] ⚠️ ${st.name} (${st.kelas}): Slip PDF disimpan. Emel tiada.`, "warn");
+        st.catatan = `Slip PDF disimpan ke arkib sekolah. (Emel tiada/tidak didaftarkan)`;
+        logMessage(`[${timeStr}] ℹ️ ${st.name} (${st.kelas}): Slip PDF disimpan ke arkib sekolah.`, "warn");
       }
     } else {
       st.status = "BERJAYA";
-      st.catatan = `[kod v1.0.1-skrg] Slip PDF disimpan ke Google Drive.`;
-      logMessage(`[${timeStr}] ✅ ${st.name} (${st.kelas}): Slip PDF disimpan ke Google Drive SK Ranggu.`, "success");
+      st.catatan = `Slip PDF disimpan ke arkib sekolah.`;
+      logMessage(`[${timeStr}] ✅ ${st.name} (${st.kelas}): Slip PDF rasmi berjaya disiapkan.`, "success");
     }
     
     completed++;
@@ -2873,7 +2873,7 @@ async function executeBatchProcess(items) {
     }
   }
   
-  logMessage(`🎉 SELESAI: ${items.length} slip pentaksiran murid SK Ranggu berjaya disempurnakan!`, "success");
+  logMessage(`🎉 SELESAI: Kesemua ${items.length} slip pentaksiran murid SK Ranggu telah berjaya disiapkan!`, "success");
   isProcessing = false;
   saveCurrentMarks(false);
   if (currentUser) {

@@ -119,7 +119,7 @@
         <span>📊 2. Pangkalan Data PBD Murid</span>
       </button>
       <button class="tab-btn" data-tab="tab-generator">
-        <span>🚀 3. Hab Penjanaan (Batch Console)</span>
+        <span>🚀 3. Penjanaan Slip PBD</span>
       </button>
       <button class="tab-btn" data-tab="tab-preview">
         <span>🖨️ 4. Pratonton & Cetak Slip Rasmi</span>
@@ -331,30 +331,37 @@
     </section>
 
     <!-- =======================================================================
-         TAB 3: HAB PENJANAAN (BATCH CONSOLE)
+         TAB 3: HAB PENJANAAN SLIP PBD (AUTOMASI DOKUMEN RASMI)
          ======================================================================= -->
     <section id="tab-generator" class="tab-panel">
       <div class="card-box">
         <div class="card-box-header">
           <h2 class="card-box-title">
             <span>🚀</span>
-            <span>Hab Penjanaan Berkelompok Dokumen & Slip PDF (Batch Engine)</span>
+            <span>Penjanaan Dokumen & Slip Pentaksiran Murid SK Ranggu</span>
           </h2>
-          <span class="badge-pill">Automasi Kelajuan Tinggi</span>
+          <span class="badge-pill">Penjanaan Automatik Rasmi</span>
+        </div>
+
+        <div class="info-banner no-print">
+          <span class="info-banner-icon">ℹ️</span>
+          <div>
+            <strong>Pusat Penjanaan Dokumen Rasmi:</strong> Bahagian ini membolehkan pihak sekolah menjana slip keputusan murid secara berkelompok atau individu ke dalam format PDF rasmi sekolah dengan selamat dan teratur.
+          </div>
         </div>
 
         <!-- Tetapan Parameter Dokumen -->
         <div class="form-grid" style="margin-bottom: 1.5rem;">
           <div class="form-group">
-            <label class="form-label">Nama Dokumen Hasil Penjanaan</label>
+            <label class="form-label">Nama Fail Dokumen:</label>
             <input type="text" id="setup-doc-name" class="form-control" value="Slip_PBD_UASA_SK_Ranggu_2026">
           </div>
 
           <div class="form-group">
-            <label class="form-label">Mod Penjanaan Slip</label>
+            <label class="form-label">Pilihan Penjanaan Slip:</label>
             <select id="setup-mode" class="form-control">
-              <option value="PDF_EMAIL" selected>Jana Slip PDF & Terus Emel Kepada Penjaga</option>
-              <option value="PDF_ONLY">Jana Slip PDF Sahaja (Simpan ke Google Drive)</option>
+              <option value="PDF_ONLY" selected>Simpan Slip Dokumen PDF (Sedia Dicetak & Disimpan)</option>
+              <option value="PDF_EMAIL">Simpan Slip Dokumen PDF & Hantar Terus ke Emel Penjaga</option>
             </select>
           </div>
         </div>
@@ -378,7 +385,7 @@
         <!-- Progress Bar -->
         <div class="progress-container">
           <div class="progress-header">
-            <span>Kemajuan Penjanaan Batch:</span>
+            <span>Kemajuan Penjanaan Dokumen:</span>
             <span id="batch-progress-text">0% (0 / 50 Murid)</span>
           </div>
           <div class="progress-bar-bg">
@@ -386,16 +393,16 @@
           </div>
         </div>
 
-        <!-- Terminal Log Konsol -->
+        <!-- Status & Laporan Penjanaan (Bukan Terminal Kod) -->
         <div style="margin-top: 1.5rem;">
           <div style="font-size: 0.85rem; font-weight: 700; color: #94a3b8; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
-            <span>💻 Terminal Log Penjanaan Sistem (Masa Nyata):</span>
-            <button class="btn btn-outline btn-sm" onclick="document.getElementById('console-logs').innerHTML = ''" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">Kosongkan Log</button>
+            <span>📋 Status & Laporan Penjanaan Terkini:</span>
+            <button class="btn btn-outline btn-sm" onclick="document.getElementById('console-logs').innerHTML = ''" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">Kosongkan Senarai</button>
           </div>
           <div id="console-logs" class="log-terminal">
-            <div class="log-line log-normal">[SISTEM SK RANGGU v1.0.1] Enjin automasi dokumen sedia digunakan.</div>
-            <div class="log-line log-normal">[INFO] Pembangun Sistem: Mohammad Fikrey bin Abdul Gapar (SK Ranggu).</div>
-            <div class="log-line log-normal">[INFO] Pangkalan data dimuatkan: 50 rekod murid Tahun 6 SK Ranggu (Mumtaz, Jayyid, Iltizam, Khoir).</div>
+            <div class="log-line log-normal">✅ Sistem sedia untuk menjana slip keputusan murid SK Ranggu.</div>
+            <div class="log-line log-normal">👥 Pangkalan data: 50 rekod murid Tahun 6 sedia untuk diproses.</div>
+            <div class="log-line log-normal">📁 Dokumen akan disimpan terus dalam format PDF rasmi sekolah.</div>
           </div>
         </div>
       </div>
