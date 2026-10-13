@@ -24,14 +24,19 @@
         <div class="brand-text">
           <h1>SISTEM AUTO DOKUMEN & PENJANA SLIP PBD / UASA</h1>
           <p>
-            <span>Sekolah Kebangsaan Ranggu, Tawau, Sabah</span>
+            <span>Sekolah Kebangsaan Ranggu, Peti Surat 842, 91008 Tawau, Sabah</span>
             <span class="school-tag">Kod: XBA3037</span>
-            <span>• Pembangun Sistem & Inovator: <strong style="color:#38bdf8; text-decoration: underline;">Mohammad Fikrey bin Abdul Gapar</strong></span>
+            <span>• Pembangun Sistem: <strong style="color:#ffffff; text-decoration: underline;">Mohammad Fikrey bin Abdul Gapar</strong></span>
           </p>
         </div>
       </div>
 
       <div class="header-badges">
+        <!-- Butang Tukar Tema Ceria (Terang / Gelap) -->
+        <button class="btn-theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()" title="Tukar Tema (Terang / Gelap)">
+          <span id="theme-icon">☀️</span> <span id="theme-text">Mod Terang</span>
+        </button>
+
         <!-- Profil Sesi Pengguna Semasa -->
         <div class="user-profile-badge" id="user-profile-badge">
           <span>👤</span>
@@ -48,7 +53,7 @@
 
         <div class="badge-pill dev-badge-pill">
           <span class="dev-badge-icon">👨‍🏫</span>
-          <span>Inovator: <strong>Mohammad Fikrey bin Abdul Gapar</strong></span>
+          <span>Pembangun Sistem: <strong>Mohammad Fikrey bin Abdul Gapar</strong></span>
         </div>
         <div class="badge-pill" style="border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">
           <span>⚡ 100% Sifar Kos (RM0)</span>
@@ -119,7 +124,7 @@
         <span>📊 2. Pangkalan Data PBD Murid</span>
       </button>
       <button class="tab-btn" data-tab="tab-generator">
-        <span>🚀 3. Penjanaan Slip PBD</span>
+        <span>🚀 3. Penjanaan Slip Berkelompok</span>
       </button>
       <button class="tab-btn" data-tab="tab-preview">
         <span>🖨️ 4. Pratonton & Cetak Slip Rasmi</span>
@@ -193,14 +198,34 @@
         </div>
 
         <!-- Notis Hak Akses & Penetapan Guru Kelas -->
-        <div id="user-permission-banner" class="no-print" style="margin-bottom:1rem; font-size:0.85rem; padding:0.6rem 1rem; background:rgba(30, 41, 59, 0.7); border-radius:10px; border:1px solid rgba(56, 189, 248, 0.25); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+        <div id="user-permission-banner" class="no-print">
           <span id="user-permission-text">🔒 Sila log masuk dengan No. IC anda untuk mula mengisi markah.</span>
-          <span id="class-teacher-indicator" style="color:#fbbf24; font-weight:700;"></span>
+          <span id="class-teacher-indicator" style="color:#15803d; font-weight:800;"></span>
+        </div>
+
+        <!-- Bar Pintas Tapis Kelas (1-Klik Mesra Guru SK Ranggu) -->
+        <div class="class-pills-bar no-print">
+          <span class="pills-label">🏫 Tapis Kelas Segera:</span>
+          <button class="class-pill-btn active" id="pill-ALL" onclick="filterByClassPill('ALL')">
+            <span>⭐</span> <strong>Semua Kelas</strong> <small>(50 Murid)</small>
+          </button>
+          <button class="class-pill-btn" id="pill-6-MUMTAZ" onclick="filterByClassPill('6 MUMTAZ')">
+            <span>📘</span> <strong>6 MUMTAZ</strong> <small>(14 Murid • Pn. Bajam)</small>
+          </button>
+          <button class="class-pill-btn" id="pill-6-JAYYID" onclick="filterByClassPill('6 JAYYID')">
+            <span>📗</span> <strong>6 JAYYID</strong> <small>(13 Murid • AgKu Kemainddra)</small>
+          </button>
+          <button class="class-pill-btn" id="pill-6-ILTIZAM" onclick="filterByClassPill('6 ILTIZAM')">
+            <span>📙</span> <strong>6 ILTIZAM</strong> <small>(12 Murid • Pn. Noze)</small>
+          </button>
+          <button class="class-pill-btn" id="pill-6-KHOIR" onclick="filterByClassPill('6 KHOIR')">
+            <span>📕</span> <strong>6 KHOIR</strong> <small>(11 Murid • Sabriah)</small>
+          </button>
         </div>
 
         <div class="table-controls no-print">
           <div class="filter-group">
-            <label for="entry-filter-class" style="font-size:0.85rem; color:#94a3b8; font-weight:600;">Tapis Kelas:</label>
+            <label for="entry-filter-class" style="font-size:0.85rem; color:var(--text-muted); font-weight:700;">Tapis Kelas:</label>
             <select id="entry-filter-class" class="select-styled">
               <option value="ALL">Semua Kelas (4 Kelas Tahun 6)</option>
               <option value="6 MUMTAZ">6 MUMTAZ (Pn. Bajam binti Ladung)</option>
@@ -238,14 +263,14 @@
             <thead>
               <tr>
                 <th style="width: 40px;">Bil</th>
-                <th style="width: 130px;">No. Murid</th>
+                <th style="width: 125px;">No. Murid</th>
                 <th>Nama Murid & Kelas</th>
-                <th style="text-align: center; width: 110px;">B. Melayu (BM)</th>
-                <th style="text-align: center; width: 110px;">B. Inggeris (BI)</th>
-                <th style="text-align: center; width: 110px;">Matematik (MT)</th>
-                <th style="text-align: center; width: 110px;">Sains (SN)</th>
-                <th style="text-align: center; width: 110px;">Sejarah (SEJ)</th>
-                <th style="text-align: center; width: 110px;">P. Islam (PI)</th>
+                <th style="text-align: center; width: 110px;">BM<br><small class="th-sub">B. Melayu</small></th>
+                <th style="text-align: center; width: 110px;">BI<br><small class="th-sub">B. Inggeris</small></th>
+                <th style="text-align: center; width: 110px;">MT<br><small class="th-sub">Matematik</small></th>
+                <th style="text-align: center; width: 110px;">SN<br><small class="th-sub">Sains</small></th>
+                <th style="text-align: center; width: 110px;">SEJ<br><small class="th-sub">Sejarah</small></th>
+                <th style="text-align: center; width: 110px;">PI/PM<br><small class="th-sub">P. Islam</small></th>
                 <th style="text-align: center; width: 85px;">Jumlah</th>
                 <th style="text-align: center; width: 80px;">Purata</th>
                 <th style="text-align: center; width: 70px;">Slip</th>
@@ -393,18 +418,18 @@
           </div>
         </div>
 
-        <!-- Status & Laporan Penjanaan (Bukan Terminal Kod) -->
-        <div style="margin-top: 1.5rem;">
-          <div style="font-size: 0.85rem; font-weight: 700; color: #94a3b8; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
-            <span>📋 Status & Laporan Penjanaan Terkini:</span>
-            <button class="btn btn-outline btn-sm" onclick="document.getElementById('console-logs').innerHTML = ''" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;">Kosongkan Senarai</button>
-          </div>
-          <div id="console-logs" class="log-terminal">
-            <div class="log-line log-normal">✅ Sistem sedia untuk menjana slip keputusan murid SK Ranggu.</div>
-            <div class="log-line log-normal">👥 Pangkalan data: 50 rekod murid Tahun 6 sedia untuk diproses.</div>
-            <div class="log-line log-normal">📁 Dokumen akan disimpan terus dalam format PDF rasmi sekolah.</div>
+        <!-- Status Penjanaan Rasmi (Mesra Pengguna - Tiada Terminal Kod) -->
+        <div class="info-banner" style="margin-top: 1.5rem; background: var(--stat-green-bg); border-color: var(--stat-green-border); color: var(--stat-green-text);">
+          <span class="info-banner-icon">✅</span>
+          <div>
+            <strong>Status Sistem:</strong> Enjin penjanaan sedia untuk memproses slip keputusan murid SK Ranggu.
+            <div style="font-size: 0.82rem; opacity: 0.9; margin-top: 0.25rem;">
+              Slip rasmi akan dijana mengikut format standard Kementerian Pendidikan Malaysia (KPM) bagi sesi 2026 dalam saiz A4 rasmi.
+            </div>
           </div>
         </div>
+        <!-- Simpanan tersembunyi untuk fungsi JS logMessage jika dipanggil -->
+        <div id="console-logs" style="display:none;"></div>
       </div>
     </section>
 
@@ -441,8 +466,8 @@
             <div class="slip-school-info">
               <h2>KEMENTERIAN PENDIDIKAN MALAYSIA</h2>
               <h3>SEKOLAH KEBANGSAAN RANGGU</h3>
-              <p>PETI SURAT 61356, 91122 TAWAU, SABAH</p>
-              <p>Kod Sekolah: XBA3037 • Emel: skranggu.tawau@moe.gov.my</p>
+              <p>PETI SURAT 842, 91008 TAWAU, SABAH</p>
+              <p>Kod Sekolah: XBA3037 • Emel: xba3037@moe.edu.my</p>
             </div>
             <img src="assets/logo_skrg.png" alt="Logo SK Ranggu" class="slip-logo">
           </header>
@@ -593,15 +618,15 @@
   <footer class="app-footer no-print">
     <div class="footer-container">
       <div class="footer-left">
-        <div class="footer-school">SEKOLAH KEBANGSAAN RANGGU, TAWAU, SABAH (XBA3037)</div>
-        <div class="footer-sub">Sistem Pengurusan Auto Dokumen & Penjanaan Slip Pentaksiran Berkelompok</div>
+        <div class="footer-school">SEKOLAH KEBANGSAAN RANGGU, PETI SURAT 842, 91008 TAWAU, SABAH</div>
+        <div class="footer-sub">Kod Sekolah: XBA3037 • Sistem Pengurusan Auto Dokumen & Penjana Slip PBD / UASA</div>
       </div>
 
       <div class="footer-center">
         <div class="developer-box">
           <span class="dev-icon">👨‍💻</span>
           <div class="dev-details">
-            <span class="dev-role">Pembangun Sistem & Inovator:</span>
+            <span class="dev-role">Pembangun Sistem:</span>
             <strong class="dev-name">Mohammad Fikrey bin Abdul Gapar</strong>
             <span class="dev-school">SK Ranggu, Tawau, Sabah</span>
           </div>
@@ -795,8 +820,8 @@
         <!-- Admin Tab 1: Pengurusan Guru & Reset Kata Laluan -->
         <div id="atab-teachers" class="admin-tab-content active">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
-            <h4 style="color:#f8fafc; font-size:0.95rem;">Senarai Guru SK Ranggu & Kawalan Kata Laluan:</h4>
-            <button class="btn btn-outline btn-sm" onclick="openAddTeacherPrompt()">➕ Tambah Guru Baharu</button>
+            <h4 style="color:var(--text-main); font-size:0.95rem; font-weight:800;">Senarai Guru SK Ranggu & Kawalan Kata Laluan:</h4>
+            <button class="btn btn-primary btn-sm" onclick="openAddTeacherModal()">➕ Tambah Guru Baharu</button>
           </div>
           <div class="table-wrapper">
             <table class="audit-table">
@@ -806,14 +831,14 @@
                   <th>No. IC</th>
                   <th>Peranan</th>
                   <th>Status Kata Laluan</th>
-                  <th style="text-align:center;">Tindakan</th>
+                  <th style="text-align:center; min-width: 220px;">Tindakan</th>
                 </tr>
               </thead>
               <tbody id="admin-teachers-tbody"></tbody>
             </table>
           </div>
-          <p style="font-size:0.75rem; color:#94a3b8; margin-top:0.75rem;">
-            * Apabila butang <strong>"🔄 Reset ke P3nd1d1kan"</strong> ditekan, kata laluan guru tersebut akan kembali kepada kata laluan sementara asal (<code>P3nd1d1kan</code>) dan mereka akan diminta menukar kata laluan baharu pada log masuk seterusnya.
+          <p style="font-size:0.78rem; color:var(--text-muted); margin-top:0.75rem;">
+            * Pentadbir boleh <strong>Menambah guru baharu</strong>, <strong>Mengeluarkan guru</strong>, atau <strong>Reset kata laluan ke P3nd1d1kan</strong>.
           </p>
         </div>
 
@@ -834,7 +859,7 @@
         <!-- Admin Tab 3: Jejak Audit (Trace Siapa Ubah) -->
         <div id="atab-audit" class="admin-tab-content">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
-            <h4 style="color:#f8fafc; font-size:0.95rem;">Rekod Pengesanan Aktiviti (Audit Trail):</h4>
+            <h4 style="color:var(--text-main); font-size:0.95rem; font-weight:800;">Rekod Pengesanan Aktiviti (Audit Trail):</h4>
             <button class="btn btn-outline btn-sm" onclick="clearAuditLogs()">🧹 Kosongkan Log</button>
           </div>
           <div class="table-wrapper" style="max-height:360px;">
@@ -853,6 +878,59 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary" onclick="closeModal('modal-admin-panel')">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Modal Tambah Guru Baharu (Tetapan Admin) -->
+  <div id="modal-add-teacher" class="modal-overlay">
+    <div class="modal-card" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3><span>➕</span> Tambah Guru Baharu SK Ranggu</h3>
+        <button class="modal-close-btn" onclick="closeModal('modal-add-teacher')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Nama Penuh Guru: <span class="required">*</span></label>
+          <input type="text" id="add-teacher-name" class="form-control" placeholder="Contoh: AHMAD BIN ABDULLAH">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">No. Kad Pengenalan (IC): <span class="required">*</span></label>
+          <input type="text" id="add-teacher-ic" class="form-control" placeholder="Contoh: 910528-12-5411 atau 910528125411">
+          <small class="form-help">Boleh dimasukkan dengan atau tanpa tanda sempang (-).</small>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Jawatan / Peranan:</label>
+          <select id="add-teacher-role" class="form-control" onchange="handleAddTeacherRoleChange(this.value)">
+            <option value="GURU MATA PELAJARAN" selected>Guru Mata Pelajaran</option>
+            <option value="GURU KELAS">Guru Kelas</option>
+            <option value="PENTADBIR SISTEM / PEMBANGUN SISTEM">Pentadbir Sistem</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="add-teacher-class-group" style="margin-bottom: 1rem; display: none;">
+          <label class="form-label">Pilih Kelas Dipegang:</label>
+          <select id="add-teacher-class" class="form-control">
+            <option value="6 MUMTAZ">6 MUMTAZ</option>
+            <option value="6 JAYYID">6 JAYYID</option>
+            <option value="6 ILTIZAM">6 ILTIZAM</option>
+            <option value="6 KHOIR">6 KHOIR</option>
+          </select>
+        </div>
+
+        <div class="info-banner" style="margin-top: 1rem; background: var(--stat-blue-bg); border-color: var(--stat-blue-border); color: var(--stat-blue-text);">
+          <span class="info-banner-icon">🔑</span>
+          <div style="font-size: 0.82rem;">
+            Kata laluan sementara untuk log masuk pertama kali ialah: <strong>P3nd1d1kan</strong>.<br>
+            Guru boleh menukar kata laluan peribadi mereka sendiri selepas log masuk.
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('modal-add-teacher')">Batal</button>
+        <button class="btn btn-primary" onclick="submitAddNewTeacher()">💾 Simpan Guru</button>
       </div>
     </div>
   </div>

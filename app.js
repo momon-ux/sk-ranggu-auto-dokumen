@@ -1714,9 +1714,9 @@ const INITIAL_STUDENTS_ROSTER = [
 const DEFAULT_TEACHERS = [
   {
     id: "T001",
-    ic: "890512-12-5433",
+    ic: "910528-12-5411",
     name: "MOHAMMAD FIKREY BIN ABDUL GAPAR",
-    role: "ADMIN SISTEM / INOVATOR",
+    role: "PENTADBIR SISTEM / PEMBANGUN SISTEM",
     isAdmin: true,
     isClassTeacherOf: null,
     password: "P3nd1d1kan",
@@ -1776,6 +1776,146 @@ const DEFAULT_TEACHERS = [
     id: "T007",
     ic: "780914-12-5334",
     name: "PN. HAMSIAH BINTI HAMID",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T008",
+    ic: "840112-12-5567",
+    name: "EN. AZMAN BIN KASSIM",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T009",
+    ic: "850720-12-5234",
+    name: "PN. ROHANI BINTI ISMAIL",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T010",
+    ic: "880905-12-5671",
+    name: "EN. MOHD SHAHRIL BIN ABDULLAH",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T011",
+    ic: "870314-12-5118",
+    name: "PN. SITI NORBAYA BINTI AHMAD",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T012",
+    ic: "831002-12-5889",
+    name: "EN. RUSLAN BIN OTHMAN",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T013",
+    ic: "890215-12-5442",
+    name: "PN. FATIMAH BINTI AWANG",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T014",
+    ic: "801124-12-5773",
+    name: "EN. ABDUL HALIM BIN HASHIM",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T015",
+    ic: "810418-12-5990",
+    name: "PN. ZAITON BINTI DAUD",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T016",
+    ic: "830619-12-5812",
+    name: "PN. NORMALA BINTI MOHD YUSOF",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T017",
+    ic: "871104-12-5337",
+    name: "EN. KHAIRUL ANUAR BIN SALLEH",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T018",
+    ic: "840815-12-5664",
+    name: "PN. MARIAM BINTI HASSAN",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T019",
+    ic: "820228-12-5091",
+    name: "EN. ZULKIFLI BIN MAHAMUD",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T020",
+    ic: "860403-12-5552",
+    name: "PN. NORAINI BINTI JAAFAR",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T021",
+    ic: "851219-12-5783",
+    name: "EN. MOHAMAD FAIZAL BIN RAMLI",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1852,6 +1992,7 @@ let currentUser = null;
 
 // Inisialisasi Apabila Laman Dimuatkan
 document.addEventListener("DOMContentLoaded", () => {
+  initTheme();
   loadAuthAndPermissionsData();
   loadYearData();
   setupYearAndSessionControls();
@@ -1872,7 +2013,40 @@ document.addEventListener("DOMContentLoaded", () => {
 function loadAuthAndPermissionsData() {
   const savedTeachers = localStorage.getItem("skrg_teachers_db");
   if (savedTeachers) {
-    try { teachersData = JSON.parse(savedTeachers); } catch(e) { teachersData = [...DEFAULT_TEACHERS]; }
+    try { 
+      teachersData = JSON.parse(savedTeachers); 
+      // Kemas kini automatik untuk Mohammad Fikrey bin Abdul Gapar
+      const fikrey = teachersData.find(t => t.id === "T001" || t.name.includes("FIKREY"));
+      if (fikrey) {
+        fikrey.ic = "910528-12-5411";
+        fikrey.role = "PENTADBIR SISTEM / PEMBANGUN SISTEM";
+        fikrey.isAdmin = true;
+      } else {
+        teachersData.unshift({
+          id: "T001",
+          ic: "910528-12-5411",
+          name: "MOHAMMAD FIKREY BIN ABDUL GAPAR",
+          role: "PENTADBIR SISTEM / PEMBANGUN SISTEM",
+          isAdmin: true,
+          isClassTeacherOf: null,
+          password: "P3nd1d1kan",
+          isFirstLogin: true
+        });
+      }
+
+      // Gabungkan guru lalai baharu jika belum wujud
+      DEFAULT_TEACHERS.forEach(dt => {
+        const cleanDtIc = dt.ic.replace(/\D/g, "");
+        const exists = teachersData.some(t => t.ic.replace(/\D/g, "") === cleanDtIc || t.name === dt.name);
+        if (!exists) {
+          teachersData.push({...dt});
+        }
+      });
+      saveTeachersData();
+    } catch(e) { 
+      teachersData = JSON.parse(JSON.stringify(DEFAULT_TEACHERS)); 
+      saveTeachersData();
+    }
   } else {
     teachersData = JSON.parse(JSON.stringify(DEFAULT_TEACHERS));
     localStorage.setItem("skrg_teachers_db", JSON.stringify(teachersData));
@@ -2269,15 +2443,24 @@ function renderAdminTeachersTable() {
   teachersData.forEach(t => {
     const tr = document.createElement("tr");
     const isTemp = t.password === "P3nd1d1kan" || t.isFirstLogin;
+    const isPrimaryAdmin = t.id === "T001" || t.name.includes("FIKREY");
+
     tr.innerHTML = `
-      <td><strong>${t.name}</strong></td>
+      <td><strong>${t.name}</strong> ${t.isAdmin ? '<span class="school-tag" style="background:var(--stat-blue-bg); color:var(--primary-royal); font-size:0.7rem; border-color:var(--stat-blue-border); margin-left:0.35rem;">ADMIN</span>' : ''}</td>
       <td><code>${t.ic}</code></td>
       <td><span class="school-tag">${t.role}</span></td>
-      <td>${isTemp ? '<span style="color:#fbbf24;">Sementara (P3nd1d1kan)</span>' : '<span style="color:#34d399;">Peribadi (Telah Ditukar)</span>'}</td>
-      <td style="text-align:center;">
-        <button class="btn btn-outline btn-sm" onclick="resetTeacherPassword('${t.id}')" title="Set semula kata laluan ke P3nd1d1kan">
-          🔄 Reset ke P3nd1d1kan
+      <td>${isTemp ? '<span style="color:#b45309; font-weight:700;">Sementara (P3nd1d1kan)</span>' : '<span style="color:#15803d; font-weight:700;">Peribadi (Telah Ditukar)</span>'}</td>
+      <td style="text-align:center; white-space:nowrap;">
+        <button class="btn btn-outline btn-sm" onclick="resetTeacherPassword('${t.id}')" title="Set semula kata laluan ke P3nd1d1kan" style="margin-right:0.35rem;">
+          🔄 Reset P3nd1d1kan
         </button>
+        ${!isPrimaryAdmin ? `
+          <button class="btn btn-outline btn-sm" onclick="removeTeacher('${t.id}')" title="Keluarkan guru ini daripada sistem" style="color:#dc2626; border-color:#fca5a5;">
+            🗑️ Keluarkan
+          </button>
+        ` : `
+          <span style="font-size:0.75rem; color:var(--text-muted); font-style:italic;">Admin Utama</span>
+        `}
       </td>
     `;
     tbody.appendChild(tr);
@@ -2298,21 +2481,65 @@ function resetTeacherPassword(teacherId) {
   }
 }
 
-function openAddTeacherPrompt() {
-  const name = prompt("Masukkan Nama Guru Baharu:");
-  if (!name || !name.trim()) return;
-  const ic = prompt("Masukkan No. Kad Pengenalan (IC) Guru:");
-  if (!ic || !ic.trim()) return;
-  const role = prompt("Masukkan Peranan (cth: GURU SUBJEK / GURU KELAS):", "GURU MATA PELAJARAN") || "GURU MATA PELAJARAN";
+function openAddTeacherModal() {
+  document.getElementById("add-teacher-name").value = "";
+  document.getElementById("add-teacher-ic").value = "";
+  document.getElementById("add-teacher-role").value = "GURU MATA PELAJARAN";
+  const classGroup = document.getElementById("add-teacher-class-group");
+  if (classGroup) classGroup.style.display = "none";
+  document.getElementById("modal-add-teacher")?.classList.add("active");
+  document.getElementById("add-teacher-name")?.focus();
+}
 
-  const newId = "T" + String(teachersData.length + 1).padStart(3, "0");
+function handleAddTeacherRoleChange(role) {
+  const classGroup = document.getElementById("add-teacher-class-group");
+  if (classGroup) {
+    classGroup.style.display = (role === "GURU KELAS") ? "block" : "none";
+  }
+}
+
+function submitAddNewTeacher() {
+  const nameInput = document.getElementById("add-teacher-name")?.value.trim();
+  const icInput = document.getElementById("add-teacher-ic")?.value.trim();
+  const role = document.getElementById("add-teacher-role")?.value;
+  const kelas = document.getElementById("add-teacher-class")?.value;
+
+  if (!nameInput) {
+    alert("Sila masukkan nama penuh guru!");
+    return;
+  }
+  if (!icInput) {
+    alert("Sila masukkan No. Kad Pengenalan (IC) guru!");
+    return;
+  }
+
+  const cleanIc = icInput.replace(/\D/g, "");
+  if (cleanIc.length < 8) {
+    alert("No. Kad Pengenalan tidak sah! Sila masukkan No. IC sekurang-kurangnya 8-12 digit.");
+    return;
+  }
+
+  const existing = teachersData.find(t => t.ic.replace(/\D/g, "") === cleanIc);
+  if (existing) {
+    alert(`No. IC ini sudah wujud dalam sistem untuk guru: ${existing.name}!`);
+    return;
+  }
+
+  const formattedIc = (cleanIc.length === 12)
+    ? `${cleanIc.substring(0,6)}-${cleanIc.substring(6,8)}-${cleanIc.substring(8,12)}`
+    : icInput;
+
+  const newId = "T" + String(Date.now()).slice(-4);
+  const isClassTeacher = (role === "GURU KELAS");
+  const fullRole = isClassTeacher ? `GURU KELAS (${kelas})` : role;
+
   const newTeacher = {
     id: newId,
-    ic: ic.trim(),
-    name: name.trim().toUpperCase(),
-    role: role.trim().toUpperCase(),
-    isAdmin: false,
-    isClassTeacherOf: null,
+    ic: formattedIc,
+    name: nameInput.toUpperCase(),
+    role: fullRole,
+    isAdmin: (role === "PENTADBIR SISTEM / PEMBANGUN SISTEM"),
+    isClassTeacherOf: isClassTeacher ? kelas : null,
     password: "P3nd1d1kan",
     isFirstLogin: true
   };
@@ -2321,8 +2548,28 @@ function openAddTeacherPrompt() {
   saveTeachersData();
   populateQuickSelect();
   renderAdminTeachersTable();
-  recordAuditLog("TAMBAH_GURU", `Guru baharu ${newTeacher.name} (${newTeacher.ic}) telah didaftarkan.`);
-  alert(`✅ Guru ${newTeacher.name} berjaya didaftarkan dengan kata laluan sementara: P3nd1d1kan`);
+  closeModal("modal-add-teacher");
+  recordAuditLog("TAMBAH_GURU", `Guru baharu ${newTeacher.name} (IC: ${newTeacher.ic}, Peranan: ${newTeacher.role}) berjaya didaftarkan oleh Admin.`);
+  showToastNotification(`✅ Guru ${newTeacher.name} berjaya didaftarkan!`);
+}
+
+function removeTeacher(teacherId) {
+  const teacher = teachersData.find(t => t.id === teacherId);
+  if (!teacher) return;
+
+  if (teacher.id === "T001" || teacher.name.includes("FIKREY")) {
+    alert("Pentadbir Sistem Utama (Mohammad Fikrey bin Abdul Gapar) dilindungi dan tidak boleh dikeluarkan!");
+    return;
+  }
+
+  if (confirm(`Adakah anda pasti mahu MENGELUARKAN guru ${teacher.name} (${teacher.ic}) daripada senarai warga pendidik SK Ranggu?`)) {
+    teachersData = teachersData.filter(t => t.id !== teacherId);
+    saveTeachersData();
+    populateQuickSelect();
+    renderAdminTeachersTable();
+    recordAuditLog("KELUARKAN_GURU", `Guru ${teacher.name} (${teacher.ic}) telah dikeluarkan oleh Admin.`);
+    showToastNotification(`🗑️ Guru ${teacher.name} telah dikeluarkan.`);
+  }
 }
 
 function renderAdminClassAssignments(kelas) {
@@ -2627,6 +2874,7 @@ function renderEntryTable() {
   const searchTxt = document.getElementById("entry-search")?.value.toLowerCase().trim() || "";
   
   updateClassTeacherAssignButton(classFilter);
+  updateClassPillsUI(classFilter);
 
   const filtered = studentsData.filter(st => {
     const matchClass = classFilter === "ALL" || st.kelas === classFilter;
@@ -3063,3 +3311,69 @@ function showToastNotification(message) {
     setTimeout(() => toast.remove(), 300);
   }, 3500);
 }
+
+// 25. Pengurusan Tema Ceria (Light Theme Lalai & Dark Theme)
+function initTheme() {
+  const savedTheme = localStorage.getItem("skrg_theme") || "light";
+  applyTheme(savedTheme);
+}
+
+function applyTheme(theme) {
+  if (theme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+  }
+  localStorage.setItem("skrg_theme", theme);
+  
+  const icon = document.getElementById("theme-icon");
+  const text = document.getElementById("theme-text");
+  if (icon && text) {
+    if (theme === "dark") {
+      icon.innerText = "🌙";
+      text.innerText = "Mod Gelap";
+    } else {
+      icon.innerText = "☀️";
+      text.innerText = "Mod Terang";
+    }
+  }
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute("data-theme");
+  const nextTheme = (current === "dark") ? "light" : "dark";
+  applyTheme(nextTheme);
+  const msg = (nextTheme === "light") ? "☀️ Mod Terang Ceria KPM diaktifkan!" : "🌙 Mod Gelap diaktifkan!";
+  showToastNotification(msg);
+}
+
+// 26. Kawalan Bar Pintas Tapis Kelas (1-Klik Mesra Guru SK Ranggu)
+function updateClassPillsUI(activeClass) {
+  document.querySelectorAll(".class-pill-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+  
+  if (activeClass === "ALL") {
+    document.getElementById("pill-ALL")?.classList.add("active");
+  } else if (activeClass === "6 MUMTAZ") {
+    document.getElementById("pill-6-MUMTAZ")?.classList.add("active");
+  } else if (activeClass === "6 JAYYID") {
+    document.getElementById("pill-6-JAYYID")?.classList.add("active");
+  } else if (activeClass === "6 ILTIZAM") {
+    document.getElementById("pill-6-ILTIZAM")?.classList.add("active");
+  } else if (activeClass === "6 KHOIR") {
+    document.getElementById("pill-6-KHOIR")?.classList.add("active");
+  }
+}
+
+function filterByClassPill(className) {
+  const select = document.getElementById("entry-filter-class");
+  if (select) {
+    select.value = className;
+  }
+  updateClassPillsUI(className);
+  renderEntryTable();
+  const label = (className === "ALL") ? "Semua Kelas (50 Murid)" : className;
+  showToastNotification(`🏫 Menapis jadual: ${label}`);
+}
+
