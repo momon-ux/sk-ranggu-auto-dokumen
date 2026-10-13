@@ -1710,13 +1710,149 @@ const INITIAL_STUDENTS_ROSTER = [
   }
 ];
 
+// Senarai Guru Rasmi SK Ranggu (Data Awal & Pengesahan IC)
+const DEFAULT_TEACHERS = [
+  {
+    id: "T001",
+    ic: "890512-12-5433",
+    name: "MOHAMMAD FIKREY BIN ABDUL GAPAR",
+    role: "ADMIN SISTEM / INOVATOR",
+    isAdmin: true,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T002",
+    ic: "750410-12-5678",
+    name: "PN. BAJAM BINTI LADUNG",
+    role: "GURU KELAS (6 MUMTAZ)",
+    isAdmin: false,
+    isClassTeacherOf: "6 MUMTAZ",
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T003",
+    ic: "820315-12-6123",
+    name: "AGKU KEMAINDDRA BIN PG MOHD TAIB",
+    role: "GURU KELAS (6 JAYYID)",
+    isAdmin: false,
+    isClassTeacherOf: "6 JAYYID",
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T004",
+    ic: "791120-12-5890",
+    name: "PN. NOZE BINTI TUKIJAN",
+    role: "GURU KELAS (6 ILTIZAM)",
+    isAdmin: false,
+    isClassTeacherOf: "6 ILTIZAM",
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T005",
+    ic: "810705-12-5432",
+    name: "SABRIAH @ HABIBAH ABDUL SABAR",
+    role: "GURU KELAS (6 KHOIR)",
+    isAdmin: false,
+    isClassTeacherOf: "6 KHOIR",
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T006",
+    ic: "860822-12-5112",
+    name: "PN. NURUL ANISA BINTI SAPARUDIN",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  },
+  {
+    id: "T007",
+    ic: "780914-12-5334",
+    name: "PN. HAMSIAH BINTI HAMID",
+    role: "GURU MATA PELAJARAN",
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  }
+];
+
+// Penetapan Guru Subjek Lalai Mengikut Kelas (Ditetapkan oleh Guru Kelas)
+const DEFAULT_SUBJECT_ASSIGNMENTS = {
+  "6 MUMTAZ": {
+    classTeacherId: "T002",
+    subjects: {
+      bm: "T002", // Pn. Bajam Ladung
+      bi: "T006", // Pn. Nurul Anisa
+      mt: "T001", // Mohammad Fikrey
+      sn: "T003", // AgKu Kemainddra
+      sej: "T002", // Pn. Bajam Ladung
+      pi: "T005"   // Sabriah
+    }
+  },
+  "6 JAYYID": {
+    classTeacherId: "T003",
+    subjects: {
+      bm: "T007", // Pn. Hamsiah
+      bi: "T006", // Pn. Nurul Anisa
+      mt: "T001", // Mohammad Fikrey
+      sn: "T003", // AgKu Kemainddra
+      sej: "T003", // AgKu Kemainddra
+      pi: "T005"   // Sabriah
+    }
+  },
+  "6 ILTIZAM": {
+    classTeacherId: "T004",
+    subjects: {
+      bm: "T004", // Pn. Noze Tukijan
+      bi: "T006", // Pn. Nurul Anisa
+      mt: "T001", // Mohammad Fikrey
+      sn: "T004", // Pn. Noze Tukijan
+      sej: "T007", // Pn. Hamsiah
+      pi: "T005"   // Sabriah
+    }
+  },
+  "6 KHOIR": {
+    classTeacherId: "T005",
+    subjects: {
+      bm: "T007", // Pn. Hamsiah
+      bi: "T006", // Pn. Nurul Anisa
+      mt: "T001", // Mohammad Fikrey
+      sn: "T003", // AgKu Kemainddra
+      sej: "T005", // Sabriah
+      pi: "T005"   // Sabriah
+    }
+  }
+};
+
+const SUBJECT_LABELS = {
+  bm: "Bahasa Melayu (BM)",
+  bi: "Bahasa Inggeris (BI)",
+  mt: "Matematik (MT)",
+  sn: "Sains (SN)",
+  sej: "Sejarah (SEJ)",
+  pi: "Pendidikan Islam (PI)"
+};
+
 // Keadaan Semasa Sistem (State)
 let currentYear = "2026";
 let currentAssessment = "Pentaksiran Akhir Sesi Akademik (PASA)";
 let studentsData = [];
+let teachersData = [];
+let subjectAssignments = {};
+let auditLogs = [];
+let currentUser = null;
 
 // Inisialisasi Apabila Laman Dimuatkan
 document.addEventListener("DOMContentLoaded", () => {
+  loadAuthAndPermissionsData();
   loadYearData();
   setupYearAndSessionControls();
   setupTabs();
@@ -1729,9 +1865,544 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   setupConsoleEvents();
   startRealtimeClock();
+  initAuthUI();
 });
 
-// 1. Muat Data daripada LocalStorage mengikut Tahun & Sesi
+// 1. Muat & Simpan Data Pengesahan, Guru & Penetapan Subjek
+function loadAuthAndPermissionsData() {
+  const savedTeachers = localStorage.getItem("skrg_teachers_db");
+  if (savedTeachers) {
+    try { teachersData = JSON.parse(savedTeachers); } catch(e) { teachersData = [...DEFAULT_TEACHERS]; }
+  } else {
+    teachersData = JSON.parse(JSON.stringify(DEFAULT_TEACHERS));
+    localStorage.setItem("skrg_teachers_db", JSON.stringify(teachersData));
+  }
+
+  const savedAssignments = localStorage.getItem("skrg_subject_assignments");
+  if (savedAssignments) {
+    try { subjectAssignments = JSON.parse(savedAssignments); } catch(e) { subjectAssignments = {...DEFAULT_SUBJECT_ASSIGNMENTS}; }
+  } else {
+    subjectAssignments = JSON.parse(JSON.stringify(DEFAULT_SUBJECT_ASSIGNMENTS));
+    localStorage.setItem("skrg_subject_assignments", JSON.stringify(subjectAssignments));
+  }
+
+  const savedLogs = localStorage.getItem("skrg_audit_trail");
+  if (savedLogs) {
+    try { auditLogs = JSON.parse(savedLogs); } catch(e) { auditLogs = []; }
+  } else {
+    auditLogs = [];
+  }
+
+  const savedUser = localStorage.getItem("skrg_current_user");
+  if (savedUser) {
+    try {
+      const u = JSON.parse(savedUser);
+      const match = teachersData.find(t => t.id === u.id);
+      currentUser = match || u;
+    } catch(e) {
+      currentUser = null;
+    }
+  } else {
+    currentUser = null;
+  }
+}
+
+function saveTeachersData() {
+  localStorage.setItem("skrg_teachers_db", JSON.stringify(teachersData));
+}
+
+function saveSubjectAssignmentsData() {
+  localStorage.setItem("skrg_subject_assignments", JSON.stringify(subjectAssignments));
+}
+
+function saveAuditLogsData() {
+  localStorage.setItem("skrg_audit_trail", JSON.stringify(auditLogs));
+}
+
+// 2. Jejak Audit (Audit Trail Tracking)
+function recordAuditLog(action, details) {
+  const now = new Date();
+  const timeStr = now.toLocaleDateString("ms-MY") + " " + now.toLocaleTimeString("ms-MY");
+  const logItem = {
+    id: "LOG-" + Date.now() + "-" + Math.floor(Math.random()*1000),
+    timestamp: timeStr,
+    teacherName: currentUser ? currentUser.name : "Sistem/Tetamu",
+    teacherIc: currentUser ? currentUser.ic : "-",
+    action: action,
+    details: details
+  };
+  auditLogs.unshift(logItem);
+  if (auditLogs.length > 300) auditLogs = auditLogs.slice(0, 300);
+  saveAuditLogsData();
+}
+
+// 3. Hak Akses Mengisi Subjek (Role Enforcement)
+function canEditSubject(kelas, subject) {
+  if (!currentUser) return false;
+  if (currentUser.isAdmin || currentUser.id === "T001") return true;
+
+  const classAssign = subjectAssignments[kelas];
+  if (!classAssign || !classAssign.subjects) return false;
+
+  const assignedTeacherId = classAssign.subjects[subject];
+  return assignedTeacherId === currentUser.id;
+}
+
+function isClassTeacherOf(kelas) {
+  if (!currentUser) return false;
+  if (currentUser.isAdmin || currentUser.id === "T001") return true;
+  return currentUser.isClassTeacherOf === kelas;
+}
+
+// 4. UI Pengesahan & Sesi Pengguna
+function initAuthUI() {
+  const display = document.getElementById("current-user-display");
+  const btnLogin = document.getElementById("btn-open-login");
+  const btnLogout = document.getElementById("btn-logout");
+  const btnChangePwd = document.getElementById("btn-change-pwd");
+  const permBanner = document.getElementById("user-permission-text");
+  const classTeacherInd = document.getElementById("class-teacher-indicator");
+  const btnClassAssign = document.getElementById("btn-class-assign");
+
+  populateQuickSelect();
+
+  if (currentUser) {
+    if (display) display.innerHTML = `<strong>${currentUser.name}</strong> <small style="color:#94a3b8;">(${currentUser.role})</small>`;
+    if (btnLogin) btnLogin.style.display = "none";
+    if (btnLogout) btnLogout.style.display = "inline-block";
+    if (btnChangePwd) btnChangePwd.style.display = "inline-block";
+
+    const activeClass = document.getElementById("entry-filter-class")?.value || "ALL";
+    updateClassTeacherAssignButton(activeClass);
+
+    if (permBanner) {
+      if (currentUser.isAdmin) {
+        permBanner.innerHTML = `🟢 <strong>Akses Penuh Admin:</strong> Anda boleh menyemak dan mengisi semua subjek bagi semua kelas.`;
+      } else {
+        permBanner.innerHTML = `👤 <strong>Sesi Aktif:</strong> Anda boleh mengisi markah bagi subjek yang dipegang sahaja. Subjek lain dikunci secara automatik.`;
+      }
+    }
+  } else {
+    if (display) display.innerText = "Belum Log Masuk";
+    if (btnLogin) btnLogin.style.display = "inline-block";
+    if (btnLogout) btnLogout.style.display = "none";
+    if (btnChangePwd) btnChangePwd.style.display = "none";
+    if (btnClassAssign) btnClassAssign.style.display = "none";
+    if (permBanner) permBanner.innerHTML = `🔒 <strong>Mod Lihat Sahaja:</strong> Sila klik butang <strong>"Log Masuk"</strong> untuk mula mengisi markah.`;
+    if (classTeacherInd) classTeacherInd.innerText = "";
+  }
+}
+
+function updateClassTeacherAssignButton(selectedClass) {
+  const btnClassAssign = document.getElementById("btn-class-assign");
+  const classTeacherInd = document.getElementById("class-teacher-indicator");
+  if (!btnClassAssign) return;
+
+  if (currentUser && selectedClass !== "ALL" && (isClassTeacherOf(selectedClass) || currentUser.isAdmin)) {
+    btnClassAssign.style.display = "inline-flex";
+    btnClassAssign.innerText = `📋 Tetapkan Guru Subjek (${selectedClass})`;
+    if (classTeacherInd) classTeacherInd.innerText = `👑 Anda Guru Kelas bagi ${selectedClass}`;
+  } else {
+    btnClassAssign.style.display = "none";
+    if (classTeacherInd) classTeacherInd.innerText = "";
+  }
+}
+
+function populateQuickSelect() {
+  const select = document.getElementById("login-quick-select");
+  if (!select) return;
+  select.innerHTML = `<option value="">-- Pilih Nama Guru Anda --</option>`;
+  teachersData.forEach(t => {
+    const opt = document.createElement("option");
+    opt.value = t.id;
+    opt.innerText = `${t.name} (${t.role})`;
+    select.appendChild(opt);
+  });
+}
+
+function handleQuickSelectTeacher(teacherId) {
+  if (!teacherId) return;
+  const teacher = teachersData.find(t => t.id === teacherId);
+  if (teacher) {
+    const icInput = document.getElementById("login-ic");
+    if (icInput) icInput.value = teacher.ic;
+    handleIcInput(teacher.ic);
+    document.getElementById("login-password")?.focus();
+  }
+}
+
+function handleIcInput(val) {
+  const cleanIc = val.replace(/[^0-9]/g, "");
+  const detectedDiv = document.getElementById("login-detected-name");
+  if (!detectedDiv) return;
+
+  const match = teachersData.find(t => t.ic.replace(/[^0-9]/g, "") === cleanIc || t.ic === val.trim());
+  if (match) {
+    detectedDiv.innerHTML = `✅ Dikesan: <strong>${match.name}</strong> (${match.role})`;
+  } else {
+    detectedDiv.innerHTML = cleanIc.length >= 6 ? `<span style="color:#fb7185;">Tiada rekod guru dengan No. IC ini.</span>` : "";
+  }
+}
+
+// 5. Fungsi Log Masuk & Kata Laluan
+function openLoginModal() {
+  document.getElementById("modal-login")?.classList.add("active");
+  document.getElementById("login-ic")?.focus();
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId)?.classList.remove("active");
+}
+
+function submitLogin() {
+  const icVal = document.getElementById("login-ic")?.value.trim();
+  const pwdVal = document.getElementById("login-password")?.value.trim();
+
+  if (!icVal) {
+    alert("Sila masukkan No. Kad Pengenalan (IC) anda.");
+    return;
+  }
+  if (!pwdVal) {
+    alert("Sila masukkan kata laluan anda.");
+    return;
+  }
+
+  const cleanIc = icVal.replace(/[^0-9]/g, "");
+  const teacher = teachersData.find(t => t.ic.replace(/[^0-9]/g, "") === cleanIc || t.ic === icVal);
+
+  if (!teacher) {
+    alert("No. Kad Pengenalan tidak dijumpai dalam pangkalan data SK Ranggu! Sila hubungi Admin Sistem (Cikgu Mohammad Fikrey).");
+    return;
+  }
+
+  if (teacher.password !== pwdVal) {
+    alert("Kata laluan tidak sah! Sila masukkan kata laluan yang betul atau hubungi Admin untuk set semula ke 'P3nd1d1kan'.");
+    return;
+  }
+
+  currentUser = teacher;
+  localStorage.setItem("skrg_current_user", JSON.stringify(currentUser));
+  closeModal("modal-login");
+  initAuthUI();
+  renderEntryTable();
+  recordAuditLog("LOG_MASUK", `Guru ${teacher.name} (${teacher.ic}) berjaya log masuk.`);
+  showToastNotification(`Selamat kembali, ${teacher.name}!`);
+
+  // Jika kata laluan masih kata laluan sementara P3nd1d1kan, minta tukar kata laluan baharu
+  if (teacher.password === "P3nd1d1kan" || teacher.isFirstLogin) {
+    setTimeout(() => {
+      openChangePasswordModal();
+    }, 600);
+  }
+}
+
+function handleAdminBypassLogin() {
+  const code = prompt("Masukkan Kod Rahsia Pentadbir Sistem SK Ranggu (ts.fikrey37):");
+  if (!code) return;
+  if (code.trim() === "ts.fikrey37") {
+    const adminTeacher = teachersData.find(t => t.isAdmin || t.id === "T001") || DEFAULT_TEACHERS[0];
+    currentUser = adminTeacher;
+    localStorage.setItem("skrg_current_user", JSON.stringify(currentUser));
+    closeModal("modal-login");
+    initAuthUI();
+    renderEntryTable();
+    recordAuditLog("LOG_MASUK_ADMIN", `Log masuk sebagai Admin Sistem menggunakan kod pengesyoran ts.fikrey37.`);
+    showToastNotification(`🔓 Akses Penuh Pentadbir Diaktifkan (${adminTeacher.name})!`);
+  } else {
+    alert("Kod rahsia salah!");
+  }
+}
+
+function logoutTeacher() {
+  if (confirm("Adakah anda pasti mahu log keluar daripada sistem?")) {
+    if (currentUser) {
+      recordAuditLog("LOG_KELUAR", `Guru ${currentUser.name} telah log keluar.`);
+    }
+    currentUser = null;
+    localStorage.removeItem("skrg_current_user");
+    initAuthUI();
+    renderEntryTable();
+    showToastNotification("Anda telah berjaya log keluar.");
+  }
+}
+
+function openChangePasswordModal() {
+  if (!currentUser) return;
+  document.getElementById("new-password").value = "";
+  document.getElementById("confirm-new-password").value = "";
+  document.getElementById("modal-change-password")?.classList.add("active");
+  document.getElementById("new-password")?.focus();
+}
+
+function submitChangePassword() {
+  const p1 = document.getElementById("new-password")?.value.trim();
+  const p2 = document.getElementById("confirm-new-password")?.value.trim();
+
+  if (!p1 || p1.length < 4) {
+    alert("Kata laluan baharu mestilah sekurang-kurangnya 4 aksara!");
+    return;
+  }
+  if (p1 !== p2) {
+    alert("Kata laluan baharu dan pengesahan tidak sepadan!");
+    return;
+  }
+
+  const teacher = teachersData.find(t => t.id === currentUser.id);
+  if (teacher) {
+    teacher.password = p1;
+    teacher.isFirstLogin = false;
+    currentUser.password = p1;
+    currentUser.isFirstLogin = false;
+    saveTeachersData();
+    localStorage.setItem("skrg_current_user", JSON.stringify(currentUser));
+    closeModal("modal-change-password");
+    recordAuditLog("TUKAR_KATA_LALUAN", `Guru ${teacher.name} telah mengemas kini kata laluan peribadi.`);
+    showToastNotification("✅ Kata laluan peribadi anda berjaya dikemas kini!");
+  }
+}
+
+// 6. Penetapan Guru Subjek Mengikut Kelas (Oleh Guru Kelas)
+let currentAssigningClass = "6 ILTIZAM";
+
+function openAssignModal() {
+  const selectedClass = document.getElementById("entry-filter-class")?.value;
+  if (!selectedClass || selectedClass === "ALL") {
+    alert("Sila pilih satu kelas tertentu (contoh: 6 ILTIZAM, 6 MUMTAZ, dll) terlebih dahulu.");
+    return;
+  }
+
+  if (!isClassTeacherOf(selectedClass) && !(currentUser && currentUser.isAdmin)) {
+    alert(`Akses Ditolak! Anda bukan Guru Kelas bagi ${selectedClass}.`);
+    return;
+  }
+
+  currentAssigningClass = selectedClass;
+  const title = document.getElementById("assign-class-title");
+  if (title) title.innerText = selectedClass;
+
+  const subjects = ["bm", "bi", "mt", "sn", "sej", "pi"];
+  const currentClassAssign = subjectAssignments[selectedClass]?.subjects || {};
+
+  subjects.forEach(sub => {
+    const select = document.getElementById(`assign-${sub}`);
+    if (!select) return;
+    select.innerHTML = "";
+    teachersData.forEach(t => {
+      const opt = document.createElement("option");
+      opt.value = t.id;
+      opt.innerText = `${t.name} (${t.role})`;
+      if (currentClassAssign[sub] === t.id) opt.selected = true;
+      select.appendChild(opt);
+    });
+  });
+
+  document.getElementById("modal-assign-subjects")?.classList.add("active");
+}
+
+function submitClassSubjectAssignments() {
+  const subjects = ["bm", "bi", "mt", "sn", "sej", "pi"];
+  if (!subjectAssignments[currentAssigningClass]) {
+    subjectAssignments[currentAssigningClass] = { subjects: {} };
+  }
+
+  subjects.forEach(sub => {
+    const select = document.getElementById(`assign-${sub}`);
+    if (select) {
+      subjectAssignments[currentAssigningClass].subjects[sub] = select.value;
+    }
+  });
+
+  saveSubjectAssignmentsData();
+  closeModal("modal-assign-subjects");
+  renderEntryTable();
+  recordAuditLog("TETAPKAN_GURU_SUBJEK", `Penetapan guru subjek bagi kelas ${currentAssigningClass} telah dikemas kini oleh ${currentUser.name}.`);
+  showToastNotification(`✅ Penetapan guru subjek bagi ${currentAssigningClass} berjaya disimpan!`);
+}
+
+// 7. Panel Rahsia Admin (Kod: ts.fikrey37)
+function handleAdminGearClick() {
+  if (currentUser && (currentUser.isAdmin || currentUser.id === "T001")) {
+    openAdminPanelModal();
+  } else {
+    document.getElementById("admin-secret-code").value = "";
+    document.getElementById("modal-admin-auth")?.classList.add("active");
+    document.getElementById("admin-secret-code")?.focus();
+  }
+}
+
+function submitAdminCode() {
+  const code = document.getElementById("admin-secret-code")?.value.trim();
+  if (code === "ts.fikrey37") {
+    closeModal("modal-admin-auth");
+    if (!currentUser) {
+      currentUser = teachersData.find(t => t.isAdmin) || DEFAULT_TEACHERS[0];
+      localStorage.setItem("skrg_current_user", JSON.stringify(currentUser));
+      initAuthUI();
+      renderEntryTable();
+    }
+    openAdminPanelModal();
+  } else {
+    alert("Kod akses pentadbir salah! Akses ditolak.");
+  }
+}
+
+function openAdminPanelModal() {
+  renderAdminTeachersTable();
+  renderAdminClassAssignments("6 MUMTAZ");
+  renderAdminAuditTable();
+  document.getElementById("modal-admin-panel")?.classList.add("active");
+}
+
+function switchAdminTab(targetTabId) {
+  document.querySelectorAll(".admin-tab-btn").forEach(b => b.classList.remove("active"));
+  document.querySelectorAll(".admin-tab-content").forEach(c => c.classList.remove("active"));
+
+  document.querySelector(`[data-atab="${targetTabId}"]`)?.classList.add("active");
+  document.getElementById(targetTabId)?.classList.add("active");
+}
+
+function renderAdminTeachersTable() {
+  const tbody = document.getElementById("admin-teachers-tbody");
+  if (!tbody) return;
+  tbody.innerHTML = "";
+
+  teachersData.forEach(t => {
+    const tr = document.createElement("tr");
+    const isTemp = t.password === "P3nd1d1kan" || t.isFirstLogin;
+    tr.innerHTML = `
+      <td><strong>${t.name}</strong></td>
+      <td><code>${t.ic}</code></td>
+      <td><span class="school-tag">${t.role}</span></td>
+      <td>${isTemp ? '<span style="color:#fbbf24;">Sementara (P3nd1d1kan)</span>' : '<span style="color:#34d399;">Peribadi (Telah Ditukar)</span>'}</td>
+      <td style="text-align:center;">
+        <button class="btn btn-outline btn-sm" onclick="resetTeacherPassword('${t.id}')" title="Set semula kata laluan ke P3nd1d1kan">
+          🔄 Reset ke P3nd1d1kan
+        </button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function resetTeacherPassword(teacherId) {
+  const teacher = teachersData.find(t => t.id === teacherId);
+  if (!teacher) return;
+
+  if (confirm(`Adakah anda pasti mahu set semula kata laluan untuk ${teacher.name} kepada kata laluan sementara 'P3nd1d1kan'?`)) {
+    teacher.password = "P3nd1d1kan";
+    teacher.isFirstLogin = true;
+    saveTeachersData();
+    renderAdminTeachersTable();
+    recordAuditLog("RESET_KATA_LALUAN", `Kata laluan untuk ${teacher.name} (${teacher.ic}) telah diset semula kepada 'P3nd1d1kan' oleh Admin.`);
+    alert(`✅ Kata laluan untuk ${teacher.name} telah diset semula kepada 'P3nd1d1kan'. Guru akan diminta menukar kata laluan pada log masuk berikutnya.`);
+  }
+}
+
+function openAddTeacherPrompt() {
+  const name = prompt("Masukkan Nama Guru Baharu:");
+  if (!name || !name.trim()) return;
+  const ic = prompt("Masukkan No. Kad Pengenalan (IC) Guru:");
+  if (!ic || !ic.trim()) return;
+  const role = prompt("Masukkan Peranan (cth: GURU SUBJEK / GURU KELAS):", "GURU MATA PELAJARAN") || "GURU MATA PELAJARAN";
+
+  const newId = "T" + String(teachersData.length + 1).padStart(3, "0");
+  const newTeacher = {
+    id: newId,
+    ic: ic.trim(),
+    name: name.trim().toUpperCase(),
+    role: role.trim().toUpperCase(),
+    isAdmin: false,
+    isClassTeacherOf: null,
+    password: "P3nd1d1kan",
+    isFirstLogin: true
+  };
+
+  teachersData.push(newTeacher);
+  saveTeachersData();
+  populateQuickSelect();
+  renderAdminTeachersTable();
+  recordAuditLog("TAMBAH_GURU", `Guru baharu ${newTeacher.name} (${newTeacher.ic}) telah didaftarkan.`);
+  alert(`✅ Guru ${newTeacher.name} berjaya didaftarkan dengan kata laluan sementara: P3nd1d1kan`);
+}
+
+function renderAdminClassAssignments(kelas) {
+  const container = document.getElementById("admin-class-assignment-container");
+  if (!container) return;
+
+  const currentAssign = subjectAssignments[kelas]?.subjects || {};
+  const subjects = ["bm", "bi", "mt", "sn", "sej", "pi"];
+
+  let html = `<div class="form-grid" style="grid-template-columns: 1fr 1fr; gap:1rem;">`;
+  subjects.forEach(sub => {
+    html += `
+      <div class="form-group">
+        <label class="form-label">${SUBJECT_LABELS[sub]}:</label>
+        <select class="form-control admin-assign-sub" data-sub="${sub}">
+    `;
+    teachersData.forEach(t => {
+      const selected = (currentAssign[sub] === t.id) ? "selected" : "";
+      html += `<option value="${t.id}" ${selected}>${t.name} (${t.role})</option>`;
+    });
+    html += `</select></div>`;
+  });
+  html += `</div>`;
+  html += `
+    <div style="margin-top:1.25rem; text-align:right;">
+      <button class="btn btn-primary" onclick="saveAdminClassAssignments('${kelas}')">💾 Simpan Penetapan ${kelas}</button>
+    </div>
+  `;
+  container.innerHTML = html;
+}
+
+function saveAdminClassAssignments(kelas) {
+  const selects = document.querySelectorAll(".admin-assign-sub");
+  if (!subjectAssignments[kelas]) subjectAssignments[kelas] = { subjects: {} };
+
+  selects.forEach(s => {
+    const sub = s.getAttribute("data-sub");
+    subjectAssignments[kelas].subjects[sub] = s.value;
+  });
+
+  saveSubjectAssignmentsData();
+  renderEntryTable();
+  recordAuditLog("ADMIN_PENETAPAN_SUBJEK", `Admin telah mengemas kini penetapan guru subjek bagi kelas ${kelas}.`);
+  alert(`✅ Penetapan guru subjek bagi ${kelas} berjaya disimpan!`);
+}
+
+function renderAdminAuditTable() {
+  const tbody = document.getElementById("admin-audit-tbody");
+  if (!tbody) return;
+  tbody.innerHTML = "";
+
+  if (auditLogs.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:1.5rem; color:#94a3b8;">Tiada rekod aktiviti setakat ini.</td></tr>`;
+    return;
+  }
+
+  auditLogs.slice(0, 80).forEach(log => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><span style="color:#94a3b8; font-size:0.75rem;">${log.timestamp}</span></td>
+      <td><strong>${log.teacherName}</strong><br><small style="color:#64748b;">${log.teacherIc}</small></td>
+      <td>
+        <span class="school-tag" style="font-size:0.7rem;">${log.action}</span>
+        <div style="margin-top:0.25rem; color:#e2e8f0;">${log.details}</div>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function clearAuditLogs() {
+  if (confirm("Adakah anda pasti mahu mengosongkan semua log audit pengesanan?")) {
+    auditLogs = [];
+    saveAuditLogsData();
+    renderAdminAuditTable();
+    showToastNotification("Log audit telah dikosongkan.");
+  }
+}
+
+// 8. Muat Data daripada LocalStorage mengikut Tahun & Sesi
 function loadYearData() {
   const storageKey = `skrg_pbd_marks_${currentYear}_${currentAssessment.replace(/\s+/g, '_')}`;
   const saved = localStorage.getItem(storageKey);
@@ -1743,14 +2414,13 @@ function loadYearData() {
       studentsData = JSON.parse(JSON.stringify(INITIAL_STUDENTS_ROSTER));
     }
   } else {
-    // Gunakan senarai kosong jika tiada data disimpan lagi
     studentsData = JSON.parse(JSON.stringify(INITIAL_STUDENTS_ROSTER));
   }
   
   recalculateAllClassRanks();
 }
 
-// 2. Simpan Data ke LocalStorage
+// 9. Simpan Data ke LocalStorage
 function saveCurrentMarks(showToast = true) {
   recalculateAllClassRanks();
   const storageKey = `skrg_pbd_marks_${currentYear}_${currentAssessment.replace(/\s+/g, '_')}`;
@@ -1771,7 +2441,7 @@ function saveCurrentMarks(showToast = true) {
   }
 }
 
-// 3. Kawalan Tahun & Sesi Persekolahan (2026, 2027, 2028...)
+// 10. Kawalan Tahun & Sesi Persekolahan (2026, 2027, 2028...)
 function setupYearAndSessionControls() {
   const yearSelect = document.getElementById("global-year-select");
   const sessionSelect = document.getElementById("global-session-select");
@@ -1804,26 +2474,23 @@ function setupYearAndSessionControls() {
 function updateYearUI() {
   const fullSessionTitle = `${currentAssessment} Tahun ${currentYear}`;
   
-  // Kemas kini input nama dokumen
   const docNameInput = document.getElementById("setup-doc-name");
   if (docNameInput) {
     docNameInput.value = `Slip_PBD_UASA_SK_Ranggu_${currentYear}`;
   }
   
-  // Kemas kini tajuk sesi pada pratonton slip
   const slipSession = document.getElementById("slip-session");
   if (slipSession) {
     slipSession.innerText = `${fullSessionTitle} • SK Ranggu Tawau`;
   }
   
-  // Kemas kini label sesi semasa pada borang pengisian
   const entrySessionLabel = document.getElementById("entry-session-label");
   if (entrySessionLabel) {
     entrySessionLabel.innerText = `${currentAssessment} (Tahun ${currentYear})`;
   }
 }
 
-// 4. Pengurusan Tab
+// 11. Pengurusan Tab
 function setupTabs() {
   const tabs = document.querySelectorAll(".tab-btn");
   tabs.forEach(btn => {
@@ -1838,7 +2505,7 @@ function setupTabs() {
   });
 }
 
-// 5. Logik Pengiraan Gred & TP Automatik
+// 12. Logik Pengiraan Gred & TP Automatik
 function getGradeFromMark(markVal) {
   if (markVal === "" || markVal === null || markVal === undefined) return "-";
   const m = parseFloat(markVal);
@@ -1862,10 +2529,20 @@ function getTPFromMark(markVal) {
   return "TP 1 (Sangat Terhad)";
 }
 
-// 6. Kemas Kini Markah Murid Secara Masa Nyata (Live Input)
+// 13. Kemas Kini Markah Murid Secara Masa Nyata (Live Input dengan Kawalan Hak Akses)
 function updateStudentMark(studentId, subject, val) {
   const st = studentsData.find(s => s.id === studentId);
   if (!st) return;
+
+  // Semak Hak Akses Guru
+  if (!canEditSubject(st.kelas, subject)) {
+    const assignedId = subjectAssignments[st.kelas]?.subjects[subject];
+    const teacher = teachersData.find(t => t.id === assignedId);
+    const teacherName = teacher ? teacher.name : "Guru yang ditetapkan";
+    alert(`Akses Ditolak! Subjek ini telah ditetapkan kepada: ${teacherName}. Anda tidak dibenarkan mengubah markah bagi subjek ini.`);
+    renderEntryTable();
+    return;
+  }
   
   const cleanVal = val.trim();
   if (cleanVal !== "") {
@@ -1875,7 +2552,8 @@ function updateStudentMark(studentId, subject, val) {
       return;
     }
   }
-  
+
+  const oldMark = st[`${subject}_m`];
   st[`${subject}_m`] = cleanVal;
   st[`${subject}_g`] = getGradeFromMark(cleanVal);
   st[`${subject}_tp`] = getTPFromMark(cleanVal);
@@ -1908,7 +2586,7 @@ function updateStudentMark(studentId, subject, val) {
   
   recalculateAllClassRanks();
   
-  // Kemas kini paparan ringkasan baris tersebut
+  // Kemas kini paparan sel baris tersebut
   const totalCell = document.getElementById(`row-total-${st.id}`);
   const purataCell = document.getElementById(`row-purata-${st.id}`);
   const tpCell = document.getElementById(`badge-tp-${subject}-${st.id}`);
@@ -1920,14 +2598,18 @@ function updateStudentMark(studentId, subject, val) {
   if (gredCell) gredCell.innerText = st[`${subject}_g`];
   
   updateStats();
+
+  // Rekod Jejak Audit
+  if (currentUser) {
+    recordAuditLog("KEMAS_KINI_MARKAH", `${currentUser.name} (${currentUser.ic}) menukar markah ${subject.toUpperCase()} murid ${st.name} (${st.kelas}) daripada '${oldMark || '-'}' kepada '${cleanVal || '-'}' (Gred: ${st[`${subject}_g`]}, TP: ${st[`${subject}_tp`]}).`);
+  }
 }
 
-// 7. Kira Kedudukan Kelas
+// 14. Kira Kedudukan Kelas
 function recalculateAllClassRanks() {
   const classes = ["6 MUMTAZ", "6 JAYYID", "6 ILTIZAM", "6 KHOIR"];
   classes.forEach(c => {
     const classStudents = studentsData.filter(s => s.kelas === c);
-    // Susun mengikut purata tertinggi
     classStudents.sort((a, b) => (b.purata_num || 0) - (a.purata_num || 0));
     const totalCount = classStudents.length;
     classStudents.forEach((st, rank) => {
@@ -1936,7 +2618,7 @@ function recalculateAllClassRanks() {
   });
 }
 
-// 8. Render Jadual Pengisian Markah Guru (Tab 1)
+// 15. Render Jadual Pengisian Markah Guru (Tab 1) dengan Kawalan Kunci Subjek
 function renderEntryTable() {
   const tbody = document.getElementById("entry-tbody");
   if (!tbody) return;
@@ -1944,6 +2626,8 @@ function renderEntryTable() {
   const classFilter = document.getElementById("entry-filter-class")?.value || "ALL";
   const searchTxt = document.getElementById("entry-search")?.value.toLowerCase().trim() || "";
   
+  updateClassTeacherAssignButton(classFilter);
+
   const filtered = studentsData.filter(st => {
     const matchClass = classFilter === "ALL" || st.kelas === classFilter;
     const matchSearch = st.name.toLowerCase().includes(searchTxt) || st.id.toLowerCase().includes(searchTxt);
@@ -1957,9 +2641,49 @@ function renderEntryTable() {
     return;
   }
   
+  const subjects = ["bm", "bi", "mt", "sn", "sej", "pi"];
+
   filtered.forEach((st, idx) => {
     const tr = document.createElement("tr");
     
+    let subjectCellsHtml = "";
+    subjects.forEach(sub => {
+      const allowed = canEditSubject(st.kelas, sub);
+      const assignedTeacherId = subjectAssignments[st.kelas]?.subjects[sub];
+      const assignedTeacher = teachersData.find(t => t.id === assignedTeacherId);
+      const assignedTeacherName = assignedTeacher ? assignedTeacher.name : "Belum Ditetapkan";
+      const shortTeacherName = assignedTeacherName.split(' ')[0] || "Guru";
+
+      if (allowed) {
+        subjectCellsHtml += `
+          <td>
+            <div class="mark-cell-group">
+              <input type="number" min="0" max="100" class="mark-input" value="${st[sub + '_m']}" placeholder="-" 
+                     onchange="updateStudentMark('${st.id}', '${sub}', this.value)">
+              <div>
+                <span class="gred-text-mini" id="badge-gred-${sub}-${st.id}">${st[sub + '_g']}</span>
+                <span class="tp-badge-mini" id="badge-tp-${sub}-${st.id}">${st[sub + '_tp'].split(' ')[0]}</span>
+              </div>
+            </div>
+          </td>
+        `;
+      } else {
+        // DIKUNCI: Guru lain tidak boleh mengisi subjek yang bukan pegangannya!
+        subjectCellsHtml += `
+          <td>
+            <div class="mark-cell-group" title="🔒 Subjek ini dipegang oleh: ${assignedTeacherName}. Anda tidak dibenarkan mengubah.">
+              <input type="number" min="0" max="100" class="mark-input mark-input-locked" value="${st[sub + '_m']}" placeholder="-" disabled readonly>
+              <div>
+                <span class="gred-text-mini" id="badge-gred-${sub}-${st.id}">${st[sub + '_g']}</span>
+                <span class="tp-badge-mini" id="badge-tp-${sub}-${st.id}">${st[sub + '_tp'].split(' ')[0]}</span>
+              </div>
+            </div>
+            <div class="lock-pill" title="🔒 Guru Subjek: ${assignedTeacherName}">🔒 <small>${shortTeacherName}</small></div>
+          </td>
+        `;
+      }
+    });
+
     tr.innerHTML = `
       <td>${idx + 1}</td>
       <td style="font-weight:700; color:#38bdf8;">${st.id}</td>
@@ -1967,66 +2691,7 @@ function renderEntryTable() {
         <strong>${st.name}</strong><br>
         <span class="school-tag">${st.kelas}</span>
       </td>
-      <td>
-        <div class="mark-cell-group">
-          <input type="number" min="0" max="100" class="mark-input" value="${st.bm_m}" placeholder="-" 
-                 onchange="updateStudentMark('${st.id}', 'bm', this.value)">
-          <div>
-            <span class="gred-text-mini" id="badge-gred-bm-${st.id}">${st.bm_g}</span>
-            <span class="tp-badge-mini" id="badge-tp-bm-${st.id}">${st.bm_tp.split(' ')[0]}</span>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="mark-cell-group">
-          <input type="number" min="0" max="100" class="mark-input" value="${st.bi_m}" placeholder="-" 
-                 onchange="updateStudentMark('${st.id}', 'bi', this.value)">
-          <div>
-            <span class="gred-text-mini" id="badge-gred-bi-${st.id}">${st.bi_g}</span>
-            <span class="tp-badge-mini" id="badge-tp-bi-${st.id}">${st.bi_tp.split(' ')[0]}</span>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="mark-cell-group">
-          <input type="number" min="0" max="100" class="mark-input" value="${st.mt_m}" placeholder="-" 
-                 onchange="updateStudentMark('${st.id}', 'mt', this.value)">
-          <div>
-            <span class="gred-text-mini" id="badge-gred-mt-${st.id}">${st.mt_g}</span>
-            <span class="tp-badge-mini" id="badge-tp-mt-${st.id}">${st.mt_tp.split(' ')[0]}</span>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="mark-cell-group">
-          <input type="number" min="0" max="100" class="mark-input" value="${st.sn_m}" placeholder="-" 
-                 onchange="updateStudentMark('${st.id}', 'sn', this.value)">
-          <div>
-            <span class="gred-text-mini" id="badge-gred-sn-${st.id}">${st.sn_g}</span>
-            <span class="tp-badge-mini" id="badge-tp-sn-${st.id}">${st.sn_tp.split(' ')[0]}</span>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="mark-cell-group">
-          <input type="number" min="0" max="100" class="mark-input" value="${st.sej_m}" placeholder="-" 
-                 onchange="updateStudentMark('${st.id}', 'sej', this.value)">
-          <div>
-            <span class="gred-text-mini" id="badge-gred-sej-${st.id}">${st.sej_g}</span>
-            <span class="tp-badge-mini" id="badge-tp-sej-${st.id}">${st.sej_tp.split(' ')[0]}</span>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="mark-cell-group">
-          <input type="number" min="0" max="100" class="mark-input" value="${st.pi_m}" placeholder="-" 
-                 onchange="updateStudentMark('${st.id}', 'pi', this.value)">
-          <div>
-            <span class="gred-text-mini" id="badge-gred-pi-${st.id}">${st.pi_g}</span>
-            <span class="tp-badge-mini" id="badge-tp-pi-${st.id}">${st.pi_tp.split(' ')[0]}</span>
-          </div>
-        </div>
-      </td>
+      ${subjectCellsHtml}
       <td><strong id="row-total-${st.id}">${st.total}</strong></td>
       <td><strong style="color:#10b981;" id="row-purata-${st.id}">${st.purata}</strong></td>
       <td>
@@ -2037,7 +2702,7 @@ function renderEntryTable() {
   });
 }
 
-// 9. Render Jadual Pangkalan Data PBD (Tab 2)
+// 16. Render Jadual Pangkalan Data PBD (Tab 2)
 function renderDatabaseTable() {
   const tbody = document.getElementById("database-tbody");
   if (!tbody) return;
@@ -2098,10 +2763,9 @@ function renderDatabaseTable() {
   });
 }
 
-// 10. Kemas Kini Statistik Kad Ringkasan
+// 17. Kemas Kini Statistik Kad Ringkasan
 function updateStats() {
   const total = studentsData.length;
-  const processed = studentsData.filter(s => s.status.includes("BERJAYA")).length;
   const filled = studentsData.filter(s => s.status === "SEDIA DIJANA" || s.status.includes("BERJAYA")).length;
   const pending = total - filled;
   const selected = studentsData.filter(s => s.selected).length;
@@ -2118,7 +2782,7 @@ function toggleSelectAll(checked) {
   updateStats();
 }
 
-// 11. Kawalan Konsol Penjanaan Berkelompok
+// 18. Kawalan Konsol Penjanaan Berkelompok
 function setupConsoleEvents() {
   document.getElementById("btn-select-all")?.addEventListener("click", () => {
     studentsData.forEach(s => s.selected = true);
@@ -2130,6 +2794,8 @@ function setupConsoleEvents() {
   
   document.getElementById("btn-deselect-all")?.addEventListener("click", () => {
     studentsData.forEach(s => s.selected = false);
+    const thSelect = document.getElementById("th-select-all");
+    if (thSelect) thSelect.checked = false;
     renderDatabaseTable();
     updateStats();
   });
@@ -2160,7 +2826,7 @@ function setupConsoleEvents() {
   document.getElementById("db-search")?.addEventListener("input", renderDatabaseTable);
 }
 
-// 12. Enjin Penjanaan Berkelompok
+// 19. Enjin Penjanaan Berkelompok
 let isProcessing = false;
 async function executeBatchProcess(items) {
   if (isProcessing) return;
@@ -2174,7 +2840,7 @@ async function executeBatchProcess(items) {
   
   let completed = 0;
   for (const st of items) {
-    await new Promise(r => setTimeout(r, 80));
+    await new Promise(r => setTimeout(r, 60));
     
     const now = new Date();
     const timeStr = now.toLocaleDateString("ms-MY") + " " + now.toLocaleTimeString("ms-MY", { hour: '2-digit', minute: '2-digit' });
@@ -2210,6 +2876,9 @@ async function executeBatchProcess(items) {
   logMessage(`🎉 SELESAI: ${items.length} slip pentaksiran murid SK Ranggu berjaya disempurnakan!`, "success");
   isProcessing = false;
   saveCurrentMarks(false);
+  if (currentUser) {
+    recordAuditLog("PENJANAAN_BATCH", `Guru ${currentUser.name} memproses penjanaan slip bagi ${items.length} orang murid.`);
+  }
 }
 
 function logMessage(msg, type = "normal") {
@@ -2222,7 +2891,7 @@ function logMessage(msg, type = "normal") {
   terminal.scrollTop = terminal.scrollHeight;
 }
 
-// 13. Pratonton Slip Rasmi
+// 20. Pratonton Slip Rasmi
 function populatePreviewSelector() {
   const select = document.getElementById("preview-student-select");
   if (!select) return;
@@ -2299,16 +2968,19 @@ function renderSlipPreview(st) {
   document.getElementById("slip-ulasan").innerText = st.ulasan ? `"${st.ulasan}"` : "(Ulasan guru belum diisi)";
 }
 
-// 14. Reset / Kosongkan Semua Markah
+// 21. Reset / Kosongkan Semua Markah
 function resetAllMarks() {
   if (confirm(`Adakah anda pasti mahu mengosongkan semua markah bagi Sesi ${currentYear}? Tindakan ini akan menetapkan semula markah kepada kosong untuk pengisian baharu.`)) {
     studentsData = JSON.parse(JSON.stringify(INITIAL_STUDENTS_ROSTER));
     saveCurrentMarks(false);
+    if (currentUser) {
+      recordAuditLog("KOSONGKAN_MARKAH", `Guru ${currentUser.name} telah mengosongkan semua markah bagi Tahun ${currentYear}.`);
+    }
     showToastNotification(`🧹 Semua markah Tahun ${currentYear} telah dikosongkan untuk pengisian baharu.`);
   }
 }
 
-// 15. Eksport CSV
+// 22. Eksport CSV
 function exportStudentsCSV() {
   let csvContent = "data:text/csv;charset=utf-8,";
   csvContent += "BIL,NO_MURID,NAMA_MURID,KELAS,GURU_KELAS,BM_M,BM_G,BM_TP,BI_M,BI_G,BI_TP,MT_M,MT_G,MT_TP,SN_M,SN_G,SN_TP,SEJ_M,SEJ_G,SEJ_TP,PI_M,PI_G,PI_TP,TOTAL,PURATA,POSISI,HADIR,ULASAN,EMAIL,STATUS,TARIKH,CATATAN\n";
@@ -2332,7 +3004,7 @@ function exportStudentsCSV() {
   document.body.removeChild(link);
 }
 
-// 16. Kalendar & Jam Waktu Nyata (Real-Time Clock & Calendar)
+// 23. Kalendar & Jam Waktu Nyata (Real-Time Clock & Calendar)
 function startRealtimeClock() {
   function updateClock() {
     const now = new Date();
@@ -2370,7 +3042,7 @@ function startRealtimeClock() {
   setInterval(updateClock, 1000);
 }
 
-// 17. Toast Notification Helper
+// 24. Toast Notification Helper
 function showToastNotification(message) {
   let container = document.getElementById("toast-container");
   if (!container) {

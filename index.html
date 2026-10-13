@@ -32,13 +32,23 @@
       </div>
 
       <div class="header-badges">
+        <!-- Profil Sesi Pengguna Semasa -->
+        <div class="user-profile-badge" id="user-profile-badge">
+          <span>👤</span>
+          <span id="current-user-display">Belum Log Masuk</span>
+          <button class="btn btn-outline btn-sm" onclick="openChangePasswordModal()" id="btn-change-pwd" style="padding:0.2rem 0.5rem; font-size:0.75rem; display:none;" title="Tukar kata laluan peribadi">🔑 Kata Laluan</button>
+          <button class="btn btn-outline btn-sm" onclick="logoutTeacher()" id="btn-logout" style="padding:0.2rem 0.5rem; font-size:0.75rem; display:none;" title="Log keluar daripada sesi">🚪 Log Keluar</button>
+          <button class="btn btn-primary btn-sm" onclick="openLoginModal()" id="btn-open-login" style="padding:0.2rem 0.6rem; font-size:0.75rem;" title="Log masuk menggunakan No. IC">🔐 Log Masuk</button>
+        </div>
+
+        <!-- Butang Rahsia Tetapan Admin -->
+        <button class="btn-setting-gear" onclick="handleAdminGearClick()" title="Tetapan Rahsia Admin Sistem (Kod Akses ts.fikrey37)">
+          <span>⚙️ Tetapan Admin</span>
+        </button>
+
         <div class="badge-pill dev-badge-pill">
           <span class="dev-badge-icon">👨‍🏫</span>
           <span>Inovator: <strong>Mohammad Fikrey bin Abdul Gapar</strong></span>
-        </div>
-        <div class="badge-pill">
-          <span class="badge-dot"></span>
-          <span>Sistem Aktif (v1.0.1-skrg)</span>
         </div>
         <div class="badge-pill" style="border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">
           <span>⚡ 100% Sifar Kos (RM0)</span>
@@ -167,19 +177,25 @@
             <span>✏️</span>
             <span>Borang Pengisian Markah Murid SK Ranggu - Sesi <span id="entry-session-label" style="color:#38bdf8;">Pentaksiran Akhir Sesi Akademik (PASA) (Tahun 2026)</span></span>
           </h2>
-          <span class="badge-pill">Mod Pengisian Guru</span>
+          <span class="badge-pill">Mod Pengisian Guru Mengikut Subjek</span>
         </div>
 
         <div class="info-banner no-print">
           <span class="info-banner-icon">💡</span>
           <div>
-            <strong>Panduan Untuk Guru:</strong> Semua markah bermula kosong/belum diisi. Cikgu boleh terus taip markah peperiksaan (0 - 100) di ruangan kotak setiap subjek.
-            <strong>Gred (A–E)</strong>, <strong>Tahap Penguasaan (TP1–TP6)</strong>, <strong>Jumlah Markah</strong>, <strong>Purata %</strong>, dan <strong>Kedudukan dalam Kelas</strong> akan dikira secara automatik serta-merta!
-            Selesai mengisi, klik butang <strong>"Simpan Markah"</strong>.
+            <strong>Panduan Pengisian:</strong> Setiap guru mata pelajaran hanya dibenarkan mengisi markah bagi subjek yang telah ditetapkan oleh <strong>Guru Kelas</strong> masing-masing.
+            Subjek lain akan dikunci secara automatik untuk melindungi integriti data. 
+            Semua perubahan akan dijejaki (audit trace) mengikut identiti log masuk guru.
             <div style="margin-top: 0.35rem; color: #94a3b8; font-size: 0.8rem;">
-              <em>Sistem ini direka bentuk khas oleh <strong>Mohammad Fikrey bin Abdul Gapar</strong> untuk memudah cara pengurusan dokumen & pentaksiran warga pendidik SK Ranggu.</em>
+              <em>Sistem ini direka bentuk khas oleh <strong>Mohammad Fikrey bin Abdul Gapar</strong> untuk SK Ranggu, Tawau.</em>
             </div>
           </div>
+        </div>
+
+        <!-- Notis Hak Akses & Penetapan Guru Kelas -->
+        <div id="user-permission-banner" class="no-print" style="margin-bottom:1rem; font-size:0.85rem; padding:0.6rem 1rem; background:rgba(30, 41, 59, 0.7); border-radius:10px; border:1px solid rgba(56, 189, 248, 0.25); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+          <span id="user-permission-text">🔒 Sila log masuk dengan No. IC anda untuk mula mengisi markah.</span>
+          <span id="class-teacher-indicator" style="color:#fbbf24; font-weight:700;"></span>
         </div>
 
         <div class="table-controls no-print">
@@ -192,6 +208,11 @@
               <option value="6 ILTIZAM">6 ILTIZAM (Pn. Noze binti Tukijan)</option>
               <option value="6 KHOIR">6 KHOIR (Sabriah @ Habibah Abdul Sabar)</option>
             </select>
+
+            <!-- Butang Penetapan Guru Subjek (Guru Kelas Sahaja) -->
+            <button class="btn btn-warning btn-sm" id="btn-class-assign" onclick="openAssignModal()" style="display:none;" title="Tetapkan guru bagi setiap subjek dalam kelas ini">
+              <span>📋</span> <span>Tetapkan Guru Subjek Kelas</span>
+            </button>
           </div>
 
           <div class="search-box">
@@ -231,7 +252,7 @@
               </tr>
             </thead>
             <tbody id="entry-tbody">
-              <!-- Render dinamik daripada app.js -->
+              <!-- Render dinamik daripada app.js mengikut kelayakan akses subjek -->
             </tbody>
           </table>
         </div>
@@ -589,6 +610,245 @@
       </div>
     </div>
   </footer>
+
+  <!-- =========================================================================
+       MODALS: AUTHENTICATION, PASSWORD, SUBJECT ASSIGNMENT & ADMIN SETTINGS
+       ========================================================================= -->
+
+  <!-- 1. Modal Log Masuk Guru -->
+  <div id="modal-login" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><span>🔐</span> Log Masuk Warga Pendidik SK Ranggu</h3>
+        <button class="modal-close-btn" onclick="closeModal('modal-login')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="info-banner" style="margin-bottom:1.25rem;">
+          <span class="info-banner-icon">ℹ️</span>
+          <div style="font-size:0.82rem;">
+            Sila masukkan <strong>No. Kad Pengenalan (IC)</strong> dan <strong>Kata Laluan</strong> anda untuk mula mengisi markah mengikut subjek yang ditetapkan.<br>
+            <em>Kata laluan sementara akaun baharu: <strong>P3nd1d1kan</strong></em>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label class="form-label">Pilih Guru (Log Masuk Pantas):</label>
+          <select id="login-quick-select" class="form-control" onchange="handleQuickSelectTeacher(this.value)">
+            <option value="">-- Pilih Nama Guru Anda --</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label class="form-label">No. Kad Pengenalan (IC):</label>
+          <input type="text" id="login-ic" class="form-control" placeholder="Contoh: 890512-12-5433" oninput="handleIcInput(this.value)">
+          <div id="login-detected-name" style="margin-top:0.4rem; font-size:0.82rem; color:#38bdf8; font-weight:700;"></div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1.25rem;">
+          <label class="form-label">Kata Laluan:</label>
+          <input type="password" id="login-password" class="form-control" placeholder="Masukkan kata laluan" onkeydown="if(event.key==='Enter') submitLogin()">
+          <div style="margin-top:0.4rem; font-size:0.75rem; color:#94a3b8;">
+            Lupa kata laluan? Sila maklumkan kepada Admin Sistem (Cikgu Mohammad Fikrey) untuk set semula ke kata laluan sementara asal (<strong>P3nd1d1kan</strong>).
+          </div>
+        </div>
+
+        <div style="text-align:center; padding-top:0.5rem; border-top:1px dashed var(--border);">
+          <a href="javascript:void(0)" onclick="handleAdminBypassLogin()" style="color:#fbbf24; font-size:0.8rem; text-decoration:none; font-weight:600;">
+            ⚙️ Log Masuk Sebagai Admin Sistem (Guna Kod Rahsia ts.fikrey37)
+          </a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('modal-login')">Batal</button>
+        <button class="btn btn-primary" onclick="submitLogin()">🚀 Log Masuk</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Modal Kemas Kini Kata Laluan Baharu -->
+  <div id="modal-change-password" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><span>🔑</span> Kemas Kini Kata Laluan Baharu</h3>
+        <button class="modal-close-btn" onclick="closeModal('modal-change-password')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="info-banner" style="margin-bottom:1.25rem;">
+          <span class="info-banner-icon">🛡️</span>
+          <div style="font-size:0.82rem;">
+            Demi keselamatan data pentaksiran murid SK Ranggu, sila tetapkan kata laluan peribadi baharu anda bagi menggantikan kata laluan sementara asal (<em>P3nd1d1kan</em>).
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label class="form-label">Kata Laluan Baharu:</label>
+          <input type="password" id="new-password" class="form-control" placeholder="Minimum 4 aksara">
+        </div>
+
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label class="form-label">Sahkan Kata Laluan Baharu:</label>
+          <input type="password" id="confirm-new-password" class="form-control" placeholder="Taip semula kata laluan baharu" onkeydown="if(event.key==='Enter') submitChangePassword()">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('modal-change-password')">Batal</button>
+        <button class="btn btn-primary" onclick="submitChangePassword()">💾 Simpan Kata Laluan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Modal Penetapan Guru Subjek Oleh Guru Kelas -->
+  <div id="modal-assign-subjects" class="modal-overlay">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <h3><span>📋</span> Penetapan Guru Subjek Kelas - <span id="assign-class-title" style="color:#38bdf8;">6 ILTIZAM</span></h3>
+        <button class="modal-close-btn" onclick="closeModal('modal-assign-subjects')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="info-banner" style="margin-bottom:1.25rem;">
+          <span class="info-banner-icon">💡</span>
+          <div style="font-size:0.82rem;">
+            <strong>Kuasa Guru Kelas:</strong> Guru kelas bertanggungjawab menetapkan guru yang mengajar setiap mata pelajaran bagi kelas ini.
+            Selepas disimpan, <em>hanya guru yang ditetapkan sahaja</em> yang dibenarkan mengisi dan mengubah markah bagi subjek berkenaan. Subjek lain akan dikunci secara automatik!
+          </div>
+        </div>
+
+        <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap:1.25rem;">
+          <div class="form-group">
+            <label class="form-label">Bahasa Melayu (BM):</label>
+            <select id="assign-bm" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Bahasa Inggeris (BI):</label>
+            <select id="assign-bi" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Matematik (MT):</label>
+            <select id="assign-mt" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sains (SN):</label>
+            <select id="assign-sn" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sejarah (SEJ):</label>
+            <select id="assign-sej" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pendidikan Islam / Moral (PI):</label>
+            <select id="assign-pi" class="form-control"></select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('modal-assign-subjects')">Batal</button>
+        <button class="btn btn-primary" onclick="submitClassSubjectAssignments()">💾 Simpan Penetapan Subjek</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Modal Pengesahan Kod Rahsia Admin -->
+  <div id="modal-admin-auth" class="modal-overlay">
+    <div class="modal-card" style="max-width:440px;">
+      <div class="modal-header">
+        <h3><span>🔒</span> Akses Rahsia Admin Sistem</h3>
+        <button class="modal-close-btn" onclick="closeModal('modal-admin-auth')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.85rem; color:#94a3b8; margin-bottom:1rem;">
+          Sila masukkan kod akses rahsia pentadbir sistem SK Ranggu untuk membuka panel kawalan:
+        </p>
+        <div class="form-group">
+          <label class="form-label">Kod Akses Pentadbir:</label>
+          <input type="password" id="admin-secret-code" class="form-control" placeholder="Masukkan kod rahsia" onkeydown="if(event.key==='Enter') submitAdminCode()">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('modal-admin-auth')">Batal</button>
+        <button class="btn btn-primary" onclick="submitAdminCode()">🔓 Sahkan Akses</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Modal Panel Pentadbiran Rahsia Admin -->
+  <div id="modal-admin-panel" class="modal-overlay">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <h3><span>⚙️</span> Panel Pentadbiran Sistem & Pengurusan Guru (Mohammad Fikrey bin Abdul Gapar)</h3>
+        <button class="modal-close-btn" onclick="closeModal('modal-admin-panel')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Admin Tabs -->
+        <div class="admin-tabs">
+          <button class="admin-tab-btn active" data-atab="atab-teachers" onclick="switchAdminTab('atab-teachers')">👥 Pengurusan Guru & Reset Kata Laluan</button>
+          <button class="admin-tab-btn" data-atab="atab-classes" onclick="switchAdminTab('atab-classes')">🏫 Penetapan Guru Kelas & Subjek</button>
+          <button class="admin-tab-btn" data-atab="atab-audit" onclick="switchAdminTab('atab-audit')">📜 Jejak Audit (Trace Siapa Ubah)</button>
+        </div>
+
+        <!-- Admin Tab 1: Pengurusan Guru & Reset Kata Laluan -->
+        <div id="atab-teachers" class="admin-tab-content active">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+            <h4 style="color:#f8fafc; font-size:0.95rem;">Senarai Guru SK Ranggu & Kawalan Kata Laluan:</h4>
+            <button class="btn btn-outline btn-sm" onclick="openAddTeacherPrompt()">➕ Tambah Guru Baharu</button>
+          </div>
+          <div class="table-wrapper">
+            <table class="audit-table">
+              <thead>
+                <tr>
+                  <th>Nama Guru</th>
+                  <th>No. IC</th>
+                  <th>Peranan</th>
+                  <th>Status Kata Laluan</th>
+                  <th style="text-align:center;">Tindakan</th>
+                </tr>
+              </thead>
+              <tbody id="admin-teachers-tbody"></tbody>
+            </table>
+          </div>
+          <p style="font-size:0.75rem; color:#94a3b8; margin-top:0.75rem;">
+            * Apabila butang <strong>"🔄 Reset ke P3nd1d1kan"</strong> ditekan, kata laluan guru tersebut akan kembali kepada kata laluan sementara asal (<code>P3nd1d1kan</code>) dan mereka akan diminta menukar kata laluan baharu pada log masuk seterusnya.
+          </p>
+        </div>
+
+        <!-- Admin Tab 2: Penetapan Guru Kelas & Subjek (Semua Kelas) -->
+        <div id="atab-classes" class="admin-tab-content">
+          <div style="margin-bottom:1rem; display:flex; align-items:center; gap:0.75rem;">
+            <label class="form-label" style="margin:0;">Pilih Kelas Untuk Diuruskan:</label>
+            <select id="admin-manage-class-select" class="select-styled" onchange="renderAdminClassAssignments(this.value)">
+              <option value="6 MUMTAZ">6 MUMTAZ</option>
+              <option value="6 JAYYID">6 JAYYID</option>
+              <option value="6 ILTIZAM">6 ILTIZAM</option>
+              <option value="6 KHOIR">6 KHOIR</option>
+            </select>
+          </div>
+          <div id="admin-class-assignment-container"></div>
+        </div>
+
+        <!-- Admin Tab 3: Jejak Audit (Trace Siapa Ubah) -->
+        <div id="atab-audit" class="admin-tab-content">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+            <h4 style="color:#f8fafc; font-size:0.95rem;">Rekod Pengesanan Aktiviti (Audit Trail):</h4>
+            <button class="btn btn-outline btn-sm" onclick="clearAuditLogs()">🧹 Kosongkan Log</button>
+          </div>
+          <div class="table-wrapper" style="max-height:360px;">
+            <table class="audit-table">
+              <thead>
+                <tr>
+                  <th style="width:140px;">Masa & Tarikh</th>
+                  <th style="width:180px;">Pegawai / Guru</th>
+                  <th>Tindakan & Butiran Pengesanan</th>
+                </tr>
+              </thead>
+              <tbody id="admin-audit-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="closeModal('modal-admin-panel')">Tutup</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Container Notifikasi Toast -->
   <div id="toast-container" class="toast-container"></div>
