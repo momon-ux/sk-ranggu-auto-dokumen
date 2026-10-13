@@ -1728,6 +1728,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderSlipPreview(studentsData[0]);
   }
   setupConsoleEvents();
+  startRealtimeClock();
 });
 
 // 1. Muat Data daripada LocalStorage mengikut Tahun & Sesi
@@ -2331,13 +2332,42 @@ function exportStudentsCSV() {
   document.body.removeChild(link);
 }
 
-// 16. Salin Kod Google Apps Script
-function copyGasCode() {
-  const code = document.getElementById("gas-code-block")?.innerText;
-  if (!code) return;
-  navigator.clipboard.writeText(code).then(() => {
-    alert("✅ Kod Google Apps Script (Code.gs) PBD SK Ranggu berjaya disalin!");
-  });
+// 16. Kalendar & Jam Waktu Nyata (Real-Time Clock & Calendar)
+function startRealtimeClock() {
+  function updateClock() {
+    const now = new Date();
+    
+    const days = ["Ahad", "Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu"];
+    const months = [
+      "Januari", "Februari", "Mac", "April", "Mei", "Jun",
+      "Julai", "Ogos", "September", "Oktober", "November", "Disember"
+    ];
+    
+    const dayName = days[now.getDay()];
+    const day = now.getDate();
+    const monthName = months[now.getMonth()];
+    const year = now.getFullYear();
+    
+    const hours24 = now.getHours();
+    const hours12 = hours24 % 12 || 12;
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const ampm = hours24 >= 12 ? 'PM' : 'AM';
+    const time24Str = `${String(hours24).padStart(2, '0')}:${minutes}:${seconds}`;
+    
+    const dateElem = document.getElementById("realtime-date");
+    const timeElem = document.getElementById("realtime-time");
+    
+    if (dateElem) {
+      dateElem.innerHTML = `📅 ${dayName}, ${day} ${monthName} ${year}`;
+    }
+    if (timeElem) {
+      timeElem.innerHTML = `⏰ ${time24Str} <small style="color:#38bdf8; font-weight:600;">(${hours12}:${minutes}:${seconds} ${ampm} MYT)</small>`;
+    }
+  }
+  
+  updateClock();
+  setInterval(updateClock, 1000);
 }
 
 // 17. Toast Notification Helper

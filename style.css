@@ -968,3 +968,156 @@ body {
   to { transform: translateY(0); opacity: 1; }
 }
 
+/* ==========================================================================
+   REAL-TIME CLOCK & CALENDAR WIDGET & FOOTER DEVELOPER STYLES
+   ========================================================================== */
+.realtime-clock-widget {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 0.45rem 0.9rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+}
+
+.realtime-date-badge {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-right: 1px solid var(--border);
+  padding-right: 0.75rem;
+  white-space: nowrap;
+}
+
+.realtime-time-badge {
+  font-size: 0.82rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+/* Developer Badges & Credit */
+.dev-badge-pill {
+  border-color: rgba(56, 189, 248, 0.5) !important;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.25) 0%, rgba(15, 23, 42, 0.9) 100%) !important;
+  color: #38bdf8 !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.15);
+}
+
+.dev-badge-icon {
+  font-size: 1rem;
+}
+
+/* App Footer */
+.app-footer {
+  margin-top: 3rem;
+  background: #090d16;
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  color: var(--text-muted);
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-left .footer-school {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: 0.05em;
+}
+
+.footer-left .footer-sub {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: 0.25rem;
+}
+
+.developer-box {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.developer-box .dev-icon {
+  font-size: 1.8rem;
+}
+
+.developer-box .dev-role {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  display: block;
+}
+
+.developer-box .dev-name {
+  font-size: 0.95rem;
+  color: #38bdf8;
+  font-weight: 800;
+  display: block;
+}
+
+.developer-box .dev-school {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  display: block;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.footer-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #34d399;
+  font-weight: 600;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-right {
+    text-align: center;
+  }
+  .realtime-date-badge {
+    border-right: none;
+    padding-right: 0;
+  }
+  .realtime-clock-widget {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
