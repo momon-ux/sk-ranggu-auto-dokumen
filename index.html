@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Auto Dokumen & Penjana Slip Peperiksaan SK Ranggu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       APP HEADER
+       ========================================================================= -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-section">
+        <div class="logo-pair">
+          <img src="assets/logo_kpm.png" alt="Logo KPM" class="logo-img">
+          <img src="assets/logo_skrg.png" alt="Logo SK Ranggu" class="logo-img">
+        </div>
+        <div class="brand-text">
+          <h1>SISTEM AUTO DOKUMEN & PENJANA SLIP PEPERIKSAAN</h1>
+          <p>
+            <span>Sekolah Kebangsaan Ranggu, Tawau, Sabah</span>
+            <span class="school-tag">Kod: XBA3037</span>
+            <span>• Enjin Integrasi Google Sheets, Docs & Drive</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="header-badges">
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          <span>Sistem Aktif (v1.0.1-skrg)</span>
+        </div>
+        <div class="badge-pill" style="border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">
+          <span>⚡ Sifar Kos (RM0)</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       NAV TABS (Mengikut Rujukan Video: Setup, Data, Jana, Pratonton)
+       ========================================================================= -->
+  <nav class="nav-tabs-wrapper no-print">
+    <div class="nav-tabs-container">
+      <button class="tab-btn active" data-tab="tab-setup">
+        <span>⚙️ 1. Setup Dokumen Baharu</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-database">
+        <span>📊 2. Pangkalan Data Murid</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-generator">
+        <span>🚀 3. Hab Penjanaan (Batch Console)</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-preview">
+        <span>🖨️ 4. Pratonton & Cetak Slip Rasmi</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-script">
+        <span>📜 5. Kod Google Apps Script (Code.gs)</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================= -->
+  <main class="main-content">
+
+    <!-- KPI STATS OVERVIEW -->
+    <div class="stats-grid no-print">
+      <div class="stat-card stat-blue">
+        <div class="stat-info">
+          <div class="stat-label">Jumlah Murid Terlibat</div>
+          <div class="stat-value" id="stat-total">50</div>
+        </div>
+        <div class="stat-icon">👥</div>
+      </div>
+
+      <div class="stat-card stat-green">
+        <div class="stat-info">
+          <div class="stat-label">Slip Berjaya Dijana</div>
+          <div class="stat-value" id="stat-processed">0</div>
+        </div>
+        <div class="stat-icon">✅</div>
+      </div>
+
+      <div class="stat-card stat-amber">
+        <div class="stat-info">
+          <div class="stat-label">Belum Diproses</div>
+          <div class="stat-value" id="stat-pending">50</div>
+        </div>
+        <div class="stat-icon">⏳</div>
+      </div>
+
+      <div class="stat-card stat-purple">
+        <div class="stat-info">
+          <div class="stat-label">Murid Dipilih</div>
+          <div class="stat-value" id="stat-selected">0</div>
+        </div>
+        <div class="stat-icon">🎯</div>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         TAB 1: SETUP DOKUMEN BAHARU (Tepat seperti paparan video)
+         ======================================================================= -->
+    <section id="tab-setup" class="tab-panel active">
+      <div class="card-box">
+        <div class="card-box-header">
+          <h2 class="card-box-title">
+            <span>⚙️</span>
+            <span>Konfigurasi & Setup Dokumen (Google Sheets ➔ Google Docs ➔ Google Drive)</span>
+          </h2>
+          <span class="badge-pill">Panduan Persediaan Auto Dokumen</span>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Nama Dokumen <span class="required">*</span></label>
+            <input type="text" class="form-input" id="setup-doc-name" value="Slip Pentaksiran Akhir SK Ranggu 2026">
+            <span class="form-help">Nama dokumen ini akan digunakan sebagai nama folder PDF dalam Google Drive.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mode Output <span class="required">*</span></label>
+            <select class="form-select" id="setup-mode">
+              <option value="PDF_EMAIL" selected>Simpan PDF + Emel Ibu Bapa (Auto Email)</option>
+              <option value="PDF_ONLY">Simpan PDF Sahaja (Arkib Google Drive)</option>
+            </select>
+            <span class="form-help">Pilih sama ada mahu simpan fail PDF sahaja atau terus hantar ke emel penjaga.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Subject Emel (Sokong placeholder cth: ((NAMA_MURID)))</label>
+            <input type="text" class="form-input" id="setup-email-subject" value="Slip Keputusan Pentaksiran ((NAMA_MURID)) - SK Ranggu">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Nama Penghantar</label>
+            <input type="text" class="form-input" id="setup-sender-name" value="Unit Akademik & Peperiksaan SK Ranggu">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Reply-To (Emel Balas)</label>
+            <input type="email" class="form-input" id="setup-reply-to" value="skranggu.tawau@moe.gov.my">
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label">Isi Emel (Sokong placeholder dinamik)</label>
+            <textarea class="form-textarea" id="setup-email-body" rows="4">Assalamualaikum dan Salam Sejahtera Tuan/Puan Penjaga ((NAMA_MURID)),
+
+Berikut dilampirkan Slip Keputusan Pentaksiran Rasmi bagi anak tuan/puan bagi Kelas ((KELAS)):
+• Jumlah Markah: ((TOTAL))
+• Purata Markah: ((PURATA))
+• Kedudukan Dalam Kelas: ((POSISI))
+
+Sila rujuk dokumen PDF yang dilampirkan untuk perincian semua mata pelajaran dan ulasan guru kelas.
+
+Sekian, terima kasih.
+Unit Pentaksiran Sekolah Kebangsaan Ranggu, Tawau</textarea>
+            <span class="form-help">Gunakan placeholder seperti <code>((NAMA_MURID))</code>, <code>((KELAS))</code>, <code>((TOTAL))</code>, <code>((PURATA))</code>, <code>((POSISI))</code>.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Pautan Google Sheet (Pangkalan Data) <span class="required">*</span></label>
+            <input type="url" class="form-input" id="setup-sheet-url" value="https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit">
+            <span class="form-help">Baris pertama = Header. Setiap header automatik menjadi tag <code>&lt;&lt;HEADER&gt;&gt;</code>.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Pautan Template Google Docs / Slides <span class="required">*</span></label>
+            <input type="url" class="form-input" id="setup-template-url" value="https://docs.google.com/document/d/1aPJ6V2EzQDozJ8988E7-k6a8gkJXVv-idjwu-bcGl1g/edit">
+            <span class="form-help">Fail templat yang mempunyai tag <code>&lt;&lt;NAMA_MURID&gt;&gt;</code>, <code>&lt;&lt;BM_M&gt;&gt;</code>, dll.</span>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label">Pautan Google Drive Folder (Penyimpanan PDF) <span class="required">*</span></label>
+            <input type="url" class="form-input" id="setup-drive-url" value="https://drive.google.com/drive/folders/1QM--2YKLssnYGaqfiidrwrl_xPJGh_Ob">
+            <span class="form-help">PDF akan disimpan secara tersusun dalam subfolder <code>PDF_[NamaDokumen]</code>.</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="alert('✅ Konfigurasi Dokumen SK Ranggu Berjaya Disimpan!')">
+            <span>💾 Simpan Tetapan Dokumen</span>
+          </button>
+          <button class="btn btn-outline" onclick="document.querySelector('[data-tab=\'tab-database\']').click()">
+            <span>Seterusnya: Semak Data Murid ➔</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         TAB 2: PANGKALAN DATA MURID (Google Sheets Grid Simulator)
+         ======================================================================= -->
+    <section id="tab-database" class="tab-panel">
+      <div class="card-box">
+        <div class="card-box-header">
+          <h2 class="card-box-title">
+            <span>📊</span>
+            <span>Pangkalan Data Murid & Markah Peperiksaan (SK Ranggu)</span>
+          </h2>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="btn btn-outline btn-sm" onclick="exportStudentsCSV()">
+              <span>📥 Eksport CSV</span>
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="document.querySelector('[data-tab=\'tab-generator\']').click()">
+              <span>🚀 Buka Hab Penjanaan ➔</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="table-controls">
+          <div class="filter-group">
+            <label class="form-label" style="margin: 0;">Kelas:</label>
+            <select class="form-select" id="filter-class" style="padding: 0.4rem 0.6rem;">
+              <option value="ALL">Semua Kelas (50 Murid)</option>
+              <option value="6 Intelek">6 Intelek</option>
+              <option value="6 Kreatif">6 Kreatif</option>
+              <option value="5 Dinamik">5 Dinamik</option>
+              <option value="5 Efektif">5 Efektif</option>
+            </select>
+
+            <label class="form-label" style="margin: 0; margin-left: 0.5rem;">Status:</label>
+            <select class="form-select" id="filter-status" style="padding: 0.4rem 0.6rem;">
+              <option value="ALL">Semua Status</option>
+              <option value="BELUM DIPROSES">Belum Diproses</option>
+              <option value="BERJAYA">Berjaya</option>
+              <option value="BERJAYA - TIDAK DIEMEL">Berjaya (Tiada Emel)</option>
+            </select>
+          </div>
+
+          <div style="min-width: 260px;">
+            <input type="text" class="form-input" id="search-input" placeholder="🔍 Cari nama murid atau ID..." style="width: 100%; padding: 0.4rem 0.75rem;">
+          </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 40px;"><input type="checkbox" id="master-select-cb" onclick="document.getElementById('btn-select-all').click()"></th>
+                <th>Bil</th>
+                <th>No. Murid (ID)</th>
+                <th>Nama Murid</th>
+                <th>Kelas</th>
+                <th>BM</th>
+                <th>BI</th>
+                <th>MT</th>
+                <th>SN</th>
+                <th>Jumlah</th>
+                <th>Purata</th>
+                <th>Status Jana</th>
+                <th>Tindakan</th>
+              </tr>
+            </thead>
+            <tbody id="students-tbody">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         TAB 3: HAB PENJANAAN DOKUMEN (Batch Generator Console)
+         ======================================================================= -->
+    <section id="tab-generator" class="tab-panel">
+      <div class="card-box">
+        <div class="card-box-header">
+          <h2 class="card-box-title">
+            <span>🚀</span>
+            <span>Hab Penjanaan Auto Slip PDF & Emel Berkelompok</span>
+          </h2>
+          <div class="badge-pill" style="border-color: rgba(16, 185, 129, 0.4); color: #34d399;">
+            <span>Enjin Batch Google Apps Script Siap Sedia</span>
+          </div>
+        </div>
+
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
+          Tekan <strong>"Jana Yang Dipilih"</strong> atau <strong>"Jana Semua Belum Diproses"</strong> untuk memulakan enjin penjanaan dokumen automatik. Sistem akan mencipta salinan template, menggantikan setiap tag data murid, mengeksport ke PDF dalam Google Drive, dan menghantar emel kepada ibu bapa secara automatik.
+        </p>
+
+        <!-- Action Control Buttons -->
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+          <button class="btn btn-primary" id="btn-gen-selected">
+            <span>⚡ Jana Yang Dipilih</span>
+          </button>
+          <button class="btn btn-success" id="btn-gen-remaining">
+            <span>📦 Jana Semua Belum Diproses</span>
+          </button>
+          <button class="btn btn-outline" id="btn-select-all">
+            <span>☑️ Pilih Semua</span>
+          </button>
+          <button class="btn btn-outline" id="btn-deselect-all">
+            <span>⬜ Nyahpilih Semua</span>
+          </button>
+          <button class="btn btn-outline" id="btn-reset-batch" style="color: #fb7185; border-color: rgba(244, 63, 94, 0.3);">
+            <span>🔄 Set Semula Status</span>
+          </button>
+        </div>
+
+        <!-- Safe Limit Notice (Exact as in Video) -->
+        <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.85rem; color: #fbbf24; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem;">
+          <span style="font-size: 1.25rem;">🛡️</span>
+          <span><strong>Had Selamat:</strong> Maksimum 25 baris setiap klik Jana. Jika berbaki, tekan Jana lagi untuk sambung — baris dengan status <strong>BERJAYA</strong> tidak akan dijana semula tanpa pengesahan. (Mencegah Google Apps Script Timeout).</span>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+          <div class="progress-header">
+            <span>Kemajuan Penjanaan Dokumen:</span>
+            <span id="batch-progress-text" style="color: #38bdf8;">0% (0/50 Murid)</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="batch-progress-bar"></div>
+          </div>
+        </div>
+
+        <!-- Live Terminal Log -->
+        <div style="margin-top: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <span style="font-size: 0.8rem; font-weight: 700; color: #94a3b8; text-transform: uppercase;">Log Aktiviti Masa Nyata:</span>
+            <button class="btn btn-outline btn-sm" onclick="document.getElementById('console-logs').innerHTML = '';" style="font-size: 0.7rem; padding: 0.2rem 0.5rem;">Kosongkan Log</button>
+          </div>
+          <div class="log-terminal" id="console-logs">
+            <div class="log-line log-time">[Sistem Sedia] Menunggu arahan penjanaan kelompok daripada guru...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         TAB 4: PRATONTON & CETAK SLIP RASMI SK RANGGU
+         ======================================================================= -->
+    <section id="tab-preview" class="tab-panel">
+      <div class="card-box no-print">
+        <div class="card-box-header">
+          <h2 class="card-box-title">
+            <span>🖨️</span>
+            <span>Pratonton & Cetak Slip Peperiksaan Rasmi SK Ranggu</span>
+          </h2>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="window.print()">
+              <span>🖨️ Cetak / Simpan PDF (A4)</span>
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+          <label class="form-label" style="margin: 0;">Pilih Murid Untuk Pratonton:</label>
+          <select class="form-select" id="preview-student-select" style="min-width: 320px;">
+            <!-- Populated by JS -->
+          </select>
+        </div>
+      </div>
+
+      <!-- AUTHENTIC A4 EXAM SLIP PAPER -->
+      <div class="slip-preview-container">
+        <div class="slip-paper" id="printable-slip">
+          
+          <!-- Slip Header with Both Logos -->
+          <div class="slip-header">
+            <img src="assets/logo_kpm.png" alt="Logo KPM" class="slip-logo">
+            <div class="slip-school-info">
+              <h2>KEMENTERIAN PENDIDIKAN MALAYSIA</h2>
+              <h3>SEKOLAH KEBANGSAAN RANGGU, TAWAU</h3>
+              <p>PETI SURAT 61576, 91124 TAWAU, SABAH • KOD SEKOLAH: XBA3037</p>
+            </div>
+            <img src="assets/logo_skrg.png" alt="Logo SK Ranggu" class="slip-logo">
+          </div>
+
+          <!-- Slip Title Banner -->
+          <div class="slip-title-box">
+            <h4>SLIP KEPUTUSAN PENTAKSIRAN AKHIR SESI AKADEMIK (PASA)</h4>
+            <p id="slip-session">Pentaksiran Akhir Sesi Akademik (PASA) 2026</p>
+          </div>
+
+          <!-- Student Biodata Block -->
+          <div class="slip-biodata-grid">
+            <div class="biodata-item">
+              <span class="biodata-label">NAMA MURID:</span>
+              <span class="biodata-val" id="slip-student-name">Aizat Sofian bin Zulkifli</span>
+            </div>
+            <div class="biodata-item">
+              <span class="biodata-label">NO. PENGENALAN:</span>
+              <span class="biodata-val" id="slip-student-id">SKRG-2026-001</span>
+            </div>
+            <div class="biodata-item">
+              <span class="biodata-label">TAHUN / KELAS:</span>
+              <span class="biodata-val" id="slip-student-class">6 Intelek</span>
+            </div>
+            <div class="biodata-item">
+              <span class="biodata-label">GURU KELAS:</span>
+              <span class="biodata-val">Cikgu Mohammad Fikrey bin Abdul Gapar</span>
+            </div>
+          </div>
+
+          <!-- Academic Marks Table -->
+          <table class="slip-table">
+            <thead>
+              <tr>
+                <th style="width: 45px;">BIL</th>
+                <th>MATA PELAJARAN</th>
+                <th style="width: 90px;">MARKAH</th>
+                <th style="width: 80px;">GRED</th>
+                <th style="width: 130px;">TAHAP PENGUASAAN</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="center">1</td>
+                <td class="bold">Bahasa Melayu</td>
+                <td class="center" id="slip-bm-m">84</td>
+                <td class="center bold" id="slip-bm-g">A</td>
+                <td class="center">TP 5 (Sangat Baik)</td>
+              </tr>
+              <tr>
+                <td class="center">2</td>
+                <td class="bold">Bahasa Inggeris</td>
+                <td class="center" id="slip-bi-m">78</td>
+                <td class="center bold" id="slip-bi-g">B</td>
+                <td class="center">TP 4 (Baik)</td>
+              </tr>
+              <tr>
+                <td class="center">3</td>
+                <td class="bold">Matematik</td>
+                <td class="center" id="slip-mt-m">72</td>
+                <td class="center bold" id="slip-mt-g">B</td>
+                <td class="center">TP 4 (Baik)</td>
+              </tr>
+              <tr>
+                <td class="center">4</td>
+                <td class="bold">Sains</td>
+                <td class="center" id="slip-sn-m">76</td>
+                <td class="center bold" id="slip-sn-g">B</td>
+                <td class="center">TP 4 (Baik)</td>
+              </tr>
+              <tr>
+                <td class="center">5</td>
+                <td class="bold">Sejarah</td>
+                <td class="center" id="slip-sej-m">85</td>
+                <td class="center bold" id="slip-sej-g">A</td>
+                <td class="center">TP 5 (Sangat Baik)</td>
+              </tr>
+              <tr>
+                <td class="center">6</td>
+                <td class="bold">Pendidikan Islam / Moral</td>
+                <td class="center" id="slip-pi-m">90</td>
+                <td class="center bold" id="slip-pi-g">A</td>
+                <td class="center">TP 6 (Cemerlang)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Performance Summary Stat Cards -->
+          <div class="slip-summary-cards">
+            <div class="slip-stat-box">
+              <div class="slip-stat-label">JUMLAH MARKAH</div>
+              <div class="slip-stat-value" id="slip-total">485 / 600</div>
+            </div>
+            <div class="slip-stat-box">
+              <div class="slip-stat-label">PURATA KESELURUHAN</div>
+              <div class="slip-stat-value" id="slip-purata">80.8%</div>
+            </div>
+            <div class="slip-stat-box">
+              <div class="slip-stat-label">KEDUDUKAN KELAS</div>
+              <div class="slip-stat-value" id="slip-posisi">1 / 13</div>
+            </div>
+            <div class="slip-stat-box">
+              <div class="slip-stat-label">KEHADIRAN MURID</div>
+              <div class="slip-stat-value" id="slip-hadir">196 / 200 Hari</div>
+            </div>
+          </div>
+
+          <!-- Grade Scale Guide -->
+          <div class="slip-grade-guide">
+            <strong>PANDUAN GRED SK RANGGU:</strong> 
+            A: 80 - 100 (Cemerlang) • 
+            B: 65 - 79 (Baik) • 
+            C: 50 - 64 (Memuaskan) • 
+            D: 40 - 49 (Mencapai Tahap Minimum) • 
+            E: 0 - 39 (Belum Mencapai Tahap Minimum)
+          </div>
+
+          <!-- Teacher Comments -->
+          <div class="slip-ulasan-box">
+            <div class="slip-ulasan-title">ULASAN GURU KELAS / KAUNSELOR:</div>
+            <div class="slip-ulasan-text" id="slip-ulasan">
+              "Tahniah! Teruskan kecemerlangan akademik anda dan kekalkan sahsiah terpuji."
+            </div>
+          </div>
+
+          <!-- Signatures Section -->
+          <div class="slip-signatures">
+            <div class="sig-box">
+              <div class="sig-line"></div>
+              <div class="sig-name">GURU KELAS</div>
+              <div class="sig-role">SK Ranggu, Tawau</div>
+            </div>
+
+            <div class="sig-box">
+              <div class="sig-line"></div>
+              <div class="sig-name">IBU BAPA / PENJAGA</div>
+              <div class="sig-role">Tandatangan & Tarikh</div>
+            </div>
+
+            <div class="sig-box">
+              <div class="sig-line"></div>
+              <div class="sig-name">GURU BESAR</div>
+              <div class="sig-role">SK Ranggu, Tawau</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         TAB 5: KOD GOOGLE APPS SCRIPT (Code.gs)
+         ======================================================================= -->
+    <section id="tab-script" class="tab-panel">
+      <div class="card-box">
+        <div class="card-box-header">
+          <h2 class="card-box-title">
+            <span>📜</span>
+            <span>Kod Google Apps Script (Code.gs) Sedia Digunakan</span>
+          </h2>
+          <button class="btn btn-primary" onclick="copyGasCode()">
+            <span>📋 Salin Kod (Copy Code)</span>
+          </button>
+        </div>
+
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+          Anda boleh memasukkan kod ini ke dalam <strong>Google Sheets ➔ Extensions ➔ Apps Script</strong> untuk menjalankan penjanaan dokumen secara langsung dalam akaun Google rasmi anda.
+        </p>
+
+        <pre id="gas-code-block" style="background: #090d16; border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #38bdf8; overflow-x: auto; max-height: 500px; line-height: 1.6;">
+/**
+ * SISTEM AUTO DOKUMEN & PENJANA SLIP PEPERIKSAAN SK RANGGU, TAWAU (XBA3037)
+ * Pembangun: Mohammad Fikrey bin Abdul Gapar
+ */
+
+const CONFIG = {
+  documentName: "Slip Peperiksaan Akhir SK Ranggu 2026",
+  senderName: "Unit Peperiksaan SK Ranggu, Tawau",
+  replyTo: "skranggu.tawau@moe.gov.my",
+  emailSubject: "Slip Keputusan Pentaksiran ((NAMA_MURID)) - SK Ranggu",
+  safeBatchLimit: 25
+};
+
+function setupSheetStructure() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getActiveSheet();
+  const headers = [
+    "BIL", "NO_MURID", "NAMA_MURID", "KELAS", "SESI",
+    "BM_M", "BM_G", "BI_M", "BI_G", "MT_M", "MT_G", "SN_M", "SN_G", "SEJ_M", "SEJ_G", "PI_M", "PI_G",
+    "TOTAL", "PURATA", "POSISI", "HADIR", "ULASAN", "EMAIL_PENJAGA",
+    "STATUS_JANA", "TARIKH_JANA", "CATATAN_JANA", "LINK_PDF"
+  ];
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+}
+
+function janaSlipsBatch(options) {
+  // Enjin automatik jana PDF ke Drive & Hantar Emel
+}
+        </pre>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
