@@ -212,6 +212,23 @@ body {
   transform: translateY(-1px);
 }
 
+/* PWA Install Button */
+#btn-install-pwa {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  border: 1px solid #34d399 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+  transition: all 0.2s ease;
+}
+
+#btn-install-pwa:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);
+}
+
+
 /* User Session Badge in Header */
 .user-profile-badge {
   display: flex;

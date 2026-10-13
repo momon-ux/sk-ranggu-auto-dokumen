@@ -3377,3 +3377,58 @@ function filterByClassPill(className) {
   showToastNotification(`🏫 Menapis jadual: ${label}`);
 }
 
+// ============================================================================
+// 27. PWA (PROGRESSIVE WEB APP) & SERVICE WORKER INTEGRATION
+// ============================================================================
+let deferredPWAInstallPrompt = null;
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then((registration) => {
+        console.log('[PWA SK Ranggu] Service Worker aktif:', registration.scope);
+      })
+      .catch((error) => {
+        console.warn('[PWA SK Ranggu] Gagal mendaftar Service Worker:', error);
+      });
+  });
+}
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPWAInstallPrompt = e;
+  const installBtn = document.getElementById('btn-install-pwa');
+  if (installBtn) {
+    installBtn.style.display = 'inline-flex';
+  }
+});
+
+function triggerPWAInstall() {
+  if (deferredPWAInstallPrompt) {
+    deferredPWAInstallPrompt.prompt();
+    deferredPWAInstallPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        showToastNotification("✅ Terima kasih! Aplikasi SK Ranggu dipasang ke skrin peranti anda.");
+      }
+      deferredPWAInstallPrompt = null;
+      const installBtn = document.getElementById('btn-install-pwa');
+      if (installBtn) installBtn.style.display = 'none';
+    });
+  } else {
+    alert("📱 PANDUAN MEMASANG APLIKASI SK RANGGU:\n\n" +
+          "1. Android (Chrome):\n" +
+          "   Tekan menu 3 titik di bahagian atas kanan pelayar, kemudian pilih 'Add to Home screen' atau 'Install app'.\n\n" +
+          "2. iPhone/iPad (Safari):\n" +
+          "   Tekan butang Kongsi (Share / kotak bertanda anak panah atas), tatal ke bawah dan pilih 'Add to Home Screen' (Tambah ke Skrin Utama).\n\n" +
+          "3. Komputer / Laptop (Chrome / Edge):\n" +
+          "   Klik ikon pasang (komputer/tambah) pada bar alamat URL di bahagian kanan atas.");
+  }
+}
+
+window.addEventListener('appinstalled', () => {
+  showToastNotification("🎉 Aplikasi SK Ranggu kini sedia digunakan dari Skrin Utama!");
+  const installBtn = document.getElementById('btn-install-pwa');
+  if (installBtn) installBtn.style.display = 'none';
+});
+
+
