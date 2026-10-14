@@ -2937,7 +2937,7 @@ function renderEntryTable() {
       <td style="font-weight:700; color:#38bdf8;">${st.id}</td>
       <td>
         <strong>${st.name}</strong><br>
-        <span class="school-tag">${st.kelas}</span>
+        <span class="school-tag">${st.kelas}</span> <small style="color:var(--text-muted); font-size:0.75rem;">• ${st.id}</small>
       </td>
       ${subjectCellsHtml}
       <td><strong id="row-total-${st.id}">${st.total}</strong></td>
@@ -2985,7 +2985,7 @@ function renderDatabaseTable() {
       <td><input type="checkbox" class="row-select" data-id="${st.id}" ${st.selected ? "checked" : ""}></td>
       <td>${idx + 1}</td>
       <td style="font-weight:700; color:#38bdf8;">${st.id}</td>
-      <td><strong>${st.name}</strong></td>
+      <td><strong>${st.name}</strong><br><small style="color:var(--text-muted); font-size:0.75rem;">• ${st.id}</small></td>
       <td><span class="school-tag">${st.kelas}</span></td>
       <td>${st.bm_m || "-"} (${st.bm_g})<br><small style="color:#94a3b8">${st.bm_tp.split(' ')[0]}</small></td>
       <td>${st.bi_m || "-"} (${st.bi_g})<br><small style="color:#94a3b8">${st.bi_tp.split(' ')[0]}</small></td>
