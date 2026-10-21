@@ -36,5 +36,5 @@ Sistem ini diinspirasikan daripada video tutorial *@drexcelonly* (*Cara Bina Sis
 4. Tekan fungsi `setupSheetStructure` dan mulakan penjanaan dokumen secara berkelompok!
 
 ---
-**Pembangun & Inovator:** Cikgu Mohammad Fikrey bin Abdul Gapar (SK Ranggu, Tawau)  
+**Pembangun Sistem:** Cikgu Mohammad Fikrey bin Abdul Gapar (SK Ranggu, Tawau)  
 **Hak Cipta Terpelihara © 2026 SK Ranggu, Tawau**

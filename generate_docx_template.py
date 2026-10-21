@@ -70,7 +70,7 @@ r2.font.size = Pt(13)
 r2.font.bold = True
 r2.font.color.rgb = RGBColor(30, 58, 138)
 
-r3 = p_school.add_run("PETI SURAT 61576, 91124 TAWAU, SABAH • KOD SEKOLAH: XBA3037")
+r3 = p_school.add_run("PETI SURAT 842, 91008 TAWAU, SABAH • KOD SEKOLAH: XBA3037")
 r3.font.size = Pt(8.5)
 r3.font.color.rgb = RGBColor(71, 85, 105)
 

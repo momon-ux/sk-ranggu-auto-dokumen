@@ -2,8 +2,7 @@
 ## SEKOLAH KEBANGSAAN RANGGU, TAWAU, SABAH (KOD SEKOLAH: XBA3037)
 
 > **Inspirasi & Rujukan:** Video Tutorial `@drexcelonly` (*Cara Bina Sistem Auto Result Exam / Sistem Auto Dokumen*) — Fail: `v29025g50000daoiucfog65t4d4me2kg.MP4`.  
-> **Disesuaikan Khusus Untuk:** Warga Guru & Pengurusan Pentaksiran SK Ranggu, Tawau.  
-> **Pembangun & Inovator:** Cikgu Mohammad Fikrey bin Abdul Gapar.
+> **Pembangun Sistem:** Cikgu Mohammad Fikrey bin Abdul Gapar.
 
 ---
 
