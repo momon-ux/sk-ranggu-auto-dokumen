@@ -30,11 +30,12 @@ Sistem ini diinspirasikan daripada video tutorial *@drexcelonly* (*Cara Bina Sis
 ---
 
 ## 🚀 Cara Pemasangan & Penggunaan
-1. Import fail [`Data_Murid_SK_Ranggu_Peperiksaan.csv`](Data_Murid_SK_Ranggu_Peperiksaan.csv) ke Google Sheets.
+1. Import fail [`Data_Murid_SK_Ranggu_Peperiksaan.csv`](Data_Murid_SK_Ranggu_Peperiksaan.csv) ke Google Sheets (lengkap dengan No. Kad Pengenalan MyKid).
 2. Muat naik fail [`Template_Slip_Keputusan_SK_Ranggu.docx`](Template_Slip_Keputusan_SK_Ranggu.docx) ke Google Drive dan simpan sebagai Google Docs.
 3. Salin kod [`Code.gs`](Code.gs) ke **Extensions > Apps Script** dalam Google Sheet anda.
-4. Tekan fungsi `setupSheetStructure` dan mulakan penjanaan dokumen secara berkelompok!
+4. Masukkan Emel Google Drive Admin untuk mengumpulkan semua sijil PDF yang dijana terus ke dalam akaun Google Drive pencipta sijil.
+5. Tekan fungsi `setupSheetStructure` dan mulakan penjanaan dokumen secara berkelompok!
 
 ---
-**Pembangun & Inovator:** Cikgu Mohammad Fikrey bin Abdul Gapar (SK Ranggu, Tawau)  
+**Pembangun Sistem:** Cikgu Mohammad Fikrey bin Abdul Gapar (SK Ranggu, Tawau)  
 **Hak Cipta Terpelihara © 2026 SK Ranggu, Tawau**

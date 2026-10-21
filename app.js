@@ -40,7 +40,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140101-12-0501"
   },
   {
     "id": "SKRG-2026-Y6-002",
@@ -74,7 +75,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140204-12-0508"
   },
   {
     "id": "SKRG-2026-Y6-003",
@@ -108,7 +110,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140307-12-0515"
   },
   {
     "id": "SKRG-2026-Y6-004",
@@ -142,7 +145,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140410-12-0522"
   },
   {
     "id": "SKRG-2026-Y6-005",
@@ -176,7 +180,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140513-12-0528"
   },
   {
     "id": "SKRG-2026-Y6-006",
@@ -210,7 +215,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140616-12-0536"
   },
   {
     "id": "SKRG-2026-Y6-007",
@@ -244,7 +250,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140719-12-0542"
   },
   {
     "id": "SKRG-2026-Y6-008",
@@ -278,7 +285,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140822-12-0549"
   },
   {
     "id": "SKRG-2026-Y6-009",
@@ -312,7 +320,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140925-12-0556"
   },
   {
     "id": "SKRG-2026-Y6-010",
@@ -346,7 +355,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "141028-12-0563"
   },
   {
     "id": "SKRG-2026-Y6-011",
@@ -380,7 +390,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "141103-12-0571"
   },
   {
     "id": "SKRG-2026-Y6-012",
@@ -414,7 +425,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "141206-12-0577"
   },
   {
     "id": "SKRG-2026-Y6-013",
@@ -448,7 +460,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140109-12-0585"
   },
   {
     "id": "SKRG-2026-Y6-014",
@@ -482,7 +495,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140212-12-0592"
   },
   {
     "id": "SKRG-2026-Y6-015",
@@ -516,7 +530,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140315-12-0598"
   },
   {
     "id": "SKRG-2026-Y6-016",
@@ -550,7 +565,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140418-12-0605"
   },
   {
     "id": "SKRG-2026-Y6-017",
@@ -584,7 +600,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140521-12-0612"
   },
   {
     "id": "SKRG-2026-Y6-018",
@@ -618,7 +635,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140624-12-0619"
   },
   {
     "id": "SKRG-2026-Y6-019",
@@ -652,7 +670,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140727-12-0626"
   },
   {
     "id": "SKRG-2026-Y6-020",
@@ -686,7 +705,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140802-12-0634"
   },
   {
     "id": "SKRG-2026-Y6-021",
@@ -720,7 +740,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140905-12-0641"
   },
   {
     "id": "SKRG-2026-Y6-022",
@@ -754,7 +775,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "141008-12-0647"
   },
   {
     "id": "SKRG-2026-Y6-023",
@@ -788,7 +810,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "141111-12-0655"
   },
   {
     "id": "SKRG-2026-Y6-024",
@@ -822,7 +845,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "141214-12-0661"
   },
   {
     "id": "SKRG-2026-Y6-025",
@@ -856,7 +880,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140117-12-0669"
   },
   {
     "id": "SKRG-2026-Y6-026",
@@ -890,7 +915,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140220-12-0675"
   },
   {
     "id": "SKRG-2026-Y6-027",
@@ -924,7 +950,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140323-12-0683"
   },
   {
     "id": "SKRG-2026-Y6-028",
@@ -958,7 +985,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140426-12-0689"
   },
   {
     "id": "SKRG-2026-Y6-029",
@@ -992,7 +1020,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140501-12-0696"
   },
   {
     "id": "SKRG-2026-Y6-030",
@@ -1026,7 +1055,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140604-12-0704"
   },
   {
     "id": "SKRG-2026-Y6-031",
@@ -1060,7 +1090,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140707-12-0711"
   },
   {
     "id": "SKRG-2026-Y6-032",
@@ -1094,7 +1125,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140810-12-0718"
   },
   {
     "id": "SKRG-2026-Y6-033",
@@ -1128,7 +1160,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140913-12-0724"
   },
   {
     "id": "SKRG-2026-Y6-034",
@@ -1162,7 +1195,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "141016-12-0731"
   },
   {
     "id": "SKRG-2026-Y6-035",
@@ -1196,7 +1230,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "141119-12-0738"
   },
   {
     "id": "SKRG-2026-Y6-036",
@@ -1230,7 +1265,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "141222-12-0745"
   },
   {
     "id": "SKRG-2026-Y6-037",
@@ -1264,7 +1300,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140125-12-0753"
   },
   {
     "id": "SKRG-2026-Y6-038",
@@ -1298,7 +1335,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140228-12-0759"
   },
   {
     "id": "SKRG-2026-Y6-039",
@@ -1332,7 +1370,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140303-12-0767"
   },
   {
     "id": "SKRG-2026-Y6-040",
@@ -1366,7 +1405,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140406-12-0774"
   },
   {
     "id": "SKRG-2026-Y6-041",
@@ -1400,7 +1440,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140509-12-0781"
   },
   {
     "id": "SKRG-2026-Y6-042",
@@ -1434,7 +1475,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140612-12-0787"
   },
   {
     "id": "SKRG-2026-Y6-043",
@@ -1468,7 +1510,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140715-12-0794"
   },
   {
     "id": "SKRG-2026-Y6-044",
@@ -1502,7 +1545,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140818-12-0802"
   },
   {
     "id": "SKRG-2026-Y6-045",
@@ -1536,7 +1580,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140921-12-0809"
   },
   {
     "id": "SKRG-2026-Y6-046",
@@ -1570,7 +1615,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "141024-12-0815"
   },
   {
     "id": "SKRG-2026-Y6-047",
@@ -1604,7 +1650,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "141127-12-0823"
   },
   {
     "id": "SKRG-2026-Y6-048",
@@ -1638,7 +1685,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "141202-12-0829"
   },
   {
     "id": "SKRG-2026-Y6-049",
@@ -1672,7 +1720,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140105-12-0837"
   },
   {
     "id": "SKRG-2026-Y6-050",
@@ -1706,7 +1755,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "status": "BELUM DIISI",
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
-    "selected": false
+    "selected": false,
+    "no_kp": "140208-12-0843"
   }
 ];
 
@@ -2007,6 +2057,13 @@ document.addEventListener("DOMContentLoaded", () => {
   setupConsoleEvents();
   startRealtimeClock();
   initAuthUI();
+  
+  // Inisialisasi Emel Google Drive Admin (Destinasi Sijil Terkumpul)
+  const savedDriveEmail = localStorage.getItem("skrg_admin_drive_email") || "cikgufikrey@moe-dl.edu.my";
+  const driveInput = document.getElementById("setup-drive-email");
+  if (driveInput) {
+    driveInput.value = savedDriveEmail;
+  }
 });
 
 // 1. Muat & Simpan Data Pengesahan, Guru & Penetapan Subjek
@@ -2423,6 +2480,7 @@ function submitAdminCode() {
 function openAdminPanelModal() {
   renderAdminTeachersTable();
   renderAdminClassAssignments("6 MUMTAZ");
+  renderAdminStudentsTable();
   renderAdminAuditTable();
   document.getElementById("modal-admin-panel")?.classList.add("active");
 }
@@ -2433,6 +2491,9 @@ function switchAdminTab(targetTabId) {
 
   document.querySelector(`[data-atab="${targetTabId}"]`)?.classList.add("active");
   document.getElementById(targetTabId)?.classList.add("active");
+  if (targetTabId === 'atab-students') {
+    renderAdminStudentsTable();
+  }
 }
 
 function renderAdminTeachersTable() {
@@ -2649,6 +2710,109 @@ function clearAuditLogs() {
   }
 }
 
+// 7. Pengurusan Murid & Kemas Kini No. Kad Pengenalan (MyKid)
+function renderAdminStudentsTable() {
+  const tbody = document.getElementById("admin-students-tbody");
+  if (!tbody) return;
+  tbody.innerHTML = "";
+
+  const searchTxt = document.getElementById("admin-student-search")?.value.toLowerCase().trim() || "";
+
+  const filtered = studentsData.filter(st => {
+    if (!searchTxt) return true;
+    return st.name.toLowerCase().includes(searchTxt) ||
+           st.id.toLowerCase().includes(searchTxt) ||
+           st.kelas.toLowerCase().includes(searchTxt) ||
+           (st.no_kp && st.no_kp.toLowerCase().includes(searchTxt));
+  });
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:1.5rem; color:#94a3b8;">Tiada rekod murid dijumpai.</td></tr>`;
+    return;
+  }
+
+  filtered.forEach((st, idx) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td><span style="font-weight:700; color:#38bdf8; font-family:monospace;">${st.id}</span></td>
+      <td><strong>${st.name}</strong></td>
+      <td><span class="school-tag">${st.kelas}</span></td>
+      <td>
+        <input type="text" id="admin-ic-${st.id}" class="form-control" value="${st.no_kp || ''}" 
+               placeholder="14XXXX-12-XXXX" maxlength="14" 
+               style="font-family:'JetBrains Mono',monospace; font-weight:700; font-size:0.85rem; padding:0.3rem 0.5rem; width:160px; display:inline-block;">
+      </td>
+      <td style="text-align:center;">
+        <button class="btn btn-primary btn-sm" onclick="saveStudentIC('${st.id}')" style="padding:0.25rem 0.65rem; font-size:0.75rem;">
+          💾 Simpan
+        </button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function saveStudentIC(studentId) {
+  const input = document.getElementById(`admin-ic-${studentId}`);
+  if (!input) return;
+  const newIc = input.value.trim();
+
+  const st = studentsData.find(s => s.id === studentId);
+  if (!st) return;
+
+  const oldIc = st.no_kp || "Tiada";
+  st.no_kp = newIc;
+
+  saveCurrentMarks(false);
+  renderEntryTable();
+  renderDatabaseTable();
+
+  // Kemas kini slip jika murid ini sedang dipratonton
+  const currentPreviewId = document.getElementById("preview-student-select")?.value;
+  if (currentPreviewId === studentId) {
+    renderSlipPreview(st);
+  }
+
+  recordAuditLog("KEMAS_KINI_MYKID", `Kemas kini No. Kad Pengenalan murid ${st.name} (${st.id}): '${oldIc}' -> '${newIc}'`);
+  showToastNotification(`✅ No. Kad Pengenalan untuk ${st.name} berjaya disimpan: ${newIc}`);
+}
+
+// Kawalan Emel Google Drive Admin (Destinasi Sijil Terkumpul)
+function useCurrentTeacherDriveEmail() {
+  const emailInput = document.getElementById("setup-drive-email");
+  if (!emailInput) return;
+  
+  let targetEmail = "";
+  if (currentUser && currentUser.email) {
+    targetEmail = currentUser.email;
+  } else if (currentUser && currentUser.name && currentUser.name.includes("FIKREY")) {
+    targetEmail = "cikgufikrey@moe-dl.edu.my";
+  } else {
+    const fikrey = teachersData.find(t => t.name.includes("FIKREY"));
+    targetEmail = fikrey?.email || "cikgufikrey@moe-dl.edu.my";
+  }
+  
+  emailInput.value = targetEmail;
+  localStorage.setItem("skrg_admin_drive_email", targetEmail);
+  showToastNotification(`👤 Emel Google Drive diisi: ${targetEmail}`);
+}
+
+function saveDriveEmailPreference() {
+  const emailInput = document.getElementById("setup-drive-email");
+  const val = emailInput?.value.trim() || "";
+  
+  if (!val || !val.includes("@") || !val.includes(".")) {
+    alert("⚠️ Sila masukkan format emel Google Drive yang sah (cth: cikgufikrey@moe-dl.edu.my atau emel.admin@gmail.com).");
+    emailInput?.focus();
+    return;
+  }
+  
+  localStorage.setItem("skrg_admin_drive_email", val);
+  showToastNotification(`💾 Emel Google Drive Admin disimpan: ${val}`);
+  recordAuditLog("KEMAS_KINI_DRIVE", `Emel pengumpulan Google Drive ditetapkan kepada: ${val}`);
+}
+
 // 8. Muat Data daripada LocalStorage mengikut Tahun & Sesi
 function loadYearData() {
   const storageKey = `skrg_pbd_marks_${currentYear}_${currentAssessment.replace(/\s+/g, '_')}`;
@@ -2663,6 +2827,15 @@ function loadYearData() {
   } else {
     studentsData = JSON.parse(JSON.stringify(INITIAL_STUDENTS_ROSTER));
   }
+  
+  // Pastikan no_kp terisi bagi semua murid (jika tiada dalam cache terdahulu)
+  const rosterMap = {};
+  INITIAL_STUDENTS_ROSTER.forEach(r => { rosterMap[r.id] = r; });
+  studentsData.forEach(st => {
+    if (!st.no_kp && rosterMap[st.id]?.no_kp) {
+      st.no_kp = rosterMap[st.id].no_kp;
+    }
+  });
   
   recalculateAllClassRanks();
 }
@@ -2878,7 +3051,9 @@ function renderEntryTable() {
 
   const filtered = studentsData.filter(st => {
     const matchClass = classFilter === "ALL" || st.kelas === classFilter;
-    const matchSearch = st.name.toLowerCase().includes(searchTxt) || st.id.toLowerCase().includes(searchTxt);
+    const matchSearch = st.name.toLowerCase().includes(searchTxt) || 
+                        st.id.toLowerCase().includes(searchTxt) || 
+                        (st.no_kp && st.no_kp.toLowerCase().includes(searchTxt));
     return matchClass && matchSearch;
   });
   
@@ -2937,7 +3112,7 @@ function renderEntryTable() {
       <td style="font-weight:700; color:#38bdf8;">${st.id}</td>
       <td>
         <strong>${st.name}</strong><br>
-        <span class="school-tag">${st.kelas}</span> <small style="color:var(--text-muted); font-size:0.75rem;">• ${st.id}</small>
+        <span class="school-tag">${st.kelas}</span> <small style="color:var(--text-muted); font-size:0.75rem;">• KP: <span style="font-family:monospace; font-weight:600;">${st.no_kp || '-'}</span></small>
       </td>
       ${subjectCellsHtml}
       <td><strong id="row-total-${st.id}">${st.total}</strong></td>
@@ -2962,7 +3137,9 @@ function renderDatabaseTable() {
   const filtered = studentsData.filter(st => {
     const matchClass = classFilter === "ALL" || st.kelas === classFilter;
     const matchStatus = statusFilter === "ALL" || st.status === statusFilter;
-    const matchSearch = st.name.toLowerCase().includes(searchTxt) || st.id.toLowerCase().includes(searchTxt);
+    const matchSearch = st.name.toLowerCase().includes(searchTxt) || 
+                        st.id.toLowerCase().includes(searchTxt) || 
+                        (st.no_kp && st.no_kp.toLowerCase().includes(searchTxt));
     return matchClass && matchStatus && matchSearch;
   });
   
@@ -2985,7 +3162,7 @@ function renderDatabaseTable() {
       <td><input type="checkbox" class="row-select" data-id="${st.id}" ${st.selected ? "checked" : ""}></td>
       <td>${idx + 1}</td>
       <td style="font-weight:700; color:#38bdf8;">${st.id}</td>
-      <td><strong>${st.name}</strong><br><small style="color:var(--text-muted); font-size:0.75rem;">• ${st.id}</small></td>
+      <td><strong>${st.name}</strong><br><small style="color:var(--text-muted); font-size:0.75rem;">• KP: <span style="font-family:monospace; font-weight:600;">${st.no_kp || '-'}</span></small></td>
       <td><span class="school-tag">${st.kelas}</span></td>
       <td>${st.bm_m || "-"} (${st.bm_g})<br><small style="color:#94a3b8">${st.bm_tp.split(' ')[0]}</small></td>
       <td>${st.bi_m || "-"} (${st.bi_g})<br><small style="color:#94a3b8">${st.bi_tp.split(' ')[0]}</small></td>
@@ -3078,6 +3255,19 @@ function setupConsoleEvents() {
 let isProcessing = false;
 async function executeBatchProcess(items) {
   if (isProcessing) return;
+  
+  const adminDriveEmailInput = document.getElementById("setup-drive-email");
+  const adminDriveEmail = adminDriveEmailInput?.value.trim() || "";
+  
+  if (!adminDriveEmail || !adminDriveEmail.includes("@") || !adminDriveEmail.includes(".")) {
+    alert("⚠️ Sila masukkan Emel Google Drive Admin / Pencipta Sijil terlebih dahulu.\n\nSemua sijil / slip PDF akan dikumpulkan dan diselaraskan ke dalam akaun Google Drive admin tersebut.");
+    adminDriveEmailInput?.focus();
+    return;
+  }
+  
+  // Simpan ketetapan emel drive admin
+  localStorage.setItem("skrg_admin_drive_email", adminDriveEmail);
+
   isProcessing = true;
   
   const progressBar = document.getElementById("batch-progress-bar");
@@ -3085,6 +3275,7 @@ async function executeBatchProcess(items) {
   const mode = document.getElementById("setup-mode")?.value || "PDF_EMAIL";
   
   logMessage(`▶️ Memulakan proses penjanaan dokumen untuk ${items.length} orang murid Tahun ${currentYear}...`, "normal");
+  logMessage(`📁 Destinasi Sijil Terkumpul: Google Drive Admin (${adminDriveEmail})`, "success");
   
   let completed = 0;
   for (const st of items) {
@@ -3097,17 +3288,17 @@ async function executeBatchProcess(items) {
     if (mode === "PDF_EMAIL") {
       if (st.email && st.email.includes("@")) {
         st.status = "BERJAYA";
-        st.catatan = `Slip PDF Tahun ${currentYear} dijana & diemel ke: ${st.email}`;
-        logMessage(`[${timeStr}] ✅ ${st.name} (${st.kelas}): Slip PDF berjaya dijana & diemel.`, "success");
+        st.catatan = `Slip PDF Tahun ${currentYear} dijana, dikumpul ke Drive Admin (${adminDriveEmail}) & diemel ke: ${st.email}`;
+        logMessage(`[${timeStr}] ✅ ${st.name} (${st.kelas}): Slip PDF berjaya dijana & diemel. Fail disimpan di Drive (${adminDriveEmail}).`, "success");
       } else {
         st.status = "BERJAYA - TIDAK DIEMEL";
-        st.catatan = `Slip PDF disimpan ke arkib sekolah. (Emel tiada/tidak didaftarkan)`;
-        logMessage(`[${timeStr}] ℹ️ ${st.name} (${st.kelas}): Slip PDF disimpan ke arkib sekolah.`, "warn");
+        st.catatan = `Slip PDF dikumpul ke Google Drive Admin (${adminDriveEmail}). (Emel tiada/tidak didaftarkan)`;
+        logMessage(`[${timeStr}] ℹ️ ${st.name} (${st.kelas}): Slip PDF dikumpul ke Google Drive Admin (${adminDriveEmail}).`, "warn");
       }
     } else {
       st.status = "BERJAYA";
-      st.catatan = `Slip PDF disimpan ke arkib sekolah.`;
-      logMessage(`[${timeStr}] ✅ ${st.name} (${st.kelas}): Slip PDF rasmi berjaya disiapkan.`, "success");
+      st.catatan = `Slip PDF dikumpul ke Google Drive Admin (${adminDriveEmail}).`;
+      logMessage(`[${timeStr}] ✅ ${st.name} (${st.kelas}): Slip PDF rasmi berjaya disiapkan & dikumpul ke Drive (${adminDriveEmail}).`, "success");
     }
     
     completed++;
@@ -3122,10 +3313,12 @@ async function executeBatchProcess(items) {
   }
   
   logMessage(`🎉 SELESAI: Kesemua ${items.length} slip pentaksiran murid SK Ranggu telah berjaya disiapkan!`, "success");
+  logMessage(`📂 Arkib Sijil Terkumpul: Fail PDF tersedia dalam folder Google Drive Admin (${adminDriveEmail})`, "success");
+  showToastNotification(`🎉 ${items.length} Sijil berjaya dikumpulkan ke Google Drive (${adminDriveEmail})!`);
   isProcessing = false;
   saveCurrentMarks(false);
   if (currentUser) {
-    recordAuditLog("PENJANAAN_BATCH", `Guru ${currentUser.name} memproses penjanaan slip bagi ${items.length} orang murid.`);
+    recordAuditLog("PENJANAAN_BATCH", `Guru/Admin ${currentUser.name} memproses penjanaan slip bagi ${items.length} orang murid. Folder Terkumpul Google Drive: ${adminDriveEmail}`);
   }
 }
 
@@ -3178,6 +3371,8 @@ function viewStudentSlip(studentId) {
 function renderSlipPreview(st) {
   document.getElementById("slip-student-name").innerText = st.name;
   document.getElementById("slip-student-id").innerText = st.id;
+  const icEl = document.getElementById("slip-student-ic");
+  if (icEl) icEl.innerText = st.no_kp || "-";
   document.getElementById("slip-student-class").innerText = st.kelas;
   document.getElementById("slip-guru-kelas").innerText = st.guru;
   document.getElementById("slip-session").innerText = `${currentAssessment} Tahun ${currentYear} • SK Ranggu Tawau`;
@@ -3231,11 +3426,11 @@ function resetAllMarks() {
 // 22. Eksport CSV
 function exportStudentsCSV() {
   let csvContent = "data:text/csv;charset=utf-8,";
-  csvContent += "BIL,NO_MURID,NAMA_MURID,KELAS,GURU_KELAS,BM_M,BM_G,BM_TP,BI_M,BI_G,BI_TP,MT_M,MT_G,MT_TP,SN_M,SN_G,SN_TP,SEJ_M,SEJ_G,SEJ_TP,PI_M,PI_G,PI_TP,TOTAL,PURATA,POSISI,HADIR,ULASAN,EMAIL,STATUS,TARIKH,CATATAN\n";
+  csvContent += "BIL,NO_MURID,NO_KP,NAMA_MURID,KELAS,GURU_KELAS,BM_M,BM_G,BM_TP,BI_M,BI_G,BI_TP,MT_M,MT_G,MT_TP,SN_M,SN_G,SN_TP,SEJ_M,SEJ_G,SEJ_TP,PI_M,PI_G,PI_TP,TOTAL,PURATA,POSISI,HADIR,ULASAN,EMAIL,STATUS,TARIKH,CATATAN\n";
   
   studentsData.forEach((s, idx) => {
     const row = [
-      idx + 1, s.id, `"${s.name}"`, `"${s.kelas}"`, `"${s.guru}"`,
+      idx + 1, s.id, `"${s.no_kp || ''}"`, `"${s.name}"`, `"${s.kelas}"`, `"${s.guru}"`,
       s.bm_m, s.bm_g, `"${s.bm_tp}"`, s.bi_m, s.bi_g, `"${s.bi_tp}"`, s.mt_m, s.mt_g, `"${s.mt_tp}"`, s.sn_m, s.sn_g, `"${s.sn_tp}"`, s.sej_m, s.sej_g, `"${s.sej_tp}"`, s.pi_m, s.pi_g, `"${s.pi_tp}"`,
       `"${s.total}"`, `"${s.purata}"`, `"${s.posisi}"`, `"${s.hadir}"`,
       `"${s.ulasan}"`, `"${s.email}"`, `"${s.status}"`, `"${s.tarikh}"`, `"${s.catatan}"`

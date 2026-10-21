@@ -70,7 +70,7 @@ r2.font.size = Pt(13)
 r2.font.bold = True
 r2.font.color.rgb = RGBColor(30, 58, 138)
 
-r3 = p_school.add_run("PETI SURAT 61576, 91124 TAWAU, SABAH • KOD SEKOLAH: XBA3037")
+r3 = p_school.add_run("PETI SURAT 842, 91008 TAWAU, SABAH • KOD SEKOLAH: XBA3037")
 r3.font.size = Pt(8.5)
 r3.font.color.rgb = RGBColor(71, 85, 105)
 
@@ -108,7 +108,7 @@ rt2.font.color.rgb = RGBColor(71, 85, 105)
 doc.add_paragraph().paragraph_format.space_after = Pt(2)
 
 # 3. Biodata Table
-bio_table = doc.add_table(rows=2, cols=4)
+bio_table = doc.add_table(rows=3, cols=4)
 bio_table.alignment = WD_TABLE_ALIGNMENT.CENTER
 bio_widths = [Inches(1.5), Inches(2.3), Inches(1.5), Inches(1.9)]
 for row in bio_table.rows:
@@ -124,19 +124,30 @@ bio_table.cell(0, 1).paragraphs[0].add_run("<<NAMA_MURID>>")
 
 c = bio_table.cell(0, 2)
 set_cell_shading(c, "F8FAFC")
-c.paragraphs[0].add_run("NO. MURID / ID").font.bold = True
-bio_table.cell(0, 3).paragraphs[0].add_run("<<NO_MURID>>")
+c.paragraphs[0].add_run("NO. KAD PENGENALAN").font.bold = True
+bio_table.cell(0, 3).paragraphs[0].add_run("<<NO_KP>>")
 
 # Row 2
 c = bio_table.cell(1, 0)
 set_cell_shading(c, "F8FAFC")
-c.paragraphs[0].add_run("TAHUN / KELAS").font.bold = True
-bio_table.cell(1, 1).paragraphs[0].add_run("<<KELAS>>")
+c.paragraphs[0].add_run("NO. PENDAFTARAN").font.bold = True
+bio_table.cell(1, 1).paragraphs[0].add_run("<<NO_MURID>>")
 
 c = bio_table.cell(1, 2)
 set_cell_shading(c, "F8FAFC")
+c.paragraphs[0].add_run("TAHUN / KELAS").font.bold = True
+bio_table.cell(1, 3).paragraphs[0].add_run("<<KELAS>>")
+
+# Row 3
+c = bio_table.cell(2, 0)
+set_cell_shading(c, "F8FAFC")
+c.paragraphs[0].add_run("GURU KELAS").font.bold = True
+bio_table.cell(2, 1).paragraphs[0].add_run("<<GURU_KELAS>>")
+
+c = bio_table.cell(2, 2)
+set_cell_shading(c, "F8FAFC")
 c.paragraphs[0].add_run("KEHADIRAN").font.bold = True
-bio_table.cell(1, 3).paragraphs[0].add_run("<<HADIR>>")
+bio_table.cell(2, 3).paragraphs[0].add_run("<<HADIR>>")
 
 # Spacer
 doc.add_paragraph().paragraph_format.space_after = Pt(2)
