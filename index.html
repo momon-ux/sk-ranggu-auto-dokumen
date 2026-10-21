@@ -116,6 +116,9 @@
     </div>
 
     <div class="year-toolbar-right">
+      <button class="btn btn-warning btn-sm btn-sppb-gradient" onclick="openSppbModal()" title="Salin dan pindahkan rekod PBD terus ke portal MOEIS SPPB KPM (moeissppb.moe.gov.my)">
+        <span>📋</span> <span>Salin ke MOEIS SPPB</span>
+      </button>
       <button class="btn btn-primary btn-sm" onclick="saveCurrentMarks(true)" title="Simpan perubahan markah ke simpanan pelayar">
         <span>💾</span> <span>Simpan Markah</span>
       </button>
@@ -261,6 +264,9 @@
           </div>
 
           <div class="btn-group">
+            <button class="btn btn-warning btn-sppb-gradient" onclick="openSppbModal()" title="Salin dan pindahkan rekod PBD terus ke portal MOEIS SPPB KPM (moeissppb.moe.gov.my)">
+              <span>📋</span> <span>Salin Rekod ke MOEIS SPPB</span>
+            </button>
             <button class="btn btn-primary" onclick="saveCurrentMarks(true)">
               <span>💾</span> <span>Simpan Markah</span>
             </button>
@@ -342,6 +348,9 @@
           </div>
 
           <div class="btn-group">
+            <button class="btn btn-warning btn-sm btn-sppb-gradient" onclick="openSppbModal()" title="Salin dan pindahkan rekod PBD terus ke portal MOEIS SPPB KPM">
+              <span>📋</span> <span>Salin ke MOEIS SPPB</span>
+            </button>
             <button class="btn btn-outline btn-sm" onclick="exportStudentsCSV()">
               <span>📥</span> <span>Muat Turun CSV</span>
             </button>
@@ -957,6 +966,183 @@
       <div class="modal-footer">
         <button class="btn btn-outline" onclick="closeModal('modal-add-teacher')">Batal</button>
         <button class="btn btn-primary" onclick="submitAddNewTeacher()">💾 Simpan Guru</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Modal Pembantu Penyalinan Rekod PBD ke MOEIS SPPB KPM -->
+  <div id="modal-sppb-transfer" class="modal-overlay">
+    <div class="modal-card modal-lg" style="max-width: 920px;">
+      <div class="modal-header" style="background: linear-gradient(135deg, #0369a1, #1d4ed8); color: white; border-bottom: none;">
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <span style="font-size:1.5rem;">📋</span>
+          <div>
+            <h3 style="color:white; margin:0; font-size:1.15rem;">Pembantu Penyalinan PBD ke Portal MOEIS SPPB</h3>
+            <p style="margin:0; font-size:0.75rem; color:#bae6fd;">Sistem Pengurusan Pentaksiran Bersepadu KPM (moeissppb.moe.gov.my)</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('modal-sppb-transfer')" style="color:white;">&times;</button>
+      </div>
+
+      <div class="modal-body" style="padding: 1.25rem;">
+        <!-- Pautan Portal Rasmi Banner -->
+        <div style="background: var(--bg-surface-alt); border: 1.5px solid var(--border); border-radius: 10px; padding: 0.85rem 1rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+          <div>
+            <div style="font-weight: 800; font-size: 0.9rem; color: var(--text-main); display:flex; align-items:center; gap:0.4rem;">
+              <span>🌐</span> <span>Portal Rasmi: SPPB MOEIS Kementerian Pendidikan Malaysia</span>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">
+              URL: <code style="font-family:monospace; color:#2563eb; background:rgba(37,99,235,0.08); padding:0.15rem 0.4rem; border-radius:4px;">https://moeissppb.moe.gov.my/home</code>
+            </div>
+          </div>
+          <a href="https://moeissppb.moe.gov.my/home" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm btn-sppb-gradient" style="display:inline-flex; align-items:center; gap:0.4rem; text-decoration:none;">
+            <span>🚀 Buka Portal MOEIS SPPB</span> <span>↗</span>
+          </a>
+        </div>
+
+        <!-- Pemilih Kelas & Subjek Yang Hendak Disalin -->
+        <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; background: var(--bg-surface-alt); padding: 1rem; border-radius: 10px; border: 1.5px solid var(--border);">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" style="font-weight:700;">🏫 Pilih Kelas:</label>
+            <select id="sppb-select-class" class="form-control" onchange="updateSppbPreviewData()">
+              <option value="6 MUMTAZ">6 MUMTAZ (14 Murid • Pn. Bajam binti Ladung)</option>
+              <option value="6 JAYYID">6 JAYYID (13 Murid • AgKu Kemainddra)</option>
+              <option value="6 ILTIZAM">6 ILTIZAM (12 Murid • Pn. Noze binti Tukijan)</option>
+              <option value="6 KHOIR">6 KHOIR (11 Murid • Sabriah @ Habibah)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" style="font-weight:700;">📚 Pilih Mata Pelajaran:</label>
+            <select id="sppb-select-subject" class="form-control" onchange="updateSppbPreviewData()">
+              <option value="bm">Bahasa Melayu (BM)</option>
+              <option value="bi">Bahasa Inggeris (BI)</option>
+              <option value="mt">Matematik (MT)</option>
+              <option value="sn">Sains (SN)</option>
+              <option value="sej">Sejarah (SEJ)</option>
+              <option value="pi">Pendidikan Islam / Moral (PI/PM)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Pilihan Mod Salinan (Tabs Ringkas) -->
+        <div style="margin-bottom: 1rem;">
+          <label style="font-weight:800; font-size:0.9rem; color:var(--text-main); display:block; margin-bottom:0.5rem;">
+            📌 Pilih Kaedah Penyalinan ke MOEIS SPPB:
+          </label>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <button type="button" class="btn btn-outline btn-sm sppb-mode-btn active" id="btn-sppb-mode-col" onclick="switchSppbMode('column')">
+              📑 1. Salin Lajur TP (1 Klik)
+            </button>
+            <button type="button" class="btn btn-outline btn-sm sppb-mode-btn" id="btn-sppb-mode-script" onclick="switchSppbMode('script')">
+              ⚡ 2. Skrip Auto-Isi Pantas SPPB
+            </button>
+            <button type="button" class="btn btn-outline btn-sm sppb-mode-btn" id="btn-sppb-mode-table" onclick="switchSppbMode('table')">
+              📊 3. Format Excel / Transit CSV
+            </button>
+          </div>
+        </div>
+
+        <!-- KANDUNGAN MOD 1: SALIN LAJUR TP / MARKAH -->
+        <div id="sppb-panel-column" class="sppb-subpanel">
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+            <button type="button" class="btn btn-primary btn-sm" onclick="copySppbColumn('tp_num')">
+              📋 Salin Lajur TP (Nombor: 5, 6, 4...)
+            </button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="copySppbColumn('tp_full')">
+              📋 Salin Lajur TP Penuh (TP 5, TP 6...)
+            </button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="copySppbColumn('marks')">
+              📋 Salin Lajur Markah (85, 90, 78...)
+            </button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="copySppbColumn('ulasan')">
+              📋 Salin Lajur Ulasan PBD
+            </button>
+          </div>
+
+          <div style="position:relative;">
+            <textarea id="sppb-preview-textarea" class="form-control" rows="8" readonly style="font-family:'JetBrains Mono',monospace; font-size:0.85rem; background:var(--bg-main); line-height:1.5; color:var(--text-main);"></textarea>
+            <span id="sppb-copy-indicator" style="position:absolute; right:12px; bottom:12px; font-size:0.75rem; color:#10b981; font-weight:700; display:none; background:rgba(16,185,129,0.1); padding:0.2rem 0.5rem; border-radius:4px;">
+              ✅ Disalin!
+            </span>
+          </div>
+
+          <div style="margin-top:0.75rem; background:rgba(59,130,246,0.06); border:1px dashed #93c5fd; border-radius:8px; padding:0.75rem; font-size:0.8rem; color:var(--text-main); line-height:1.5;">
+            💡 <strong>Panduan Tampal di MOEIS SPPB:</strong>
+            <ol style="margin:0.25rem 0 0 1.25rem; padding:0;">
+              <li>Tekan salah satu butang salin di atas (cth: <strong>Salin Lajur TP</strong>).</li>
+              <li>Buka portal MOEIS SPPB (<a href="https://moeissppb.moe.gov.my/home" target="_blank" style="color:#2563eb; font-weight:700;">moeissppb.moe.gov.my/home</a>) pada menu <strong>Pengurusan Pentaksiran > PBD Berterusan</strong>.</li>
+              <li>Pilih kelas & subjek yang sama, kemudian klik petak murid pertama dan tekan <kbd style="background:#e2e8f0; padding:1px 5px; border-radius:3px;">Ctrl</kbd> + <kbd style="background:#e2e8f0; padding:1px 5px; border-radius:3px;">V</kbd> (atau rujuk baris demi baris mengikut senarai murid).</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- KANDUNGAN MOD 2: SKRIP AUTO-ISI SPPB (CONSOLE BOOKMARKLET) -->
+        <div id="sppb-panel-script" class="sppb-subpanel" style="display:none;">
+          <div style="background:var(--bg-surface-alt); border:1px solid var(--border); border-radius:8px; padding:0.85rem; margin-bottom:0.75rem;">
+            <div style="font-weight:800; font-size:0.85rem; color:var(--text-main); margin-bottom:0.35rem;">
+              ⚡ Bagaimana Skrip Ini Berfungsi?
+            </div>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin:0; line-height:1.4;">
+              Skrip pintar ini menjana pemetaan nama murid dan Tahap Penguasaan (TP) SK Ranggu yang telah anda isi. Apabila ditampal di Console pelayar pada laman SPPB KPM, skrip ini akan mengautomasikan pemilihan dropdown TP bagi setiap murid secara serta-merta tanpa anda perlu klik satu demi satu!
+            </p>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap; gap:0.5rem;">
+            <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted);">Kod Skrip Pengisian Automatik:</span>
+            <button type="button" class="btn btn-primary btn-sm btn-sppb-gradient" onclick="copySppbScript()">
+              📋 Salin Skrip Auto-Isi
+            </button>
+          </div>
+
+          <textarea id="sppb-script-textarea" class="form-control" rows="8" readonly style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; background:var(--bg-main); color:var(--text-main);"></textarea>
+
+          <div style="margin-top:0.75rem; background:rgba(245,158,11,0.08); border:1px dashed #fcd34d; border-radius:8px; padding:0.75rem; font-size:0.8rem; color:var(--text-main); line-height:1.5;">
+            🧭 <strong>3 Langkah Mudah Menggunakan Skrip Auto-Isi di SPPB:</strong>
+            <ol style="margin:0.25rem 0 0 1.25rem; padding:0;">
+              <li>Klik butang <strong>"📋 Salin Skrip Auto-Isi"</strong> di atas.</li>
+              <li>Buka laman SPPB (<a href="https://moeissppb.moe.gov.my/home" target="_blank" style="color:#d97706; font-weight:700;">moeissppb.moe.gov.my/home</a>) di tab baharu dan buka paparan kelas anda.</li>
+              <li>Tekan kekunci <kbd style="background:#e2e8f0; padding:1px 5px; border-radius:3px;">F12</kbd> (atau klik kanan > <em>Inspect</em> > klik tab <strong>Console</strong>), tampal kod (<kbd>Ctrl+V</kbd>), dan tekan <kbd>Enter</kbd>! Semua TP murid akan dipilih secara automatik.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- KANDUNGAN MOD 3: FORMAT EXCEL / TRANSIT CSV -->
+        <div id="sppb-panel-table" class="sppb-subpanel" style="display:none;">
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:0.75rem;">
+            <button type="button" class="btn btn-primary btn-sm" onclick="exportSppbTransitCSV()">
+              📥 Muat Turun CSV Transit PBD (Kelas & Subjek Ini)
+            </button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="copySppbTableTabDelimited()">
+              📋 Salin Jadual Lengkap (Format Excel / Spreadsheet)
+            </button>
+          </div>
+
+          <!-- Jadual Senarai Murid Semakan -->
+          <div class="table-wrapper" style="max-height: 250px;">
+            <table class="audit-table">
+              <thead>
+                <tr>
+                  <th style="width:35px;">Bil</th>
+                  <th>Nama Murid</th>
+                  <th style="width:80px; text-align:center;">Markah</th>
+                  <th style="width:80px; text-align:center;">Gred</th>
+                  <th style="width:110px; text-align:center;">Tahap Penguasaan</th>
+                  <th>Ulasan PBD</th>
+                  <th style="width:80px; text-align:center;">Tindakan</th>
+                </tr>
+              </thead>
+              <tbody id="sppb-table-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+        <span style="font-size:0.8rem; color:var(--text-muted);">
+          🏫 SK Ranggu Tawau • Memudahkan warga pendidik menjimatkan masa pengisian SPPB.
+        </span>
+        <button class="btn btn-outline" onclick="closeModal('modal-sppb-transfer')">Tutup</button>
       </div>
     </div>
   </div>

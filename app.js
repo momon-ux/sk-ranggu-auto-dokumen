@@ -3378,7 +3378,354 @@ function filterByClassPill(className) {
 }
 
 // ============================================================================
-// 27. PWA (PROGRESSIVE WEB APP) & SERVICE WORKER INTEGRATION
+// 27. INTEGRASI & PEMBANTU PENYALINAN REKOD PBD KE MOEIS SPPB (moeissppb.moe.gov.my)
+// ============================================================================
+let currentSppbMode = 'column';
+
+function openSppbModal() {
+  const currentClassFilter = document.getElementById("entry-filter-class")?.value;
+  const sppbClassSelect = document.getElementById("sppb-select-class");
+  
+  if (sppbClassSelect) {
+    if (currentClassFilter && currentClassFilter !== "ALL") {
+      sppbClassSelect.value = currentClassFilter;
+    }
+  }
+
+  // Jika guru mata pelajaran sedang log masuk, cuba cadangkan subjek pegangannya
+  if (currentUser) {
+    const selectedClass = sppbClassSelect ? sppbClassSelect.value : "6 MUMTAZ";
+    const subjects = ["bm", "bi", "mt", "sn", "sej", "pi"];
+    const mySub = subjects.find(sub => canEditSubject(selectedClass, sub));
+    const sppbSubSelect = document.getElementById("sppb-select-subject");
+    if (mySub && sppbSubSelect) {
+      sppbSubSelect.value = mySub;
+    }
+  }
+
+  switchSppbMode('column');
+  updateSppbPreviewData();
+  document.getElementById("modal-sppb-transfer")?.classList.add("active");
+}
+
+function switchSppbMode(mode) {
+  currentSppbMode = mode;
+  document.querySelectorAll(".sppb-mode-btn").forEach(btn => btn.classList.remove("active"));
+  
+  const colPanel = document.getElementById("sppb-panel-column");
+  const scriptPanel = document.getElementById("sppb-panel-script");
+  const tablePanel = document.getElementById("sppb-panel-table");
+
+  if (colPanel) colPanel.style.display = "none";
+  if (scriptPanel) scriptPanel.style.display = "none";
+  if (tablePanel) tablePanel.style.display = "none";
+
+  if (mode === 'column') {
+    document.getElementById("btn-sppb-mode-col")?.classList.add("active");
+    if (colPanel) colPanel.style.display = "block";
+    generateSppbColumnText('tp_num');
+  } else if (mode === 'script') {
+    document.getElementById("btn-sppb-mode-script")?.classList.add("active");
+    if (scriptPanel) scriptPanel.style.display = "block";
+    generateSppbScriptCode();
+  } else if (mode === 'table') {
+    document.getElementById("btn-sppb-mode-table")?.classList.add("active");
+    if (tablePanel) tablePanel.style.display = "block";
+    renderSppbTable();
+  }
+}
+
+function getStandardPbdComment(tpStr) {
+  const tpNum = parseInt(String(tpStr).replace(/\D/g, "")) || 3;
+  switch (tpNum) {
+    case 6:
+      return "Mencapai tahap cemerlang dan berupaya menggunakan pengetahuan serta kemahiran secara kreatif dan inovatif.";
+    case 5:
+      return "Mencapai tahap sangat baik, berupaya mengaplikasikan pengetahuan dalam situasi baharu dengan yakin.";
+    case 4:
+      return "Mencapai tahap baik dan menguasai kemahiran asas dengan berkesan.";
+    case 3:
+      return "Mencapai tahap memuaskan dan berupaya melaksanakan tugasan dengan bimbingan minimum.";
+    case 2:
+      return "Mencapai tahap minimum dan memerlukan latihan bimbingan berterusan bagi topik sukar.";
+    case 1:
+      return "Memerlukan intervensi dan bimbingan rapi daripada guru untuk membina pemahaman asas.";
+    default:
+      return "Menguasai kemahiran pembelajaran selaras kurikulum kebangsaan.";
+  }
+}
+
+function updateSppbPreviewData() {
+  if (currentSppbMode === 'column') {
+    generateSppbColumnText('tp_num');
+  } else if (currentSppbMode === 'script') {
+    generateSppbScriptCode();
+  } else if (currentSppbMode === 'table') {
+    renderSppbTable();
+  }
+}
+
+function generateSppbColumnText(colType) {
+  const selectedClass = document.getElementById("sppb-select-class")?.value || "6 MUMTAZ";
+  const selectedSubject = document.getElementById("sppb-select-subject")?.value || "bm";
+  const classStudents = studentsData.filter(s => s.kelas === selectedClass);
+  const textarea = document.getElementById("sppb-preview-textarea");
+  if (!textarea) return "";
+
+  const lines = classStudents.map(st => {
+    const rawTp = st[`${selectedSubject}_tp`] || "TP 3 (Memuaskan)";
+    const tpNum = parseInt(String(rawTp).replace(/\D/g, "")) || 3;
+    const mark = st[`${selectedSubject}_m`] || "0";
+
+    if (colType === 'tp_num') {
+      return `${tpNum}`;
+    } else if (colType === 'tp_full') {
+      return `TP ${tpNum}`;
+    } else if (colType === 'marks') {
+      return `${mark}`;
+    } else if (colType === 'ulasan') {
+      return getStandardPbdComment(rawTp);
+    }
+    return `${tpNum}`;
+  });
+
+  const output = lines.join("\n");
+  textarea.value = output;
+  return output;
+}
+
+function copySppbColumn(colType) {
+  const text = generateSppbColumnText(colType);
+  copyToClipboard(text, () => {
+    const indicator = document.getElementById("sppb-copy-indicator");
+    if (indicator) {
+      indicator.style.display = "inline-block";
+      setTimeout(() => { indicator.style.display = "none"; }, 2500);
+    }
+    const selectedClass = document.getElementById("sppb-select-class")?.value;
+    const selectedSubject = document.getElementById("sppb-select-subject")?.value;
+    const subLabel = SUBJECT_LABELS[selectedSubject] || selectedSubject.toUpperCase();
+    showToastNotification(`📋 Lajur ${colType.toUpperCase()} (${selectedClass} - ${subLabel}) berjaya disalin!`);
+  });
+}
+
+function generateSppbScriptCode() {
+  const selectedClass = document.getElementById("sppb-select-class")?.value || "6 MUMTAZ";
+  const selectedSubject = document.getElementById("sppb-select-subject")?.value || "bm";
+  const classStudents = studentsData.filter(s => s.kelas === selectedClass);
+  const textarea = document.getElementById("sppb-script-textarea");
+  if (!textarea) return "";
+
+  const studentItems = classStudents.map(st => {
+    const rawTp = st[`${selectedSubject}_tp`] || "TP 3";
+    const tpNum = parseInt(String(rawTp).replace(/\D/g, "")) || 3;
+    const mark = parseInt(st[`${selectedSubject}_m`]) || 0;
+    return `  { id: "${st.id}", name: "${st.name}", tp: ${tpNum}, mark: ${mark} }`;
+  }).join(",\n");
+
+  const scriptCode = `/**
+ * SKRANGGU SPPB HELPER (v1.0)
+ * Kelas: ${selectedClass} | Subjek: ${SUBJECT_LABELS[selectedSubject] || selectedSubject.toUpperCase()}
+ * Tarikh Jana: ${new Date().toLocaleDateString('ms-MY')}
+ * Arahan: Buka https://moeissppb.moe.gov.my/home > Modul PBD Berterusan > Buka Console (F12) > Tampal kod ini > Tekan Enter.
+ */
+(function() {
+  console.log("%c[SK Ranggu] Memulakan pengisian automatik PBD ke SPPB...", "color:#2563eb; font-weight:bold; font-size:14px;");
+  const dataset = [
+${studentItems}
+  ];
+
+  let matched = 0;
+  const rows = document.querySelectorAll("tr, div.row, [role='row']");
+
+  dataset.forEach(item => {
+    const targetName = item.name.toUpperCase().trim();
+    const firstWord = targetName.split(" ")[0];
+
+    rows.forEach(r => {
+      const rowText = (r.innerText || "").toUpperCase();
+      if (rowText.includes(targetName) || (firstWord.length > 3 && rowText.includes(firstWord) && rowText.includes(item.id))) {
+        // 1. Pilih Dropdown TP
+        const selects = r.querySelectorAll("select");
+        selects.forEach(sel => {
+          for (let opt of sel.options) {
+            const optVal = opt.value.trim();
+            const optTxt = opt.text.trim();
+            if (optVal == item.tp || optTxt == "TP " + item.tp || optTxt == "TP" + item.tp || optTxt == item.tp) {
+              sel.value = opt.value;
+              sel.dispatchEvent(new Event("change", { bubbles: true }));
+              matched++;
+              break;
+            }
+          }
+        });
+
+        // 2. Isi Kotak Markah (jika ada)
+        const inputs = r.querySelectorAll("input[type='number'], input[type='text']");
+        inputs.forEach(inp => {
+          if (!inp.readOnly && !inp.disabled && inp.name && inp.name.toLowerCase().includes("mark")) {
+            inp.value = item.mark;
+            inp.dispatchEvent(new Event("input", { bubbles: true }));
+            inp.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+        });
+      }
+    });
+  });
+
+  alert("✅ [SK Ranggu Helper] Selesai! Sebanyak " + matched + " medan murid bagi kelas ${selectedClass} berjaya dipadankan dan diisi ke dalam SPPB.");
+})();`;
+
+  textarea.value = scriptCode;
+  return scriptCode;
+}
+
+function copySppbScript() {
+  const code = generateSppbScriptCode();
+  copyToClipboard(code, () => {
+    showToastNotification("⚡ Skrip Auto-Isi SPPB berjaya disalin! Sedia ditampal di Console pelayar SPPB.");
+  });
+}
+
+function renderSppbTable() {
+  const selectedClass = document.getElementById("sppb-select-class")?.value || "6 MUMTAZ";
+  const selectedSubject = document.getElementById("sppb-select-subject")?.value || "bm";
+  const classStudents = studentsData.filter(s => s.kelas === selectedClass);
+  const tbody = document.getElementById("sppb-table-tbody");
+  if (!tbody) return;
+  tbody.innerHTML = "";
+
+  if (classStudents.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:1.5rem; color:#94a3b8;">Tiada rekod murid bagi kelas ini.</td></tr>`;
+    return;
+  }
+
+  classStudents.forEach((st, idx) => {
+    const mark = st[`${selectedSubject}_m`] || "-";
+    const gred = st[`${selectedSubject}_g`] || "-";
+    const rawTp = st[`${selectedSubject}_tp`] || "-";
+    const tpNum = parseInt(String(rawTp).replace(/\D/g, "")) || 3;
+    const ulasan = getStandardPbdComment(rawTp);
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td><strong>${st.name}</strong><br><small style="color:var(--text-muted);">${st.id}</small></td>
+      <td style="text-align:center; font-weight:700;">${mark}</td>
+      <td style="text-align:center;"><span class="gred-text-mini">${gred}</span></td>
+      <td style="text-align:center;"><span class="tp-badge-mini">TP ${tpNum}</span></td>
+      <td style="font-size:0.75rem; color:var(--text-muted); line-height:1.3;">${ulasan}</td>
+      <td style="text-align:center;">
+        <button class="btn btn-outline btn-sm" onclick="copySingleStudentSppb('${st.id}', '${selectedSubject}')" style="font-size:0.7rem; padding:0.2rem 0.5rem;" title="Salin TP murid ini">
+          📋 Salin
+        </button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function copySingleStudentSppb(studentId, subject) {
+  const st = studentsData.find(s => s.id === studentId);
+  if (!st) return;
+  const rawTp = st[`${subject}_tp`] || "TP 3";
+  const tpNum = parseInt(String(rawTp).replace(/\D/g, "")) || 3;
+  const text = `${tpNum}`;
+  copyToClipboard(text, () => {
+    showToastNotification(`📋 Disalin TP ${tpNum} (${st.name})`);
+  });
+}
+
+function copySppbTableTabDelimited() {
+  const selectedClass = document.getElementById("sppb-select-class")?.value || "6 MUMTAZ";
+  const selectedSubject = document.getElementById("sppb-select-subject")?.value || "bm";
+  const classStudents = studentsData.filter(s => s.kelas === selectedClass);
+
+  let tsv = "BIL\tNO_MURID\tNAMA_MURID\tKELAS\tSUBJEK\tMARKAH\tGRED\tTAHAP_PENGUASAAN\tULASAN_PBD\n";
+  classStudents.forEach((st, idx) => {
+    const mark = st[`${selectedSubject}_m`] || "-";
+    const gred = st[`${selectedSubject}_g`] || "-";
+    const rawTp = st[`${selectedSubject}_tp`] || "-";
+    const tpNum = parseInt(String(rawTp).replace(/\D/g, "")) || 3;
+    const ulasan = getStandardPbdComment(rawTp);
+    tsv += `${idx + 1}\t${st.id}\t${st.name}\t${st.kelas}\t${SUBJECT_LABELS[selectedSubject]}\t${mark}\t${gred}\tTP ${tpNum}\t${ulasan}\n`;
+  });
+
+  copyToClipboard(tsv, () => {
+    showToastNotification("📊 Jadual PBD Lengkap berjaya disalin! Sedia untuk ditampal (Ctrl+V) ke dalam Excel.");
+  });
+}
+
+function exportSppbTransitCSV() {
+  const selectedClass = document.getElementById("sppb-select-class")?.value || "6 MUMTAZ";
+  const selectedSubject = document.getElementById("sppb-select-subject")?.value || "bm";
+  const classStudents = studentsData.filter(s => s.kelas === selectedClass);
+
+  let csvContent = "data:text/csv;charset=utf-8,";
+  csvContent += "BIL,NO_MURID,NAMA_MURID,KELAS,SUBJEK,MARKAH,GRED,TAHAP_PENGUASAAN,ULASAN_PBD\n";
+
+  classStudents.forEach((st, idx) => {
+    const mark = st[`${selectedSubject}_m`] || "-";
+    const gred = st[`${selectedSubject}_g`] || "-";
+    const rawTp = st[`${selectedSubject}_tp`] || "-";
+    const tpNum = parseInt(String(rawTp).replace(/\D/g, "")) || 3;
+    const ulasan = getStandardPbdComment(rawTp);
+    const row = [
+      idx + 1,
+      st.id,
+      `"${st.name}"`,
+      `"${st.kelas}"`,
+      `"${SUBJECT_LABELS[selectedSubject]}"`,
+      mark,
+      gred,
+      `"TP ${tpNum}"`,
+      `"${ulasan}"`
+    ].join(",");
+    csvContent += row + "\n";
+  });
+
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", `Tapak_Transit_PBD_SPPB_${selectedClass.replace(/\s+/g, '_')}_${selectedSubject.toUpperCase()}_${currentYear}.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showToastNotification(`📥 Fail Tapak Transit CSV bagi ${selectedClass} dimuat turun!`);
+}
+
+function copyToClipboard(text, onSuccess) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(() => {
+      if (onSuccess) onSuccess();
+    }).catch(err => {
+      fallbackCopyText(text, onSuccess);
+    });
+  } else {
+    fallbackCopyText(text, onSuccess);
+  }
+}
+
+function fallbackCopyText(text, onSuccess) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.left = "-9999px";
+  ta.style.top = "0";
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try {
+    document.execCommand("copy");
+    if (onSuccess) onSuccess();
+  } catch (err) {
+    alert("Sila salin teks secara manual dari kotak pratonton.");
+  }
+  document.body.removeChild(ta);
+}
+
+// ============================================================================
+// 28. PWA (PROGRESSIVE WEB APP) & SERVICE WORKER INTEGRATION
 // ============================================================================
 let deferredPWAInstallPrompt = null;
 
