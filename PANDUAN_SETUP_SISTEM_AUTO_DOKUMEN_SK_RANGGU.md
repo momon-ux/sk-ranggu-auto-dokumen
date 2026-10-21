@@ -3,7 +3,7 @@
 
 > **Inspirasi & Rujukan:** Video Tutorial `@drexcelonly` (*Cara Bina Sistem Auto Result Exam / Sistem Auto Dokumen*) — Fail: `v29025g50000daoiucfog65t4d4me2kg.MP4`.  
 > **Disesuaikan Khusus Untuk:** Warga Guru & Pengurusan Pentaksiran SK Ranggu, Tawau.  
-> **Pembangun Sistem:** Cikgu Mohammad Fikrey bin Abdul Gapar.
+> **Pembangun & Inovator:** Cikgu Mohammad Fikrey bin Abdul Gapar.
 
 ---
 
@@ -11,10 +11,8 @@
 
 Dalam pengurusan peperiksaan dan pentaksiran murid di sekolah:
 1. **Kerja Manual Mengambil Masa Berjam-Jam:** Guru kelas terpaksa menaip nama, kelas, markah, jumlah, purata, dan ulasan bagi setiap murid satu persatu ke dalam Microsoft Word atau Canva, kemudian mengeksport satu demi satu menjadi PDF.
-2. **Isu No. Kad Pengenalan (MyKid) & Kesahan Sijil:** Sijil rasmi KPM memerlukan No. Kad Pengenalan murid yang tepat. Sistem menyediakan pengesanan dan kemas kini pantas MyKid terus dalam slip keputusan dan pangkalan data.
-3. **Pengumpulan Sijil Terpusat ke Google Drive Admin:** Semua fail slip PDF yang dijana dikumpulkan terus ke dalam Google Drive akaun admin yang mencipta sijil tanpa keciciran fail.
-4. **Isu E-mel & Edaran Kepada Ibu Bapa:** Menghantar slip peperiksaan kepada berpuluh-puluh ibu bapa melalui WhatsApp atau e-mel secara manual amat memenatkan dan berisiko berlaku keciciran.
-5. **Risiko Ralat Data:** Pengiraan manual gred, purata dan kedudukan kelas kerap berlaku ralat.
+2. **Isu E-mel & Edaran Kepada Ibu Bapa:** Menghantar slip peperiksaan kepada berpuluh-puluh ibu bapa melalui WhatsApp atau e-mel secara manual amat memenatkan dan berisiko berlaku keciciran.
+3. **Risiko Ralat Data:** Pengiraan manual gred, purata dan kedudukan kelas kerap berlaku ralat.
 
 ---
 
@@ -25,15 +23,14 @@ Sistem ini menggabungkan ekosistem **Google Workspace (RM0 Sifar Kos)** bersama 
 ```
 ┌─────────────────────────────────┐      ┌──────────────────────────────────┐
 │   1. Pangkalan Data Markah      │ ───► │  2. Templat Rasmi Slip SK Ranggu │
-│ (Google Sheets / CSV 50 Murid)  │      │ (Word / Docs dengan Logo Rasmi)  │
-│ [Lajur: NO_MURID, NO_KP, ...]   │      │ [Placeholder: <<NO_KP>>, ...]    │
+│ (Google Sheets / Fail CSV 50 M) │      │ (Google Docs / Word dengan Logo) │
 └─────────────────────────────────┘      └──────────────────────────────────┘
                  │                                        │
                  ▼                                        ▼
 ┌───────────────────────────────────────────────────────────────────────────┐
 │              3. Enjin Automasi Google Apps Script (Code.gs)               │
-│ • Menggantikan tag <<NAMA_MURID>>, <<NO_KP>>, <<BM_M>>, <<TOTAL>>, dll.    │
-│ • Menjana PDF & mengumpul terus ke Google Drive Admin (setup-drive-email)  │
+│ • Menggantikan tag <<NAMA_MURID>>, <<BM_M>>, <<TOTAL>>, <<PURATA>>, dll.   │
+│ • Menjana fail PDF individu dalam Google Drive (Subfolder PDF_[NamaDoc])   │
 │ • Menghantar e-mel automatik berserta lampiran PDF kepada penjaga murid   │
 │ • Mengemas kini status: BERJAYA / BERJAYA - TIDAK DIEMEL dalam masa nyata │
 └───────────────────────────────────────────────────────────────────────────┘

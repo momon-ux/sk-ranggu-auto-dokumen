@@ -28,7 +28,6 @@ const DEFAULT_CONFIG = {
     "Yang menjalankan amanah,\n" +
     "Cikgu Mohammad Fikrey bin Abdul Gapar\n" +
     "Sekolah Kebangsaan Ranggu, Tawau, Sabah (XBA3037)",
-  adminDriveEmail: "cikgufikrey@moe-dl.edu.my", // Emel Google Drive Admin destinasi pengumpulan sijil
   safeBatchLimit: 25 // Had selamat elak 6-minute Google Apps Script timeout
 };
 
@@ -56,7 +55,7 @@ function setupSheetStructure() {
   }
   
   const headers = [
-    "BIL", "NO_MURID", "NO_KP", "NAMA_MURID", "KELAS", "SESI",
+    "BIL", "NO_MURID", "NAMA_MURID", "KELAS", "SESI",
     "BM_M", "BM_G", "BI_M", "BI_G", "MT_M", "MT_G", "SN_M", "SN_G", "SEJ_M", "SEJ_G", "PI_M", "PI_G",
     "TOTAL", "PURATA", "POSISI", "HADIR",
     "ULASAN", "EMAIL_PENJAGA",
@@ -132,16 +131,6 @@ function janaSlipsBatch(options) {
     const subfolders = targetFolder.getFoldersByName(subfolderName);
     const outputFolder = subfolders.hasNext() ? subfolders.next() : targetFolder.createFolder(subfolderName);
     
-    // Kumpulkan dan berikan akses folder terus kepada Google Drive Admin yang mencipta sijil
-    const adminDriveEmail = options.adminDriveEmail || DEFAULT_CONFIG.adminDriveEmail;
-    if (adminDriveEmail && adminDriveEmail.indexOf("@") !== -1) {
-      try {
-        outputFolder.addEditor(adminDriveEmail);
-      } catch (shareErr) {
-        Logger.log("Akses Google Drive Admin: " + shareErr.message);
-      }
-    }
-    
     // Template File
     if (!options.templateDocId) {
       throw new Error("ID Template Google Docs / Slides diperlukan!");
@@ -187,7 +176,6 @@ function janaSlipsBatch(options) {
       const nama = studentObj["NAMA_MURID"] || "Murid";
       const noMurid = studentObj["NO_MURID"] || `ID_${rowIndex}`;
       const email = (studentObj["EMAIL_PENJAGA"] || "").toString().trim();
-      const noKp = studentObj["NO_KP"] || "";
       
       try {
         // 1. Salin fail template
@@ -203,17 +191,6 @@ function janaSlipsBatch(options) {
           body.replaceText(`\\{\\{${h}\\}\\}`, val);
           body.replaceText(`<${h}>`, val);
         });
-        
-        // Sokongan tag khas untuk No. Kad Pengenalan / MyKid
-        if (noKp) {
-          const icStr = String(noKp);
-          body.replaceText(`<<NO_KAD_PENGENALAN>>`, icStr);
-          body.replaceText(`\\(\\(NO_KAD_PENGENALAN\\)\\)`, icStr);
-          body.replaceText(`\\{\\{NO_KAD_PENGENALAN\\}\\}`, icStr);
-          body.replaceText(`<<MYKID>>`, icStr);
-          body.replaceText(`\\(\\(MYKID\\)\\)`, icStr);
-          body.replaceText(`\\{\\{MYKID\\}\\}`, icStr);
-        }
         
         tempDoc.saveAndClose();
         
@@ -265,7 +242,7 @@ function janaSlipsBatch(options) {
         // 6. Kemas kini status dalam Google Sheet
         const nowStr = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "dd/MM/yyyy HH:mm");
         const finalStatus = (options.mode === "PDF_EMAIL" && !emailSent) ? "BERJAYA - TIDAK DIEMEL" : "BERJAYA";
-        const catatan = `[kod v1.4-skrg] Fail PDF siap dijana & dikumpul ke Google Drive (${adminDriveEmail}).${emailNote}`;
+        const catatan = `[kod v1.0.1-skrg] Fail PDF siap dijana.${emailNote}`;
         
         sheet.getRange(rowIndex, colMap["STATUS_JANA"]).setValue(finalStatus);
         sheet.getRange(rowIndex, colMap["TARIKH_JANA"]).setValue(nowStr);
@@ -293,7 +270,6 @@ function janaSlipsBatch(options) {
       failedCount: countFailed,
       remainingCount: rowsToProcess.length - currentBatch.length,
       folderUrl: outputFolder.getUrl(),
-      adminDriveEmail: adminDriveEmail,
       logs: logs
     };
     

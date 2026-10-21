@@ -401,10 +401,10 @@
           </div>
         </div>
 
-        <!-- Tetapan Parameter Dokumen & Pengumpulan Google Drive -->
+        <!-- Tetapan Parameter Dokumen -->
         <div class="form-grid" style="margin-bottom: 1.5rem;">
           <div class="form-group">
-            <label class="form-label">Nama Fail Dokumen / Sijil:</label>
+            <label class="form-label">Nama Fail Dokumen:</label>
             <input type="text" id="setup-doc-name" class="form-control" value="Slip_PBD_UASA_SK_Ranggu_2026">
           </div>
 
@@ -414,27 +414,6 @@
               <option value="PDF_ONLY" selected>Simpan Slip Dokumen PDF (Sedia Dicetak & Disimpan)</option>
               <option value="PDF_EMAIL">Simpan Slip Dokumen PDF & Hantar Terus ke Emel Penjaga</option>
             </select>
-          </div>
-
-          <!-- Emel Google Drive Admin (Destinasi Sijil Terkumpul) -->
-          <div class="form-group" style="grid-column: 1 / -1; background: var(--bg-surface-alt); padding: 1rem; border-radius: 10px; border: 1.5px solid var(--border);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
-              <label class="form-label" style="font-weight: 800; color: var(--text-main); font-size: 0.92rem; margin-bottom: 0; display: flex; align-items: center; gap: 0.4rem;">
-                <span>📁</span> <span>Emel Google Drive Admin / Pencipta Sijil (Destinasi Sijil Terkumpul):</span> <span style="color:#ef4444;">*Wajib</span>
-              </label>
-              <button type="button" class="btn btn-outline btn-sm" onclick="useCurrentTeacherDriveEmail()" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;">
-                👤 Guna Emel Saya
-              </button>
-            </div>
-            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
-              <input type="email" id="setup-drive-email" class="form-control" style="flex: 1; min-width: 260px; font-weight: 700; font-size: 0.9rem;" placeholder="cth: cikgufikrey@moe-dl.edu.my atau emel.admin@gmail.com" required>
-              <button type="button" class="btn btn-primary btn-sm" onclick="saveDriveEmailPreference()" style="white-space: nowrap;">
-                💾 Simpan Emel Drive
-              </button>
-            </div>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.4; margin-bottom: 0;">
-              🔒 <strong>Fungsi Pengumpulan Sijil:</strong> Kesemua sijil / slip PDF yang dijana akan dikumpulkan, diindeks, dan diselaraskan terus ke dalam folder Google Drive milik akaun admin di atas. Admin yang mencipta sijil boleh memantau dan mengakses fail terkumpul pada bila-bila masa.
-            </p>
           </div>
         </div>
 
@@ -532,10 +511,6 @@
               <span class="biodata-val" id="slip-student-name">ALFIN ZIKRI BIN MUHAMMAD ZULKIFLI</span>
             </div>
             <div class="biodata-item">
-              <span class="biodata-label">NO. KAD PENGENALAN:</span>
-              <span class="biodata-val" id="slip-student-ic" style="font-family:'JetBrains Mono', monospace; font-weight:700;">140101-12-0501</span>
-            </div>
-            <div class="biodata-item">
               <span class="biodata-label">NO. PENDAFTARAN:</span>
               <span class="biodata-val" id="slip-student-id">SKRG-2026-Y6-001</span>
             </div>
@@ -546,10 +521,6 @@
             <div class="biodata-item">
               <span class="biodata-label">GURU KELAS:</span>
               <span class="biodata-val" id="slip-guru-kelas">Pn. Noze binti Tukijan (Guru Kelas)</span>
-            </div>
-            <div class="biodata-item">
-              <span class="biodata-label">STATUS PENTAKSIRAN:</span>
-              <span class="biodata-val" id="slip-status-pentaksiran" style="color:#15803d; font-weight:700;">PBD & UASA Rasmi (KPM)</span>
             </div>
           </div>
 
@@ -869,7 +840,6 @@
         <div class="admin-tabs">
           <button class="admin-tab-btn active" data-atab="atab-teachers" onclick="switchAdminTab('atab-teachers')">👥 Pengurusan Guru & Reset Kata Laluan</button>
           <button class="admin-tab-btn" data-atab="atab-classes" onclick="switchAdminTab('atab-classes')">🏫 Penetapan Guru Kelas & Subjek</button>
-          <button class="admin-tab-btn" data-atab="atab-students" onclick="switchAdminTab('atab-students')">🎓 Pengurusan Murid & No. Kad Pengenalan</button>
           <button class="admin-tab-btn" data-atab="atab-audit" onclick="switchAdminTab('atab-audit')">📜 Jejak Audit (Trace Siapa Ubah)</button>
         </div>
 
@@ -912,35 +882,7 @@
           <div id="admin-class-assignment-container"></div>
         </div>
 
-        <!-- Admin Tab 3: Pengurusan Murid & No. Kad Pengenalan (MyKid) -->
-        <div id="atab-students" class="admin-tab-content">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
-            <div>
-              <h4 style="color:var(--text-main); font-size:0.95rem; font-weight:800; margin-bottom:0.25rem;">Senarai 50 Murid & Kemas Kini No. Kad Pengenalan:</h4>
-              <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">No. Kad Pengenalan ini dipaparkan terus dalam Slip Pentaksiran / Sijil rasmi murid.</p>
-            </div>
-            <div style="display:flex; gap:0.5rem; align-items:center;">
-              <input type="text" id="admin-student-search" class="search-input" placeholder="🔍 Cari murid / ID / MyKid..." oninput="renderAdminStudentsTable()" style="padding:0.35rem 0.65rem; font-size:0.8rem; min-width:220px;">
-            </div>
-          </div>
-          <div class="table-wrapper" style="max-height:380px;">
-            <table class="audit-table">
-              <thead>
-                <tr>
-                  <th style="width:40px;">Bil</th>
-                  <th style="width:135px;">No. Pendaftaran</th>
-                  <th>Nama Murid</th>
-                  <th style="width:95px;">Kelas</th>
-                  <th style="width:210px;">No. Kad Pengenalan (MyKid)</th>
-                  <th style="text-align:center; width:110px;">Tindakan</th>
-                </tr>
-              </thead>
-              <tbody id="admin-students-tbody"></tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Admin Tab 4: Jejak Audit (Trace Siapa Ubah) -->
+        <!-- Admin Tab 3: Jejak Audit (Trace Siapa Ubah) -->
         <div id="atab-audit" class="admin-tab-content">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
             <h4 style="color:var(--text-main); font-size:0.95rem; font-weight:800;">Rekod Pengesanan Aktiviti (Audit Trail):</h4>
