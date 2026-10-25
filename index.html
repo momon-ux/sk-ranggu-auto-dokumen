@@ -780,10 +780,16 @@
         </div>
 
         <div class="form-group" style="margin-bottom:1rem;">
-          <label class="form-label">Pilih Guru (Log Masuk Pantas):</label>
-          <select id="login-quick-select" class="form-control" onchange="handleQuickSelectTeacher(this.value)">
-            <option value="">-- Pilih Nama Guru Anda --</option>
-          </select>
+          <label class="form-label">Pilih Guru (Log Masuk Pantas 1-Klik):</label>
+          <div style="display:flex; gap:0.5rem;">
+            <select id="login-quick-select" class="form-control" onchange="handleQuickSelectTeacher(this.value)" style="flex:1;">
+              <option value="">-- Pilih Nama Guru Anda --</option>
+            </select>
+            <button class="btn btn-success" type="button" onclick="const qId = document.getElementById('login-quick-select').value; if(qId){ quickSwitchActiveTeacher(qId); closeModal('modal-login'); } else { alert('Sila pilih nama guru terlebih dahulu!'); }" title="Masuk serta-merta sebagai guru ini tanpa kata laluan">
+              ⚡ Masuk Segera
+            </button>
+          </div>
+          <small class="form-help">Pilih nama anda dan klik 'Masuk Segera' untuk memulakan sesi pengisian dengan jejak audit rasmi anda.</small>
         </div>
 
         <div class="form-group" style="margin-bottom:1rem;">
@@ -1088,10 +1094,42 @@
         <div class="form-group" id="add-teacher-class-group" style="margin-bottom: 1rem; display: none;">
           <label class="form-label">Pilih Kelas Dipegang:</label>
           <select id="add-teacher-class" class="form-control">
-            <option value="6 MUMTAZ">6 MUMTAZ</option>
-            <option value="6 JAYYID">6 JAYYID</option>
-            <option value="6 ILTIZAM">6 ILTIZAM</option>
-            <option value="6 KHOIR">6 KHOIR</option>
+            <optgroup label="--- TAHUN 1 ---">
+              <option value="1 MUMTAZ">1 MUMTAZ</option>
+              <option value="1 JAYYID">1 JAYYID</option>
+              <option value="1 ILTIZAM">1 ILTIZAM</option>
+              <option value="1 KHOIR">1 KHOIR</option>
+            </optgroup>
+            <optgroup label="--- TAHUN 2 ---">
+              <option value="2 MUMTAZ">2 MUMTAZ</option>
+              <option value="2 JAYYID">2 JAYYID</option>
+              <option value="2 ILTIZAM">2 ILTIZAM</option>
+              <option value="2 KHOIR">2 KHOIR</option>
+            </optgroup>
+            <optgroup label="--- TAHUN 3 ---">
+              <option value="3 MUMTAZ">3 MUMTAZ</option>
+              <option value="3 JAYYID">3 JAYYID</option>
+              <option value="3 ILTIZAM">3 ILTIZAM</option>
+              <option value="3 KHOIR">3 KHOIR</option>
+            </optgroup>
+            <optgroup label="--- TAHUN 4 ---">
+              <option value="4 MUMTAZ">4 MUMTAZ</option>
+              <option value="4 JAYYID">4 JAYYID</option>
+              <option value="4 ILTIZAM">4 ILTIZAM</option>
+              <option value="4 KHOIR">4 KHOIR</option>
+            </optgroup>
+            <optgroup label="--- TAHUN 5 ---">
+              <option value="5 MUMTAZ">5 MUMTAZ</option>
+              <option value="5 JAYYID">5 JAYYID</option>
+              <option value="5 ILTIZAM">5 ILTIZAM</option>
+              <option value="5 KHOIR">5 KHOIR</option>
+            </optgroup>
+            <optgroup label="--- TAHUN 6 ---">
+              <option value="6 MUMTAZ">6 MUMTAZ</option>
+              <option value="6 JAYYID">6 JAYYID</option>
+              <option value="6 ILTIZAM">6 ILTIZAM</option>
+              <option value="6 KHOIR">6 KHOIR</option>
+            </optgroup>
           </select>
         </div>
 
@@ -1431,5 +1469,195 @@
 
   <!-- JS APLIKASI -->
   <script src="app.js"></script>
+
+  <!-- =========================================================================
+       MODAL EDIT GURU (ADMIN SAHAJA - NAMA GURU, IC, EMEL, PERANAN & KELAS)
+       ========================================================================= -->
+  <div id="modal-edit-teacher" class="modal-overlay">
+    <div class="modal-card" style="max-width: 540px;">
+      <div class="modal-header">
+        <h3><span>✏️</span> Edit Maklumat Guru SK Ranggu (Admin)</h3>
+        <button class="modal-close-btn" onclick="closeModal('modal-edit-teacher')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="edit-teacher-id">
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Nama Penuh Guru: <span class="required">*</span></label>
+          <input type="text" id="edit-teacher-name" class="form-control" placeholder="Contoh: AHMAD BIN ABDULLAH" style="text-transform: uppercase;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">No. Kad Pengenalan (IC): <span class="required">*</span></label>
+          <input type="text" id="edit-teacher-ic" class="form-control" placeholder="Contoh: 910528-12-5411">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Alamat Emel Rasmi (MOE Digital / DELIMa): <span class="required">*</span></label>
+          <input type="email" id="edit-teacher-email" class="form-control" placeholder="Contoh: g-12345678@moe-dl.edu.my">
+          <small class="form-help">Alamat emel ini dikesan secara automatik bagi setiap pengubahan data murid.</small>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Jawatan / Peranan:</label>
+          <select id="edit-teacher-role" class="form-control" onchange="handleEditTeacherRoleChange(this.value)">
+            <option value="GURU MATA PELAJARAN">Guru Mata Pelajaran</option>
+            <option value="GURU KELAS">Guru Kelas</option>
+            <option value="PENTADBIR SISTEM / PEMBANGUN SISTEM">Pentadbir Sistem</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="edit-teacher-class-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Guru Kelas Bagi:</label>
+          <select id="edit-teacher-class" class="form-control">
+            <option value="">-- Bukan Guru Kelas / Tiada Kelas --</option>
+            <optgroup label="--- TAHUN 1 ---">
+              <option value="1 MUMTAZ">1 MUMTAZ</option>
+              <option value="1 JAYYID">1 JAYYID</option>
+              <option value="1 ILTIZAM">1 ILTIZAM</option>
+              <option value="1 KHOIR">1 KHOIR</option>
+            </optgroup>
+            <optgroup label="--- TAHUN 2 ---">
+              <option value="2 MUMTAZ">2 MUMTAZ</option>
+              <option value="2 JAYYID">2 JAYYID</option>
+              <option value="2 ILTIZAM">2 ILTIZAM</option>
+              <option value="2 KHOIR">2 KHOIR</option>
+            </optgroup>
+            <optgroup label="--- TAHUN 3 ---">
+              <option value="3 MUMTAZ">3 MUMTAZ</option>
+              <option value="3 JAYYID">3 JAYYID</option>
+              <option value="3 ILTIZAM">3 ILTIZAM</option>
+              <option value="3 KHOIR">3 KHOIR</option>
+            </optgroup>
+            <optgroup label="--- TAHUN 4 ---">
+              <option value="4 MUMTAZ">4 MUMTAZ</option>
+              <option value="4 JAYYID">4 JAYYID</option>
+              <option value="4 ILTIZAM">4 ILTIZAM</option>
+              <option value="4 KHOIR">4 KHOIR</option>
+            </optgroup>
+            <optgroup label="--- TAHUN 5 ---">
+              <option value="5 MUMTAZ">5 MUMTAZ</option>
+              <option value="5 JAYYID">5 JAYYID</option>
+              <option value="5 ILTIZAM">5 ILTIZAM</option>
+              <option value="5 KHOIR">5 KHOIR</option>
+            </optgroup>
+            <optgroup label="--- TAHUN 6 ---">
+              <option value="6 MUMTAZ">6 MUMTAZ</option>
+              <option value="6 JAYYID">6 JAYYID</option>
+              <option value="6 ILTIZAM">6 ILTIZAM</option>
+              <option value="6 KHOIR">6 KHOIR</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('modal-edit-teacher')">Batal</button>
+        <button class="btn btn-primary" onclick="submitEditTeacher()">💾 Simpan Maklumat Guru</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL EDIT MURID (SEMUA GURU BOLEH EDIT DENGAN PENJEJAKAN AUDIT RASMI)
+       ========================================================================= -->
+  <div id="modal-edit-student" class="modal-overlay">
+    <div class="modal-card" style="max-width: 560px;">
+      <div class="modal-header">
+        <h3><span>✏️</span> Kemas Kini Maklumat Murid SK Ranggu</h3>
+        <button class="modal-close-btn" onclick="closeModal('modal-edit-student')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="edit-student-target-id">
+        
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Nama Penuh Murid: <span class="required">*</span></label>
+          <input type="text" id="edit-student-name" class="form-control" placeholder="Contoh: MUHAMMAD HAZIQ BIN AZLAN" style="text-transform: uppercase;">
+        </div>
+
+        <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">No. Murid / ID Sistem: <span class="required">*</span></label>
+            <input type="text" id="edit-student-id" class="form-control" readonly style="background:var(--bg-surface-alt); font-weight:700; color:#38bdf8;">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Pilih Kelas: <span class="required">*</span></label>
+            <select id="edit-student-class" class="form-control" onchange="onEditStudentClassChange(this.value)">
+              <optgroup label="--- TAHUN 1 ---">
+                <option value="1 MUMTAZ">1 MUMTAZ</option>
+                <option value="1 JAYYID">1 JAYYID</option>
+                <option value="1 ILTIZAM">1 ILTIZAM</option>
+                <option value="1 KHOIR">1 KHOIR</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 2 ---">
+                <option value="2 MUMTAZ">2 MUMTAZ</option>
+                <option value="2 JAYYID">2 JAYYID</option>
+                <option value="2 ILTIZAM">2 ILTIZAM</option>
+                <option value="2 KHOIR">2 KHOIR</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 3 ---">
+                <option value="3 MUMTAZ">3 MUMTAZ</option>
+                <option value="3 JAYYID">3 JAYYID</option>
+                <option value="3 ILTIZAM">3 ILTIZAM</option>
+                <option value="3 KHOIR">3 KHOIR</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 4 ---">
+                <option value="4 MUMTAZ">4 MUMTAZ</option>
+                <option value="4 JAYYID">4 JAYYID</option>
+                <option value="4 ILTIZAM">4 ILTIZAM</option>
+                <option value="4 KHOIR">4 KHOIR</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 5 ---">
+                <option value="5 MUMTAZ">5 MUMTAZ</option>
+                <option value="5 JAYYID">5 JAYYID</option>
+                <option value="5 ILTIZAM">5 ILTIZAM</option>
+                <option value="5 KHOIR">5 KHOIR</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 6 ---">
+                <option value="6 MUMTAZ">6 MUMTAZ</option>
+                <option value="6 JAYYID">6 JAYYID</option>
+                <option value="6 ILTIZAM">6 ILTIZAM</option>
+                <option value="6 KHOIR">6 KHOIR</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Guru Kelas:</label>
+            <input type="text" id="edit-student-teacher" class="form-control" readonly style="background:var(--bg-surface-alt); color:var(--text-muted);">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Kehadiran Persekolahan:</label>
+            <input type="text" id="edit-student-hadir" class="form-control" placeholder="Contoh: 195 / 200 Hari">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Emel Murid / Waris (Untuk Penghantaran Slip):</label>
+          <input type="email" id="edit-student-email" class="form-control" placeholder="Contoh: waris@gmail.com">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Ulasan Guru Pentaksir / Guru Kelas:</label>
+          <textarea id="edit-student-ulasan" class="form-control" rows="3" placeholder="Masukkan ulasan kemajuan murid..."></textarea>
+        </div>
+
+        <!-- Audit Trace Preview Banner -->
+        <div style="background: rgba(56, 189, 248, 0.08); border: 1px dashed #38bdf8; border-radius: 8px; padding: 0.75rem; font-size: 0.8rem;">
+          <div style="font-weight: 700; color: #0284c7; margin-bottom: 0.25rem;">
+            🔍 Pengesanan Audit Emel Rasmi:
+          </div>
+          <div style="color: var(--text-main);" id="edit-student-trace-notice">
+            Perubahan ini akan dikesan dan direkodkan di bawah nama serta emel anda.
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('modal-edit-student')">Batal</button>
+        <button class="btn btn-primary" onclick="submitEditStudent()">💾 Simpan Maklumat Murid</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

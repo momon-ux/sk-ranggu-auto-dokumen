@@ -8415,16 +8415,17 @@ function recordAuditLog(action, details) {
   saveAuditLogsData();
 }
 
-// 3. Hak Akses Mengisi Subjek (Role Enforcement)
+// 3. Hak Akses Mengisi Subjek & Pengurusan Data (Kebenaran Terbuka dengan Jejak Audit)
 function canEditSubject(kelas, subject) {
-  if (!currentUser) return false;
-  if (currentUser.isAdmin || currentUser.id === "T001") return true;
+  // Semua guru diberi kebenaran untuk mengisi & mengedit markah (jejak audit dikesan pada setiap pengubahan)
+  return true;
+}
 
+function isDesignatedSubjectTeacher(kelas, subject) {
+  if (!currentUser) return false;
   const classAssign = subjectAssignments[kelas];
   if (!classAssign || !classAssign.subjects) return false;
-
-  const assignedTeacherId = classAssign.subjects[subject];
-  return assignedTeacherId === currentUser.id;
+  return classAssign.subjects[subject] === currentUser.id;
 }
 
 function isClassTeacherOf(kelas) {
@@ -8465,12 +8466,16 @@ function initAuthUI() {
       }
     }
   } else {
-    if (display) display.innerText = "Belum Log Masuk";
+    const activeTeacherName = localStorage.getItem("skrg_active_teacher_name") || "Guru Bertugas";
+    const activeTeacherEmail = localStorage.getItem("skrg_active_teacher_email") || "skranggu@moe-dl.edu.my";
+    if (display) display.innerHTML = `<strong>${activeTeacherName}</strong> <span class="email-chip">✉️ ${activeTeacherEmail}</span>`;
     if (btnLogin) btnLogin.style.display = "inline-block";
     if (btnLogout) btnLogout.style.display = "none";
     if (btnChangePwd) btnChangePwd.style.display = "none";
     if (btnClassAssign) btnClassAssign.style.display = "none";
-    if (permBanner) permBanner.innerHTML = `🔒 <strong>Mod Lihat Sahaja:</strong> Sila klik butang <strong>"Log Masuk"</strong> untuk mula mengisi markah atau mengurus murid.`;
+    if (permBanner) {
+      permBanner.innerHTML = `👤 <strong>Sesi Pengisian Terbuka:</strong> Sesiapa sahaja dibenarkan mengisi markah dan menguruskan maklumat murid. Sila <a href="javascript:void(0)" onclick="openLoginModal()" style="color:#38bdf8; font-weight:700; text-decoration:underline;">pilih nama anda</a> agar setiap perubahan dikesan dengan tepat di bawah emel rasmi anda.`;
+    }
     if (classTeacherInd) classTeacherInd.innerText = "";
   }
 }
@@ -8759,6 +8764,9 @@ function renderAdminTeachersTable() {
       <td><span class="school-tag">${t.role}</span></td>
       <td>${isTemp ? '<span style="color:#b45309; font-weight:700;">Sementara (P3nd1d1kan)</span>' : '<span style="color:#15803d; font-weight:700;">Peribadi (Telah Ditukar)</span>'}</td>
       <td style="text-align:center; white-space:nowrap;">
+        <button class="btn btn-outline btn-sm btn-action-edit" onclick="openEditTeacherModal('${t.id}')" title="Edit nama guru, no IC, emel, peranan atau kelas pegangan" style="margin-right:0.35rem;">
+          ✏️ Edit Guru
+        </button>
         <button class="btn btn-outline btn-sm" onclick="resetTeacherPassword('${t.id}')" title="Set semula kata laluan ke P3nd1d1kan" style="margin-right:0.35rem;">
           🔄 Reset P3nd1d1kan
         </button>
@@ -8886,44 +8894,165 @@ function renderAdminClassAssignments(kelas) {
   const container = document.getElementById("admin-class-assignment-container");
   if (!container) return;
 
-  const currentAssign = subjectAssignments[kelas]?.subjects || {};
-  const subjects = ALL_SUBJECT_KEYS;
+  const currentClassAssign = subjectAssignments[kelas] || { subjects: {} };
+  const currentSubjects = currentClassAssign.subjects || {};
+  const currentTeacherId = currentClassAssign.classTeacherId || "";
+  const currentTeacherName = currentClassAssign.classTeacherName || (teachersData.find(t => t.id === currentTeacherId)?.name || "Belum Ditetapkan");
+  const studentCount = studentsData.filter(s => s.kelas === kelas).length;
 
-  let html = `<div class="form-grid" style="grid-template-columns: 1fr 1fr; gap:1rem;">`;
-  subjects.forEach(sub => {
-    html += `
-      <div class="form-group">
-        <label class="form-label">${SUBJECT_LABELS[sub]}:</label>
-        <select class="form-control admin-assign-sub" data-sub="${sub}">
-    `;
-    teachersData.forEach(t => {
-      const selected = (currentAssign[sub] === t.id) ? "selected" : "";
-      html += `<option value="${t.id}" ${selected}>${t.name} (${t.role})</option>`;
-    });
-    html += `</select></div>`;
+  let teacherOptions = `<option value="">-- Pilih Guru Kelas --</option>`;
+  teachersData.forEach(t => {
+    const sel = (t.id === currentTeacherId || t.name === currentTeacherName) ? "selected" : "";
+    teacherOptions += `<option value="${t.id}" ${sel}>${t.name} (${t.role})</option>`;
   });
-  html += `</div>`;
-  html += `
-    <div style="margin-top:1.25rem; text-align:right;">
-      <button class="btn btn-primary" onclick="saveAdminClassAssignments('${kelas}')">💾 Simpan Penetapan ${kelas}</button>
+
+  const isTahap1 = kelas.startsWith("1") || kelas.startsWith("2") || kelas.startsWith("3");
+
+  let subjectsHtml = `<div class="form-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.85rem;">`;
+  ALL_SUBJECT_KEYS.forEach(sub => {
+    const subLabel = SUBJECT_LABELS[sub] || sub.toUpperCase();
+    const isTahap2Only = isTahap1 && (sub === "sej" || sub === "rbt");
+    const assignedTid = currentSubjects[sub] || "";
+
+    let subTeacherOpts = `<option value="">-- Belum Ditetapkan --</option>`;
+    teachersData.forEach(t => {
+      const sel = (t.id === assignedTid) ? "selected" : "";
+      subTeacherOpts += `<option value="${t.id}" ${sel}>${t.name} (${t.role})</option>`;
+    });
+
+    subjectsHtml += `
+      <div class="form-group" style="margin-bottom:0; background:var(--bg-surface); padding:0.65rem 0.85rem; border-radius:8px; border:1px solid var(--border);">
+        <label class="form-label" style="font-size:0.82rem; font-weight:700; display:flex; justify-content:space-between; align-items:center;">
+          <span>${subLabel}</span>
+          ${isTahap2Only ? '<span style="color:#f59e0b; font-size:0.7rem; font-weight:800;">(Tahap 2 Sahaja)</span>' : ''}
+        </label>
+        <select class="form-control admin-assign-sub" data-sub="${sub}" style="font-size:0.8rem; padding:0.4rem 0.6rem;">
+          ${subTeacherOpts}
+        </select>
+      </div>
+    `;
+  });
+  subjectsHtml += `</div>`;
+
+  let html = `
+    <div style="background:var(--bg-surface-alt); padding:1.25rem; border:1.5px solid var(--border); border-radius:12px; margin-top:0.5rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; border-bottom:1.5px solid var(--border); padding-bottom:0.75rem;">
+        <div>
+          <h4 style="margin:0; font-size:1.05rem; color:var(--text-main); font-weight:800;">
+            🏫 Pengurusan Guru: <span style="color:var(--primary-royal);">${kelas}</span>
+          </h4>
+          <span style="font-size:0.78rem; color:var(--text-muted);">Admin berkuasa penuh mengedit nama Guru Kelas dan menetapkan Guru Mata Pelajaran</span>
+        </div>
+        <span class="badge-pill">👥 ${studentCount} Murid Terdaftar</span>
+      </div>
+
+      <!-- BAHAGIAN 1: EDIT GURU KELAS -->
+      <div style="background:var(--bg-surface); padding:1rem; border-radius:10px; border:1.5px solid var(--border); margin-bottom:1.25rem;">
+        <label class="form-label" style="font-weight:800; font-size:0.92rem; color:var(--primary-royal); margin-bottom:0.6rem; display:flex; align-items:center; gap:0.35rem;">
+          <span>👑</span> <span>Guru Kelas Bertanggungjawab:</span>
+        </label>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.85rem;">
+          <div>
+            <label class="form-label" style="font-size:0.78rem; color:var(--text-muted);">Pilih daripada Senarai Guru SK Ranggu:</label>
+            <select id="admin-class-teacher-select" class="form-control" onchange="onAdminClassTeacherSelectChange(this.value)">
+              ${teacherOptions}
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:0.78rem; color:var(--text-muted);">Atau Edit / Taip Nama Guru Kelas:</label>
+            <input type="text" id="admin-class-teacher-name" class="form-control" value="${currentTeacherName}" placeholder="Contoh: Pn. Noraini binti Jaafar">
+          </div>
+        </div>
+        <small style="color:var(--text-muted); font-size:0.75rem; margin-top:0.4rem; display:block;">
+          * Nama guru kelas ini akan tertera secara automatik pada semua slip keputusan murid dan bar penapis kelas.
+        </small>
+      </div>
+
+      <!-- BAHAGIAN 2: EDIT GURU MATA PELAJARAN -->
+      <div>
+        <label class="form-label" style="font-weight:800; font-size:0.92rem; color:var(--text-main); margin-bottom:0.75rem; display:flex; align-items:center; gap:0.35rem;">
+          <span>📚</span> <span>Guru Mata Pelajaran Bagi Setiap Subjek:</span>
+        </label>
+        ${subjectsHtml}
+      </div>
+
+      <div style="margin-top:1.5rem; text-align:right;">
+        <button class="btn btn-primary" onclick="saveAdminClassAssignments('${kelas}')">
+          💾 Simpan Penetapan Guru Kelas & Subjek (${kelas})
+        </button>
+      </div>
     </div>
   `;
+
   container.innerHTML = html;
 }
 
-function saveAdminClassAssignments(kelas) {
-  const selects = document.querySelectorAll(".admin-assign-sub");
-  if (!subjectAssignments[kelas]) subjectAssignments[kelas] = { subjects: {} };
+function onAdminClassTeacherSelectChange(selectedId) {
+  if (!selectedId) return;
+  const teacher = teachersData.find(t => t.id === selectedId);
+  const nameInput = document.getElementById("admin-class-teacher-name");
+  if (teacher && nameInput) {
+    nameInput.value = teacher.name;
+  }
+}
 
-  selects.forEach(s => {
-    const sub = s.getAttribute("data-sub");
-    subjectAssignments[kelas].subjects[sub] = s.value;
+function saveAdminClassAssignments(kelas) {
+  const teacherSelect = document.getElementById("admin-class-teacher-select");
+  const teacherNameInput = document.getElementById("admin-class-teacher-name");
+  const selectedTeacherId = teacherSelect?.value || "";
+  const teacherName = teacherNameInput?.value.trim() || (teachersData.find(t => t.id === selectedTeacherId)?.name || "Belum Ditetapkan");
+
+  if (!subjectAssignments[kelas]) {
+    subjectAssignments[kelas] = { subjects: {} };
+  }
+
+  subjectAssignments[kelas].classTeacherId = selectedTeacherId;
+  subjectAssignments[kelas].classTeacherName = teacherName;
+
+  // Baca pilihan guru bagi setiap subjek
+  const subSelects = document.querySelectorAll(".admin-assign-sub");
+  subSelects.forEach(sel => {
+    const sub = sel.getAttribute("data-sub");
+    if (sub) {
+      subjectAssignments[kelas].subjects[sub] = sel.value;
+    }
+  });
+
+  // Kemas kini rekod guru dalam teachersData
+  if (selectedTeacherId) {
+    teachersData.forEach(t => {
+      if (t.id === selectedTeacherId) {
+        t.isClassTeacherOf = kelas;
+        t.role = `GURU KELAS (${kelas})`;
+        t.name = teacherName;
+      } else if (t.isClassTeacherOf === kelas) {
+        t.isClassTeacherOf = null;
+        t.role = "GURU MATA PELAJARAN";
+      }
+    });
+  }
+
+  // Kemas kini nama guru pada semua murid kelas ini
+  studentsData.forEach(st => {
+    if (st.kelas === kelas) {
+      st.guru = teacherName;
+    }
   });
 
   saveSubjectAssignmentsData();
+  saveTeachersData();
+  saveCurrentMarks(false);
+
+  const adminName = currentUser ? currentUser.name : "Admin";
+  recordAuditLog("ADMIN_PENETAPAN_KELAS", `Admin ${adminName} telah mengemas kini Guru Kelas (${teacherName}) dan Guru Subjek bagi kelas ${kelas}.`);
+
+  renderAdminClassAssignments(kelas);
+  renderAdminTeachersTable();
+  updateClassPillsUI();
   renderEntryTable();
-  recordAuditLog("ADMIN_PENETAPAN_SUBJEK", `Admin telah mengemas kini penetapan guru subjek bagi kelas ${kelas}.`);
-  alert(`✅ Penetapan guru subjek bagi ${kelas} berjaya disimpan!`);
+  renderDatabaseTable();
+
+  showToastNotification(`✅ Penetapan Guru Kelas (${teacherName}) & Guru Subjek bagi ${kelas} berjaya disimpan!`);
 }
 
 function renderAdminAuditTable() {
@@ -9144,21 +9273,11 @@ function getTPFromMark(markVal) {
   return "TP 1 (Sangat Terhad)";
 }
 
-// 13. Kemas Kini Markah Murid Secara Masa Nyata (Live Input dengan Kawalan Hak Akses)
+// 13. Kemas Kini Markah Murid Secara Masa Nyata (Kebenaran Terbuka untuk Semua dengan Jejak Audit Penuh)
 function updateStudentMark(studentId, subject, val) {
   const st = studentsData.find(s => s.id === studentId);
   if (!st) return;
 
-  // Semak Hak Akses Guru
-  if (!canEditSubject(st.kelas, subject)) {
-    const assignedId = subjectAssignments[st.kelas]?.subjects[subject];
-    const teacher = teachersData.find(t => t.id === assignedId);
-    const teacherName = teacher ? teacher.name : "Guru yang ditetapkan";
-    alert(`Akses Ditolak! Subjek ini telah ditetapkan kepada: ${teacherName}. Anda tidak dibenarkan mengubah markah bagi subjek ini.`);
-    renderEntryTable();
-    return;
-  }
-  
   const cleanVal = val.trim();
   if (cleanVal !== "") {
     const num = parseFloat(cleanVal);
@@ -9238,10 +9357,8 @@ function updateStudentMark(studentId, subject, val) {
 
   saveCurrentMarks(false);
 
-  // Rekod Jejak Audit
-  if (currentUser) {
-    recordAuditLog("KEMAS_KINI_MARKAH", `${editorName} [Emel: ${editorEmail}] menukar markah ${subject.toUpperCase()} murid ${st.name} (${st.kelas}) daripada '${oldMark || '-'}' kepada '${cleanVal || '-'}' (Gred: ${st[`${subject}_g`]}, TP: ${st[`${subject}_tp`]}).`);
-  }
+  // Rekod Jejak Audit (Sentiasa direkodkan untuk pengesanan telus)
+  recordAuditLog("KEMAS_KINI_MARKAH", `${editorName} [Emel: ${editorEmail}] menukar markah ${subject.toUpperCase()} murid ${st.name} (${st.kelas}) daripada '${oldMark || '-'}' kepada '${cleanVal || '-'}' (Gred: ${st[`${subject}_g`]}, TP: ${st[`${subject}_tp`]}).`);
 }
 
 // 14. Kira Kedudukan Kelas
@@ -9526,40 +9643,25 @@ function renderEntryTable() {
         return;
       }
 
-      const allowed = canEditSubject(st.kelas, sub);
       const assignedTeacherId = subjectAssignments[st.kelas]?.subjects[sub];
       const assignedTeacher = teachersData.find(t => t.id === assignedTeacherId);
       const assignedTeacherName = assignedTeacher ? assignedTeacher.name : "Belum Ditetapkan";
       const shortTeacherName = assignedTeacherName.split(' ')[0] || "Guru";
 
-      if (allowed) {
-        subjectCellsHtml += `
-          <td>
-            <div class="mark-cell-group">
-              <input type="number" min="0" max="100" class="mark-input" value="${st[sub + '_m']}" placeholder="-" 
-                     onchange="updateStudentMark('${st.id}', '${sub}', this.value)">
-              <div>
-                <span class="gred-text-mini" id="badge-gred-${sub}-${st.id}">${st[sub + '_g']}</span>
-                <span class="tp-badge-mini" id="badge-tp-${sub}-${st.id}">${st[sub + '_tp'].split(' ')[0]}</span>
-              </div>
+      // KEBENARAN TERBUKA: Sesiapa sahaja boleh mengisi markah, jejak audit dikesan secara automatik
+      subjectCellsHtml += `
+        <td>
+          <div class="mark-cell-group">
+            <input type="number" min="0" max="100" class="mark-input" value="${st[sub + '_m']}" placeholder="-" 
+                   onchange="updateStudentMark('${st.id}', '${sub}', this.value)">
+            <div>
+              <span class="gred-text-mini" id="badge-gred-${sub}-${st.id}">${st[sub + '_g']}</span>
+              <span class="tp-badge-mini" id="badge-tp-${sub}-${st.id}">${st[sub + '_tp'].split(' ')[0]}</span>
             </div>
-          </td>
-        `;
-      } else {
-        // DIKUNCI: Guru lain tidak boleh mengisi subjek yang bukan pegangannya!
-        subjectCellsHtml += `
-          <td>
-            <div class="mark-cell-group" title="🔒 Subjek ini dipegang oleh: ${assignedTeacherName}. Anda tidak dibenarkan mengubah.">
-              <input type="number" min="0" max="100" class="mark-input mark-input-locked" value="${st[sub + '_m']}" placeholder="-" disabled readonly>
-              <div>
-                <span class="gred-text-mini" id="badge-gred-${sub}-${st.id}">${st[sub + '_g']}</span>
-                <span class="tp-badge-mini" id="badge-tp-${sub}-${st.id}">${st[sub + '_tp'].split(' ')[0]}</span>
-              </div>
-            </div>
-            <div class="lock-pill" title="🔒 Guru Subjek: ${assignedTeacherName}">🔒 <small>${shortTeacherName}</small></div>
-          </td>
-        `;
-      }
+          </div>
+          <div class="teacher-pill" title="Guru Subjek Ditetapkan: ${assignedTeacherName}">📚 <small>${shortTeacherName}</small></div>
+        </td>
+      `;
     });
 
     const totalDenom = isTahap1 ? "/900" : "/1100";
@@ -9579,6 +9681,7 @@ function renderEntryTable() {
       <td><strong style="color:#10b981;" id="row-purata-${st.id}">${st.purata}</strong></td>
       <td style="white-space:nowrap; text-align:center;">
         <button class="btn btn-outline btn-sm" onclick="viewStudentSlip('${st.id}')" title="Pratonton Slip Pentaksiran">👁️</button>
+        <button class="btn btn-outline btn-sm btn-action-edit" onclick="openEditStudentModal('${st.id}')" title="Kemas kini nama, kelas, no murid atau ulasan murid ini">✏️</button>
         <button class="btn btn-outline btn-sm btn-action-delete" onclick="removeStudent('${st.id}')" title="Buang murid ini daripada senarai">🗑️</button>
       </td>
     `;
@@ -9661,6 +9764,7 @@ function renderDatabaseTable() {
       </td>
       <td style="text-align: center; white-space: nowrap;">
         <button class="btn btn-outline btn-sm" onclick="viewStudentSlip('${st.id}')" title="Lihat Slip">👁️ Slip</button>
+        <button class="btn btn-outline btn-sm btn-action-edit" onclick="openEditStudentModal('${st.id}')" title="Kemas kini nama, kelas atau maklumat murid ini">✏️ Edit</button>
         <button class="btn btn-outline btn-sm btn-action-delete" onclick="removeStudent('${st.id}')" title="Buang murid ini">🗑️</button>
       </td>
     `;
@@ -10652,3 +10756,214 @@ window.addEventListener('appinstalled', () => {
 });
 
 
+
+// ============================================================================
+// 28. MODUL PENGURUSAN EDIT MURID (SEMUA GURU BOLEH EDIT DENGAN PENJEJAKAN AUDIT)
+// ============================================================================
+function openEditStudentModal(studentId) {
+  const st = studentsData.find(s => s.id === studentId);
+  if (!st) return;
+
+  document.getElementById("edit-student-target-id").value = st.id;
+  document.getElementById("edit-student-id").value = st.id;
+  document.getElementById("edit-student-name").value = st.name;
+  
+  const classSelect = document.getElementById("edit-student-class");
+  if (classSelect) {
+    classSelect.value = st.kelas;
+  }
+  
+  document.getElementById("edit-student-teacher").value = st.guru || (subjectAssignments[st.kelas]?.classTeacherName || "-");
+  document.getElementById("edit-student-hadir").value = st.hadir || "190 / 200 Hari";
+  document.getElementById("edit-student-email").value = st.email || "";
+  document.getElementById("edit-student-ulasan").value = st.ulasan || "";
+
+  const changerName = currentUser ? currentUser.name : (localStorage.getItem("skrg_active_teacher_name") || "Guru Bertugas");
+  const changerEmail = currentUser ? currentUser.email : (localStorage.getItem("skrg_active_teacher_email") || "guru@moe-dl.edu.my");
+
+  const notice = document.getElementById("edit-student-trace-notice");
+  if (notice) {
+    notice.innerHTML = `Perubahan maklumat murid ini akan direkodkan dan dikesan di bawah nama: <strong>${changerName}</strong> (<code class="trace-code-email">✉️ ${changerEmail}</code>).`;
+  }
+
+  document.getElementById("modal-edit-student")?.classList.add("active");
+  document.getElementById("edit-student-name")?.focus();
+}
+
+function onEditStudentClassChange(newClass) {
+  const teacherInput = document.getElementById("edit-student-teacher");
+  if (teacherInput) {
+    teacherInput.value = subjectAssignments[newClass]?.classTeacherName || "Belum Ditetapkan";
+  }
+}
+
+function submitEditStudent() {
+  const id = document.getElementById("edit-student-target-id")?.value;
+  const st = studentsData.find(s => s.id === id);
+  if (!st) return;
+
+  const newName = document.getElementById("edit-student-name")?.value.trim().toUpperCase();
+  const newClass = document.getElementById("edit-student-class")?.value;
+  const newHadir = document.getElementById("edit-student-hadir")?.value.trim();
+  const newEmail = document.getElementById("edit-student-email")?.value.trim();
+  const newUlasan = document.getElementById("edit-student-ulasan")?.value.trim();
+
+  if (!newName) {
+    alert("Sila masukkan nama penuh murid!");
+    return;
+  }
+
+  const oldName = st.name;
+  const oldClass = st.kelas;
+
+  st.name = newName;
+  st.kelas = newClass;
+  st.guru = subjectAssignments[newClass]?.classTeacherName || st.guru;
+  st.hadir = newHadir || st.hadir;
+  st.email = newEmail;
+  st.ulasan = newUlasan;
+
+  const changerName = currentUser ? currentUser.name : (localStorage.getItem("skrg_active_teacher_name") || "Guru Bertugas");
+  const changerEmail = currentUser ? currentUser.email : (localStorage.getItem("skrg_active_teacher_email") || "guru@moe-dl.edu.my");
+  const now = new Date();
+  const timeStr = now.toLocaleDateString("ms-MY") + " " + now.toLocaleTimeString("ms-MY", { hour: '2-digit', minute: '2-digit' });
+
+  st.lastModifiedBy = changerName;
+  st.lastModifiedEmail = changerEmail;
+  st.lastModifiedAt = timeStr;
+  st.lastModifiedAction = `Kemas kini maklumat murid (${oldName} ➔ ${newName})`;
+
+  saveCurrentMarks(false);
+  closeModal("modal-edit-student");
+  renderEntryTable();
+  renderDatabaseTable();
+  updateStats();
+
+  recordAuditLog("KEMAS_KINI_MURID", `Maklumat murid ${newName} (${st.id}, ${newClass}) telah dikemas kini oleh ${changerName} (${changerEmail}).`);
+  showToastNotification(`✅ Maklumat murid ${newName} berjaya dikemas kini!`);
+}
+
+// ============================================================================
+// 29. MODUL EDIT GURU (ADMIN SAHAJA - NAMA GURU, IC, EMEL, PERANAN & KELAS)
+// ============================================================================
+function openEditTeacherModal(teacherId) {
+  const teacher = teachersData.find(t => t.id === teacherId);
+  if (!teacher) return;
+
+  document.getElementById("edit-teacher-id").value = teacher.id;
+  document.getElementById("edit-teacher-name").value = teacher.name;
+  document.getElementById("edit-teacher-ic").value = teacher.ic;
+  document.getElementById("edit-teacher-email").value = teacher.email || "";
+  
+  const roleSelect = document.getElementById("edit-teacher-role");
+  if (roleSelect) {
+    if (teacher.isAdmin || teacher.role.includes("PENTADBIR")) {
+      roleSelect.value = "PENTADBIR SISTEM / PEMBANGUN SISTEM";
+    } else if (teacher.isClassTeacherOf || teacher.role.includes("GURU KELAS")) {
+      roleSelect.value = "GURU KELAS";
+    } else {
+      roleSelect.value = "GURU MATA PELAJARAN";
+    }
+  }
+
+  const classGroup = document.getElementById("edit-teacher-class-group");
+  const classSelect = document.getElementById("edit-teacher-class");
+  if (classSelect) {
+    classSelect.value = teacher.isClassTeacherOf || "";
+  }
+  if (classGroup) {
+    classGroup.style.display = (teacher.role.includes("GURU KELAS") || teacher.isClassTeacherOf) ? "block" : "none";
+  }
+
+  document.getElementById("modal-edit-teacher")?.classList.add("active");
+  document.getElementById("edit-teacher-name")?.focus();
+}
+
+function handleEditTeacherRoleChange(role) {
+  const classGroup = document.getElementById("edit-teacher-class-group");
+  if (classGroup) {
+    classGroup.style.display = (role === "GURU KELAS") ? "block" : "none";
+  }
+}
+
+function submitEditTeacher() {
+  const id = document.getElementById("edit-teacher-id")?.value;
+  const teacher = teachersData.find(t => t.id === id);
+  if (!teacher) return;
+
+  const newName = document.getElementById("edit-teacher-name")?.value.trim().toUpperCase();
+  const newIc = document.getElementById("edit-teacher-ic")?.value.trim();
+  const newEmail = document.getElementById("edit-teacher-email")?.value.trim();
+  const newRole = document.getElementById("edit-teacher-role")?.value;
+  const newClass = document.getElementById("edit-teacher-class")?.value;
+
+  if (!newName) {
+    alert("Sila masukkan nama guru!");
+    return;
+  }
+  if (!newIc) {
+    alert("Sila masukkan No. IC guru!");
+    return;
+  }
+
+  const oldName = teacher.name;
+  teacher.name = newName;
+  teacher.ic = newIc;
+  teacher.email = newEmail || `g-${newName.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 10)}@moe-dl.edu.my`;
+
+  if (newRole === "GURU KELAS" && newClass) {
+    teacher.role = `GURU KELAS (${newClass})`;
+    teacher.isClassTeacherOf = newClass;
+    
+    // Kemas kini subjectAssignments bagi kelas ini
+    if (!subjectAssignments[newClass]) subjectAssignments[newClass] = { subjects: {} };
+    subjectAssignments[newClass].classTeacherId = teacher.id;
+    subjectAssignments[newClass].classTeacherName = newName;
+
+    // Kemas kini nama guru pada semua murid kelas ini
+    studentsData.forEach(st => {
+      if (st.kelas === newClass) st.guru = newName;
+    });
+  } else if (newRole === "PENTADBIR SISTEM / PEMBANGUN SISTEM") {
+    teacher.role = "PENTADBIR SISTEM / PEMBANGUN SISTEM";
+    teacher.isAdmin = true;
+    teacher.isClassTeacherOf = null;
+  } else {
+    teacher.role = "GURU MATA PELAJARAN";
+    teacher.isClassTeacherOf = null;
+  }
+
+  saveTeachersData();
+  saveSubjectAssignmentsData();
+  saveCurrentMarks(false);
+
+  closeModal("modal-edit-teacher");
+  renderAdminTeachersTable();
+  const currentAdminClass = document.getElementById("admin-manage-class-select")?.value || "1 MUMTAZ";
+  renderAdminClassAssignments(currentAdminClass);
+  updateClassPillsUI();
+  renderEntryTable();
+  renderDatabaseTable();
+
+  const adminName = currentUser ? currentUser.name : "Admin";
+  recordAuditLog("ADMIN_KEMAS_KINI_GURU", `Maklumat guru ${newName} (${teacher.id}) telah dikemas kini oleh Admin ${adminName}.`);
+  showToastNotification(`✅ Maklumat guru ${newName} berjaya dikemas kini!`);
+}
+
+// 1-Klik Penukar Identiti Guru Aktif untuk Penjejakan Audit Pantas
+function quickSwitchActiveTeacher(teacherId) {
+  if (!teacherId) return;
+  const teacher = teachersData.find(t => t.id === teacherId);
+  if (!teacher) return;
+
+  currentUser = teacher;
+  localStorage.setItem("skrg_current_user", JSON.stringify(currentUser));
+  localStorage.setItem("skrg_active_teacher_name", teacher.name);
+  localStorage.setItem("skrg_active_teacher_email", teacher.email || "");
+
+  initAuthUI();
+  renderEntryTable();
+  renderDatabaseTable();
+
+  showToastNotification(`👤 Sesi aktif ditetapkan: ${teacher.name} (✉️ ${teacher.email || 'skranggu@moe-dl.edu.my'})`);
+}
