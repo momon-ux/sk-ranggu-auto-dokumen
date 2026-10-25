@@ -220,35 +220,55 @@
           <span id="class-teacher-indicator" style="color:#15803d; font-weight:800;"></span>
         </div>
 
-        <!-- Bar Pintas Tapis Kelas (1-Klik Mesra Guru SK Ranggu) -->
-        <div class="class-pills-bar no-print">
-          <span class="pills-label">🏫 Tapis Kelas Segera:</span>
-          <button class="class-pill-btn active" id="pill-ALL" onclick="filterByClassPill('ALL')">
-            <span>⭐</span> <strong>Semua Kelas</strong> <small>(50 Murid)</small>
-          </button>
-          <button class="class-pill-btn" id="pill-6-MUMTAZ" onclick="filterByClassPill('6 MUMTAZ')">
-            <span>📘</span> <strong>6 MUMTAZ</strong> <small>(14 Murid • Pn. Bajam)</small>
-          </button>
-          <button class="class-pill-btn" id="pill-6-JAYYID" onclick="filterByClassPill('6 JAYYID')">
-            <span>📗</span> <strong>6 JAYYID</strong> <small>(13 Murid • AgKu Kemainddra)</small>
-          </button>
-          <button class="class-pill-btn" id="pill-6-ILTIZAM" onclick="filterByClassPill('6 ILTIZAM')">
-            <span>📙</span> <strong>6 ILTIZAM</strong> <small>(12 Murid • Pn. Noze)</small>
-          </button>
-          <button class="class-pill-btn" id="pill-6-KHOIR" onclick="filterByClassPill('6 KHOIR')">
-            <span>📕</span> <strong>6 KHOIR</strong> <small>(11 Murid • Sabriah)</small>
-          </button>
+        <!-- Bar Pintas Tapis Tahun (Tahun 1 hingga 6) -->
+        <div class="level-tabs-bar no-print">
+          <span class="level-label">🎓 Pilih Tahun / Aliran:</span>
+          <div class="level-btn-group" id="entry-level-btn-group">
+            <button class="level-btn active" id="btn-level-ALL" onclick="filterByYearLevel('ALL')" title="Papar semua murid Tahun 1 hingga 6">
+              <span>⭐</span> <span>Semua Tahun</span> <small>(1-6)</small>
+            </button>
+            <button class="level-btn" id="btn-level-1" onclick="filterByYearLevel('1')" title="Tahun 1 (Tahap 1)">
+              <span>1️⃣</span> <span>Tahun 1</span>
+            </button>
+            <button class="level-btn" id="btn-level-2" onclick="filterByYearLevel('2')" title="Tahun 2 (Tahap 1)">
+              <span>2️⃣</span> <span>Tahun 2</span>
+            </button>
+            <button class="level-btn" id="btn-level-3" onclick="filterByYearLevel('3')" title="Tahun 3 (Tahap 1)">
+              <span>3️⃣</span> <span>Tahun 3</span>
+            </button>
+            <button class="level-btn" id="btn-level-4" onclick="filterByYearLevel('4')" title="Tahun 4 (Tahap 2)">
+              <span>4️⃣</span> <span>Tahun 4</span>
+            </button>
+            <button class="level-btn" id="btn-level-5" onclick="filterByYearLevel('5')" title="Tahun 5 (Tahap 2)">
+              <span>5️⃣</span> <span>Tahun 5</span>
+            </button>
+            <button class="level-btn" id="btn-level-6" onclick="filterByYearLevel('6')" title="Tahun 6 (Tahap 2)">
+              <span>6️⃣</span> <span>Tahun 6</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bar Pintas Tapis Kelas (Dinamik mengikut Tahun terpilih) -->
+        <div class="class-pills-bar no-print" id="entry-class-pills-bar">
+          <!-- Dijana secara dinamik oleh updateClassPillsUI() -->
         </div>
 
         <div class="table-controls no-print">
           <div class="filter-group">
-            <label for="entry-filter-class" style="font-size:0.85rem; color:var(--text-muted); font-weight:700;">Tapis Kelas:</label>
-            <select id="entry-filter-class" class="select-styled">
-              <option value="ALL">Semua Kelas (4 Kelas Tahun 6)</option>
-              <option value="6 MUMTAZ">6 MUMTAZ (Pn. Bajam binti Ladung)</option>
-              <option value="6 JAYYID">6 JAYYID (AgKu Kemainddra bin Pg Mohd Taib)</option>
-              <option value="6 ILTIZAM">6 ILTIZAM (Pn. Noze binti Tukijan)</option>
-              <option value="6 KHOIR">6 KHOIR (Sabriah @ Habibah Abdul Sabar)</option>
+            <label for="entry-filter-year" style="font-size:0.85rem; color:var(--text-muted); font-weight:700;">Tahun:</label>
+            <select id="entry-filter-year" class="select-styled" onchange="onYearDropdownChange(this.value)">
+              <option value="ALL">Semua Tahun (1 - 6)</option>
+              <option value="1">Tahun 1 (Tahap 1)</option>
+              <option value="2">Tahun 2 (Tahap 1)</option>
+              <option value="3">Tahun 3 (Tahap 1)</option>
+              <option value="4">Tahun 4 (Tahap 2)</option>
+              <option value="5">Tahun 5 (Tahap 2)</option>
+              <option value="6">Tahun 6 (Tahap 2)</option>
+            </select>
+
+            <label for="entry-filter-class" style="font-size:0.85rem; color:var(--text-muted); font-weight:700;">Kelas:</label>
+            <select id="entry-filter-class" class="select-styled" onchange="onClassDropdownChange(this.value)">
+              <option value="ALL">Semua Kelas (24 Kelas, Tahun 1 - 6)</option>
             </select>
 
             <!-- Butang Penetapan Guru Subjek (Guru Kelas Sahaja) -->
@@ -327,17 +347,23 @@
             <span>📊</span>
             <span>Pangkalan Data Murid & Status Penjanaan Slip PBD / UASA SK Ranggu</span>
           </h2>
-          <span class="badge-pill">Senarai Rasmi Murid (50 Murid)</span>
+          <span class="badge-pill">Senarai Rasmi Murid (150 Murid • Tahun 1 - 6)</span>
         </div>
 
         <div class="table-controls no-print">
           <div class="filter-group">
-            <select id="db-filter-class" class="select-styled">
-              <option value="ALL">Semua Kelas</option>
-              <option value="6 MUMTAZ">6 MUMTAZ</option>
-              <option value="6 JAYYID">6 JAYYID</option>
-              <option value="6 ILTIZAM">6 ILTIZAM</option>
-              <option value="6 KHOIR">6 KHOIR</option>
+            <select id="db-filter-year" class="select-styled" onchange="onDbYearChange(this.value)">
+              <option value="ALL">Semua Tahun (1 - 6)</option>
+              <option value="1">Tahun 1 (Tahap 1)</option>
+              <option value="2">Tahun 2 (Tahap 1)</option>
+              <option value="3">Tahun 3 (Tahap 1)</option>
+              <option value="4">Tahun 4 (Tahap 2)</option>
+              <option value="5">Tahun 5 (Tahap 2)</option>
+              <option value="6">Tahun 6 (Tahap 2)</option>
+            </select>
+
+            <select id="db-filter-class" class="select-styled" onchange="renderDatabaseTable()">
+              <option value="ALL">Semua Kelas (24 Kelas, Tahun 1 - 6)</option>
             </select>
 
             <select id="db-filter-status" class="select-styled">
@@ -957,10 +983,42 @@
           <div style="margin-bottom:1rem; display:flex; align-items:center; gap:0.75rem;">
             <label class="form-label" style="margin:0;">Pilih Kelas Untuk Diuruskan:</label>
             <select id="admin-manage-class-select" class="select-styled" onchange="renderAdminClassAssignments(this.value)">
-              <option value="6 MUMTAZ">6 MUMTAZ</option>
-              <option value="6 JAYYID">6 JAYYID</option>
-              <option value="6 ILTIZAM">6 ILTIZAM</option>
-              <option value="6 KHOIR">6 KHOIR</option>
+              <optgroup label="--- TAHUN 1 ---">
+                <option value="1 MUMTAZ">1 MUMTAZ (Pn. Noraini binti Jaafar)</option>
+                <option value="1 JAYYID">1 JAYYID (En. Mohamad Faizal bin Ramli)</option>
+                <option value="1 ILTIZAM">1 ILTIZAM (Pn. Norzailina binti Mohd Nor)</option>
+                <option value="1 KHOIR">1 KHOIR (Ustaz Zulkifli bin Daud)</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 2 ---">
+                <option value="2 MUMTAZ">2 MUMTAZ (Pn. Jamilah binti Othman)</option>
+                <option value="2 JAYYID">2 JAYYID (En. Ahmad Tarmizi bin Salleh)</option>
+                <option value="2 ILTIZAM">2 ILTIZAM (Cikgu Salmah binti Ismail)</option>
+                <option value="2 KHOIR">2 KHOIR (Pn. Hasnah binti Kassim)</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 3 ---">
+                <option value="3 MUMTAZ">3 MUMTAZ (En. Mohd Rizal bin Ariffin)</option>
+                <option value="3 JAYYID">3 JAYYID (Pn. Faridah binti Mansor)</option>
+                <option value="3 ILTIZAM">3 ILTIZAM (En. Azlan bin Mat Zin)</option>
+                <option value="3 KHOIR">3 KHOIR (Pn. Siti Sarah binti Ali)</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 4 ---">
+                <option value="4 MUMTAZ">4 MUMTAZ (En. Kamaruddin bin Hassan)</option>
+                <option value="4 JAYYID">4 JAYYID (Pn. Rohana binti Yusof)</option>
+                <option value="4 ILTIZAM">4 ILTIZAM (En. Zainal Abidin bin Bakar)</option>
+                <option value="4 KHOIR">4 KHOIR (Pn. Rosnah binti Ibrahim)</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 5 ---">
+                <option value="5 MUMTAZ">5 MUMTAZ (Ustaz Wan Ahmad bin Wan Daud)</option>
+                <option value="5 JAYYID">5 JAYYID (Pn. Halimah binti Sulaiman)</option>
+                <option value="5 ILTIZAM">5 ILTIZAM (En. Rosli bin Hashim)</option>
+                <option value="5 KHOIR">5 KHOIR (Pn. Aminah binti Mahmud)</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 6 ---">
+                <option value="6 MUMTAZ" selected>6 MUMTAZ (Pn. Bajam binti Ladung)</option>
+                <option value="6 JAYYID">6 JAYYID (AgKu Kemainddra bin Pg Mohd Taib)</option>
+                <option value="6 ILTIZAM">6 ILTIZAM (Pn. Noze binti Tukijan)</option>
+                <option value="6 KHOIR">6 KHOIR (Sabriah @ Habibah Abdul Sabar)</option>
+              </optgroup>
             </select>
           </div>
           <div id="admin-class-assignment-container"></div>
@@ -1087,10 +1145,42 @@
           <div class="form-group" style="margin-bottom:0;">
             <label class="form-label" style="font-weight:700;">🏫 Pilih Kelas:</label>
             <select id="sppb-select-class" class="form-control" onchange="updateSppbPreviewData()">
-              <option value="6 MUMTAZ">6 MUMTAZ (14 Murid • Pn. Bajam binti Ladung)</option>
-              <option value="6 JAYYID">6 JAYYID (13 Murid • AgKu Kemainddra)</option>
-              <option value="6 ILTIZAM">6 ILTIZAM (12 Murid • Pn. Noze binti Tukijan)</option>
-              <option value="6 KHOIR">6 KHOIR (11 Murid • Sabriah @ Habibah)</option>
+              <optgroup label="--- TAHUN 1 ---">
+                <option value="1 MUMTAZ">1 MUMTAZ (Pn. Noraini binti Jaafar)</option>
+                <option value="1 JAYYID">1 JAYYID (En. Mohamad Faizal bin Ramli)</option>
+                <option value="1 ILTIZAM">1 ILTIZAM (Pn. Norzailina binti Mohd Nor)</option>
+                <option value="1 KHOIR">1 KHOIR (Ustaz Zulkifli bin Daud)</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 2 ---">
+                <option value="2 MUMTAZ">2 MUMTAZ (Pn. Jamilah binti Othman)</option>
+                <option value="2 JAYYID">2 JAYYID (En. Ahmad Tarmizi bin Salleh)</option>
+                <option value="2 ILTIZAM">2 ILTIZAM (Cikgu Salmah binti Ismail)</option>
+                <option value="2 KHOIR">2 KHOIR (Pn. Hasnah binti Kassim)</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 3 ---">
+                <option value="3 MUMTAZ">3 MUMTAZ (En. Mohd Rizal bin Ariffin)</option>
+                <option value="3 JAYYID">3 JAYYID (Pn. Faridah binti Mansor)</option>
+                <option value="3 ILTIZAM">3 ILTIZAM (En. Azlan bin Mat Zin)</option>
+                <option value="3 KHOIR">3 KHOIR (Pn. Siti Sarah binti Ali)</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 4 ---">
+                <option value="4 MUMTAZ">4 MUMTAZ (En. Kamaruddin bin Hassan)</option>
+                <option value="4 JAYYID">4 JAYYID (Pn. Rohana binti Yusof)</option>
+                <option value="4 ILTIZAM">4 ILTIZAM (En. Zainal Abidin bin Bakar)</option>
+                <option value="4 KHOIR">4 KHOIR (Pn. Rosnah binti Ibrahim)</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 5 ---">
+                <option value="5 MUMTAZ">5 MUMTAZ (Ustaz Wan Ahmad bin Wan Daud)</option>
+                <option value="5 JAYYID">5 JAYYID (Pn. Halimah binti Sulaiman)</option>
+                <option value="5 ILTIZAM">5 ILTIZAM (En. Rosli bin Hashim)</option>
+                <option value="5 KHOIR">5 KHOIR (Pn. Aminah binti Mahmud)</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 6 ---">
+                <option value="6 MUMTAZ" selected>6 MUMTAZ (Pn. Bajam binti Ladung)</option>
+                <option value="6 JAYYID">6 JAYYID (AgKu Kemainddra bin Pg Mohd Taib)</option>
+                <option value="6 ILTIZAM">6 ILTIZAM (Pn. Noze binti Tukijan)</option>
+                <option value="6 KHOIR">6 KHOIR (Sabriah @ Habibah Abdul Sabar)</option>
+              </optgroup>
             </select>
           </div>
           <div class="form-group" style="margin-bottom:0;">
@@ -1261,10 +1351,42 @@
           <div class="form-group" style="margin-bottom: 0;">
             <label class="form-label">Pilih Kelas: <span class="required">*</span></label>
             <select id="add-student-class" class="form-control" onchange="updateAddStudentClassTeacher()">
-              <option value="6 MUMTAZ">6 MUMTAZ</option>
-              <option value="6 JAYYID">6 JAYYID</option>
-              <option value="6 ILTIZAM">6 ILTIZAM</option>
-              <option value="6 KHOIR">6 KHOIR</option>
+              <optgroup label="--- TAHUN 1 ---">
+                <option value="1 MUMTAZ">1 MUMTAZ</option>
+                <option value="1 JAYYID">1 JAYYID</option>
+                <option value="1 ILTIZAM">1 ILTIZAM</option>
+                <option value="1 KHOIR">1 KHOIR</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 2 ---">
+                <option value="2 MUMTAZ">2 MUMTAZ</option>
+                <option value="2 JAYYID">2 JAYYID</option>
+                <option value="2 ILTIZAM">2 ILTIZAM</option>
+                <option value="2 KHOIR">2 KHOIR</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 3 ---">
+                <option value="3 MUMTAZ">3 MUMTAZ</option>
+                <option value="3 JAYYID">3 JAYYID</option>
+                <option value="3 ILTIZAM">3 ILTIZAM</option>
+                <option value="3 KHOIR">3 KHOIR</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 4 ---">
+                <option value="4 MUMTAZ">4 MUMTAZ</option>
+                <option value="4 JAYYID">4 JAYYID</option>
+                <option value="4 ILTIZAM">4 ILTIZAM</option>
+                <option value="4 KHOIR">4 KHOIR</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 5 ---">
+                <option value="5 MUMTAZ">5 MUMTAZ</option>
+                <option value="5 JAYYID">5 JAYYID</option>
+                <option value="5 ILTIZAM">5 ILTIZAM</option>
+                <option value="5 KHOIR">5 KHOIR</option>
+              </optgroup>
+              <optgroup label="--- TAHUN 6 ---">
+                <option value="6 MUMTAZ" selected>6 MUMTAZ</option>
+                <option value="6 JAYYID">6 JAYYID</option>
+                <option value="6 ILTIZAM">6 ILTIZAM</option>
+                <option value="6 KHOIR">6 KHOIR</option>
+              </optgroup>
             </select>
           </div>
 
