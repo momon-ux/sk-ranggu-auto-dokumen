@@ -299,6 +299,11 @@
                 <th style="text-align: center; width: 110px;">SN<br><small class="th-sub">Sains</small></th>
                 <th style="text-align: center; width: 110px;">SEJ<br><small class="th-sub">Sejarah</small></th>
                 <th style="text-align: center; width: 110px;">PI/PM<br><small class="th-sub">P. Islam</small></th>
+                <th style="text-align: center; width: 110px;">BA<br><small class="th-sub">B. Arab</small></th>
+                <th style="text-align: center; width: 110px;">RBT<br><small class="th-sub">RBT</small></th>
+                <th style="text-align: center; width: 110px;">PSV<br><small class="th-sub">P. Seni</small></th>
+                <th style="text-align: center; width: 110px;">MZ<br><small class="th-sub">Muzik</small></th>
+                <th style="text-align: center; width: 110px;">PJPK<br><small class="th-sub">PJPK</small></th>
                 <th style="text-align: center; width: 85px;">Jumlah</th>
                 <th style="text-align: center; width: 80px;">Purata</th>
                 <th style="text-align: center; width: 85px;">Tindakan</th>
@@ -383,6 +388,13 @@
                 <th>BI</th>
                 <th>MT</th>
                 <th>SN</th>
+                <th>SEJ</th>
+                <th>PI</th>
+                <th>BA</th>
+                <th>RBT</th>
+                <th>PSV</th>
+                <th>MZ</th>
+                <th>PJPK</th>
                 <th>Jumlah</th>
                 <th>Purata</th>
                 <th>Status Slip</th>
@@ -594,6 +606,41 @@
                 <td class="center" id="slip-pi-m">-</td>
                 <td class="center bold" id="slip-pi-g">-</td>
                 <td class="center" id="slip-pi-tp">-</td>
+              </tr>
+              <tr>
+                <td class="center">7</td>
+                <td class="bold">BAHASA ARAB (BA)</td>
+                <td class="center" id="slip-ba-m">-</td>
+                <td class="center bold" id="slip-ba-g">-</td>
+                <td class="center" id="slip-ba-tp">-</td>
+              </tr>
+              <tr>
+                <td class="center">8</td>
+                <td class="bold">REKA BENTUK DAN TEKNOLOGI (RBT)</td>
+                <td class="center" id="slip-rbt-m">-</td>
+                <td class="center bold" id="slip-rbt-g">-</td>
+                <td class="center" id="slip-rbt-tp">-</td>
+              </tr>
+              <tr>
+                <td class="center">9</td>
+                <td class="bold">PENDIDIKAN SENI VISUAL (PSV)</td>
+                <td class="center" id="slip-psv-m">-</td>
+                <td class="center bold" id="slip-psv-g">-</td>
+                <td class="center" id="slip-psv-tp">-</td>
+              </tr>
+              <tr>
+                <td class="center">10</td>
+                <td class="bold">PENDIDIKAN MUZIK (MZ)</td>
+                <td class="center" id="slip-mz-m">-</td>
+                <td class="center bold" id="slip-mz-g">-</td>
+                <td class="center" id="slip-mz-tp">-</td>
+              </tr>
+              <tr>
+                <td class="center">11</td>
+                <td class="bold">PENDIDIKAN JASMANI & PENDIDIKAN KESIHATAN (PJPK)</td>
+                <td class="center" id="slip-pjpk-m">-</td>
+                <td class="center bold" id="slip-pjpk-g">-</td>
+                <td class="center" id="slip-pjpk-tp">-</td>
               </tr>
             </tbody>
           </table>
@@ -812,6 +859,26 @@
           <div class="form-group">
             <label class="form-label">Pendidikan Islam / Moral (PI):</label>
             <select id="assign-pi" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Bahasa Arab (BA):</label>
+            <select id="assign-ba" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Reka Bentuk & Teknologi (RBT):</label>
+            <select id="assign-rbt" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pendidikan Seni Visual (PSV):</label>
+            <select id="assign-psv" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pendidikan Muzik (MZ):</label>
+            <select id="assign-mz" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pendidikan Jasmani & Kesihatan (PJPK):</label>
+            <select id="assign-pjpk" class="form-control"></select>
           </div>
         </div>
       </div>
@@ -1035,6 +1102,11 @@
               <option value="sn">Sains (SN)</option>
               <option value="sej">Sejarah (SEJ)</option>
               <option value="pi">Pendidikan Islam / Moral (PI/PM)</option>
+              <option value="ba">Bahasa Arab (BA)</option>
+              <option value="rbt">Reka Bentuk & Teknologi (RBT)</option>
+              <option value="psv">Pendidikan Seni Visual (PSV)</option>
+              <option value="mz">Pendidikan Muzik (MZ)</option>
+              <option value="pjpk">Pendidikan Jasmani & Kesihatan (PJPK)</option>
             </select>
           </div>
         </div>

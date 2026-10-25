@@ -57,6 +57,7 @@ function setupSheetStructure() {
   const headers = [
     "BIL", "NO_MURID", "NAMA_MURID", "KELAS", "SESI",
     "BM_M", "BM_G", "BI_M", "BI_G", "MT_M", "MT_G", "SN_M", "SN_G", "SEJ_M", "SEJ_G", "PI_M", "PI_G",
+    "BA_M", "BA_G", "RBT_M", "RBT_G", "PSV_M", "PSV_G", "MZ_M", "MZ_G", "PJPK_M", "PJPK_G",
     "TOTAL", "PURATA", "POSISI", "HADIR",
     "ULASAN", "EMAIL_PENJAGA",
     "STATUS_JANA", "TARIKH_JANA", "CATATAN_JANA", "LINK_PDF"

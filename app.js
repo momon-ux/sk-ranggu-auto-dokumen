@@ -31,7 +31,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -65,7 +80,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -99,7 +129,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -133,7 +178,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -167,7 +227,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -201,7 +276,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -235,7 +325,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -269,7 +374,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -303,7 +423,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -337,7 +472,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -371,7 +521,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -405,7 +570,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -439,7 +619,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -473,7 +668,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -507,7 +717,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -541,7 +766,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -575,7 +815,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -609,7 +864,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -643,7 +913,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -677,7 +962,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -711,7 +1011,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -745,7 +1060,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -779,7 +1109,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -813,7 +1158,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -847,7 +1207,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -881,7 +1256,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -915,7 +1305,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -949,7 +1354,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -983,7 +1403,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1017,7 +1452,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1051,7 +1501,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1085,7 +1550,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1119,7 +1599,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1153,7 +1648,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1187,7 +1697,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1221,7 +1746,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1255,7 +1795,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1289,7 +1844,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1323,7 +1893,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1357,7 +1942,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1391,7 +1991,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1425,7 +2040,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1459,7 +2089,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1493,7 +2138,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1527,7 +2187,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1561,7 +2236,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1595,7 +2285,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1629,7 +2334,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1663,7 +2383,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1697,7 +2432,22 @@ const INITIAL_STUDENTS_ROSTER = [
     "pi_m": "",
     "pi_g": "-",
     "pi_tp": "Belum Diisi",
-    "total": "0 / 600",
+    "ba_m": "",
+    "ba_g": "-",
+    "ba_tp": "Belum Diisi",
+    "rbt_m": "",
+    "rbt_g": "-",
+    "rbt_tp": "Belum Diisi",
+    "psv_m": "",
+    "psv_g": "-",
+    "psv_tp": "Belum Diisi",
+    "mz_m": "",
+    "mz_g": "-",
+    "mz_tp": "Belum Diisi",
+    "pjpk_m": "",
+    "pjpk_g": "-",
+    "pjpk_tp": "Belum Diisi",
+    "total": "0 / 1100",
     "purata": "0.0%",
     "posisi": "-",
     "hadir": "0 / 200 Hari",
@@ -1955,7 +2705,12 @@ const DEFAULT_SUBJECT_ASSIGNMENTS = {
       mt: "T001", // Mohammad Fikrey
       sn: "T003", // AgKu Kemainddra
       sej: "T002", // Pn. Bajam Ladung
-      pi: "T005"   // Sabriah
+      pi: "T005",  // Sabriah
+      ba: "T009",  // Pn. Rohani
+      rbt: "T008", // En. Azman
+      psv: "T011", // Pn. Siti Norbaya
+      mz: "T012",  // En. Ruslan
+      pjpk: "T010" // En. Mohd Shahril
     }
   },
   "6 JAYYID": {
@@ -1965,8 +2720,13 @@ const DEFAULT_SUBJECT_ASSIGNMENTS = {
       bi: "T006", // Pn. Nurul Anisa
       mt: "T001", // Mohammad Fikrey
       sn: "T003", // AgKu Kemainddra
-      sej: "T003", // AgKu Kemainddra
-      pi: "T005"   // Sabriah
+      sej: "T021", // En. Mohamad Faizal
+      pi: "T016",  // Pn. Normala
+      ba: "T013",  // Pn. Fatimah
+      rbt: "T014", // En. Abdul Halim
+      psv: "T015", // Pn. Zaiton
+      mz: "T018",  // Pn. Mariam
+      pjpk: "T017" // En. Khairul Anuar
     }
   },
   "6 ILTIZAM": {
@@ -1974,10 +2734,15 @@ const DEFAULT_SUBJECT_ASSIGNMENTS = {
     subjects: {
       bm: "T004", // Pn. Noze Tukijan
       bi: "T006", // Pn. Nurul Anisa
-      mt: "T001", // Mohammad Fikrey
+      mt: "T019", // En. Zulkifli
       sn: "T004", // Pn. Noze Tukijan
       sej: "T007", // Pn. Hamsiah
-      pi: "T005"   // Sabriah
+      pi: "T005",  // Sabriah
+      ba: "T009",  // Pn. Rohani
+      rbt: "T008", // En. Azman
+      psv: "T011", // Pn. Siti Norbaya
+      mz: "T012",  // En. Ruslan
+      pjpk: "T010" // En. Mohd Shahril
     }
   },
   "6 KHOIR": {
@@ -1985,10 +2750,15 @@ const DEFAULT_SUBJECT_ASSIGNMENTS = {
     subjects: {
       bm: "T007", // Pn. Hamsiah
       bi: "T006", // Pn. Nurul Anisa
-      mt: "T001", // Mohammad Fikrey
-      sn: "T003", // AgKu Kemainddra
+      mt: "T019", // En. Zulkifli
+      sn: "T020", // Pn. Noraini
       sej: "T005", // Sabriah
-      pi: "T005"   // Sabriah
+      pi: "T016",  // Pn. Normala
+      ba: "T013",  // Pn. Fatimah
+      rbt: "T014", // En. Abdul Halim
+      psv: "T015", // Pn. Zaiton
+      mz: "T018",  // Pn. Mariam
+      pjpk: "T017" // En. Khairul Anuar
     }
   }
 };
@@ -1999,8 +2769,15 @@ const SUBJECT_LABELS = {
   mt: "Matematik (MT)",
   sn: "Sains (SN)",
   sej: "Sejarah (SEJ)",
-  pi: "Pendidikan Islam (PI)"
+  pi: "Pendidikan Islam / Moral (PI/PM)",
+  ba: "Bahasa Arab (BA)",
+  rbt: "Reka Bentuk & Teknologi (RBT)",
+  psv: "Pendidikan Seni Visual (PSV)",
+  mz: "Pendidikan Muzik (MZ)",
+  pjpk: "Pendidikan Jasmani & Kesihatan (PJPK)"
 };
+
+const ALL_SUBJECT_KEYS = ["bm", "bi", "mt", "sn", "sej", "pi", "ba", "rbt", "psv", "mz", "pjpk"];
 
 // Keadaan Semasa Sistem (State)
 let currentYear = "2026";
@@ -2086,7 +2863,23 @@ function loadAuthAndPermissionsData() {
 
   const savedAssignments = localStorage.getItem("skrg_subject_assignments");
   if (savedAssignments) {
-    try { subjectAssignments = JSON.parse(savedAssignments); } catch(e) { subjectAssignments = {...DEFAULT_SUBJECT_ASSIGNMENTS}; }
+    try { 
+      subjectAssignments = JSON.parse(savedAssignments);
+      // Segerakkan subjek baharu (BA, RBT, PSV, MZ, PJPK) jika belum ada dalam storan sedia ada
+      Object.keys(DEFAULT_SUBJECT_ASSIGNMENTS).forEach(cls => {
+        if (!subjectAssignments[cls]) {
+          subjectAssignments[cls] = JSON.parse(JSON.stringify(DEFAULT_SUBJECT_ASSIGNMENTS[cls]));
+        } else {
+          if (!subjectAssignments[cls].subjects) subjectAssignments[cls].subjects = {};
+          Object.keys(DEFAULT_SUBJECT_ASSIGNMENTS[cls].subjects).forEach(sub => {
+            if (!subjectAssignments[cls].subjects[sub]) {
+              subjectAssignments[cls].subjects[sub] = DEFAULT_SUBJECT_ASSIGNMENTS[cls].subjects[sub];
+            }
+          });
+        }
+      });
+      saveSubjectAssignmentsData();
+    } catch(e) { subjectAssignments = JSON.parse(JSON.stringify(DEFAULT_SUBJECT_ASSIGNMENTS)); }
   } else {
     subjectAssignments = JSON.parse(JSON.stringify(DEFAULT_SUBJECT_ASSIGNMENTS));
     localStorage.setItem("skrg_subject_assignments", JSON.stringify(subjectAssignments));
@@ -2394,7 +3187,7 @@ function openAssignModal() {
   const title = document.getElementById("assign-class-title");
   if (title) title.innerText = selectedClass;
 
-  const subjects = ["bm", "bi", "mt", "sn", "sej", "pi"];
+  const subjects = ALL_SUBJECT_KEYS;
   const currentClassAssign = subjectAssignments[selectedClass]?.subjects || {};
 
   subjects.forEach(sub => {
@@ -2414,7 +3207,7 @@ function openAssignModal() {
 }
 
 function submitClassSubjectAssignments() {
-  const subjects = ["bm", "bi", "mt", "sn", "sej", "pi"];
+  const subjects = ALL_SUBJECT_KEYS;
   if (!subjectAssignments[currentAssigningClass]) {
     subjectAssignments[currentAssigningClass] = { subjects: {} };
   }
@@ -2619,7 +3412,7 @@ function renderAdminClassAssignments(kelas) {
   if (!container) return;
 
   const currentAssign = subjectAssignments[kelas]?.subjects || {};
-  const subjects = ["bm", "bi", "mt", "sn", "sej", "pi"];
+  const subjects = ALL_SUBJECT_KEYS;
 
   let html = `<div class="form-grid" style="grid-template-columns: 1fr 1fr; gap:1rem;">`;
   subjects.forEach(sub => {
@@ -2707,12 +3500,43 @@ function loadYearData() {
     studentsData = JSON.parse(JSON.stringify(INITIAL_STUDENTS_ROSTER));
   }
 
-  // Pastikan setiap murid mempunyai metadata penjejakan pengubah terakhir
+  // Pastikan setiap murid mempunyai metadata penjejakan pengubah dan 11 subjek lengkap
   studentsData.forEach(st => {
+    ALL_SUBJECT_KEYS.forEach(sub => {
+      if (st[`${sub}_m`] === undefined) st[`${sub}_m`] = "";
+      if (st[`${sub}_g`] === undefined) st[`${sub}_g`] = "-";
+      if (st[`${sub}_tp`] === undefined) st[`${sub}_tp`] = "Belum Diisi";
+    });
+
     if (!st.lastModifiedBy) st.lastModifiedBy = "Sistem / Roster Asal";
     if (!st.lastModifiedEmail) st.lastModifiedEmail = "skranggu@moe-dl.edu.my";
     if (!st.lastModifiedAt) st.lastModifiedAt = "-";
     if (!st.lastModifiedAction) st.lastModifiedAction = "Roster asal sekolah";
+
+    // Jika data lama masih berasaskan 600 atau belum dikira semula
+    if (st.total && st.total.includes("/ 600")) {
+      let total = 0;
+      let filledCount = 0;
+      ALL_SUBJECT_KEYS.forEach(sub => {
+        const mStr = st[`${sub}_m`];
+        if (mStr !== "" && mStr !== null && !isNaN(parseFloat(mStr))) {
+          total += parseFloat(mStr);
+          filledCount++;
+        }
+      });
+      if (filledCount > 0) {
+        const avg = (total / 11.0).toFixed(1);
+        st.total = `${Math.round(total)} / 1100`;
+        st.purata = `${avg}%`;
+        st.purata_num = parseFloat(avg);
+        st.status = (filledCount === 11) ? "SEDIA DIJANA" : "PENGISIAN SEPARA";
+      } else {
+        st.total = "0 / 1100";
+        st.purata = "0.0%";
+        st.purata_num = 0;
+        st.status = "BELUM DIISI";
+      }
+    }
   });
   
   recalculateAllClassRanks();
@@ -2866,8 +3690,8 @@ function updateStudentMark(studentId, subject, val) {
   st[`${subject}_g`] = getGradeFromMark(cleanVal);
   st[`${subject}_tp`] = getTPFromMark(cleanVal);
   
-  // Kira Jumlah & Purata Murid
-  const subjects = ["bm", "bi", "mt", "sn", "sej", "pi"];
+  // Kira Jumlah & Purata Murid (11 Mata Pelajaran KSSR Semakan PBD)
+  const subjects = ALL_SUBJECT_KEYS;
   let total = 0;
   let filledCount = 0;
   
@@ -2880,13 +3704,13 @@ function updateStudentMark(studentId, subject, val) {
   });
   
   if (filledCount > 0) {
-    const avg = (total / 6.0).toFixed(1);
-    st.total = `${Math.round(total)} / 600`;
+    const avg = (total / 11.0).toFixed(1);
+    st.total = `${Math.round(total)} / 1100`;
     st.purata = `${avg}%`;
     st.purata_num = parseFloat(avg);
-    st.status = (filledCount === 6) ? "SEDIA DIJANA" : "PENGISIAN SEPARA";
+    st.status = (filledCount === 11) ? "SEDIA DIJANA" : "PENGISIAN SEPARA";
   } else {
-    st.total = "0 / 600";
+    st.total = "0 / 1100";
     st.purata = "0.0%";
     st.purata_num = 0;
     st.status = "BELUM DIISI";
@@ -3060,7 +3884,22 @@ function submitAddNewStudent() {
     pi_m: "",
     pi_g: "-",
     pi_tp: "Belum Diisi",
-    total: "0 / 600",
+    ba_m: "",
+    ba_g: "-",
+    ba_tp: "Belum Diisi",
+    rbt_m: "",
+    rbt_g: "-",
+    rbt_tp: "Belum Diisi",
+    psv_m: "",
+    psv_g: "-",
+    psv_tp: "Belum Diisi",
+    mz_m: "",
+    mz_g: "-",
+    mz_tp: "Belum Diisi",
+    pjpk_m: "",
+    pjpk_g: "-",
+    pjpk_tp: "Belum Diisi",
+    total: "0 / 1100",
     purata: "0.0%",
     purata_num: 0,
     posisi: "-",
@@ -3163,11 +4002,11 @@ function renderEntryTable() {
   tbody.innerHTML = "";
   
   if (filtered.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="12" style="text-align:center; padding: 2rem; color: #94a3b8;">Tiada rekod murid dijumpai.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="17" style="text-align:center; padding: 2rem; color: #94a3b8;">Tiada rekod murid dijumpai.</td></tr>`;
     return;
   }
   
-  const subjects = ["bm", "bi", "mt", "sn", "sej", "pi"];
+  const subjects = ALL_SUBJECT_KEYS;
 
   filtered.forEach((st, idx) => {
     const tr = document.createElement("tr");
@@ -3251,7 +4090,7 @@ function renderDatabaseTable() {
   tbody.innerHTML = "";
   
   if (filtered.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="14" style="text-align:center; padding: 2rem; color: #94a3b8;">Tiada rekod murid dijumpai.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="21" style="text-align:center; padding: 2rem; color: #94a3b8;">Tiada rekod murid dijumpai.</td></tr>`;
     return;
   }
   
@@ -3269,10 +4108,17 @@ function renderDatabaseTable() {
       <td style="font-weight:700; color:#38bdf8;">${st.id}</td>
       <td><strong>${st.name}</strong><br><small style="color:var(--text-muted); font-size:0.75rem;">• ${st.id}</small></td>
       <td><span class="school-tag">${st.kelas}</span></td>
-      <td>${st.bm_m || "-"} (${st.bm_g})<br><small style="color:#94a3b8">${st.bm_tp.split(' ')[0]}</small></td>
-      <td>${st.bi_m || "-"} (${st.bi_g})<br><small style="color:#94a3b8">${st.bi_tp.split(' ')[0]}</small></td>
-      <td>${st.mt_m || "-"} (${st.mt_g})<br><small style="color:#94a3b8">${st.mt_tp.split(' ')[0]}</small></td>
-      <td>${st.sn_m || "-"} (${st.sn_g})<br><small style="color:#94a3b8">${st.sn_tp.split(' ')[0]}</small></td>
+      <td>${st.bm_m || "-"} (${st.bm_g})<br><small style="color:#94a3b8">${(st.bm_tp || "").split(' ')[0]}</small></td>
+      <td>${st.bi_m || "-"} (${st.bi_g})<br><small style="color:#94a3b8">${(st.bi_tp || "").split(' ')[0]}</small></td>
+      <td>${st.mt_m || "-"} (${st.mt_g})<br><small style="color:#94a3b8">${(st.mt_tp || "").split(' ')[0]}</small></td>
+      <td>${st.sn_m || "-"} (${st.sn_g})<br><small style="color:#94a3b8">${(st.sn_tp || "").split(' ')[0]}</small></td>
+      <td>${st.sej_m || "-"} (${st.sej_g})<br><small style="color:#94a3b8">${(st.sej_tp || "").split(' ')[0]}</small></td>
+      <td>${st.pi_m || "-"} (${st.pi_g})<br><small style="color:#94a3b8">${(st.pi_tp || "").split(' ')[0]}</small></td>
+      <td>${st.ba_m || "-"} (${st.ba_g})<br><small style="color:#94a3b8">${(st.ba_tp || "").split(' ')[0]}</small></td>
+      <td>${st.rbt_m || "-"} (${st.rbt_g})<br><small style="color:#94a3b8">${(st.rbt_tp || "").split(' ')[0]}</small></td>
+      <td>${st.psv_m || "-"} (${st.psv_g})<br><small style="color:#94a3b8">${(st.psv_tp || "").split(' ')[0]}</small></td>
+      <td>${st.mz_m || "-"} (${st.mz_g})<br><small style="color:#94a3b8">${(st.mz_tp || "").split(' ')[0]}</small></td>
+      <td>${st.pjpk_m || "-"} (${st.pjpk_g})<br><small style="color:#94a3b8">${(st.pjpk_tp || "").split(' ')[0]}</small></td>
       <td><strong>${st.total}</strong></td>
       <td><strong style="color:#10b981;">${st.purata}</strong></td>
       <td><span class="badge-status ${statusClass}">${st.status}</span></td>
@@ -3479,30 +4325,15 @@ function renderSlipPreview(st) {
   document.getElementById("slip-guru-kelas").innerText = st.guru;
   document.getElementById("slip-session").innerText = `${currentAssessment} Tahun ${currentYear} • SK Ranggu Tawau`;
   
-  // Markah & Gred & TP (Tunjukkan "-" jika belum diisi)
-  document.getElementById("slip-bm-m").innerText = st.bm_m || "-";
-  document.getElementById("slip-bm-g").innerText = st.bm_g || "-";
-  document.getElementById("slip-bm-tp").innerText = st.bm_tp || "-";
-  
-  document.getElementById("slip-bi-m").innerText = st.bi_m || "-";
-  document.getElementById("slip-bi-g").innerText = st.bi_g || "-";
-  document.getElementById("slip-bi-tp").innerText = st.bi_tp || "-";
-  
-  document.getElementById("slip-mt-m").innerText = st.mt_m || "-";
-  document.getElementById("slip-mt-g").innerText = st.mt_g || "-";
-  document.getElementById("slip-mt-tp").innerText = st.mt_tp || "-";
-  
-  document.getElementById("slip-sn-m").innerText = st.sn_m || "-";
-  document.getElementById("slip-sn-g").innerText = st.sn_g || "-";
-  document.getElementById("slip-sn-tp").innerText = st.sn_tp || "-";
-  
-  document.getElementById("slip-sej-m").innerText = st.sej_m || "-";
-  document.getElementById("slip-sej-g").innerText = st.sej_g || "-";
-  document.getElementById("slip-sej-tp").innerText = st.sej_tp || "-";
-  
-  document.getElementById("slip-pi-m").innerText = st.pi_m || "-";
-  document.getElementById("slip-pi-g").innerText = st.pi_g || "-";
-  document.getElementById("slip-pi-tp").innerText = st.pi_tp || "-";
+  // Markah & Gred & TP (Tunjukkan "-" jika belum diisi) bagi 11 subjek penuh
+  ALL_SUBJECT_KEYS.forEach(sub => {
+    const mElem = document.getElementById(`slip-${sub}-m`);
+    const gElem = document.getElementById(`slip-${sub}-g`);
+    const tpElem = document.getElementById(`slip-${sub}-tp`);
+    if (mElem) mElem.innerText = st[`${sub}_m`] || "-";
+    if (gElem) gElem.innerText = st[`${sub}_g`] || "-";
+    if (tpElem) tpElem.innerText = st[`${sub}_tp`] || "-";
+  });
   
   // Summary
   document.getElementById("slip-total").innerText = st.total || "-";
@@ -3528,12 +4359,25 @@ function resetAllMarks() {
 // 22. Eksport CSV
 function exportStudentsCSV() {
   let csvContent = "data:text/csv;charset=utf-8,";
-  csvContent += "BIL,NO_MURID,NAMA_MURID,KELAS,GURU_KELAS,BM_M,BM_G,BM_TP,BI_M,BI_G,BI_TP,MT_M,MT_G,MT_TP,SN_M,SN_G,SN_TP,SEJ_M,SEJ_G,SEJ_TP,PI_M,PI_G,PI_TP,TOTAL,PURATA,POSISI,HADIR,ULASAN,EMAIL,STATUS,TARIKH,CATATAN,DIUBAH_OLEH,EMEL_PENGUBAH,MASA_UBAH,TINDAKAN_UBAH\n";
+  csvContent += "BIL,NO_MURID,NAMA_MURID,KELAS,GURU_KELAS," +
+    "BM_M,BM_G,BM_TP,BI_M,BI_G,BI_TP,MT_M,MT_G,MT_TP,SN_M,SN_G,SN_TP,SEJ_M,SEJ_G,SEJ_TP,PI_M,PI_G,PI_TP," +
+    "BA_M,BA_G,BA_TP,RBT_M,RBT_G,RBT_TP,PSV_M,PSV_G,PSV_TP,MZ_M,MZ_G,MZ_TP,PJPK_M,PJPK_G,PJPK_TP," +
+    "TOTAL,PURATA,POSISI,HADIR,ULASAN,EMAIL,STATUS,TARIKH,CATATAN,DIUBAH_OLEH,EMEL_PENGUBAH,MASA_UBAH,TINDAKAN_UBAH\n";
   
   studentsData.forEach((s, idx) => {
     const row = [
       idx + 1, s.id, `"${s.name}"`, `"${s.kelas}"`, `"${s.guru}"`,
-      s.bm_m, s.bm_g, `"${s.bm_tp}"`, s.bi_m, s.bi_g, `"${s.bi_tp}"`, s.mt_m, s.mt_g, `"${s.mt_tp}"`, s.sn_m, s.sn_g, `"${s.sn_tp}"`, s.sej_m, s.sej_g, `"${s.sej_tp}"`, s.pi_m, s.pi_g, `"${s.pi_tp}"`,
+      s.bm_m, s.bm_g, `"${s.bm_tp}"`,
+      s.bi_m, s.bi_g, `"${s.bi_tp}"`,
+      s.mt_m, s.mt_g, `"${s.mt_tp}"`,
+      s.sn_m, s.sn_g, `"${s.sn_tp}"`,
+      s.sej_m, s.sej_g, `"${s.sej_tp}"`,
+      s.pi_m, s.pi_g, `"${s.pi_tp}"`,
+      s.ba_m, s.ba_g, `"${s.ba_tp}"`,
+      s.rbt_m, s.rbt_g, `"${s.rbt_tp}"`,
+      s.psv_m, s.psv_g, `"${s.psv_tp}"`,
+      s.mz_m, s.mz_g, `"${s.mz_tp}"`,
+      s.pjpk_m, s.pjpk_g, `"${s.pjpk_tp}"`,
       `"${s.total}"`, `"${s.purata}"`, `"${s.posisi}"`, `"${s.hadir}"`,
       `"${s.ulasan}"`, `"${s.email}"`, `"${s.status}"`, `"${s.tarikh}"`, `"${s.catatan}"`,
       `"${s.lastModifiedBy || 'Sistem / Roster Asal'}"`, `"${s.lastModifiedEmail || 'skranggu@moe-dl.edu.my'}"`, `"${s.lastModifiedAt || '-'}"`, `"${s.lastModifiedAction || '-'}"`
@@ -3697,7 +4541,7 @@ function openSppbModal() {
   // Jika guru mata pelajaran sedang log masuk, cuba cadangkan subjek pegangannya
   if (currentUser) {
     const selectedClass = sppbClassSelect ? sppbClassSelect.value : "6 MUMTAZ";
-    const subjects = ["bm", "bi", "mt", "sn", "sej", "pi"];
+    const subjects = ALL_SUBJECT_KEYS;
     const mySub = subjects.find(sub => canEditSubject(selectedClass, sub));
     const sppbSubSelect = document.getElementById("sppb-select-subject");
     if (mySub && sppbSubSelect) {

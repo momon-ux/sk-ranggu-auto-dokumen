@@ -149,6 +149,11 @@ subjects = [
     ("4", "Sains", "<<SN_M>>", "<<SN_G>>"),
     ("5", "Sejarah", "<<SEJ_M>>", "<<SEJ_G>>"),
     ("6", "Pendidikan Islam / Pendidikan Moral", "<<PI_M>>", "<<PI_G>>"),
+    ("7", "Bahasa Arab", "<<BA_M>>", "<<BA_G>>"),
+    ("8", "Reka Bentuk dan Teknologi", "<<RBT_M>>", "<<RBT_G>>"),
+    ("9", "Pendidikan Seni Visual", "<<PSV_M>>", "<<PSV_G>>"),
+    ("10", "Pendidikan Muzik", "<<MZ_M>>", "<<MZ_G>>"),
+    ("11", "Pendidikan Jasmani & Pendidikan Kesihatan", "<<PJPK_M>>", "<<PJPK_G>>"),
 ]
 
 mark_table = doc.add_table(rows=len(subjects) + 1, cols=4)
