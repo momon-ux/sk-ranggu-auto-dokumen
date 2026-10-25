@@ -2735,7 +2735,17 @@ function saveCurrentMarks(showToast = true) {
   }
   
   if (showToast) {
-    showToastNotification(`✅ Markah Tahun ${currentYear} berjaya disimpan ke pelayar!`);
+    const actionBtn = `
+      <div style="margin-top:0.45rem; display:flex; gap:0.4rem; flex-wrap:wrap;">
+        <button class="btn btn-warning btn-sm btn-sppb-gradient" onclick="openSppbModal()" style="font-size:0.75rem; padding:0.25rem 0.6rem;">
+          📋 Salin ke MOEIS SPPB
+        </button>
+        <a href="https://moeissppb.moe.gov.my/page/dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="font-size:0.75rem; padding:0.25rem 0.55rem; text-decoration:none; color:inherit; border-color:rgba(255,255,255,0.4);">
+          🌐 Buka Dashboard SPPB ↗
+        </a>
+      </div>
+    `;
+    showToastNotification(`✅ Markah Tahun ${currentYear} berjaya disimpan!`, actionBtn, 8000);
   }
 }
 
@@ -3578,8 +3588,8 @@ function startRealtimeClock() {
   setInterval(updateClock, 1000);
 }
 
-// 24. Toast Notification Helper
-function showToastNotification(message) {
+// 24. Toast Notification Helper (Menyokong Butang Aksi Pantas)
+function showToastNotification(message, actionHtml = null, duration = 3500) {
   let container = document.getElementById("toast-container");
   if (!container) {
     container = document.createElement("div");
@@ -3590,14 +3600,18 @@ function showToastNotification(message) {
   
   const toast = document.createElement("div");
   toast.className = "toast";
-  toast.innerText = message;
+  if (actionHtml) {
+    toast.innerHTML = `<div>${message}</div>${actionHtml}`;
+  } else {
+    toast.innerText = message;
+  }
   container.appendChild(toast);
   
   setTimeout(() => {
     toast.style.opacity = "0";
     toast.style.transition = "opacity 0.3s ease";
     setTimeout(() => toast.remove(), 300);
-  }, 3500);
+  }, duration);
 }
 
 // 25. Pengurusan Tema Ceria (Light Theme Lalai & Dark Theme)
@@ -3797,6 +3811,25 @@ function copySppbColumn(colType) {
   });
 }
 
+function copyAndOpenSppbDashboard(colType = 'tp_num') {
+  const text = generateSppbColumnText(colType);
+  copyToClipboard(text, () => {
+    const indicator = document.getElementById("sppb-copy-indicator");
+    if (indicator) {
+      indicator.style.display = "inline-block";
+      setTimeout(() => { indicator.style.display = "none"; }, 2500);
+    }
+    const selectedClass = document.getElementById("sppb-select-class")?.value || "6 MUMTAZ";
+    const selectedSubject = document.getElementById("sppb-select-subject")?.value || "bm";
+    const subLabel = SUBJECT_LABELS[selectedSubject] || selectedSubject.toUpperCase();
+
+    // Buka Dashboard MOEIS SPPB terus di tab baharu
+    window.open("https://moeissppb.moe.gov.my/page/dashboard", "_blank");
+
+    showToastNotification(`🚀 Skor PBD (${selectedClass} - ${subLabel}) disalin! Dashboard MOEIS SPPB dibuka di tab baharu.`);
+  });
+}
+
 function generateSppbScriptCode() {
   const selectedClass = document.getElementById("sppb-select-class")?.value || "6 MUMTAZ";
   const selectedSubject = document.getElementById("sppb-select-subject")?.value || "bm";
@@ -3815,7 +3848,7 @@ function generateSppbScriptCode() {
  * SKRANGGU SPPB HELPER (v1.0)
  * Kelas: ${selectedClass} | Subjek: ${SUBJECT_LABELS[selectedSubject] || selectedSubject.toUpperCase()}
  * Tarikh Jana: ${new Date().toLocaleDateString('ms-MY')}
- * Arahan: Buka https://moeissppb.moe.gov.my/home > Modul PBD Berterusan > Buka Console (F12) > Tampal kod ini > Tekan Enter.
+ * Arahan: Buka https://moeissppb.moe.gov.my/page/dashboard > Modul PBD Berterusan > Buka Console (F12) > Tampal kod ini > Tekan Enter.
  */
 (function() {
   console.log("%c[SK Ranggu] Memulakan pengisian automatik PBD ke SPPB...", "color:#2563eb; font-weight:bold; font-size:14px;");

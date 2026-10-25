@@ -12,7 +12,7 @@ Sistem ini diinspirasikan daripada video tutorial *@drexcelonly* (*Cara Bina Sis
 2. **Penjanaan PDF Automatik:** Menjana fail PDF individu dalam Google Drive dengan satu klik.
 3. **Pengedaran E-mel Kepada Penjaga:** Menghantar e-mel automatik berserta lampiran slip PDF kepada ibu bapa murid.
 4. **100% Sifar Kos (RM0):** Menggunakan ekosistem Google Workspace (Google Sheets, Docs, Drive & Apps Script) tanpa sebarang kos perisian luar.
-5. **Salin Terus ke MOEIS SPPB (moeissppb.moe.gov.my):** Guru mata pelajaran boleh menyalin skor PBD (lajur nombor TP, markah, ulasan atau skrip auto-isi konsol) untuk dipindahkan terus ke portal rasmi SPPB KPM dengan mudah dan pantas.
+5. **Salin Terus ke MOEIS SPPB (moeissppb.moe.gov.my/page/dashboard):** Guru mata pelajaran boleh menyalin skor PBD (lajur nombor TP, markah, ulasan atau skrip auto-isi konsol) untuk dipindahkan terus ke portal rasmi Dashboard SPPB KPM dengan mudah dan pantas.
 
 ---
 
