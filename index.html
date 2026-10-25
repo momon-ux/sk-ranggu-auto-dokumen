@@ -264,6 +264,9 @@
           </div>
 
           <div class="btn-group">
+            <button class="btn btn-success" onclick="openAddStudentModal()" title="Daftar murid baharu ke dalam senarai SK Ranggu">
+              <span>➕</span> <span>Tambah Murid</span>
+            </button>
             <button class="btn btn-warning btn-sppb-gradient" onclick="openSppbModal()" title="Salin dan pindahkan rekod PBD terus ke portal MOEIS SPPB KPM (moeissppb.moe.gov.my)">
               <span>📋</span> <span>Salin Rekod ke MOEIS SPPB</span>
             </button>
@@ -300,7 +303,7 @@
                 <th style="text-align: center; width: 110px;">PI/PM<br><small class="th-sub">P. Islam</small></th>
                 <th style="text-align: center; width: 85px;">Jumlah</th>
                 <th style="text-align: center; width: 80px;">Purata</th>
-                <th style="text-align: center; width: 70px;">Slip</th>
+                <th style="text-align: center; width: 85px;">Tindakan</th>
               </tr>
             </thead>
             <tbody id="entry-tbody">
@@ -348,6 +351,12 @@
           </div>
 
           <div class="btn-group">
+            <button class="btn btn-success btn-sm" onclick="openAddStudentModal()" title="Daftar murid baharu ke dalam senarai">
+              <span>➕</span> <span>Tambah Murid</span>
+            </button>
+            <button class="btn btn-outline btn-sm btn-action-delete" onclick="removeSelectedStudents()" title="Padam semua murid yang ditandakan">
+              <span>🗑️</span> <span>Buang Dipilih</span>
+            </button>
             <button class="btn btn-warning btn-sm btn-sppb-gradient" onclick="openSppbModal()" title="Salin dan pindahkan rekod PBD terus ke portal MOEIS SPPB KPM">
               <span>📋</span> <span>Salin ke MOEIS SPPB</span>
             </button>
@@ -369,7 +378,7 @@
               <tr>
                 <th style="width: 35px;"><input type="checkbox" id="th-select-all" onclick="toggleSelectAll(this.checked)"></th>
                 <th style="width: 40px;">Bil</th>
-                <th style="width: 130px;">No. Murid</th>
+                <th style="width: 125px;">No. Murid</th>
                 <th>Nama Murid</th>
                 <th>Kelas</th>
                 <th>BM</th>
@@ -379,7 +388,8 @@
                 <th>Jumlah</th>
                 <th>Purata</th>
                 <th>Status Slip</th>
-                <th style="text-align: center;">Tindakan</th>
+                <th style="min-width: 200px;">Kemas Kini Terakhir (Guru & Emel)</th>
+                <th style="text-align: center; width: 110px;">Tindakan</th>
               </tr>
             </thead>
             <tbody id="database-tbody">
@@ -901,8 +911,9 @@
             <table class="audit-table">
               <thead>
                 <tr>
-                  <th style="width:140px;">Masa & Tarikh</th>
-                  <th style="width:180px;">Pegawai / Guru</th>
+                  <th style="width:130px;">Masa & Tarikh</th>
+                  <th style="width:170px;">Pegawai / Guru</th>
+                  <th style="width:180px;">Alamat Emel Pengubah</th>
                   <th>Tindakan & Butiran Pengesanan</th>
                 </tr>
               </thead>
@@ -934,6 +945,12 @@
           <label class="form-label">No. Kad Pengenalan (IC): <span class="required">*</span></label>
           <input type="text" id="add-teacher-ic" class="form-control" placeholder="Contoh: 910528-12-5411 atau 910528125411">
           <small class="form-help">Boleh dimasukkan dengan atau tanpa tanda sempang (-).</small>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Alamat Emel Rasmi (MOE Digital / DELIMa): <span class="required">*</span></label>
+          <input type="email" id="add-teacher-email" class="form-control" placeholder="Contoh: g-12345678@moe-dl.edu.my">
+          <small class="form-help">Alamat emel ini akan digunakan untuk penjejakan audit sebarang data murid yang diubah oleh guru ini.</small>
         </div>
 
         <div class="form-group" style="margin-bottom: 1rem;">
@@ -1143,6 +1160,73 @@
           🏫 SK Ranggu Tawau • Memudahkan warga pendidik menjimatkan masa pengisian SPPB.
         </span>
         <button class="btn btn-outline" onclick="closeModal('modal-sppb-transfer')">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Modal Tambah Murid Baharu -->
+  <div id="modal-add-student" class="modal-overlay">
+    <div class="modal-card" style="max-width: 540px;">
+      <div class="modal-header">
+        <h3><span>➕</span> Tambah Murid Baharu SK Ranggu</h3>
+        <button class="modal-close-btn" onclick="closeModal('modal-add-student')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="info-banner" style="margin-bottom: 1.25rem;">
+          <span class="info-banner-icon">💡</span>
+          <div style="font-size: 0.82rem;">
+            Daftarkan murid baharu ke dalam sistem pentaksiran SK Ranggu. Identiti dan <strong>alamat emel rasmi anda</strong> akan direkodkan secara automatik sebagai bukti penjejakan audit sekolah.
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Nama Penuh Murid: <span class="required">*</span></label>
+          <input type="text" id="add-student-name" class="form-control" placeholder="Contoh: MUHAMMAD HAZIQ BIN AZLAN" style="text-transform: uppercase;">
+        </div>
+
+        <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Pilih Kelas: <span class="required">*</span></label>
+            <select id="add-student-class" class="form-control" onchange="updateAddStudentClassTeacher()">
+              <option value="6 MUMTAZ">6 MUMTAZ</option>
+              <option value="6 JAYYID">6 JAYYID</option>
+              <option value="6 ILTIZAM">6 ILTIZAM</option>
+              <option value="6 KHOIR">6 KHOIR</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Jantina:</label>
+            <select id="add-student-gender" class="form-control">
+              <option value="L">Lelaki (L)</option>
+              <option value="P">Perempuan (P)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">No. Murid / ID Sistem: <span class="required">*</span></label>
+          <input type="text" id="add-student-id" class="form-control" placeholder="Contoh: SKRG-2026-Y6-051" style="text-transform: uppercase;">
+          <small class="form-help">Dijana secara automatik mengikut urutan pangkalan data. Boleh disesuaikan jika perlu.</small>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Guru Kelas Bertanggungjawab:</label>
+          <input type="text" id="add-student-teacher" class="form-control" readonly style="background: var(--bg-surface-alt); color: var(--text-muted);">
+        </div>
+
+        <div class="trace-preview-banner" style="background: rgba(56, 189, 248, 0.08); border: 1px dashed #38bdf8; border-radius: 8px; padding: 0.75rem; font-size: 0.8rem;">
+          <div style="font-weight: 700; color: #0284c7; margin-bottom: 0.25rem;">
+            🔍 Pengesanan Audit Emel Rasmi:
+          </div>
+          <div style="color: var(--text-main);" id="add-student-trace-preview">
+            Tindakan menambah murid ini akan direkodkan di bawah nama dan alamat emel guru yang aktif.
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('modal-add-student')">Batal</button>
+        <button class="btn btn-success" onclick="submitAddNewStudent()">💾 Simpan & Daftar Murid</button>
       </div>
     </div>
   </div>

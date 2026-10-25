@@ -1710,12 +1710,13 @@ const INITIAL_STUDENTS_ROSTER = [
   }
 ];
 
-// Senarai Guru Rasmi SK Ranggu (Data Awal & Pengesahan IC)
+// Senarai Guru Rasmi SK Ranggu (Data Awal, Emel Rasmi & Pengesahan IC)
 const DEFAULT_TEACHERS = [
   {
     id: "T001",
     ic: "910528-12-5411",
     name: "MOHAMMAD FIKREY BIN ABDUL GAPAR",
+    email: "cikgufikrey@moe-dl.edu.my",
     role: "PENTADBIR SISTEM / PEMBANGUN SISTEM",
     isAdmin: true,
     isClassTeacherOf: null,
@@ -1726,6 +1727,7 @@ const DEFAULT_TEACHERS = [
     id: "T002",
     ic: "750410-12-5678",
     name: "PN. BAJAM BINTI LADUNG",
+    email: "g-bajam@moe-dl.edu.my",
     role: "GURU KELAS (6 MUMTAZ)",
     isAdmin: false,
     isClassTeacherOf: "6 MUMTAZ",
@@ -1736,6 +1738,7 @@ const DEFAULT_TEACHERS = [
     id: "T003",
     ic: "820315-12-6123",
     name: "AGKU KEMAINDDRA BIN PG MOHD TAIB",
+    email: "g-kemainddra@moe-dl.edu.my",
     role: "GURU KELAS (6 JAYYID)",
     isAdmin: false,
     isClassTeacherOf: "6 JAYYID",
@@ -1746,6 +1749,7 @@ const DEFAULT_TEACHERS = [
     id: "T004",
     ic: "791120-12-5890",
     name: "PN. NOZE BINTI TUKIJAN",
+    email: "g-noze@moe-dl.edu.my",
     role: "GURU KELAS (6 ILTIZAM)",
     isAdmin: false,
     isClassTeacherOf: "6 ILTIZAM",
@@ -1756,6 +1760,7 @@ const DEFAULT_TEACHERS = [
     id: "T005",
     ic: "810705-12-5432",
     name: "SABRIAH @ HABIBAH ABDUL SABAR",
+    email: "g-sabriah@moe-dl.edu.my",
     role: "GURU KELAS (6 KHOIR)",
     isAdmin: false,
     isClassTeacherOf: "6 KHOIR",
@@ -1766,6 +1771,7 @@ const DEFAULT_TEACHERS = [
     id: "T006",
     ic: "860822-12-5112",
     name: "PN. NURUL ANISA BINTI SAPARUDIN",
+    email: "g-nurulanisa@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1776,6 +1782,7 @@ const DEFAULT_TEACHERS = [
     id: "T007",
     ic: "780914-12-5334",
     name: "PN. HAMSIAH BINTI HAMID",
+    email: "g-hamsiah@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1786,6 +1793,7 @@ const DEFAULT_TEACHERS = [
     id: "T008",
     ic: "840112-12-5567",
     name: "EN. AZMAN BIN KASSIM",
+    email: "g-azman@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1796,6 +1804,7 @@ const DEFAULT_TEACHERS = [
     id: "T009",
     ic: "850720-12-5234",
     name: "PN. ROHANI BINTI ISMAIL",
+    email: "g-rohani@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1806,6 +1815,7 @@ const DEFAULT_TEACHERS = [
     id: "T010",
     ic: "880905-12-5671",
     name: "EN. MOHD SHAHRIL BIN ABDULLAH",
+    email: "g-shahril@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1816,6 +1826,7 @@ const DEFAULT_TEACHERS = [
     id: "T011",
     ic: "870314-12-5118",
     name: "PN. SITI NORBAYA BINTI AHMAD",
+    email: "g-sitinorbaya@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1826,6 +1837,7 @@ const DEFAULT_TEACHERS = [
     id: "T012",
     ic: "831002-12-5889",
     name: "EN. RUSLAN BIN OTHMAN",
+    email: "g-ruslan@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1836,6 +1848,7 @@ const DEFAULT_TEACHERS = [
     id: "T013",
     ic: "890215-12-5442",
     name: "PN. FATIMAH BINTI AWANG",
+    email: "g-fatimah@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1846,6 +1859,7 @@ const DEFAULT_TEACHERS = [
     id: "T014",
     ic: "801124-12-5773",
     name: "EN. ABDUL HALIM BIN HASHIM",
+    email: "g-abdulhalim@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1856,6 +1870,7 @@ const DEFAULT_TEACHERS = [
     id: "T015",
     ic: "810418-12-5990",
     name: "PN. ZAITON BINTI DAUD",
+    email: "g-zaiton@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1866,6 +1881,7 @@ const DEFAULT_TEACHERS = [
     id: "T016",
     ic: "830619-12-5812",
     name: "PN. NORMALA BINTI MOHD YUSOF",
+    email: "g-normala@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1876,6 +1892,7 @@ const DEFAULT_TEACHERS = [
     id: "T017",
     ic: "871104-12-5337",
     name: "EN. KHAIRUL ANUAR BIN SALLEH",
+    email: "g-khairulanuar@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1886,6 +1903,7 @@ const DEFAULT_TEACHERS = [
     id: "T018",
     ic: "840815-12-5664",
     name: "PN. MARIAM BINTI HASSAN",
+    email: "g-mariam@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1896,6 +1914,7 @@ const DEFAULT_TEACHERS = [
     id: "T019",
     ic: "820228-12-5091",
     name: "EN. ZULKIFLI BIN MAHAMUD",
+    email: "g-zulkifli@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1906,6 +1925,7 @@ const DEFAULT_TEACHERS = [
     id: "T020",
     ic: "860403-12-5552",
     name: "PN. NORAINI BINTI JAAFAR",
+    email: "g-noraini@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -1916,6 +1936,7 @@ const DEFAULT_TEACHERS = [
     id: "T021",
     ic: "851219-12-5783",
     name: "EN. MOHAMAD FAIZAL BIN RAMLI",
+    email: "g-faizalramli@moe-dl.edu.my",
     role: "GURU MATA PELAJARAN",
     isAdmin: false,
     isClassTeacherOf: null,
@@ -2034,12 +2055,23 @@ function loadAuthAndPermissionsData() {
         });
       }
 
-      // Gabungkan guru lalai baharu jika belum wujud
+      // Gabungkan guru lalai baharu jika belum wujud dan pastikan emel rasmi lengkap
       DEFAULT_TEACHERS.forEach(dt => {
         const cleanDtIc = dt.ic.replace(/\D/g, "");
-        const exists = teachersData.some(t => t.ic.replace(/\D/g, "") === cleanDtIc || t.name === dt.name);
+        const exists = teachersData.find(t => t.ic.replace(/\D/g, "") === cleanDtIc || t.name === dt.name || t.id === dt.id);
         if (!exists) {
           teachersData.push({...dt});
+        } else {
+          // Kemas kini emel jika belum ada atau berbeza
+          if (!exists.email || exists.email !== dt.email) {
+            exists.email = dt.email;
+          }
+        }
+      });
+      // Pastikan semua guru ada emel
+      teachersData.forEach(t => {
+        if (!t.email) {
+          t.email = `g-${t.name.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 10)}@moe-dl.edu.my`;
         }
       });
       saveTeachersData();
@@ -2071,8 +2103,11 @@ function loadAuthAndPermissionsData() {
   if (savedUser) {
     try {
       const u = JSON.parse(savedUser);
-      const match = teachersData.find(t => t.id === u.id);
+      const match = teachersData.find(t => t.id === u.id || t.ic === u.ic);
       currentUser = match || u;
+      if (match && match.email) {
+        currentUser.email = match.email;
+      }
     } catch(e) {
       currentUser = null;
     }
@@ -2093,15 +2128,17 @@ function saveAuditLogsData() {
   localStorage.setItem("skrg_audit_trail", JSON.stringify(auditLogs));
 }
 
-// 2. Jejak Audit (Audit Trail Tracking)
+// 2. Jejak Audit (Audit Trail Tracking dengan Penjejakan Alamat Emel Rasmi)
 function recordAuditLog(action, details) {
   const now = new Date();
-  const timeStr = now.toLocaleDateString("ms-MY") + " " + now.toLocaleTimeString("ms-MY");
+  const timeStr = now.toLocaleDateString("ms-MY") + " " + now.toLocaleTimeString("ms-MY", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const teacherEmail = currentUser ? (currentUser.email || "tiada-emel@moe-dl.edu.my") : "sistem@skranggu.edu.my";
   const logItem = {
     id: "LOG-" + Date.now() + "-" + Math.floor(Math.random()*1000),
     timestamp: timeStr,
-    teacherName: currentUser ? currentUser.name : "Sistem/Tetamu",
+    teacherName: currentUser ? currentUser.name : "Sistem / Tetamu",
     teacherIc: currentUser ? currentUser.ic : "-",
+    teacherEmail: teacherEmail,
     action: action,
     details: details
   };
@@ -2141,7 +2178,10 @@ function initAuthUI() {
   populateQuickSelect();
 
   if (currentUser) {
-    if (display) display.innerHTML = `<strong>${currentUser.name}</strong> <small style="color:#94a3b8;">(${currentUser.role})</small>`;
+    const emailStr = currentUser.email || "cikgufikrey@moe-dl.edu.my";
+    if (display) {
+      display.innerHTML = `<strong>${currentUser.name}</strong> <span class="email-chip" title="Emel Rasmi: ${emailStr}">✉️ ${emailStr}</span> <small style="color:#94a3b8;">(${currentUser.role})</small>`;
+    }
     if (btnLogin) btnLogin.style.display = "none";
     if (btnLogout) btnLogout.style.display = "inline-block";
     if (btnChangePwd) btnChangePwd.style.display = "inline-block";
@@ -2151,9 +2191,9 @@ function initAuthUI() {
 
     if (permBanner) {
       if (currentUser.isAdmin) {
-        permBanner.innerHTML = `🟢 <strong>Akses Penuh Admin:</strong> Anda boleh menyemak dan mengisi semua subjek bagi semua kelas.`;
+        permBanner.innerHTML = `🟢 <strong>Akses Penuh Admin:</strong> ${currentUser.name} | <code class="trace-code-email">✉️ ${emailStr}</code> — Anda boleh menyemak, mengurus senarai murid, dan mengisi semua markah.`;
       } else {
-        permBanner.innerHTML = `👤 <strong>Sesi Aktif:</strong> Anda boleh mengisi markah bagi subjek yang dipegang sahaja. Subjek lain dikunci secara automatik.`;
+        permBanner.innerHTML = `👤 <strong>Sesi Aktif:</strong> ${currentUser.name} | <code class="trace-code-email">✉️ ${emailStr}</code> — Sebarang kemas kini data murid akan dijejaki dengan alamat emel ini.`;
       }
     }
   } else {
@@ -2162,7 +2202,7 @@ function initAuthUI() {
     if (btnLogout) btnLogout.style.display = "none";
     if (btnChangePwd) btnChangePwd.style.display = "none";
     if (btnClassAssign) btnClassAssign.style.display = "none";
-    if (permBanner) permBanner.innerHTML = `🔒 <strong>Mod Lihat Sahaja:</strong> Sila klik butang <strong>"Log Masuk"</strong> untuk mula mengisi markah.`;
+    if (permBanner) permBanner.innerHTML = `🔒 <strong>Mod Lihat Sahaja:</strong> Sila klik butang <strong>"Log Masuk"</strong> untuk mula mengisi markah atau mengurus murid.`;
     if (classTeacherInd) classTeacherInd.innerText = "";
   }
 }
@@ -2189,7 +2229,7 @@ function populateQuickSelect() {
   teachersData.forEach(t => {
     const opt = document.createElement("option");
     opt.value = t.id;
-    opt.innerText = `${t.name} (${t.role})`;
+    opt.innerText = `${t.name} (${t.email || t.role})`;
     select.appendChild(opt);
   });
 }
@@ -2212,7 +2252,7 @@ function handleIcInput(val) {
 
   const match = teachersData.find(t => t.ic.replace(/[^0-9]/g, "") === cleanIc || t.ic === val.trim());
   if (match) {
-    detectedDiv.innerHTML = `✅ Dikesan: <strong>${match.name}</strong> (${match.role})`;
+    detectedDiv.innerHTML = `✅ Dikesan: <strong>${match.name}</strong> (${match.role})<br><small style="color:#38bdf8; font-family:'JetBrains Mono',monospace;">✉️ ${match.email || 'tiada-emel@moe-dl.edu.my'}</small>`;
   } else {
     detectedDiv.innerHTML = cleanIc.length >= 6 ? `<span style="color:#fb7185;">Tiada rekod guru dengan No. IC ini.</span>` : "";
   }
@@ -2532,11 +2572,13 @@ function submitAddNewTeacher() {
   const newId = "T" + String(Date.now()).slice(-4);
   const isClassTeacher = (role === "GURU KELAS");
   const fullRole = isClassTeacher ? `GURU KELAS (${kelas})` : role;
+  const emailInput = document.getElementById("add-teacher-email")?.value.trim() || `g-${nameInput.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 10)}@moe-dl.edu.my`;
 
   const newTeacher = {
     id: newId,
     ic: formattedIc,
     name: nameInput.toUpperCase(),
+    email: emailInput,
     role: fullRole,
     isAdmin: (role === "PENTADBIR SISTEM / PEMBANGUN SISTEM"),
     isClassTeacherOf: isClassTeacher ? kelas : null,
@@ -2549,7 +2591,7 @@ function submitAddNewTeacher() {
   populateQuickSelect();
   renderAdminTeachersTable();
   closeModal("modal-add-teacher");
-  recordAuditLog("TAMBAH_GURU", `Guru baharu ${newTeacher.name} (IC: ${newTeacher.ic}, Peranan: ${newTeacher.role}) berjaya didaftarkan oleh Admin.`);
+  recordAuditLog("TAMBAH_GURU", `Guru baharu ${newTeacher.name} (IC: ${newTeacher.ic}, Emel: ${newTeacher.email}, Peranan: ${newTeacher.role}) berjaya didaftarkan oleh Admin.`);
   showToastNotification(`✅ Guru ${newTeacher.name} berjaya didaftarkan!`);
 }
 
@@ -2622,18 +2664,19 @@ function renderAdminAuditTable() {
   tbody.innerHTML = "";
 
   if (auditLogs.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:1.5rem; color:#94a3b8;">Tiada rekod aktiviti setakat ini.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:1.5rem; color:#94a3b8;">Tiada rekod aktiviti setakat ini.</td></tr>`;
     return;
   }
 
-  auditLogs.slice(0, 80).forEach(log => {
+  auditLogs.slice(0, 100).forEach(log => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td><span style="color:#94a3b8; font-size:0.75rem;">${log.timestamp}</span></td>
       <td><strong>${log.teacherName}</strong><br><small style="color:#64748b;">${log.teacherIc}</small></td>
+      <td><code class="trace-code-email">✉️ ${log.teacherEmail || "-"}</code></td>
       <td>
         <span class="school-tag" style="font-size:0.7rem;">${log.action}</span>
-        <div style="margin-top:0.25rem; color:#e2e8f0;">${log.details}</div>
+        <div style="margin-top:0.25rem; color:#e2e8f0; font-size:0.82rem;">${log.details}</div>
       </td>
     `;
     tbody.appendChild(tr);
@@ -2663,6 +2706,14 @@ function loadYearData() {
   } else {
     studentsData = JSON.parse(JSON.stringify(INITIAL_STUDENTS_ROSTER));
   }
+
+  // Pastikan setiap murid mempunyai metadata penjejakan pengubah terakhir
+  studentsData.forEach(st => {
+    if (!st.lastModifiedBy) st.lastModifiedBy = "Sistem / Roster Asal";
+    if (!st.lastModifiedEmail) st.lastModifiedEmail = "skranggu@moe-dl.edu.my";
+    if (!st.lastModifiedAt) st.lastModifiedAt = "-";
+    if (!st.lastModifiedAction) st.lastModifiedAction = "Roster asal sekolah";
+  });
   
   recalculateAllClassRanks();
 }
@@ -2846,9 +2897,27 @@ function updateStudentMark(studentId, subject, val) {
   
   updateStats();
 
+  const now = new Date();
+  const timeStr = now.toLocaleDateString("ms-MY") + " " + now.toLocaleTimeString("ms-MY", { hour: '2-digit', minute: '2-digit' });
+  const editorName = currentUser ? currentUser.name : "Sistem";
+  const editorEmail = currentUser ? (currentUser.email || "tiada-emel@moe-dl.edu.my") : "sistem@skranggu.edu.my";
+
+  st.lastModifiedBy = editorName;
+  st.lastModifiedEmail = editorEmail;
+  st.lastModifiedAt = timeStr;
+  st.lastModifiedAction = `Ubah ${subject.toUpperCase()} (${cleanVal || '0'}, ${st[`${subject}_g`]}, ${st[`${subject}_tp`].split(' ')[0]})`;
+
+  // Kemas kini elemen visual penjejakan pada baris ini jika wujud
+  const traceElem = document.getElementById(`trace-info-${st.id}`);
+  if (traceElem) {
+    traceElem.innerHTML = `🕒 <span style="color:var(--text-muted);">Diubah:</span> <strong style="color:#38bdf8;">${editorName.split(' ')[0]}</strong> <code class="trace-code-email">✉️ ${editorEmail}</code>`;
+  }
+
+  saveCurrentMarks(false);
+
   // Rekod Jejak Audit
   if (currentUser) {
-    recordAuditLog("KEMAS_KINI_MARKAH", `${currentUser.name} (${currentUser.ic}) menukar markah ${subject.toUpperCase()} murid ${st.name} (${st.kelas}) daripada '${oldMark || '-'}' kepada '${cleanVal || '-'}' (Gred: ${st[`${subject}_g`]}, TP: ${st[`${subject}_tp`]}).`);
+    recordAuditLog("KEMAS_KINI_MARKAH", `${editorName} [Emel: ${editorEmail}] menukar markah ${subject.toUpperCase()} murid ${st.name} (${st.kelas}) daripada '${oldMark || '-'}' kepada '${cleanVal || '-'}' (Gred: ${st[`${subject}_g`]}, TP: ${st[`${subject}_tp`]}).`);
   }
 }
 
@@ -2863,6 +2932,205 @@ function recalculateAllClassRanks() {
       st.posisi = (st.purata_num > 0) ? `${rank + 1} / ${totalCount}` : "-";
     });
   });
+}
+
+// ============================================================================
+// PENGURUSAN SENARAI MURID (TAMBAH & BUANG) & PENJEJAKAN EMEL PENGUBAH
+// ============================================================================
+
+function openAddStudentModal(preselectedClass = "") {
+  const modal = document.getElementById("modal-add-student");
+  if (!modal) return;
+
+  const yearShort = currentYear;
+  const count = studentsData.length + 1;
+  const padded = String(count).padStart(3, '0');
+  const autoId = `SKRG-${yearShort}-Y6-${padded}`;
+
+  const idInput = document.getElementById("add-student-id");
+  if (idInput) idInput.value = autoId;
+
+  const nameInput = document.getElementById("add-student-name");
+  if (nameInput) {
+    nameInput.value = "";
+    setTimeout(() => nameInput.focus(), 150);
+  }
+
+  const classSelect = document.getElementById("add-student-class");
+  if (classSelect) {
+    if (preselectedClass && preselectedClass !== "ALL") {
+      classSelect.value = preselectedClass;
+    } else {
+      const activeFilter = document.getElementById("entry-filter-class")?.value;
+      if (activeFilter && activeFilter !== "ALL") {
+        classSelect.value = activeFilter;
+      } else {
+        classSelect.value = "6 MUMTAZ";
+      }
+    }
+  }
+
+  updateAddStudentClassTeacher();
+
+  const tracePreview = document.getElementById("add-student-trace-preview");
+  if (tracePreview) {
+    const editorName = currentUser ? currentUser.name : "Sistem";
+    const editorEmail = currentUser ? (currentUser.email || "tiada-emel@moe-dl.edu.my") : "sistem@skranggu.edu.my";
+    tracePreview.innerHTML = `Pendaftar: <strong>${editorName}</strong> (<code style="color:#0284c7;">${editorEmail}</code>)`;
+  }
+
+  modal.classList.add("active");
+}
+
+function updateAddStudentClassTeacher() {
+  const classVal = document.getElementById("add-student-class")?.value || "6 MUMTAZ";
+  const teacherInput = document.getElementById("add-student-teacher");
+  if (!teacherInput) return;
+
+  const classTeachers = {
+    "6 MUMTAZ": "Pn. Bajam binti Ladung (Guru Kelas)",
+    "6 JAYYID": "AgKu Kemainddra bin Pg Mohd Taib (Guru Kelas)",
+    "6 ILTIZAM": "Pn. Noze binti Tukijan (Guru Kelas)",
+    "6 KHOIR": "Sabriah @ Habibah Abdul Sabar (Guru Kelas)"
+  };
+  teacherInput.value = classTeachers[classVal] || "Guru Kelas SK Ranggu";
+}
+
+function submitAddNewStudent() {
+  const nameInput = document.getElementById("add-student-name")?.value.trim();
+  const idInput = document.getElementById("add-student-id")?.value.trim();
+  const classSelect = document.getElementById("add-student-class")?.value;
+  const genderSelect = document.getElementById("add-student-gender")?.value || "L";
+  const teacherInput = document.getElementById("add-student-teacher")?.value.trim();
+
+  if (!nameInput) {
+    alert("Sila masukkan Nama Penuh Murid!");
+    document.getElementById("add-student-name")?.focus();
+    return;
+  }
+
+  if (!idInput) {
+    alert("Sila masukkan No. Murid / ID Murid!");
+    document.getElementById("add-student-id")?.focus();
+    return;
+  }
+
+  const exists = studentsData.some(s => s.id.toLowerCase() === idInput.toLowerCase());
+  if (exists) {
+    alert(`No. Murid "${idInput}" sudah wujud dalam senarai! Sila gunakan ID yang berbeza.`);
+    return;
+  }
+
+  const now = new Date();
+  const timeStr = now.toLocaleDateString("ms-MY") + " " + now.toLocaleTimeString("ms-MY", { hour: '2-digit', minute: '2-digit' });
+  const editorName = currentUser ? currentUser.name : "Sistem";
+  const editorEmail = currentUser ? (currentUser.email || "tiada-emel@moe-dl.edu.my") : "sistem@skranggu.edu.my";
+
+  const newStudent = {
+    id: idInput.toUpperCase(),
+    name: nameInput.toUpperCase(),
+    kelas: classSelect,
+    jantina: genderSelect,
+    guru: teacherInput || "Guru Kelas",
+    bm_m: "",
+    bm_g: "-",
+    bm_tp: "Belum Diisi",
+    bi_m: "",
+    bi_g: "-",
+    bi_tp: "Belum Diisi",
+    mt_m: "",
+    mt_g: "-",
+    mt_tp: "Belum Diisi",
+    sn_m: "",
+    sn_g: "-",
+    sn_tp: "Belum Diisi",
+    sej_m: "",
+    sej_g: "-",
+    sej_tp: "Belum Diisi",
+    pi_m: "",
+    pi_g: "-",
+    pi_tp: "Belum Diisi",
+    total: "0 / 600",
+    purata: "0.0%",
+    purata_num: 0,
+    posisi: "-",
+    hadir: "0 / 200 Hari",
+    ulasan: "",
+    email: `${nameInput.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 8)}@gmail.com`,
+    status: "BELUM DIISI",
+    tarikh: "-",
+    catatan: "Murid baharu didaftarkan.",
+    selected: false,
+    lastModifiedBy: editorName,
+    lastModifiedEmail: editorEmail,
+    lastModifiedAt: timeStr,
+    lastModifiedAction: "Murid baharu didaftarkan"
+  };
+
+  studentsData.push(newStudent);
+  recalculateAllClassRanks();
+  saveCurrentMarks(false);
+
+  recordAuditLog("TAMBAH_MURID", `Murid baharu ${newStudent.name} (${newStudent.id}, ${newStudent.kelas}) berjaya didaftarkan oleh ${editorName} [Emel: ${editorEmail}].`);
+
+  closeModal("modal-add-student");
+  renderEntryTable();
+  renderDatabaseTable();
+  updateStats();
+  populatePreviewSelector();
+  showToastNotification(`✅ Murid ${newStudent.name} berjaya didaftarkan!`);
+}
+
+function removeStudent(studentId) {
+  const st = studentsData.find(s => s.id === studentId);
+  if (!st) return;
+
+  if (confirm(`Adakah anda pasti mahu MEMBUANG rekod murid "${st.name}" (${st.kelas}, ID: ${st.id}) daripada sistem SK Ranggu?\n\nTindakan ini tidak boleh dikembalikan.`)) {
+    const editorName = currentUser ? currentUser.name : "Sistem";
+    const editorEmail = currentUser ? (currentUser.email || "tiada-emel@moe-dl.edu.my") : "sistem@skranggu.edu.my";
+
+    studentsData = studentsData.filter(s => s.id !== studentId);
+    recalculateAllClassRanks();
+    saveCurrentMarks(false);
+
+    recordAuditLog("BUANG_MURID", `Murid ${st.name} (${st.id}, ${st.kelas}) telah dibuang daripada sistem oleh ${editorName} [Emel: ${editorEmail}].`);
+
+    renderEntryTable();
+    renderDatabaseTable();
+    updateStats();
+    populatePreviewSelector();
+    showToastNotification(`🗑️ Murid ${st.name} telah dikeluarkan.`);
+  }
+}
+
+function removeSelectedStudents() {
+  const selected = studentsData.filter(s => s.selected);
+  if (selected.length === 0) {
+    alert("Tiada murid dipilih! Sila tandakan kotak pilihan murid dalam jadual pangkalan data terlebih dahulu.");
+    return;
+  }
+
+  if (confirm(`Adakah anda pasti mahu MEMBUANG KESEMUA ${selected.length} orang murid yang dipilih daripada sistem SK Ranggu?\n\nTindakan ini akan memadam data murid berkenaan secara kekal.`)) {
+    const editorName = currentUser ? currentUser.name : "Sistem";
+    const editorEmail = currentUser ? (currentUser.email || "tiada-emel@moe-dl.edu.my") : "sistem@skranggu.edu.my";
+
+    const namesSample = selected.map(s => s.name).slice(0, 4).join(", ") + (selected.length > 4 ? ` dan ${selected.length - 4} lagi` : "");
+    studentsData = studentsData.filter(s => !s.selected);
+
+    recalculateAllClassRanks();
+    saveCurrentMarks(false);
+
+    recordAuditLog("BUANG_MURID_BERKELOMPOK", `Sebanyak ${selected.length} orang murid (${namesSample}) telah dikeluarkan oleh ${editorName} [Emel: ${editorEmail}].`);
+
+    const thSelect = document.getElementById("th-select-all");
+    if (thSelect) thSelect.checked = false;
+
+    renderEntryTable();
+    renderDatabaseTable();
+    updateStats();
+    populatePreviewSelector();
+    showToastNotification(`🗑️ ${selected.length} orang murid berjaya dikeluarkan.`);
+  }
 }
 
 // 15. Render Jadual Pengisian Markah Guru (Tab 1) dengan Kawalan Kunci Subjek
@@ -2938,12 +3206,16 @@ function renderEntryTable() {
       <td>
         <strong>${st.name}</strong><br>
         <span class="school-tag">${st.kelas}</span> <small style="color:var(--text-muted); font-size:0.75rem;">• ${st.id}</small>
+        <div class="trace-badge-sub" id="trace-info-${st.id}" title="Diubah kali terakhir pada ${st.lastModifiedAt || '-'}: ${st.lastModifiedAction || '-'}">
+          🕒 <span style="color:var(--text-muted);">Diubah:</span> <strong style="color:#38bdf8;">${st.lastModifiedBy ? st.lastModifiedBy.split(' ')[0] : 'Sistem'}</strong> <code class="trace-code-email">✉️ ${st.lastModifiedEmail || 'skranggu@moe-dl.edu.my'}</code>
+        </div>
       </td>
       ${subjectCellsHtml}
       <td><strong id="row-total-${st.id}">${st.total}</strong></td>
       <td><strong style="color:#10b981;" id="row-purata-${st.id}">${st.purata}</strong></td>
-      <td>
-        <button class="btn btn-outline btn-sm" onclick="viewStudentSlip('${st.id}')">👁️ Slip</button>
+      <td style="white-space:nowrap; text-align:center;">
+        <button class="btn btn-outline btn-sm" onclick="viewStudentSlip('${st.id}')" title="Pratonton Slip Pentaksiran">👁️</button>
+        <button class="btn btn-outline btn-sm btn-action-delete" onclick="removeStudent('${st.id}')" title="Buang murid ini daripada senarai">🗑️</button>
       </td>
     `;
     tbody.appendChild(tr);
@@ -2969,7 +3241,7 @@ function renderDatabaseTable() {
   tbody.innerHTML = "";
   
   if (filtered.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="13" style="text-align:center; padding: 2rem; color: #94a3b8;">Tiada rekod murid dijumpai.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="14" style="text-align:center; padding: 2rem; color: #94a3b8;">Tiada rekod murid dijumpai.</td></tr>`;
     return;
   }
   
@@ -2995,7 +3267,22 @@ function renderDatabaseTable() {
       <td><strong style="color:#10b981;">${st.purata}</strong></td>
       <td><span class="badge-status ${statusClass}">${st.status}</span></td>
       <td>
-        <button class="btn btn-outline btn-sm" onclick="viewStudentSlip('${st.id}')">👁️ Slip</button>
+        <div class="trace-cell-wrapper">
+          <div style="font-weight:700; color:var(--text-main); font-size:0.82rem;">
+            👤 ${st.lastModifiedBy || "Sistem / Roster Asal"}
+          </div>
+          <div>
+            <code class="trace-code-email">✉️ ${st.lastModifiedEmail || "skranggu@moe-dl.edu.my"}</code>
+          </div>
+          <div style="font-size:0.73rem; color:var(--text-muted);">
+            🕒 ${st.lastModifiedAt || "-"}
+          </div>
+          ${st.lastModifiedAction ? `<div style="font-size:0.72rem; color:#94a3b8; font-style:italic;">📝 ${st.lastModifiedAction}</div>` : ""}
+        </div>
+      </td>
+      <td style="text-align: center; white-space: nowrap;">
+        <button class="btn btn-outline btn-sm" onclick="viewStudentSlip('${st.id}')" title="Lihat Slip">👁️ Slip</button>
+        <button class="btn btn-outline btn-sm btn-action-delete" onclick="removeStudent('${st.id}')" title="Buang murid ini">🗑️</button>
       </td>
     `;
     tbody.appendChild(tr);
@@ -3231,14 +3518,15 @@ function resetAllMarks() {
 // 22. Eksport CSV
 function exportStudentsCSV() {
   let csvContent = "data:text/csv;charset=utf-8,";
-  csvContent += "BIL,NO_MURID,NAMA_MURID,KELAS,GURU_KELAS,BM_M,BM_G,BM_TP,BI_M,BI_G,BI_TP,MT_M,MT_G,MT_TP,SN_M,SN_G,SN_TP,SEJ_M,SEJ_G,SEJ_TP,PI_M,PI_G,PI_TP,TOTAL,PURATA,POSISI,HADIR,ULASAN,EMAIL,STATUS,TARIKH,CATATAN\n";
+  csvContent += "BIL,NO_MURID,NAMA_MURID,KELAS,GURU_KELAS,BM_M,BM_G,BM_TP,BI_M,BI_G,BI_TP,MT_M,MT_G,MT_TP,SN_M,SN_G,SN_TP,SEJ_M,SEJ_G,SEJ_TP,PI_M,PI_G,PI_TP,TOTAL,PURATA,POSISI,HADIR,ULASAN,EMAIL,STATUS,TARIKH,CATATAN,DIUBAH_OLEH,EMEL_PENGUBAH,MASA_UBAH,TINDAKAN_UBAH\n";
   
   studentsData.forEach((s, idx) => {
     const row = [
       idx + 1, s.id, `"${s.name}"`, `"${s.kelas}"`, `"${s.guru}"`,
       s.bm_m, s.bm_g, `"${s.bm_tp}"`, s.bi_m, s.bi_g, `"${s.bi_tp}"`, s.mt_m, s.mt_g, `"${s.mt_tp}"`, s.sn_m, s.sn_g, `"${s.sn_tp}"`, s.sej_m, s.sej_g, `"${s.sej_tp}"`, s.pi_m, s.pi_g, `"${s.pi_tp}"`,
       `"${s.total}"`, `"${s.purata}"`, `"${s.posisi}"`, `"${s.hadir}"`,
-      `"${s.ulasan}"`, `"${s.email}"`, `"${s.status}"`, `"${s.tarikh}"`, `"${s.catatan}"`
+      `"${s.ulasan}"`, `"${s.email}"`, `"${s.status}"`, `"${s.tarikh}"`, `"${s.catatan}"`,
+      `"${s.lastModifiedBy || 'Sistem / Roster Asal'}"`, `"${s.lastModifiedEmail || 'skranggu@moe-dl.edu.my'}"`, `"${s.lastModifiedAt || '-'}"`, `"${s.lastModifiedAction || '-'}"`
     ].join(",");
     csvContent += row + "\n";
   });
