@@ -257,7 +257,8 @@
           <div class="filter-group">
             <label for="entry-filter-year" style="font-size:0.85rem; color:var(--text-muted); font-weight:700;">Tahun:</label>
             <select id="entry-filter-year" class="select-styled" onchange="onYearDropdownChange(this.value)">
-              <option value="ALL">Semua Tahun (1 - 6)</option>
+              <option value="ALL">Semua Aliran (Prasekolah & Tahun 1 - 6)</option>
+              <option value="PRA">Prasekolah</option>
               <option value="1">Tahun 1 (Tahap 1)</option>
               <option value="2">Tahun 2 (Tahap 1)</option>
               <option value="3">Tahun 3 (Tahap 1)</option>
@@ -268,7 +269,7 @@
 
             <label for="entry-filter-class" style="font-size:0.85rem; color:var(--text-muted); font-weight:700;">Kelas:</label>
             <select id="entry-filter-class" class="select-styled" onchange="onClassDropdownChange(this.value)">
-              <option value="ALL">Semua Kelas (24 Kelas, Tahun 1 - 6)</option>
+              <option value="ALL">Semua Kelas (27 Kelas, Prasekolah & Tahun 1 - 6)</option>
             </select>
 
             <!-- Butang Penetapan Guru Subjek (Guru Kelas Sahaja) -->
@@ -347,13 +348,14 @@
             <span>📊</span>
             <span>Pangkalan Data Murid & Status Penjanaan Slip PBD / UASA SK Ranggu</span>
           </h2>
-          <span class="badge-pill">Senarai Rasmi Murid (150 Murid • Tahun 1 - 6)</span>
+          <span class="badge-pill">Senarai Rasmi Murid (890 Murid • APDM / MOEIS SK Ranggu)</span>
         </div>
 
         <div class="table-controls no-print">
           <div class="filter-group">
             <select id="db-filter-year" class="select-styled" onchange="onDbYearChange(this.value)">
-              <option value="ALL">Semua Tahun (1 - 6)</option>
+              <option value="ALL">Semua Aliran (Prasekolah & Tahun 1 - 6)</option>
+              <option value="PRA">Prasekolah</option>
               <option value="1">Tahun 1 (Tahap 1)</option>
               <option value="2">Tahun 2 (Tahap 1)</option>
               <option value="3">Tahun 3 (Tahap 1)</option>
@@ -363,7 +365,7 @@
             </select>
 
             <select id="db-filter-class" class="select-styled" onchange="renderDatabaseTable()">
-              <option value="ALL">Semua Kelas (24 Kelas, Tahun 1 - 6)</option>
+              <option value="ALL">Semua Kelas (27 Kelas, Prasekolah & Tahun 1 - 6)</option>
             </select>
 
             <select id="db-filter-status" class="select-styled">
@@ -1389,6 +1391,11 @@
           <div class="form-group" style="margin-bottom: 0;">
             <label class="form-label">Pilih Kelas: <span class="required">*</span></label>
             <select id="add-student-class" class="form-control" onchange="updateAddStudentClassTeacher()">
+              <optgroup label="--- PRASEKOLAH ---">
+                <option value="PRA MUTIARA HATI">PRA MUTIARA HATI</option>
+                <option value="PRA MUTIARA KASIH">PRA MUTIARA KASIH</option>
+                <option value="PRA PERMATA HATI">PRA PERMATA HATI</option>
+              </optgroup>
               <optgroup label="--- TAHUN 1 ---">
                 <option value="1 MUMTAZ">1 MUMTAZ</option>
                 <option value="1 JAYYID">1 JAYYID</option>
@@ -1581,6 +1588,11 @@
           <div class="form-group" style="margin-bottom: 0;">
             <label class="form-label">Pilih Kelas: <span class="required">*</span></label>
             <select id="edit-student-class" class="form-control" onchange="onEditStudentClassChange(this.value)">
+              <optgroup label="--- PRASEKOLAH ---">
+                <option value="PRA MUTIARA HATI">PRA MUTIARA HATI</option>
+                <option value="PRA MUTIARA KASIH">PRA MUTIARA KASIH</option>
+                <option value="PRA PERMATA HATI">PRA PERMATA HATI</option>
+              </optgroup>
               <optgroup label="--- TAHUN 1 ---">
                 <option value="1 MUMTAZ">1 MUMTAZ</option>
                 <option value="1 JAYYID">1 JAYYID</option>
