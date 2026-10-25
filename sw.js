@@ -1,5 +1,5 @@
 // Service Worker untuk Sistem Auto Dokumen SK Ranggu
-const CACHE_NAME = 'sk-ranggu-pwa-v2.1';
+const CACHE_NAME = 'sk-ranggu-pwa-v2.2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',

@@ -56,8 +56,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -109,8 +109,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -162,8 +162,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -215,8 +215,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -268,8 +268,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -321,8 +321,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -374,8 +374,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -427,8 +427,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -480,8 +480,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -533,8 +533,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -586,8 +586,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -639,8 +639,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -692,8 +692,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -745,8 +745,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -798,8 +798,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -851,8 +851,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -904,8 +904,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -957,8 +957,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1010,8 +1010,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1063,8 +1063,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1116,8 +1116,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1169,8 +1169,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1222,8 +1222,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1275,8 +1275,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1328,8 +1328,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1381,8 +1381,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1434,8 +1434,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1487,8 +1487,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1540,8 +1540,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1593,8 +1593,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1646,8 +1646,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1699,8 +1699,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1752,8 +1752,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1805,8 +1805,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1858,8 +1858,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1911,8 +1911,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -1964,8 +1964,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2017,8 +2017,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2070,8 +2070,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2123,8 +2123,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2176,8 +2176,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2229,8 +2229,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2282,8 +2282,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2335,8 +2335,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2388,8 +2388,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2441,8 +2441,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2494,8 +2494,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2547,8 +2547,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2600,8 +2600,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2653,8 +2653,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2706,8 +2706,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2759,8 +2759,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2812,8 +2812,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2865,8 +2865,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2918,8 +2918,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -2971,8 +2971,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3024,8 +3024,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3077,8 +3077,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3130,8 +3130,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3183,8 +3183,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3236,8 +3236,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3289,8 +3289,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3342,8 +3342,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3395,8 +3395,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3448,8 +3448,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3501,8 +3501,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3554,8 +3554,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3607,8 +3607,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3660,8 +3660,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3713,8 +3713,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3766,8 +3766,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3819,8 +3819,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3872,8 +3872,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3925,8 +3925,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -3978,8 +3978,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4031,8 +4031,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4084,8 +4084,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4137,8 +4137,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4190,8 +4190,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4243,8 +4243,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4296,8 +4296,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4349,8 +4349,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4402,8 +4402,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4455,8 +4455,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4508,8 +4508,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4561,8 +4561,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4614,8 +4614,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4667,8 +4667,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4720,8 +4720,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4773,8 +4773,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4826,8 +4826,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4879,8 +4879,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4932,8 +4932,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -4985,8 +4985,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -5038,8 +5038,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -5091,8 +5091,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -5144,8 +5144,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -5197,8 +5197,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -5250,8 +5250,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -5303,8 +5303,8 @@ const INITIAL_STUDENTS_ROSTER = [
     "tarikh": "-",
     "catatan": "Menunggu pengisian markah oleh guru.",
     "selected": false,
-    "lastModifiedBy": "Sistem / Roster Asal",
-    "lastModifiedEmail": "skranggu@moe-dl.edu.my",
+    "lastModifiedBy": null,
+    "lastModifiedEmail": null,
     "lastModifiedAt": "-",
     "lastModifiedAction": "Roster asal sekolah"
 },
@@ -8466,16 +8466,23 @@ function initAuthUI() {
       }
     }
   } else {
-    const activeTeacherName = localStorage.getItem("skrg_active_teacher_name") || "Guru Bertugas";
-    const activeTeacherEmail = localStorage.getItem("skrg_active_teacher_email") || "skranggu@moe-dl.edu.my";
-    if (display) display.innerHTML = `<strong>${activeTeacherName}</strong> <span class="email-chip">✉️ ${activeTeacherEmail}</span>`;
+    const savedName = localStorage.getItem("skrg_active_teacher_name");
+    const savedEmail = localStorage.getItem("skrg_active_teacher_email");
+    if (savedName && savedEmail && savedEmail !== "skranggu@moe-dl.edu.my") {
+      if (display) display.innerHTML = `<strong>${savedName}</strong> <span class="email-chip">✉️ ${savedEmail}</span>`;
+      if (permBanner) {
+        permBanner.innerHTML = `👤 <strong>Sesi Aktif:</strong> ${savedName} | <code class="trace-code-email">✉️ ${savedEmail}</code> — Sebarang kemas kini markah dan murid akan dikesan di bawah emel rasmi ini. <a href="javascript:void(0)" onclick="openLoginModal()" style="color:#38bdf8; text-decoration:underline; font-weight:700; margin-left:0.5rem;">[Tukar Guru]</a>`;
+      }
+    } else {
+      if (display) display.innerHTML = `<span style="color:#94a3b8; font-size:0.8rem;">Belum Log Masuk</span>`;
+      if (permBanner) {
+        permBanner.innerHTML = `👤 <strong>Sesi Pengisian Terbuka:</strong> Anda boleh mula mengisi markah sekarang. Sila <a href="javascript:void(0)" onclick="openLoginModal()" style="color:#38bdf8; font-weight:700; text-decoration:underline;">pilih nama guru anda (1-Klik Pantas)</a> agar setiap pengubahan data dikesan di bawah nama dan emel rasmi anda.`;
+      }
+    }
     if (btnLogin) btnLogin.style.display = "inline-block";
     if (btnLogout) btnLogout.style.display = "none";
     if (btnChangePwd) btnChangePwd.style.display = "none";
     if (btnClassAssign) btnClassAssign.style.display = "none";
-    if (permBanner) {
-      permBanner.innerHTML = `👤 <strong>Sesi Pengisian Terbuka:</strong> Sesiapa sahaja dibenarkan mengisi markah dan menguruskan maklumat murid. Sila <a href="javascript:void(0)" onclick="openLoginModal()" style="color:#38bdf8; font-weight:700; text-decoration:underline;">pilih nama anda</a> agar setiap perubahan dikesan dengan tepat di bawah emel rasmi anda.`;
-    }
     if (classTeacherInd) classTeacherInd.innerText = "";
   }
 }
@@ -9103,6 +9110,20 @@ function loadYearData() {
         // Gabungkan murid Tahun 1 hingga 5 daripada INITIAL_STUDENTS_ROSTER
         const otherYearsStudents = INITIAL_STUDENTS_ROSTER.filter(s => !s.kelas.startsWith("6"));
         studentsData = [...otherYearsStudents, ...studentsData];
+      }
+
+      // Bersihkan sebarang emel palsu atau placeholder lama daripada localStorage
+      let hasCleanedOldEmail = false;
+      studentsData.forEach(st => {
+        if (st.lastModifiedEmail === "skranggu@moe-dl.edu.my" || st.lastModifiedBy === "Sistem / Roster Asal" || st.lastModifiedBy === "Sistem") {
+          st.lastModifiedBy = null;
+          st.lastModifiedEmail = null;
+          st.lastModifiedAt = null;
+          st.lastModifiedAction = null;
+          hasCleanedOldEmail = true;
+        }
+      });
+      if (hasCleanedOldEmail || !hasOtherYears) {
         localStorage.setItem(storageKey, JSON.stringify(studentsData));
       }
     } catch (e) {
@@ -9112,18 +9133,13 @@ function loadYearData() {
     studentsData = JSON.parse(JSON.stringify(INITIAL_STUDENTS_ROSTER));
   }
 
-  // Pastikan setiap murid mempunyai metadata penjejakan pengubah dan 11 subjek lengkap
+  // Pastikan setiap murid mempunyai 11 subjek lengkap
   studentsData.forEach(st => {
     ALL_SUBJECT_KEYS.forEach(sub => {
       if (st[`${sub}_m`] === undefined) st[`${sub}_m`] = "";
       if (st[`${sub}_g`] === undefined) st[`${sub}_g`] = "-";
       if (st[`${sub}_tp`] === undefined) st[`${sub}_tp`] = "Belum Diisi";
     });
-
-    if (!st.lastModifiedBy) st.lastModifiedBy = "Sistem / Roster Asal";
-    if (!st.lastModifiedEmail) st.lastModifiedEmail = "skranggu@moe-dl.edu.my";
-    if (!st.lastModifiedAt) st.lastModifiedAt = "-";
-    if (!st.lastModifiedAction) st.lastModifiedAction = "Roster asal sekolah";
 
     // Jika data lama masih berasaskan 600 atau belum dikira semula
     if (st.total && st.total.includes("/ 600")) {
@@ -9341,8 +9357,8 @@ function updateStudentMark(studentId, subject, val) {
 
   const now = new Date();
   const timeStr = now.toLocaleDateString("ms-MY") + " " + now.toLocaleTimeString("ms-MY", { hour: '2-digit', minute: '2-digit' });
-  const editorName = currentUser ? currentUser.name : "Sistem";
-  const editorEmail = currentUser ? (currentUser.email || "tiada-emel@moe-dl.edu.my") : "sistem@skranggu.edu.my";
+  const editorName = currentUser ? currentUser.name : (localStorage.getItem("skrg_active_teacher_name") || "Guru Bertugas");
+  const editorEmail = currentUser ? (currentUser.email || "guru@moe-dl.edu.my") : (localStorage.getItem("skrg_active_teacher_email") || "guru@moe-dl.edu.my");
 
   st.lastModifiedBy = editorName;
   st.lastModifiedEmail = editorEmail;
@@ -9470,8 +9486,8 @@ function submitAddNewStudent() {
 
   const now = new Date();
   const timeStr = now.toLocaleDateString("ms-MY") + " " + now.toLocaleTimeString("ms-MY", { hour: '2-digit', minute: '2-digit' });
-  const editorName = currentUser ? currentUser.name : "Sistem";
-  const editorEmail = currentUser ? (currentUser.email || "tiada-emel@moe-dl.edu.my") : "sistem@skranggu.edu.my";
+  const editorName = currentUser ? currentUser.name : (localStorage.getItem("skrg_active_teacher_name") || "Guru Bertugas");
+  const editorEmail = currentUser ? (currentUser.email || "guru@moe-dl.edu.my") : (localStorage.getItem("skrg_active_teacher_email") || "guru@moe-dl.edu.my");
 
   const newStudent = {
     id: idInput.toUpperCase(),
@@ -9666,16 +9682,24 @@ function renderEntryTable() {
 
     const totalDenom = isTahap1 ? "/900" : "/1100";
 
-    tr.innerHTML = `
-      <td>${idx + 1}</td>
-      <td style="font-weight:700; color:#38bdf8;">${st.id}</td>
-      <td>
-        <strong>${st.name}</strong><br>
-        <span class="school-tag">${st.kelas}</span> <small style="color:var(--text-muted); font-size:0.75rem;">• ${st.id}</small>
-        <div class="trace-badge-sub" id="trace-info-${st.id}" title="Diubah kali terakhir pada ${st.lastModifiedAt || '-'}: ${st.lastModifiedAction || '-'}">
-          🕒 <span style="color:var(--text-muted);">Diubah:</span> <strong style="color:#38bdf8;">${st.lastModifiedBy ? st.lastModifiedBy.split(' ')[0] : 'Sistem'}</strong> <code class="trace-code-email">✉️ ${st.lastModifiedEmail || 'skranggu@moe-dl.edu.my'}</code>
-        </div>
-      </td>
+      const hasBeenModified = st.lastModifiedBy && st.lastModifiedBy !== "Sistem / Roster Asal" && st.lastModifiedBy !== "Sistem" && st.lastModifiedEmail && st.lastModifiedEmail !== "skranggu@moe-dl.edu.my";
+      const traceBadgeHtml = hasBeenModified
+        ? `<div class="trace-badge-sub" id="trace-info-${st.id}" title="Diubah kali terakhir pada ${st.lastModifiedAt || '-'}: ${st.lastModifiedAction || '-'}">
+            🕒 <span style="color:var(--text-muted);">Diubah:</span> <strong style="color:#38bdf8;">${st.lastModifiedBy}</strong> <code class="trace-code-email">✉️ ${st.lastModifiedEmail}</code>
+            <br><small style="color:#94a3b8;">📅 ${st.lastModifiedAt || '-'} • 📝 ${st.lastModifiedAction || '-'}</small>
+          </div>`
+        : `<div class="trace-badge-sub trace-badge-clean" id="trace-info-${st.id}" title="Rekod asal pangkalan data murid SK Ranggu. Belum ada sebarang pengubahan guru.">
+            <small style="color:var(--text-muted); font-size:0.74rem;">📋 Rekod Asal (Belum Diubah)</small>
+          </div>`;
+
+      tr.innerHTML = `
+        <td>${idx + 1}</td>
+        <td style="font-weight:700; color:#38bdf8;">${st.id}</td>
+        <td>
+          <strong>${st.name}</strong><br>
+          <span class="school-tag">${st.kelas}</span> <small style="color:var(--text-muted); font-size:0.75rem;">• ${st.id}</small>
+          ${traceBadgeHtml}
+        </td>
       ${subjectCellsHtml}
       <td><strong id="row-total-${st.id}">${st.total}</strong> <small style="color:#94a3b8; font-size:0.7rem;">${totalDenom}</small></td>
       <td><strong style="color:#10b981;" id="row-purata-${st.id}">${st.purata}</strong></td>
@@ -9728,6 +9752,29 @@ function renderDatabaseTable() {
     const rbtDisplay = isTahap1 ? `<span style="color:#94a3b8">-</span><br><small style="color:#64748b">Tahap 2</small>` : `${st.rbt_m || "-"} (${st.rbt_g})<br><small style="color:#94a3b8">${(st.rbt_tp || "").split(' ')[0]}</small>`;
     const totalDenom = isTahap1 ? "/900" : "/1100";
 
+    const hasBeenModifiedDb = st.lastModifiedBy && st.lastModifiedBy !== "Sistem / Roster Asal" && st.lastModifiedBy !== "Sistem" && st.lastModifiedEmail && st.lastModifiedEmail !== "skranggu@moe-dl.edu.my";
+    const traceCellHtml = hasBeenModifiedDb
+      ? `<td>
+          <div class="trace-cell-wrapper">
+            <div style="font-weight:700; color:#38bdf8; font-size:0.82rem;">
+              👤 ${st.lastModifiedBy}
+            </div>
+            <div>
+              <code class="trace-code-email">✉️ ${st.lastModifiedEmail}</code>
+            </div>
+            <div style="font-size:0.73rem; color:var(--text-muted);">
+              🕒 ${st.lastModifiedAt || "-"}
+            </div>
+            ${st.lastModifiedAction ? `<div style="font-size:0.72rem; color:#94a3b8; font-style:italic;">📝 ${st.lastModifiedAction}</div>` : ""}
+          </div>
+        </td>`
+      : `<td>
+          <div class="trace-cell-wrapper">
+            <span style="color:var(--text-muted); font-size:0.78rem;">📋 Rekod Asal</span>
+            <div style="font-size:0.7rem; color:#64748b;">(Belum ada perubahan)</div>
+          </div>
+        </td>`;
+
     tr.innerHTML = `
       <td><input type="checkbox" class="row-select" data-id="${st.id}" ${st.selected ? "checked" : ""}></td>
       <td>${idx + 1}</td>
@@ -9748,20 +9795,7 @@ function renderDatabaseTable() {
       <td><strong>${st.total}</strong> <small style="color:#94a3b8; font-size:0.7rem;">${totalDenom}</small></td>
       <td><strong style="color:#10b981;">${st.purata}</strong></td>
       <td><span class="badge-status ${statusClass}">${st.status}</span></td>
-      <td>
-        <div class="trace-cell-wrapper">
-          <div style="font-weight:700; color:var(--text-main); font-size:0.82rem;">
-            👤 ${st.lastModifiedBy || "Sistem / Roster Asal"}
-          </div>
-          <div>
-            <code class="trace-code-email">✉️ ${st.lastModifiedEmail || "skranggu@moe-dl.edu.my"}</code>
-          </div>
-          <div style="font-size:0.73rem; color:var(--text-muted);">
-            🕒 ${st.lastModifiedAt || "-"}
-          </div>
-          ${st.lastModifiedAction ? `<div style="font-size:0.72rem; color:#94a3b8; font-style:italic;">📝 ${st.lastModifiedAction}</div>` : ""}
-        </div>
-      </td>
+${traceCellHtml}
       <td style="text-align: center; white-space: nowrap;">
         <button class="btn btn-outline btn-sm" onclick="viewStudentSlip('${st.id}')" title="Lihat Slip">👁️ Slip</button>
         <button class="btn btn-outline btn-sm btn-action-edit" onclick="openEditStudentModal('${st.id}')" title="Kemas kini nama, kelas atau maklumat murid ini">✏️ Edit</button>
@@ -10019,7 +10053,7 @@ function exportStudentsCSV() {
       s.pjpk_m, s.pjpk_g, `"${s.pjpk_tp}"`,
       `"${s.total}"`, `"${s.purata}"`, `"${s.posisi}"`, `"${s.hadir}"`,
       `"${s.ulasan}"`, `"${s.email}"`, `"${s.status}"`, `"${s.tarikh}"`, `"${s.catatan}"`,
-      `"${s.lastModifiedBy || 'Sistem / Roster Asal'}"`, `"${s.lastModifiedEmail || 'skranggu@moe-dl.edu.my'}"`, `"${s.lastModifiedAt || '-'}"`, `"${s.lastModifiedAction || '-'}"`
+      `"${(s.lastModifiedBy && s.lastModifiedBy !== 'Sistem / Roster Asal') ? s.lastModifiedBy : ''}"`, `"${(s.lastModifiedEmail && s.lastModifiedEmail !== 'skranggu@moe-dl.edu.my') ? s.lastModifiedEmail : ''}"`, `"${s.lastModifiedAt || ''}"`, `"${s.lastModifiedAction || ''}"`
     ].join(",");
     csvContent += row + "\n";
   });
@@ -10965,5 +10999,5 @@ function quickSwitchActiveTeacher(teacherId) {
   renderEntryTable();
   renderDatabaseTable();
 
-  showToastNotification(`👤 Sesi aktif ditetapkan: ${teacher.name} (✉️ ${teacher.email || 'skranggu@moe-dl.edu.my'})`);
+  showToastNotification(`👤 Sesi aktif: ${teacher.name} (✉️ ${teacher.email || 'DELIMa Aktif'})`);
 }
