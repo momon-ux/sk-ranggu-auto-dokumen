@@ -1,10 +1,11 @@
 // Service Worker untuk Sistem Auto Dokumen SK Ranggu
-const CACHE_NAME = 'sk-ranggu-pwa-v3.2-mobile';
+const CACHE_NAME = 'sk-ranggu-pwa-v3.3-auto';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
-  './style.css?v=3.2-mobile',
-  './app.js?v=3.2-mobile',
+  './version.json',
+  './style.css?v=3.3-auto',
+  './app.js?v=3.3-auto',
   './manifest.json',
   './favicon.ico',
   './Data_Murid_SK_Ranggu_Peperiksaan.csv',
@@ -25,7 +26,7 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('[SK Ranggu SW] Menyimpan aset teras ke cache...');
-      return cache.addAll(ASSETS_TO_CACHE);
+      return cache.addAll(ASSETS_TO_CACHE.map(path => new Request(path, {cache: 'reload'})));
     }).then(() => self.skipWaiting())
   );
 });
@@ -52,7 +53,7 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   if (request.method !== 'GET' || !url.protocol.startsWith('http')) return;
   if (url.origin !== self.location.origin) return;
-  const isApp = request.mode === 'navigate' || /\.(?:html|js|css)$/.test(url.pathname);
+  const isApp = request.mode === 'navigate' || /\.(?:html|js|css)$/.test(url.pathname) || url.pathname.endsWith('/version.json');
   event.respondWith((async () => {
     const cache = await caches.open(CACHE_NAME);
     if (isApp) {

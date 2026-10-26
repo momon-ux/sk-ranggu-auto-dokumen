@@ -53462,15 +53462,55 @@ function fallbackCopyText(text, onSuccess) {
 let deferredPWAInstallPrompt = null;
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then((registration) => {
-        console.log('[PWA SK Ranggu] Service Worker aktif:', registration.scope);
-      })
-      .catch((error) => {
-        console.warn('[PWA SK Ranggu] Gagal mendaftar Service Worker:', error);
-      });
+  const APP_VERSION = '3.3-auto';
+  let pendingUpdate = false;
+  let reloadingUpdate = false;
+  let swRegistration = null;
+  const initiallyControlled = !!navigator.serviceWorker.controller;
+
+  function applyPendingUpdate() {
+    if (!pendingUpdate || reloadingUpdate || document.visibilityState !== 'visible') return;
+    // Selesaikan pengisian aktif dahulu; perubahan markah disimpan oleh onchange.
+    const active = document.activeElement;
+    if (active && (active.matches('input, select, textarea') || active.isContentEditable)) return;
+    reloadingUpdate = true;
+    location.reload();
+  }
+  function requestAppUpdate() {
+    pendingUpdate = true;
+    setTimeout(applyPendingUpdate, 0);
+  }
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (initiallyControlled) requestAppUpdate();
   });
+  document.addEventListener('focusout', () => setTimeout(applyPendingUpdate, 0));
+
+  async function checkLatestApp() {
+    if (document.visibilityState !== 'visible' || !navigator.onLine) return;
+    try {
+      await swRegistration?.update();
+      const response = await fetch('./version.json', {cache: 'no-store'});
+      if (!response.ok) return;
+      const latest = await response.json();
+      const releaseNumber = value => String(value).match(/\d+/g)?.reduce((total, n) => total * 1000 + Number(n), 0) || 0;
+      if (latest.version && releaseNumber(latest.version) > releaseNumber(APP_VERSION)) requestAppUpdate();
+    } catch (_) { /* Versi luar talian kekal boleh digunakan. */ }
+  }
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js', {updateViaCache: 'none'})
+      .then((registration) => {
+        swRegistration = registration;
+        checkLatestApp();
+      })
+      .catch((error) => console.warn('[PWA SK Ranggu] Gagal mendaftar Service Worker:', error));
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      applyPendingUpdate();
+      checkLatestApp();
+    }
+  });
+  window.addEventListener('online', checkLatestApp);
 }
 
 window.addEventListener('beforeinstallprompt', (e) => {
