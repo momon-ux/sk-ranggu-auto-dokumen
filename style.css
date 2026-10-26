@@ -2632,3 +2632,23 @@ body.entry-focus #tab-entry .table-wrapper { max-height: calc(100dvh - 152px); }
   body.entry-focus #tab-entry .table-wrapper { max-height: calc(100dvh - 182px); }
 }
 @media print { .school-compact-header { display: none !important; } }
+
+/* Halaman utama dan ruang pengisian subjek ialah dua paparan berasingan. */
+body:not(.entry-focus) .nav-tabs-wrapper { display: block !important; }
+body:not(.entry-focus) #tab-entry .table-wrapper,
+body:not(.entry-focus) #entry-page-summary,
+body:not(.entry-focus) #entry-pagination { display: none !important; }
+body.entry-focus .school-compact-header,
+body.entry-focus .session-settings,
+body.entry-focus .nav-tabs-wrapper,
+body.entry-focus .overview-details { display: none !important; }
+.entry-school-mark { object-fit: contain; flex: 0 0 30px; }
+body.entry-focus .entry-workspace-bar { min-height: 76px; }
+body.entry-focus #tab-entry .table-wrapper { max-height: calc(100dvh - 90px); }
+@media screen and (max-width: 360px) {
+  body.entry-focus .entry-workspace-bar { gap: .3rem; }
+  .entry-workspace-bar strong { font-size: .8rem; }
+  .entry-workspace-bar .btn { font-size: .7rem; padding: .4rem; }
+  .entry-workspace-bar small { font-size: .65rem; }
+  body.entry-focus #tab-entry .table-wrapper { max-height: calc(100dvh - 110px); }
+}

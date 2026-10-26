@@ -52199,7 +52199,7 @@ function setupCompactEntry() {
   const select = document.getElementById("entry-subject");
   select.add(new Option("Pilih subjek…", ""));
   ALL_SUBJECT_KEYS.forEach(key => select.add(new Option(SUBJECT_LABELS[key], key)));
-  select.add(new Option("Semua subjek (jadual lebar)", "ALL"));
+
 }
 function restoreEntryChoices() {
   try {
@@ -52216,8 +52216,8 @@ function restoreEntryChoices() {
     const subjects = document.getElementById("entry-subject");
     if (!saved.subject || !Array.from(subjects.options).some(o => o.value === saved.subject)) return;
     subjects.value = saved.subject;
-    entryFocus = true;
-    document.body.classList.add("entry-focus");
+    entryFocus = saved.focused !== false;
+    document.body.classList.toggle("entry-focus", entryFocus);
   } catch (_) { /* Pilihan baharu boleh dibuat jika simpanan sesi tiada. */ }
 }
 function navigateSchoolTab(tabId) {
@@ -52237,7 +52237,7 @@ function startEntryFocus() {
     return;
   }
   sessionStorage.setItem("skrg_entry_choices", JSON.stringify({
-    year: currentYear, assessment: currentAssessment, level: currentYearLevel,
+    focused: true, year: currentYear, assessment: currentAssessment, level: currentYearLevel,
     kelas: document.getElementById("entry-filter-class").value,
     subject: document.getElementById("entry-subject").value
   }));
@@ -52252,7 +52252,11 @@ function editEntryChoices() {
   entryFocus = false;
   document.body.classList.remove("entry-focus");
   renderEntryTable();
-  document.querySelector("#entry-filter-class").scrollIntoView({block: "center"});
+  try {
+    const saved = JSON.parse(sessionStorage.getItem("skrg_entry_choices") || "null");
+    if (saved) sessionStorage.setItem("skrg_entry_choices", JSON.stringify({...saved, focused: false}));
+  } catch (_) {}
+  window.scrollTo(0, 0);
 }
 function prepareEntryPage(filtered, classFilter, searchTxt) {
   const select = document.getElementById("entry-subject");
@@ -53474,7 +53478,7 @@ function fallbackCopyText(text, onSuccess) {
 let deferredPWAInstallPrompt = null;
 
 if ('serviceWorker' in navigator) {
-  const APP_VERSION = '3.4-brand';
+  const APP_VERSION = '3.5-workspace';
   let pendingUpdate = false;
   let reloadingUpdate = false;
   let swRegistration = null;
