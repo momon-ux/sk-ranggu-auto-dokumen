@@ -51812,8 +51812,41 @@ function setupYearAndSessionControls() {
   });
 }
 
+function getAssessmentDisplayName() {
+  if (currentAssessment === "Pentaksiran Pertengahan Sesi Akademik (PPSA)") return "UJIAN PERTENGAHAN SESI AKADEMIK (UPSA)";
+  if (currentAssessment === "Ujian Akhir Sesi Akademik (UASA)") return "UJIAN AKHIR SESI AKADEMIK (UASA)";
+  return currentAssessment;
+}
+function changePrintAssessment(value) {
+  if (!value) return;
+  const studentId = document.getElementById("preview-student-select").value;
+  const globalSelect = document.getElementById("global-session-select");
+  globalSelect.value = value;
+  globalSelect.dispatchEvent(new Event("change", {bubbles: true}));
+  const student = studentsData.find(item => item.id === studentId);
+  if (student) {
+    document.getElementById("preview-student-select").value = studentId;
+    renderSlipPreview(student);
+  }
+}
+function printSelectedSlip() {
+  const session = document.getElementById("print-assessment-select");
+  if (!session.value) {
+    alert("Sila pilih UPSA atau UASA untuk slip yang hendak dicetak.");
+    session.focus();
+    return;
+  }
+  if (!document.getElementById("preview-student-select").value) {
+    alert("Sila pilih murid untuk slip keputusan.");
+    return;
+  }
+  window.print();
+}
+
 function updateYearUI() {
-  const fullSessionTitle = `${currentAssessment} Tahun ${currentYear}`;
+  const fullSessionTitle = `${getAssessmentDisplayName()} Tahun ${currentYear}`;
+  const printSelect = document.getElementById("print-assessment-select");
+  if (printSelect) printSelect.value = Array.from(printSelect.options).some(option => option.value === currentAssessment) ? currentAssessment : "";
   
   const docNameInput = document.getElementById("setup-doc-name");
   if (docNameInput) {
@@ -52680,7 +52713,7 @@ function renderSlipPreview(st) {
   document.getElementById("slip-student-id").innerText = st.ic ? `${st.id} (No. KP: ${st.ic})` : st.id;
   document.getElementById("slip-student-class").innerText = st.kelas;
   document.getElementById("slip-guru-kelas").innerText = st.guru;
-  document.getElementById("slip-session").innerText = `${currentAssessment} Tahun ${currentYear} • SK Ranggu Tawau`;
+  document.getElementById("slip-session").innerText = `${getAssessmentDisplayName()} Tahun ${currentYear} • SK Ranggu Tawau`;
   
   const isTahap1 = st.kelas.startsWith("1") || st.kelas.startsWith("2") || st.kelas.startsWith("3");
   const totalDenom = isTahap1 ? " / 900" : " / 1100";
@@ -52703,7 +52736,7 @@ function renderSlipPreview(st) {
   });
   
   // Summary
-  document.getElementById("slip-total").innerText = (st.total || "-") + totalDenom;
+  document.getElementById("slip-total").innerText = String(st.total || "-").includes("/") ? st.total : (st.total || "-") + totalDenom;
   document.getElementById("slip-purata").innerText = st.purata || "-";
   document.getElementById("slip-posisi").innerText = st.posisi || "-";
   document.getElementById("slip-hadir").innerText = st.hadir || "-";
@@ -53463,7 +53496,7 @@ function fallbackCopyText(text, onSuccess) {
 let deferredPWAInstallPrompt = null;
 
 if ('serviceWorker' in navigator) {
-  const APP_VERSION = '3.10-sppb';
+  const APP_VERSION = '3.11-print';
   let pendingUpdate = false;
   let reloadingUpdate = false;
   let swRegistration = null;

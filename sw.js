@@ -1,11 +1,11 @@
 // Service Worker untuk Sistem Auto Dokumen SK Ranggu
-const CACHE_NAME = 'sk-ranggu-pwa-v3.10-sppb';
+const CACHE_NAME = 'sk-ranggu-pwa-v3.11-print';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './version.json',
-  './style.css?v=3.10-sppb',
-  './app.js?v=3.10-sppb',
+  './style.css?v=3.11-print',
+  './app.js?v=3.11-print',
   './manifest.json',
   './favicon.ico',
   './Data_Murid_SK_Ranggu_Peperiksaan.csv',

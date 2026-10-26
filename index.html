@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3.10-sppb">
+  <link rel="stylesheet" href="style.css?v=3.11-print">
 
   <!-- PWA & Mobile Web App Meta -->
   <link rel="manifest" href="manifest.json">
@@ -565,6 +565,15 @@
          TAB 4: PRATONTON & CETAK SLIP RASMI SK RANGGU (A4 FORMAT)
          ======================================================================= -->
     <section id="tab-preview" class="tab-panel">
+      <div class="card-box no-print print-session-controls">
+        <label for="print-assessment-select">Jenis slip yang hendak dicetak</label>
+        <select id="print-assessment-select" class="select-styled" onchange="changePrintAssessment(this.value)">
+          <option value="">Pilih UPSA atau UASA…</option>
+          <option value="Pentaksiran Pertengahan Sesi Akademik (PPSA)">UJIAN PERTENGAHAN SESI AKADEMIK (UPSA)</option>
+          <option value="Ujian Akhir Sesi Akademik (UASA)">UJIAN AKHIR SESI AKADEMIK (UASA)</option>
+        </select>
+        <p>A4 menegak · Margin seimbang 12 mm. Pilih pentaksiran dahulu sebelum mencetak.</p>
+      </div>
       <!-- Toolbar Pemilihan Murid & Butang Cetak -->
       <div class="card-box no-print" style="margin-bottom: 1.25rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
@@ -578,7 +587,7 @@
           </div>
 
           <div style="display: flex; gap: 0.75rem;">
-            <button class="btn btn-primary" onclick="window.print()">
+            <button class="btn btn-primary" onclick="printSelectedSlip()">
               <span>🖨️</span> <span>Cetak Slip Rasmi / Simpan PDF</span>
             </button>
           </div>
@@ -1524,7 +1533,7 @@
   <div id="toast-container" class="toast-container"></div>
 
   <!-- JS APLIKASI -->
-  <script src="app.js?v=3.10-sppb"></script>
+  <script src="app.js?v=3.11-print"></script>
 
   <!-- =========================================================================
        MODAL EDIT GURU (ADMIN SAHAJA - NAMA GURU, IC, EMEL, PERANAN & KELAS)
