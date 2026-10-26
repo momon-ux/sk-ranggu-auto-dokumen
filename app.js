@@ -50771,6 +50771,20 @@ const DEFAULT_SUBJECT_ASSIGNMENTS = {
 
 const ALL_SUBJECT_KEYS = ["bm", "bi", "mt", "sn", "sej", "pi", "ba", "rbt", "psv", "mz", "pjpk"];
 
+const SUBJECT_LABELS = {
+  bm: "Bahasa Melayu",
+  bi: "Bahasa Inggeris",
+  mt: "Matematik",
+  sn: "Sains",
+  sej: "Sejarah",
+  pi: "Pendidikan Islam",
+  ba: "Bahasa Arab",
+  rbt: "Reka Bentuk & Teknologi",
+  psv: "Pendidikan Seni Visual",
+  mz: "Pendidikan Muzik",
+  pjpk: "Pendidikan Jasmani & Kesihatan"
+};
+
 // Keadaan Semasa Sistem (State)
 let currentYear = "2026";
 let currentAssessment = "Pentaksiran Akhir Sesi Akademik (PASA)";
@@ -50803,7 +50817,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 1. Muat & Simpan Data Pengesahan, Guru & Penetapan Subjek
 function loadAuthAndPermissionsData() {
-  const CURRENT_DATA_VERSION = "2026.2_drive_uasa";
+  const CURRENT_DATA_VERSION = "2026.3_fix_stats";
   const savedDataVer = localStorage.getItem("skrg_data_version");
   if (savedDataVer !== CURRENT_DATA_VERSION) {
     teachersData = JSON.parse(JSON.stringify(DEFAULT_TEACHERS));
@@ -51656,7 +51670,7 @@ function clearAuditLogs() {
 
 // 8. Muat Data daripada LocalStorage mengikut Tahun & Sesi
 function loadYearData() {
-  const CURRENT_DATA_VERSION = "2026.2_drive_uasa";
+  const CURRENT_DATA_VERSION = "2026.3_fix_stats";
   const savedDataVer = localStorage.getItem("skrg_data_version");
   const storageKey = `skrg_pbd_marks_${currentYear}_${currentAssessment.replace(/\s+/g, '_')}`;
 
