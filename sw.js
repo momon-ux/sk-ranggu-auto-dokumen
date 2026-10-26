@@ -1,18 +1,23 @@
 // Service Worker untuk Sistem Auto Dokumen SK Ranggu
-const CACHE_NAME = 'sk-ranggu-pwa-v2.3';
+const CACHE_NAME = 'sk-ranggu-pwa-v2.4';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './style.css',
   './app.js',
   './manifest.json',
+  './favicon.ico',
   './Data_Murid_SK_Ranggu_Peperiksaan.csv',
   './assets/logo_skrg.png',
   './assets/logo_kpm.png',
+  './assets/app_icon.png',
   './icons/icon-192x192.png',
+  './icons/icon-384x384.png',
   './icons/icon-512x512.png',
+  './icons/icon-maskable-512x512.png',
   './icons/apple-touch-icon.png',
-  './icons/favicon-64x64.png'
+  './icons/favicon-64x64.png',
+  './icons/favicon-32x32.png'
 ];
 
 // Pasang Service Worker & Simpan Fail Teras ke Cache

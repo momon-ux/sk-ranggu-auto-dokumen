@@ -15,9 +15,13 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="SK Ranggu">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512x512.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png">
   <link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64x64.png">
-  <link rel="shortcut icon" href="icons/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
 
@@ -29,7 +33,7 @@
       <div class="brand-section">
         <div class="logo-pair">
           <img src="assets/logo_kpm.png" alt="Logo KPM" class="logo-img">
-          <img src="assets/logo_skrg.png" alt="Logo SK Ranggu" class="logo-img">
+          <img src="assets/app_icon.png" alt="Logo SK Ranggu PBD UASA" class="logo-img logo-skrg" style="border-radius:8px; box-shadow:0 0 10px rgba(56, 189, 248, 0.45);">
         </div>
         <div class="brand-text">
           <h1>SISTEM AUTO DOKUMEN & PENJANA SLIP PBD / UASA</h1>
@@ -521,10 +525,10 @@
          ======================================================================= -->
     <section id="tab-preview" class="tab-panel">
       <!-- Toolbar Pemilihan Murid & Butang Cetak -->
-      <div class="card-box no-print" style="margin-bottom: 1.5rem;">
+      <div class="card-box no-print" style="margin-bottom: 1.25rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-          <div style="display: flex; align-items: center; gap: 0.75rem; flex: 1; min-width: 280px;">
-            <label for="preview-student-select" style="font-weight: 700; color: #cbd5e1; font-size: 0.85rem; white-space: nowrap;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; flex: 1; min-width: 260px;">
+            <label for="preview-student-select" style="font-weight: 700; color: var(--text-main); font-size: 0.85rem; white-space: nowrap;">
               Pilih Murid Untuk Slip:
             </label>
             <select id="preview-student-select" class="select-styled" style="width: 100%; max-width: 480px;">
@@ -538,6 +542,11 @@
             </button>
           </div>
         </div>
+      </div>
+
+      <!-- Petunjuk Mudah Alih Pratonton Slip -->
+      <div class="mobile-table-hint no-print">
+        <span>💡</span> <span>Paparan Slip A4 Rasmi: Leret ke kiri / kanan untuk melihat keseluruhan slip, atau putar peranti ke mod landskap.</span>
       </div>
 
       <!-- KERTAS SLIP RASMI SK RANGGU (FORMAT A4) -->
@@ -869,7 +878,7 @@
           </div>
         </div>
 
-        <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap:1.25rem;">
+        <div class="form-grid form-grid-2col">
           <div class="form-group">
             <label class="form-label">Bahasa Melayu (BM):</label>
             <select id="assign-bm" class="form-control"></select>
@@ -1181,7 +1190,7 @@
         </div>
 
         <!-- Pemilih Kelas & Subjek Yang Hendak Disalin -->
-        <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; background: var(--bg-surface-alt); padding: 1rem; border-radius: 10px; border: 1.5px solid var(--border);">
+        <div class="form-grid form-grid-2col" style="margin-bottom: 1.25rem; background: var(--bg-surface-alt); padding: 1rem; border-radius: 10px; border: 1.5px solid var(--border);">
           <div class="form-group" style="margin-bottom:0;">
             <label class="form-label" style="font-weight:700;">🏫 Pilih Kelas:</label>
             <select id="sppb-select-class" class="form-control" onchange="updateSppbPreviewData()">
@@ -1387,7 +1396,7 @@
           <input type="text" id="add-student-name" class="form-control" placeholder="Contoh: MUHAMMAD HAZIQ BIN AZLAN" style="text-transform: uppercase;">
         </div>
 
-        <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+        <div class="form-grid form-grid-2col" style="margin-bottom: 1rem;">
           <div class="form-group" style="margin-bottom: 0;">
             <label class="form-label">Pilih Kelas: <span class="required">*</span></label>
             <select id="add-student-class" class="form-control" onchange="updateAddStudentClassTeacher()">
@@ -1580,7 +1589,7 @@
           <input type="text" id="edit-student-name" class="form-control" placeholder="Contoh: MUHAMMAD HAZIQ BIN AZLAN" style="text-transform: uppercase;">
         </div>
 
-        <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+        <div class="form-grid form-grid-2col" style="margin-bottom: 1rem;">
           <div class="form-group" style="margin-bottom: 0;">
             <label class="form-label">No. Murid / ID Sistem: <span class="required">*</span></label>
             <input type="text" id="edit-student-id" class="form-control" readonly style="background:var(--bg-surface-alt); font-weight:700; color:#38bdf8;">
@@ -1633,7 +1642,7 @@
           </div>
         </div>
 
-        <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+        <div class="form-grid form-grid-2col" style="margin-bottom: 1rem;">
           <div class="form-group" style="margin-bottom: 0;">
             <label class="form-label">Guru Kelas:</label>
             <input type="text" id="edit-student-teacher" class="form-control" readonly style="background:var(--bg-surface-alt); color:var(--text-muted);">

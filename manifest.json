@@ -1,22 +1,58 @@
 {
   "name": "Sistem Auto Dokumen & Penjana Slip PBD SK Ranggu",
-  "short_name": "Auto Slip SKRG",
-  "description": "Sistem Pengurusan & Penjanaan Slip PBD Peperiksaan SK Ranggu, Tawau Sabah",
+  "short_name": "PBD SK Ranggu",
+  "description": "Sistem Pengurusan & Penjanaan Slip PBD UASA Peperiksaan SK Ranggu, Tawau Sabah",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#f8fafc",
+  "background_color": "#0f172a",
   "theme_color": "#1e3a8a",
   "icons": [
+    {
+      "src": "icons/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
     {
       "src": "icons/favicon-64x64.png",
       "sizes": "64x64",
       "type": "image/png"
     },
     {
+      "src": "icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
       "src": "icons/icon-192x192.png",
       "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-384x384.png",
+      "sizes": "384x384",
       "type": "image/png",
       "purpose": "any"
     },
