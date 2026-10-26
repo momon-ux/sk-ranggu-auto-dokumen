@@ -2473,3 +2473,97 @@ body {
 
 
 
+
+/* Pengisian padat: kelas + subjek, sepuluh murid setiap halaman. */
+.overview-details, .entry-help, .entry-actions { margin-bottom: .8rem; }
+summary { cursor: pointer; font-weight: 700; padding: .65rem; color: var(--text-main); }
+.entry-help .info-banner { margin-top: .5rem; }
+.entry-subject-control { display: grid; gap: .4rem; margin: .75rem 0; }
+.entry-subject-control label { font-weight: 700; }
+.entry-subject-control p { font-size: .8rem; color: var(--text-muted); margin: 0; }
+.entry-pagination { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; padding: .6rem 0; background: var(--bg-surface); scroll-margin-top: 90px; }
+.pager-buttons { display: flex; flex-wrap: wrap; gap: .35rem; }
+.entry-pagination button { min-height: 44px; }
+.entry-pagination button:disabled { opacity: .4; cursor: default; }
+#tab-entry .data-table .entry-column-hidden { display: none !important; }
+#tab-entry .data-table.single-subject { min-width: 0 !important; width: 100% !important; table-layout: fixed; }
+#tab-entry .single-subject th:nth-child(3), #tab-entry .single-subject td:nth-child(3) { position: static; width: 65% !important; min-width: 0 !important; max-width: none !important; white-space: normal; overflow-wrap: anywhere; box-shadow: none; }
+#tab-entry .single-subject th:nth-child(n+4), #tab-entry .single-subject td:nth-child(n+4) { width: 35% !important; min-width: 0 !important; }
+#tab-entry .single-subject .mark-input { width: 80px !important; max-width: 100%; height: 44px !important; font-size: 16px !important; }
+#tab-entry .single-subject .trace-badge-sub, #tab-entry .single-subject td:nth-child(3) > small, #tab-entry .single-subject .teacher-pill { display: none; }
+.entry-empty { padding: 1.5rem !important; text-align: center; white-space: normal !important; color: var(--text-muted); }
+@media screen and (max-width: 640px) {
+  .app-header { position: static; }
+  .header-badges { flex-wrap: wrap; }
+  .user-profile-badge { max-width: 100%; flex-wrap: wrap; overflow: visible; }
+  .user-profile-badge button { min-height: 36px; }
+  #current-user-display { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+  .year-toolbar-left { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); }
+  .selector-item, .brand-text, .filter-group, .search-box { min-width: 0; }
+  .select-styled { min-width: 0; max-width: 100%; min-height: 44px; font-size: 16px; }
+  .realtime-clock-widget, .year-toolbar-right { display: none; }
+  .nav-tabs-wrapper { top: 0; }
+  .nav-tabs-container { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; overflow: visible; padding: 0; }
+  .tab-btn { min-width: 0; white-space: normal; min-height: 48px; padding: .5rem .15rem; font-size: .73rem; }
+  .main-content { margin-top: .4rem; }
+  .overview-details { margin-bottom: .4rem; }
+  .overview-details summary { font-size: .8rem; padding: .4rem; }
+  #tab-entry .card-box-title { font-size: .9rem; }
+  #tab-entry .card-box-header > .badge-pill { display: none; }
+  #tab-entry .level-tabs-bar, #tab-entry .class-pills-bar { display: none !important; }
+  #tab-entry .card-box { padding: .65rem; }
+  #tab-entry .filter-group { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; }
+  #tab-entry #btn-class-assign { grid-column: 1 / -1; }
+  #tab-entry .entry-actions .btn-group { display: grid; margin-top: .3rem; }
+  .entry-subject-control { margin-top: .3rem; }
+  .entry-pagination { position: sticky; bottom: 0; z-index: 25; border-block: 1px solid var(--border); padding: .5rem 0; }
+  .entry-pagination > span { font-size: .8rem; }
+  .pager-buttons { width: 100%; display: grid; grid-template-columns: 1fr 1.2fr .85fr; }
+  .pager-buttons .btn { padding: .5rem .2rem; font-size: .78rem; justify-content: center; }
+  #tab-entry .single-subject th:nth-child(3), #tab-entry .single-subject td:nth-child(3) { font-size: .85rem !important; padding: .55rem !important; }
+  #tab-entry .single-subject .th-sub { display: inline !important; }
+  #tab-entry .single-subject .mark-cell-group { gap: .25rem !important; }
+}
+@media print {
+  .entry-actions, .entry-help, .overview-details, .entry-subject-control { display: none !important; }
+}
+.permission-details { margin-bottom: .6rem; }
+.entry-session-caption { font-size: .8rem; color: var(--text-muted); }
+.entry-page-summary { font-size: .85rem; font-weight: 700; margin: .6rem 0; }
+.entry-subject-control { scroll-margin-top: 65px; }
+@media screen and (max-width: 640px) {
+  #tab-entry .entry-session-caption { display: none; }
+  #tab-entry .card-box-header { margin-bottom: .2rem; }
+  #tab-entry .entry-help, #tab-entry .permission-details { margin-bottom: .15rem; }
+  #tab-entry summary { font-size: .8rem; padding: .55rem .2rem; }
+  #tab-entry .table-controls { margin-top: .5rem; }
+  .entry-pagination { box-shadow: 0 -3px 12px rgba(15,23,42,.1); }
+}
+
+/* Ruang kerja selepas pilihan: terus ke senarai, tanpa pengepala berulang. */
+.entry-start { min-height: 44px; margin: .5rem 0; }
+.entry-workspace-bar { display: none; }
+body.entry-focus .app-header, body.entry-focus .year-toolbar,
+body.entry-focus .nav-tabs-wrapper, body.entry-focus .overview-details,
+body.entry-focus .app-footer,
+body.entry-focus #tab-entry .card-box-header,
+body.entry-focus #tab-entry .entry-help,
+body.entry-focus #tab-entry .permission-details,
+body.entry-focus #tab-entry .level-tabs-bar,
+body.entry-focus #tab-entry .class-pills-bar,
+body.entry-focus #tab-entry .table-controls,
+body.entry-focus #tab-entry .entry-subject-control,
+body.entry-focus #tab-entry .entry-start,
+body.entry-focus #entry-page-summary,
+body.entry-focus #entry-pagination { display: none !important; }
+body.entry-focus .main-content { margin: 0 auto; padding: 0 .5rem; }
+body.entry-focus #tab-entry .card-box { margin: 0; padding: 0; border: none; border-radius: 0; }
+body.entry-focus .entry-workspace-bar { display: flex; align-items: center; gap: .4rem; background: var(--bg-surface); padding: .6rem 0; min-height: 75px; }
+.entry-workspace-bar > div { flex: 1; min-width: 0; }
+.entry-workspace-bar strong { display: block; font-size: .9rem; overflow-wrap: anywhere; }
+.entry-workspace-bar small { display: block; color: var(--text-muted); font-size: .72rem; }
+.entry-workspace-bar .btn { min-height: 44px; font-size: .75rem; padding: .5rem; white-space: normal; }
+body.entry-focus #tab-entry .table-wrapper { max-height: calc(100dvh - 90px); overflow: auto; }
+body.entry-focus #tab-entry thead th { position: sticky; top: 0; z-index: 15; background: var(--bg-surface-alt); }
+body.entry-focus #tab-entry .single-subject td { padding-block: .35rem !important; }
+body.entry-focus #tab-entry .single-subject .school-tag { font-size: .65rem; }

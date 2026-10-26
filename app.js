@@ -50796,13 +50796,15 @@ let currentUser = null;
 
 // Inisialisasi Apabila Laman Dimuatkan
 document.addEventListener("DOMContentLoaded", () => {
+  setupCompactEntry();
   initTheme();
   loadAuthAndPermissionsData();
   loadYearData();
   setupYearAndSessionControls();
   setupTabs();
   updateClassDropdownOptions("ALL");
-  updateClassPillsUI("ALL");
+  restoreEntryChoices();
+  updateClassPillsUI(document.getElementById("entry-filter-class").value);
   renderEntryTable();
   renderDatabaseTable();
   updateStats();
@@ -51701,7 +51703,7 @@ function loadYearData() {
             hasCleanedOldEmail = true;
           }
         });
-        if (hasCleanedOldEmail || !hasOtherYears) {
+        if (hasCleanedOldEmail) {
           localStorage.setItem(storageKey, JSON.stringify(studentsData));
         }
       } catch (e) {
@@ -51755,7 +51757,7 @@ function saveCurrentMarks(showToast = true) {
   const storageKey = `skrg_pbd_marks_${currentYear}_${currentAssessment.replace(/\s+/g, '_')}`;
   localStorage.setItem(storageKey, JSON.stringify(studentsData));
   
-  renderEntryTable();
+  if (showToast) renderEntryTable();
   renderDatabaseTable();
   updateStats();
   
@@ -51839,6 +51841,7 @@ function setupTabs() {
       
       btn.classList.add("active");
       const targetId = btn.getAttribute("data-tab");
+      document.body.classList.toggle("entry-focus", targetId === "tab-entry" && entryFocus);
       document.getElementById(targetId)?.classList.add("active");
     });
   });
@@ -51929,7 +51932,7 @@ function updateStudentMark(studentId, subject, val) {
   
   if (totalCell) totalCell.innerText = st.total;
   if (purataCell) purataCell.innerText = st.purata;
-  if (tpCell) tpCell.innerText = st[`${subject}_tp`].split(' ')[0] || "-";
+  if (tpCell) tpCell.innerText = st[`${subject}_tp`].match(/TP\s*\d/)?.[0] || "-";
   if (gredCell) gredCell.innerText = st[`${subject}_g`];
   
   updateStats();
@@ -52190,6 +52193,76 @@ function removeSelectedStudents() {
   }
 }
 
+// Semua murid dalam satu senarai; ruang kerja pengisian memenuhi skrin.
+let entryFocus = false;
+function setupCompactEntry() {
+  const select = document.getElementById("entry-subject");
+  select.add(new Option("Pilih subjek…", ""));
+  ALL_SUBJECT_KEYS.forEach(key => select.add(new Option(SUBJECT_LABELS[key], key)));
+  select.add(new Option("Semua subjek (jadual lebar)", "ALL"));
+}
+function restoreEntryChoices() {
+  try {
+    const saved = JSON.parse(sessionStorage.getItem("skrg_entry_choices") || "null");
+    if (!saved || saved.year !== currentYear || saved.assessment !== currentAssessment) return;
+    const yearSelect = document.getElementById("entry-filter-year");
+    if (!Array.from(yearSelect.options).some(o => o.value === saved.level)) return;
+    currentYearLevel = saved.level;
+    yearSelect.value = saved.level;
+    updateClassDropdownOptions(saved.level);
+    const classes = document.getElementById("entry-filter-class");
+    if (!Array.from(classes.options).some(o => o.value === saved.kelas)) return;
+    classes.value = saved.kelas;
+    const subjects = document.getElementById("entry-subject");
+    if (!saved.subject || !Array.from(subjects.options).some(o => o.value === saved.subject)) return;
+    subjects.value = saved.subject;
+    entryFocus = true;
+    document.body.classList.add("entry-focus");
+  } catch (_) { /* Pilihan baharu boleh dibuat jika simpanan sesi tiada. */ }
+}
+function startEntryFocus() {
+  if (!document.getElementById("entry-subject").value) {
+    document.getElementById("entry-subject").focus();
+    return;
+  }
+  sessionStorage.setItem("skrg_entry_choices", JSON.stringify({
+    year: currentYear, assessment: currentAssessment, level: currentYearLevel,
+    kelas: document.getElementById("entry-filter-class").value,
+    subject: document.getElementById("entry-subject").value
+  }));
+  entryFocus = true;
+  document.body.classList.add("entry-focus");
+  renderEntryTable();
+  window.scrollTo(0, 0);
+  document.querySelector("#tab-entry .table-wrapper").scrollTop = 0;
+}
+function editEntryChoices() {
+  entryFocus = false;
+  document.body.classList.remove("entry-focus");
+  renderEntryTable();
+  document.querySelector("#entry-filter-class").scrollIntoView({block: "center"});
+}
+function prepareEntryPage(filtered, classFilter, searchTxt) {
+  const select = document.getElementById("entry-subject");
+  const tahap1 = /^[123] /.test(classFilter);
+  Array.from(select.options).forEach(option => {
+    option.disabled = tahap1 && ["sej", "rbt"].includes(option.value);
+  });
+  if (select.selectedOptions[0]?.disabled) select.value = "bm";
+  const ready = !!select.value && (classFilter !== "ALL" || entryFocus);
+  const classLabel = classFilter === "ALL" ? "Semua kelas" : classFilter;
+  document.getElementById("entry-page-summary").textContent = ready ? `${filtered.length} murid • Semua dalam satu halaman` : "";
+  document.getElementById("entry-workspace-label").textContent = `${classLabel} • ${SUBJECT_LABELS[select.value] || "Semua subjek"}`;
+  document.getElementById("entry-pagination").innerHTML = ready ? `<span role="status">${filtered.length} murid • Markah disimpan automatik</span><button class="btn btn-primary" onclick="saveCurrentMarks(true)">Simpan markah</button>` : '<span>Pilih kelas dan subjek, kemudian tekan Mula isi markah.</span>';
+  const table = document.querySelector("#tab-entry .data-table");
+  table.classList.toggle("single-subject", select.value !== "ALL");
+  const headers = table.tHead.rows[0].cells;
+  Array.from(headers).forEach((cell, index) => {
+    cell.classList.toggle("entry-column-hidden", select.value !== "ALL" && index !== 2 && index !== ALL_SUBJECT_KEYS.indexOf(select.value) + 3);
+  });
+  return ready ? filtered : [];
+}
+
 // 15. Render Jadual Pengisian Markah Guru (Tab 1) dengan Kawalan Kunci Subjek & Tahap 1/2
 function renderEntryTable() {
   const tbody = document.getElementById("entry-tbody");
@@ -52208,7 +52281,12 @@ function renderEntryTable() {
     return matchYear && matchClass && matchSearch;
   });
   
+  const pageStudents = prepareEntryPage(filtered, classFilter, searchTxt);
   tbody.innerHTML = "";
+  if (!document.getElementById("entry-subject").value || (classFilter === "ALL" && !entryFocus)) {
+    tbody.innerHTML = '<tr><td colspan="17" class="entry-empty">Pilih kelas dan subjek, kemudian tekan Mula isi markah. Semua murid dipaparkan dalam satu senarai.</td></tr>';
+    return;
+  }
   
   if (filtered.length === 0) {
     tbody.innerHTML = `<tr><td colspan="17" style="text-align:center; padding: 2.5rem; color: #94a3b8; font-size: 0.95rem;">
@@ -52219,12 +52297,17 @@ function renderEntryTable() {
   
   const subjects = ALL_SUBJECT_KEYS;
 
-  filtered.forEach((st, idx) => {
+  pageStudents.forEach((st, idx) => {
     const tr = document.createElement("tr");
     const isTahap1 = st.kelas.startsWith("1") || st.kelas.startsWith("2") || st.kelas.startsWith("3");
     
     let subjectCellsHtml = "";
     subjects.forEach(sub => {
+      const selected = document.getElementById("entry-subject").value;
+      if (selected !== "ALL" && selected !== sub) {
+        subjectCellsHtml += '<td></td>';
+        return;
+      }
       // Peraturan KPM: Murid Tahap 1 (Tahun 1, 2, 3) tidak mengambil Sejarah & RBT
       if (isTahap1 && (sub === "sej" || sub === "rbt")) {
         subjectCellsHtml += `
@@ -52247,11 +52330,11 @@ function renderEntryTable() {
       subjectCellsHtml += `
         <td>
           <div class="mark-cell-group">
-            <input type="number" min="0" max="100" class="mark-input" value="${st[sub + '_m']}" placeholder="-" 
+            <input type="number" min="0" max="100" class="mark-input" aria-label="${st.name} — ${SUBJECT_LABELS[sub]}" inputmode="decimal" value="${st[sub + '_m']}" placeholder="-"
                    onchange="updateStudentMark('${st.id}', '${sub}', this.value)">
             <div>
               <span class="gred-text-mini" id="badge-gred-${sub}-${st.id}">${st[sub + '_g']}</span>
-              <span class="tp-badge-mini" id="badge-tp-${sub}-${st.id}">${st[sub + '_tp'].split(' ')[0]}</span>
+              <span class="tp-badge-mini" id="badge-tp-${sub}-${st.id}">${st[sub + '_tp'].match(/TP\s*\d/)?.[0] || '-'}</span>
             </div>
           </div>
           <div class="teacher-pill" title="Guru Subjek Ditetapkan: ${assignedTeacherName}">📚 <small>${shortTeacherName}</small></div>
@@ -52288,10 +52371,21 @@ function renderEntryTable() {
         <button class="btn btn-outline btn-sm btn-action-delete" onclick="removeStudent('${st.id}')" title="Buang murid ini daripada senarai">🗑️</button>
       </td>
     `;
+    const selectedSubject = document.getElementById("entry-subject").value;
+    Array.from(tr.cells).forEach((cell, index) => {
+      cell.classList.toggle("entry-column-hidden", selectedSubject !== "ALL" && index !== 2 && index !== ALL_SUBJECT_KEYS.indexOf(selectedSubject) + 3);
+    });
     tbody.appendChild(tr);
   });
 }
 
+let databasePage = 0;
+let databaseFilterKey = "";
+function changeDatabasePage(delta) {
+  databasePage += delta;
+  renderDatabaseTable();
+  document.querySelector("#tab-database .table-controls").scrollIntoView({block: "start"});
+}
 // 16. Render Jadual Pangkalan Data PBD (Tab 2)
 function renderDatabaseTable() {
   const tbody = document.getElementById("database-tbody");
@@ -52311,6 +52405,11 @@ function renderDatabaseTable() {
     return matchYear && matchClass && matchStatus && matchSearch;
   });
   
+  const key = [yearFilter, classFilter, statusFilter, searchTxt, currentYear, currentAssessment].join("|");
+  if (key !== databaseFilterKey) { databasePage = 0; databaseFilterKey = key; }
+  const pages = Math.max(1, Math.ceil(filtered.length / 500));
+  databasePage = Math.max(0, Math.min(databasePage, pages - 1));
+  document.getElementById("database-pagination").innerHTML = `<span role="status">Halaman ${databasePage + 1} / ${pages} • ${filtered.length} murid</span><div class="pager-buttons"><button class="btn btn-outline" onclick="changeDatabasePage(-1)" ${databasePage === 0 ? 'disabled' : ''}>← Sebelum</button><button class="btn btn-outline" onclick="changeDatabasePage(1)" ${databasePage === pages - 1 ? 'disabled' : ''}>Seterusnya →</button></div>`;
   tbody.innerHTML = "";
   
   if (filtered.length === 0) {
@@ -52318,7 +52417,7 @@ function renderDatabaseTable() {
     return;
   }
   
-  filtered.forEach((st, idx) => {
+  filtered.slice(databasePage * 500, (databasePage + 1) * 500).forEach((st, idx) => {
     const tr = document.createElement("tr");
     const isTahap1 = st.kelas.startsWith("1") || st.kelas.startsWith("2") || st.kelas.startsWith("3");
     
@@ -52356,7 +52455,7 @@ function renderDatabaseTable() {
 
     tr.innerHTML = `
       <td><input type="checkbox" class="row-select" data-id="${st.id}" ${st.selected ? "checked" : ""}></td>
-      <td>${idx + 1}</td>
+      <td>${databasePage * 500 + idx + 1}</td>
       <td style="font-weight:700; color:#38bdf8;">${st.id}</td>
       <td><strong>${st.name}</strong><br><small style="color:var(--text-muted); font-size:0.75rem;">• ID: ${st.id} • KP: ${st.ic || '-'}</small></td>
       <td><span class="school-tag">${st.kelas}</span></td>
@@ -52793,7 +52892,7 @@ function updateClassDropdownOptions(yearLevel) {
     
     const optAll = document.createElement("option");
     optAll.value = "ALL";
-    optAll.textContent = (yearLevel === "ALL") ? "Semua Kelas (24 Kelas, Tahun 1 - 6)" : `Semua Kelas Tahun ${yearLevel}`;
+    optAll.textContent = sel.id === "entry-filter-class" ? "Pilih kelas…" : ((yearLevel === "ALL") ? "Semua Kelas" : `Semua Kelas Tahun ${yearLevel}`);
     sel.appendChild(optAll);
     
     if (yearLevel === "ALL") {
@@ -52805,7 +52904,7 @@ function updateClassDropdownOptions(yearLevel) {
           const opt = document.createElement("option");
           opt.value = c;
           const guru = subjectAssignments[c]?.classTeacherName || "";
-          opt.textContent = `${c} ${guru ? '(' + guru + ')' : ''}`;
+          opt.textContent = sel.id === 'entry-filter-class' ? c : `${c} ${guru ? '(' + guru + ')' : ''}`;
           groupPra.appendChild(opt);
         });
         sel.appendChild(groupPra);
@@ -52817,7 +52916,7 @@ function updateClassDropdownOptions(yearLevel) {
           const opt = document.createElement("option");
           opt.value = c;
           const guru = subjectAssignments[c]?.classTeacherName || "";
-          opt.textContent = `${c} ${guru ? '(' + guru + ')' : ''}`;
+          opt.textContent = sel.id === 'entry-filter-class' ? c : `${c} ${guru ? '(' + guru + ')' : ''}`;
           group.appendChild(opt);
         });
         sel.appendChild(group);
@@ -52827,7 +52926,7 @@ function updateClassDropdownOptions(yearLevel) {
         const opt = document.createElement("option");
         opt.value = c;
         const guru = subjectAssignments[c]?.classTeacherName || "";
-        opt.textContent = `${c} ${guru ? '(' + guru + ')' : ''}`;
+        opt.textContent = sel.id === 'entry-filter-class' ? c : `${c} ${guru ? '(' + guru + ')' : ''}`;
         sel.appendChild(opt);
       });
     } else {
@@ -52835,7 +52934,7 @@ function updateClassDropdownOptions(yearLevel) {
         const opt = document.createElement("option");
         opt.value = c;
         const guru = subjectAssignments[c]?.classTeacherName || "";
-        opt.textContent = `${c} ${guru ? '(' + guru + ')' : ''}`;
+        opt.textContent = sel.id === 'entry-filter-class' ? c : `${c} ${guru ? '(' + guru + ')' : ''}`;
         sel.appendChild(opt);
       });
     }
