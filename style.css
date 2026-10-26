@@ -2652,3 +2652,14 @@ body.entry-focus #tab-entry .table-wrapper { max-height: calc(100dvh - 90px); }
   .entry-workspace-bar small { font-size: .65rem; }
   body.entry-focus #tab-entry .table-wrapper { max-height: calc(100dvh - 110px); }
 }
+
+/* Bingkai cut-out menggunakan piksel asal logo tanpa mengubah lambang. */
+.school-logo-cutout { display: block; width: 34px; height: 42px; flex-shrink: 0; overflow: hidden; }
+.school-compact-brand .school-full-address { font-size: .64rem; line-height: 1.35; white-space: normal; }
+.entry-school-mark.school-logo-cutout { width: 25px; height: 31px; flex-basis: 25px; }
+.slip-logo-cutout { display: block; flex-shrink: 0; overflow: hidden; }
+.slip-school-info .slip-full-address { line-height: 1.4; }
+@media screen and (max-width: 360px) {
+  .school-compact-brand .school-logo-cutout { width: 28px; height: 35px; }
+  .school-compact-brand .school-full-address { font-size: .58rem; }
+}
