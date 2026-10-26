@@ -2567,3 +2567,38 @@ body.entry-focus #tab-entry .table-wrapper { max-height: calc(100dvh - 90px); ov
 body.entry-focus #tab-entry thead th { position: sticky; top: 0; z-index: 15; background: var(--bg-surface-alt); }
 body.entry-focus #tab-entry .single-subject td { padding-block: .35rem !important; }
 body.entry-focus #tab-entry .single-subject .school-tag { font-size: .65rem; }
+
+.session-settings > summary { display: none; }
+.session-settings:not([open]) > .app-header { display: block; }
+.session-settings:not([open]) > .year-toolbar { display: flex; }
+.session-settings > summary span { font-size: .75rem; font-weight: 500; }
+body.entry-focus .session-settings, body.entry-focus .entry-guidance,
+body.entry-focus #tab-entry .entry-actions { display: none !important; }
+@media screen and (max-width: 640px) {
+  .session-settings > summary { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: .55rem .75rem; background: var(--bg-surface); border-bottom: 1px solid var(--border); font-size: .85rem; }
+  .session-settings:not([open]) > .app-header,
+  .session-settings:not([open]) > .year-toolbar { display: none; }
+  .session-settings[open] .app-header { padding: .5rem .75rem; }
+  .session-settings[open] .logo-pair, .session-settings[open] .brand-text p { display: none; }
+  .session-settings[open] .brand-text h1 { font-size: .8rem; }
+  .session-settings[open] .year-toolbar-left { display: flex; flex-direction: column; gap: .4rem; }
+  .session-settings[open] .selector-item { display: grid; grid-template-columns: 90px minmax(0, 1fr); align-items: center; }
+  #tab-entry .card-box { display: flex; flex-direction: column; gap: .3rem; }
+  #tab-entry .card-box-header { order: 0; }
+  #tab-entry .table-controls { order: 1; margin: 0; gap: .4rem; }
+  #tab-entry .entry-subject-control { order: 2; margin: 0; }
+  #tab-entry .entry-subject-control p { display: none; }
+  #tab-entry .entry-start { order: 3; margin: .2rem 0; justify-content: center; }
+  #tab-entry #entry-page-summary { order: 4; }
+  #tab-entry .table-wrapper { order: 5; }
+  #tab-entry #entry-pagination { order: 6; }
+  #tab-entry .entry-actions { order: 7; }
+  #tab-entry .entry-guidance { order: 8; }
+  #tab-entry .entry-workspace-bar { order: -1; }
+  #tab-entry .level-tabs-bar, #tab-entry .class-pills-bar { display: none !important; }
+  #tab-entry .filter-group { grid-template-columns: 50px minmax(0, 1fr); }
+  #tab-entry .entry-subject-control { display: grid; grid-template-columns: 50px minmax(0, 1fr); align-items: center; gap: .35rem; }
+  #tab-entry .entry-subject-control label { font-size: .85rem; }
+  #tab-entry .table-controls .search-box { min-width: 0; }
+  .session-settings, .year-toolbar, .nav-tabs-wrapper, .main-content, .card-box { max-width: 100%; }
+}

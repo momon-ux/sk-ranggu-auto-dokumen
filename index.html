@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3.1-focus">
+  <link rel="stylesheet" href="style.css?v=3.2-mobile">
 
   <!-- PWA & Mobile Web App Meta -->
   <link rel="manifest" href="manifest.json">
@@ -28,6 +28,8 @@
   <!-- =========================================================================
        APP HEADER
        ========================================================================= -->
+  <details class="session-settings no-print">
+    <summary>SK Ranggu <span>Tetapan sesi & akaun ▾</span></summary>
   <header class="app-header">
     <div class="header-container">
       <div class="brand-section">
@@ -135,6 +137,8 @@
     </div>
   </section>
 
+  </details>
+
   <!-- =========================================================================
        NAV TABS (4 Tab Utama Sistem - Kod Dilindungi Di Luar Paparan)
        ========================================================================= -->
@@ -207,6 +211,7 @@
           <span class="badge-pill">Mod Pengisian Guru Mengikut Subjek</span>
         </div>
 
+        <details class="entry-guidance no-print"><summary>Bantuan pengisian</summary>
         <details class="entry-help no-print"><summary>Panduan pengisian & MOEIS SPPB</summary>
         <div class="info-banner no-print">
           <span class="info-banner-icon">💡</span>
@@ -227,6 +232,7 @@
           <span id="class-teacher-indicator" style="color:#15803d; font-weight:800;"></span>
         </div>
 
+        </details>
         </details>
         <!-- Bar Pintas Tapis Tahun (Tahun 1 hingga 6) -->
         <div class="level-tabs-bar no-print">
@@ -290,24 +296,7 @@
             <input type="text" id="entry-search" class="search-input" placeholder="🔍 Cari nama murid atau no. murid...">
           </div>
 
-          <details class="entry-actions"><summary>Tindakan tambahan</summary>
-          <div class="btn-group">
-            <button class="btn btn-success" onclick="openAddStudentModal()" title="Daftar murid baharu ke dalam senarai SK Ranggu">
-              <span>➕</span> <span>Tambah Murid</span>
-            </button>
-            <button class="btn btn-warning btn-sppb-gradient" onclick="openSppbModal()" title="Salin dan pindahkan rekod PBD terus ke portal MOEIS SPPB KPM (moeissppb.moe.gov.my)">
-              <span>📋</span> <span>Salin Rekod ke MOEIS SPPB</span>
-            </button>
-            <button class="btn btn-primary" onclick="saveCurrentMarks(true)">
-              <span>💾</span> <span>Simpan Markah</span>
-            </button>
-            <button class="btn btn-outline" onclick="resetAllMarks()">
-              <span>🧹</span> <span>Kosongkan</span>
-            </button>
-            <button class="btn btn-outline" onclick="exportStudentsCSV()">
-              <span>📥</span> <span>Eksport CSV</span>
-            </button>
-          </div>          </details>
+
 
         </div>
 
@@ -354,6 +343,24 @@
           </table>
         </div>
         <div id="entry-pagination" class="entry-pagination no-print" aria-label="Halaman pengisian"></div>
+          <details class="entry-actions"><summary>Tindakan tambahan</summary>
+          <div class="btn-group">
+            <button class="btn btn-success" onclick="openAddStudentModal()" title="Daftar murid baharu ke dalam senarai SK Ranggu">
+              <span>➕</span> <span>Tambah Murid</span>
+            </button>
+            <button class="btn btn-warning btn-sppb-gradient" onclick="openSppbModal()" title="Salin dan pindahkan rekod PBD terus ke portal MOEIS SPPB KPM (moeissppb.moe.gov.my)">
+              <span>📋</span> <span>Salin Rekod ke MOEIS SPPB</span>
+            </button>
+            <button class="btn btn-primary" onclick="saveCurrentMarks(true)">
+              <span>💾</span> <span>Simpan Markah</span>
+            </button>
+            <button class="btn btn-outline" onclick="resetAllMarks()">
+              <span>🧹</span> <span>Kosongkan</span>
+            </button>
+            <button class="btn btn-outline" onclick="exportStudentsCSV()">
+              <span>📥</span> <span>Eksport CSV</span>
+            </button>
+          </div>          </details>
       </div>
     </section>
 
@@ -1500,7 +1507,7 @@
   <div id="toast-container" class="toast-container"></div>
 
   <!-- JS APLIKASI -->
-  <script src="app.js?v=3.1-focus"></script>
+  <script src="app.js?v=3.2-mobile"></script>
 
   <!-- =========================================================================
        MODAL EDIT GURU (ADMIN SAHAJA - NAMA GURU, IC, EMEL, PERANAN & KELAS)

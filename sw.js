@@ -1,10 +1,10 @@
 // Service Worker untuk Sistem Auto Dokumen SK Ranggu
-const CACHE_NAME = 'sk-ranggu-pwa-v3.1-focus';
+const CACHE_NAME = 'sk-ranggu-pwa-v3.2-mobile';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
-  './style.css?v=3.1-focus',
-  './app.js?v=3.1-focus',
+  './style.css?v=3.2-mobile',
+  './app.js?v=3.2-mobile',
   './manifest.json',
   './favicon.ico',
   './Data_Murid_SK_Ranggu_Peperiksaan.csv',
@@ -46,48 +46,34 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Strategi Stale-While-Revalidate untuk Pemuatan Pantas & Sokongan Luar Talian
+// Dokumen dan kod: utamakan versi rangkaian, dengan sandaran luar talian.
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET' || !event.request.url.startsWith('http')) {
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        // Ambil kemas kini dari rangkaian di latar belakang (revalidate)
-        fetch(event.request)
-          .then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
-              const responseClone = networkResponse.clone();
-              caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, responseClone);
-              });
-            }
-          })
-          .catch(() => {
-            // Mod luar talian: terus guna salinan cache sedia ada
-          });
-        return cachedResponse;
+  const request = event.request;
+  const url = new URL(request.url);
+  if (request.method !== 'GET' || !url.protocol.startsWith('http')) return;
+  if (url.origin !== self.location.origin) return;
+  const isApp = request.mode === 'navigate' || /\.(?:html|js|css)$/.test(url.pathname);
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    if (isApp) {
+      try {
+        const response = await fetch(request, {cache: 'no-cache'});
+        if (response.ok) {
+          await cache.put(request, response.clone());
+          return response;
+        }
+        return (await cache.match(request)) || response;
+      } catch (_) {
+        return (await cache.match(request)) ||
+          (request.mode === 'navigate' ? await cache.match('./index.html') : null) || Response.error();
       }
-
-      // Jika tiada dalam cache, ambil dari rangkaian & simpan ke cache
-      return fetch(event.request)
-        .then((networkResponse) => {
-          if (!networkResponse || networkResponse.status !== 200 || networkResponse.type === 'opaque') {
-            return networkResponse;
-          }
-          const responseClone = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseClone);
-          });
-          return networkResponse;
-        })
-        .catch(() => {
-          if (event.request.headers.get('accept')?.includes('text/html')) {
-            return caches.match('./index.html');
-          }
-        });
-    })
-  );
+    }
+    const cached = await cache.match(request);
+    if (cached) return cached;
+    try {
+      const response = await fetch(request);
+      if (response.ok) await cache.put(request, response.clone());
+      return response;
+    } catch (_) { return Response.error(); }
+  })());
 });
