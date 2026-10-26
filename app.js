@@ -52220,6 +52220,17 @@ function restoreEntryChoices() {
     document.body.classList.add("entry-focus");
   } catch (_) { /* Pilihan baharu boleh dibuat jika simpanan sesi tiada. */ }
 }
+function navigateSchoolTab(tabId) {
+  document.querySelector(`.tab-btn[data-tab="${tabId}"]`)?.click();
+  document.getElementById("school-menu").open = false;
+  document.querySelector(".session-settings").open = false;
+  window.scrollTo(0, 0);
+}
+function toggleSchoolSettings() {
+  const settings = document.querySelector(".session-settings");
+  settings.open = !settings.open;
+  document.getElementById("school-menu").open = false;
+}
 function startEntryFocus() {
   if (!document.getElementById("entry-subject").value) {
     document.getElementById("entry-subject").focus();
@@ -52232,6 +52243,7 @@ function startEntryFocus() {
   }));
   entryFocus = true;
   document.body.classList.add("entry-focus");
+  document.querySelector(".session-settings").open = false;
   renderEntryTable();
   window.scrollTo(0, 0);
   document.querySelector("#tab-entry .table-wrapper").scrollTop = 0;
@@ -53462,7 +53474,7 @@ function fallbackCopyText(text, onSuccess) {
 let deferredPWAInstallPrompt = null;
 
 if ('serviceWorker' in navigator) {
-  const APP_VERSION = '3.3-auto';
+  const APP_VERSION = '3.4-brand';
   let pendingUpdate = false;
   let reloadingUpdate = false;
   let swRegistration = null;

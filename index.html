@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3.3-auto">
+  <link rel="stylesheet" href="style.css?v=3.4-brand">
 
   <!-- PWA & Mobile Web App Meta -->
   <link rel="manifest" href="manifest.json">
@@ -28,6 +28,23 @@
   <!-- =========================================================================
        APP HEADER
        ========================================================================= -->
+  <header class="school-compact-header no-print">
+    <a class="school-compact-brand" href="#" onclick="event.preventDefault(); navigateSchoolTab('tab-entry');" aria-label="SK Ranggu — Isi markah">
+      <img src="assets/logo_kpm.png" alt="Logo KPM" width="30" height="34">
+      <img src="assets/logo_skrg.png" alt="Logo sekolah SK Ranggu" width="38" height="38">
+      <span><strong>SK RANGGU</strong><small>PBD / UASA · Tawau</small></span>
+    </a>
+    <details class="school-menu" id="school-menu">
+      <summary aria-label="Buka menu sistem">☰ Menu</summary>
+      <nav aria-label="Menu sistem SK Ranggu">
+        <button type="button" onclick="navigateSchoolTab('tab-entry')">✏️ Isi Markah</button>
+        <button type="button" onclick="navigateSchoolTab('tab-database')">📊 Data Murid</button>
+        <button type="button" onclick="navigateSchoolTab('tab-generator')">🚀 Jana Slip</button>
+        <button type="button" onclick="navigateSchoolTab('tab-preview')">🖨️ Pratonton & Cetak</button>
+        <button type="button" onclick="toggleSchoolSettings()">⚙️ Sesi & Akaun</button>
+      </nav>
+    </details>
+  </header>
   <details class="session-settings no-print">
     <summary>SK Ranggu <span>Tetapan sesi & akaun ▾</span></summary>
   <header class="app-header">
@@ -1507,7 +1524,7 @@
   <div id="toast-container" class="toast-container"></div>
 
   <!-- JS APLIKASI -->
-  <script src="app.js?v=3.3-auto"></script>
+  <script src="app.js?v=3.4-brand"></script>
 
   <!-- =========================================================================
        MODAL EDIT GURU (ADMIN SAHAJA - NAMA GURU, IC, EMEL, PERANAN & KELAS)
