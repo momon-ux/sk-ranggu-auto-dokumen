@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3.9-appheader">
+  <link rel="stylesheet" href="style.css?v=3.10-sppb">
 
   <!-- PWA & Mobile Web App Meta -->
   <link rel="manifest" href="manifest.json">
@@ -139,7 +139,7 @@
     </div>
 
     <div class="year-toolbar-right">
-      <button class="btn btn-warning btn-sm btn-sppb-gradient" onclick="openSppbModal()" title="Salin dan pindahkan rekod PBD terus ke portal MOEIS SPPB KPM (moeissppb.moe.gov.my)">
+      <button class="btn btn-warning btn-sm btn-sppb-gradient" onclick="openSppbModal()" title="Salin rekod PBD untuk dimasukkan ke portal MOEIS SPPB KPM (moeissppb.moe.gov.my)">
         <span>📋</span> <span>Salin ke MOEIS SPPB</span>
       </button>
       <button class="btn btn-primary btn-sm" onclick="saveCurrentMarks(true)" title="Simpan perubahan markah ke simpanan pelayar">
@@ -233,7 +233,7 @@
         <div class="info-banner no-print">
           <span class="info-banner-icon">💡</span>
           <div>
-            <strong>Panduan Pengisian & Penyalinan ke MOEIS SPPB:</strong> Setiap guru mata pelajaran mengisi markah bagi subjek masing-masing. Setelah mengisi, anda boleh menyalin rekod TP dan markah terus ke <a href="https://moeissppb.moe.gov.my/page/dashboard" target="_blank" rel="noopener noreferrer" style="color:#2563eb; font-weight:700;">Dashboard MOEIS SPPB (moeissppb.moe.gov.my/page/dashboard)</a> dengan menekan butang <strong>"📋 Salin Rekod ke MOEIS SPPB"</strong> di atas.
+            <strong>Panduan Pengisian & Penyalinan ke MOEIS SPPB:</strong> Setiap guru mata pelajaran mengisi markah bagi subjek masing-masing. Setelah mengisi, anda boleh menyalin rekod TP dan markah terus ke <a href="https://moeissppb.moe.gov.my/" target="_blank" rel="noopener noreferrer" style="color:#2563eb; font-weight:700;">Dashboard MOEIS SPPB (moeissppb.moe.gov.my/page/dashboard)</a> dengan menekan butang <strong>"📋 Salin Rekod ke MOEIS SPPB"</strong> di atas.
             <div style="margin-top: 0.35rem; color: #94a3b8; font-size: 0.8rem;">
               <em>Sistem ini direka bentuk khas oleh <strong>Mohammad Fikrey bin Abdul Gapar</strong> untuk SK Ranggu, Tawau.</em>
             </div>
@@ -366,7 +366,7 @@
             <button class="btn btn-success" onclick="openAddStudentModal()" title="Daftar murid baharu ke dalam senarai SK Ranggu">
               <span>➕</span> <span>Tambah Murid</span>
             </button>
-            <button class="btn btn-warning btn-sppb-gradient" onclick="openSppbModal()" title="Salin dan pindahkan rekod PBD terus ke portal MOEIS SPPB KPM (moeissppb.moe.gov.my)">
+            <button class="btn btn-warning btn-sppb-gradient" onclick="openSppbModal()" title="Salin rekod PBD untuk dimasukkan ke portal MOEIS SPPB KPM (moeissppb.moe.gov.my)">
               <span>📋</span> <span>Salin Rekod ke MOEIS SPPB</span>
             </button>
             <button class="btn btn-primary" onclick="saveCurrentMarks(true)">
@@ -432,7 +432,7 @@
             <button class="btn btn-outline btn-sm btn-action-delete" onclick="removeSelectedStudents()" title="Padam semua murid yang ditandakan">
               <span>🗑️</span> <span>Buang Dipilih</span>
             </button>
-            <button class="btn btn-warning btn-sm btn-sppb-gradient" onclick="openSppbModal()" title="Salin dan pindahkan rekod PBD terus ke portal MOEIS SPPB KPM">
+            <button class="btn btn-warning btn-sm btn-sppb-gradient" onclick="openSppbModal()" title="Salin rekod PBD untuk dimasukkan ke portal MOEIS SPPB KPM">
               <span>📋</span> <span>Salin ke MOEIS SPPB</span>
             </button>
             <button class="btn btn-outline btn-sm" onclick="exportStudentsCSV()">
@@ -1222,10 +1222,10 @@
               <span>🌐</span> <span>Portal Rasmi: SPPB MOEIS Kementerian Pendidikan Malaysia</span>
             </div>
             <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">
-              URL: <code style="font-family:monospace; color:#2563eb; background:rgba(37,99,235,0.08); padding:0.15rem 0.4rem; border-radius:4px;">https://moeissppb.moe.gov.my/page/dashboard</code>
+              URL: <code style="font-family:monospace; color:#2563eb; background:rgba(37,99,235,0.08); padding:0.15rem 0.4rem; border-radius:4px;">https://moeissppb.moe.gov.my/</code>
             </div>
           </div>
-          <a href="https://moeissppb.moe.gov.my/page/dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm btn-sppb-gradient" style="display:inline-flex; align-items:center; gap:0.4rem; text-decoration:none;">
+          <a href="https://moeissppb.moe.gov.my/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm btn-sppb-gradient" style="display:inline-flex; align-items:center; gap:0.4rem; text-decoration:none;">
             <span>🚀 Buka Dashboard MOEIS SPPB</span> <span>↗</span>
           </a>
         </div>
@@ -1312,9 +1312,7 @@
         <!-- KANDUNGAN MOD 1: SALIN LAJUR TP / MARKAH -->
         <div id="sppb-panel-column" class="sppb-subpanel">
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
-            <button type="button" class="btn btn-warning btn-sm btn-sppb-gradient" onclick="copyAndOpenSppbDashboard('tp_num')" title="Salin nombor TP dan terus buka Dashboard MOEIS SPPB di tab baharu">
-              🚀 1-Klik: Salin TP & Buka Dashboard SPPB
-            </button>
+            <a class="btn btn-warning btn-sm btn-sppb-gradient" href="https://moeissppb.moe.gov.my/" target="_blank" rel="noopener noreferrer">🌐 Buka MOEIS / Log Masuk</a>
             <button type="button" class="btn btn-primary btn-sm" onclick="copySppbColumn('tp_num')">
               📋 Salin Lajur TP (Nombor: 5, 6, 4...)
             </button>
@@ -1337,11 +1335,12 @@
           </div>
 
           <div style="margin-top:0.75rem; background:rgba(59,130,246,0.06); border:1px dashed #93c5fd; border-radius:8px; padding:0.75rem; font-size:0.8rem; color:var(--text-main); line-height:1.5;">
-            💡 <strong>Panduan Tampal di MOEIS SPPB:</strong>
+            💡 <strong>Salin dan log masuk ialah dua langkah berasingan.</strong>
             <ol style="margin:0.25rem 0 0 1.25rem; padding:0;">
-              <li>Tekan butang <strong>"🚀 1-Klik: Salin TP & Buka Dashboard SPPB"</strong> di atas.</li>
-              <li>Sistem akan menyalin skor TP ke papan klip komputer/telefon anda dan secara automatik membuka portal <a href="https://moeissppb.moe.gov.my/page/dashboard" target="_blank" style="color:#2563eb; font-weight:700;">moeissppb.moe.gov.my/page/dashboard</a>.</li>
-              <li>Di SPPB, navigasi ke <strong>Pengurusan Pentaksiran > PBD Berterusan</strong>, pilih kelas & subjek yang sama, kemudian klik petak murid pertama dan tekan <kbd style="background:#e2e8f0; padding:1px 5px; border-radius:3px;">Ctrl</kbd> + <kbd style="background:#e2e8f0; padding:1px 5px; border-radius:3px;">V</kbd> (atau taip nombor TP mengikut senarai yang dipaparkan).</li>
+              <li>Buka MOEIS dan lengkapkan log masuk idMe. Jika sesi tamat, log masuk semula melalui halaman utama portal.</li>
+              <li>Pilih kelas dan subjek yang sama di MOEIS, kemudian kembali ke sini untuk menyalin TP atau markah.</li>
+              <li>Salinan tidak menghantar atau menyimpan data terus ke MOEIS. Pastikan susunan dan identiti murid sepadan sebelum menampal. Fungsi tampal berbilang baris bergantung pada paparan MOEIS.</li>
+              <li>Ruangan belum diisi dibiarkan kosong; sistem tidak menggantikannya dengan TP 3 atau markah 0.</li>
             </ol>
           </div>
         </div>
@@ -1370,7 +1369,7 @@
             🧭 <strong>3 Langkah Mudah Menggunakan Skrip Auto-Isi di SPPB:</strong>
             <ol style="margin:0.25rem 0 0 1.25rem; padding:0;">
               <li>Klik butang <strong>"📋 Salin Skrip Auto-Isi"</strong> di atas.</li>
-              <li>Buka Dashboard SPPB (<a href="https://moeissppb.moe.gov.my/page/dashboard" target="_blank" style="color:#d97706; font-weight:700;">moeissppb.moe.gov.my/page/dashboard</a>) di tab baharu dan buka paparan kelas anda.</li>
+              <li>Buka Dashboard SPPB (<a href="https://moeissppb.moe.gov.my/" target="_blank" style="color:#d97706; font-weight:700;">moeissppb.moe.gov.my/page/dashboard</a>) di tab baharu dan buka paparan kelas anda.</li>
               <li>Tekan kekunci <kbd style="background:#e2e8f0; padding:1px 5px; border-radius:3px;">F12</kbd> (atau klik kanan > <em>Inspect</em> > klik tab <strong>Console</strong>), tampal kod (<kbd>Ctrl+V</kbd>), dan tekan <kbd>Enter</kbd>! Semua TP murid akan dipilih secara automatik.</li>
             </ol>
           </div>
@@ -1409,7 +1408,7 @@
       </div>
 
       <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-        <a href="https://moeissppb.moe.gov.my/page/dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; color:var(--text-main);">
+        <a href="https://moeissppb.moe.gov.my/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem; color:var(--text-main);">
           <span>🌐 Buka moeissppb.moe.gov.my/page/dashboard</span> <span>↗</span>
         </a>
         <button class="btn btn-primary" onclick="closeModal('modal-sppb-transfer')">Tutup</button>
@@ -1525,7 +1524,7 @@
   <div id="toast-container" class="toast-container"></div>
 
   <!-- JS APLIKASI -->
-  <script src="app.js?v=3.9-appheader"></script>
+  <script src="app.js?v=3.10-sppb"></script>
 
   <!-- =========================================================================
        MODAL EDIT GURU (ADMIN SAHAJA - NAMA GURU, IC, EMEL, PERANAN & KELAS)

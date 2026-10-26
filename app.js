@@ -51773,7 +51773,7 @@ function saveCurrentMarks(showToast = true) {
         <button class="btn btn-warning btn-sm btn-sppb-gradient" onclick="openSppbModal()" style="font-size:0.75rem; padding:0.25rem 0.6rem;">
           📋 Salin ke MOEIS SPPB
         </button>
-        <a href="https://moeissppb.moe.gov.my/page/dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="font-size:0.75rem; padding:0.25rem 0.55rem; text-decoration:none; color:inherit; border-color:rgba(255,255,255,0.4);">
+        <a href="https://moeissppb.moe.gov.my/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="font-size:0.75rem; padding:0.25rem 0.55rem; text-decoration:none; color:inherit; border-color:rgba(255,255,255,0.4);">
           🌐 Buka Dashboard SPPB ↗
         </a>
       </div>
@@ -53096,45 +53096,25 @@ let currentSppbMode = 'column';
 
 function openSppbModal() {
   const currentClassFilter = document.getElementById("entry-filter-class")?.value;
-  const sppbClassSelect = document.getElementById("sppb-select-class");
-  
-  if (sppbClassSelect) {
-    // Pastikan semua 24 kelas Tahun 1 - 6 tersedia
-    if (sppbClassSelect.options.length <= 5) {
-      sppbClassSelect.innerHTML = "";
-      for (let y = 1; y <= 6; y++) {
-        const group = document.createElement("optgroup");
-        group.label = `--- TAHUN ${y} ---`;
-        ALL_CLASSES.filter(c => c.startsWith(y + " ")).forEach(c => {
-          const opt = document.createElement("option");
-          opt.value = c;
-          const guru = subjectAssignments[c]?.classTeacherName || "";
-          opt.textContent = `${c} ${guru ? '(' + guru + ')' : ''}`;
-          group.appendChild(opt);
-        });
-        sppbClassSelect.appendChild(group);
-      }
-    }
-
-    if (currentClassFilter && currentClassFilter !== "ALL") {
-      sppbClassSelect.value = currentClassFilter;
-    }
+  const classSelect = document.getElementById("sppb-select-class");
+  const previousClass = classSelect?.value;
+  if (classSelect) {
+    classSelect.innerHTML = "";
+    ALL_CLASSES.forEach(kelas => classSelect.add(new Option(kelas, kelas)));
+    const wanted = currentClassFilter && currentClassFilter !== "ALL" ? currentClassFilter : previousClass;
+    if (Array.from(classSelect.options).some(o => o.value === wanted)) classSelect.value = wanted;
   }
-
-  // Jika guru mata pelajaran sedang log masuk, cuba cadangkan subjek pegangannya
-  if (currentUser) {
-    const selectedClass = sppbClassSelect ? sppbClassSelect.value : "1 MUMTAZ";
-    const subjects = ALL_SUBJECT_KEYS;
-    const mySub = subjects.find(sub => canEditSubject(selectedClass, sub));
-    const sppbSubSelect = document.getElementById("sppb-select-subject");
-    if (mySub && sppbSubSelect) {
-      sppbSubSelect.value = mySub;
-    }
-  }
-
+  const entrySubject = document.getElementById("entry-subject")?.value;
+  const subjectSelect = document.getElementById("sppb-select-subject");
+  if (entrySubject && ALL_SUBJECT_KEYS.includes(entrySubject)) subjectSelect.value = entrySubject;
   switchSppbMode('column');
   updateSppbPreviewData();
   document.getElementById("modal-sppb-transfer")?.classList.add("active");
+}
+
+function getSppbTpNumber(value) {
+  const match = String(value ?? "").trim().match(/^(?:TP\s*)?([1-6])(?:\s|\(|$)/i);
+  return match ? Number(match[1]) : null;
 }
 
 function switchSppbMode(mode) {
@@ -53165,7 +53145,8 @@ function switchSppbMode(mode) {
 }
 
 function getStandardPbdComment(tpStr) {
-  const tpNum = parseInt(String(tpStr).replace(/\D/g, "")) || 3;
+  const tpNum = getSppbTpNumber(tpStr);
+  if (tpNum === null) return "";
   switch (tpNum) {
     case 6:
       return "Mencapai tahap cemerlang dan berupaya menggunakan pengetahuan serta kemahiran secara kreatif dan inovatif.";
@@ -53202,20 +53183,20 @@ function generateSppbColumnText(colType) {
   if (!textarea) return "";
 
   const lines = classStudents.map(st => {
-    const rawTp = st[`${selectedSubject}_tp`] || "TP 3 (Memuaskan)";
-    const tpNum = parseInt(String(rawTp).replace(/\D/g, "")) || 3;
-    const mark = st[`${selectedSubject}_m`] || "0";
+    const rawTp = st[`${selectedSubject}_tp`] || "";
+    const tpNum = getSppbTpNumber(rawTp);
+    const mark = st[`${selectedSubject}_m`] ?? "";
 
     if (colType === 'tp_num') {
-      return `${tpNum}`;
+      return tpNum === null ? "" : `${tpNum}`;
     } else if (colType === 'tp_full') {
-      return `TP ${tpNum}`;
+      return tpNum === null ? "" : `TP ${tpNum}`;
     } else if (colType === 'marks') {
       return `${mark}`;
     } else if (colType === 'ulasan') {
       return getStandardPbdComment(rawTp);
     }
-    return `${tpNum}`;
+    return tpNum === null ? "" : `${tpNum}`;
   });
 
   const output = lines.join("\n");
@@ -53251,7 +53232,7 @@ function copyAndOpenSppbDashboard(colType = 'tp_num') {
     const subLabel = SUBJECT_LABELS[selectedSubject] || selectedSubject.toUpperCase();
 
     // Buka Dashboard MOEIS SPPB terus di tab baharu
-    window.open("https://moeissppb.moe.gov.my/page/dashboard", "_blank");
+    window.open("https://moeissppb.moe.gov.my/", "_blank");
 
     showToastNotification(`🚀 Skor PBD (${selectedClass} - ${subLabel}) disalin! Dashboard MOEIS SPPB dibuka di tab baharu.`);
   });
@@ -53265,17 +53246,19 @@ function generateSppbScriptCode() {
   if (!textarea) return "";
 
   const studentItems = classStudents.map(st => {
-    const rawTp = st[`${selectedSubject}_tp`] || "TP 3";
-    const tpNum = parseInt(String(rawTp).replace(/\D/g, "")) || 3;
-    const mark = parseInt(st[`${selectedSubject}_m`]) || 0;
-    return `  { id: "${st.id}", name: "${st.name}", tp: ${tpNum}, mark: ${mark} }`;
-  }).join(",\n");
+    const rawTp = st[`${selectedSubject}_tp`] || "";
+    const tpNum = getSppbTpNumber(rawTp);
+    if (tpNum === null) return null;
+    const rawMark = st[`${selectedSubject}_m`];
+    const mark = rawMark === "" || rawMark == null ? null : Number(rawMark);
+    return "  " + JSON.stringify({id: st.id, name: st.name, tp: tpNum, mark: Number.isFinite(mark) ? mark : null});
+  }).filter(Boolean).join(",\n");
 
   const scriptCode = `/**
  * SKRANGGU SPPB HELPER (v1.0)
  * Kelas: ${selectedClass} | Subjek: ${SUBJECT_LABELS[selectedSubject] || selectedSubject.toUpperCase()}
  * Tarikh Jana: ${new Date().toLocaleDateString('ms-MY')}
- * Arahan: Buka https://moeissppb.moe.gov.my/page/dashboard > Modul PBD Berterusan > Buka Console (F12) > Tampal kod ini > Tekan Enter.
+ * Arahan: Buka https://moeissppb.moe.gov.my/ > Modul PBD Berterusan > Buka Console (F12) > Tampal kod ini > Tekan Enter.
  */
 (function() {
   console.log("%c[SK Ranggu] Memulakan pengisian automatik PBD ke SPPB...", "color:#2563eb; font-weight:bold; font-size:14px;");
@@ -53311,7 +53294,7 @@ ${studentItems}
         // 2. Isi Kotak Markah (jika ada)
         const inputs = r.querySelectorAll("input[type='number'], input[type='text']");
         inputs.forEach(inp => {
-          if (!inp.readOnly && !inp.disabled && inp.name && inp.name.toLowerCase().includes("mark")) {
+          if (item.mark !== null && !inp.readOnly && !inp.disabled && inp.name && inp.name.toLowerCase().includes("mark")) {
             inp.value = item.mark;
             inp.dispatchEvent(new Event("input", { bubbles: true }));
             inp.dispatchEvent(new Event("change", { bubbles: true }));
@@ -53349,10 +53332,10 @@ function renderSppbTable() {
   }
 
   classStudents.forEach((st, idx) => {
-    const mark = st[`${selectedSubject}_m`] || "-";
+    const mark = st[`${selectedSubject}_m`] ?? "";
     const gred = st[`${selectedSubject}_g`] || "-";
     const rawTp = st[`${selectedSubject}_tp`] || "-";
-    const tpNum = parseInt(String(rawTp).replace(/\D/g, "")) || 3;
+    const tpNum = getSppbTpNumber(rawTp);
     const ulasan = getStandardPbdComment(rawTp);
 
     const tr = document.createElement("tr");
@@ -53361,7 +53344,7 @@ function renderSppbTable() {
       <td><strong>${st.name}</strong><br><small style="color:var(--text-muted);">${st.id}</small></td>
       <td style="text-align:center; font-weight:700;">${mark}</td>
       <td style="text-align:center;"><span class="gred-text-mini">${gred}</span></td>
-      <td style="text-align:center;"><span class="tp-badge-mini">TP ${tpNum}</span></td>
+      <td style="text-align:center;"><span class="tp-badge-mini">${tpNum === null ? "Belum diisi" : `TP ${tpNum}`}</span></td>
       <td style="font-size:0.75rem; color:var(--text-muted); line-height:1.3;">${ulasan}</td>
       <td style="text-align:center;">
         <button class="btn btn-outline btn-sm" onclick="copySingleStudentSppb('${st.id}', '${selectedSubject}')" style="font-size:0.7rem; padding:0.2rem 0.5rem;" title="Salin TP murid ini">
@@ -53376,8 +53359,9 @@ function renderSppbTable() {
 function copySingleStudentSppb(studentId, subject) {
   const st = studentsData.find(s => s.id === studentId);
   if (!st) return;
-  const rawTp = st[`${subject}_tp`] || "TP 3";
-  const tpNum = parseInt(String(rawTp).replace(/\D/g, "")) || 3;
+  const rawTp = st[`${subject}_tp`] || "";
+  const tpNum = getSppbTpNumber(rawTp);
+  if (tpNum === null) { alert("TP murid ini belum diisi. Tiada nilai disalin."); return; }
   const text = `${tpNum}`;
   copyToClipboard(text, () => {
     showToastNotification(`📋 Disalin TP ${tpNum} (${st.name})`);
@@ -53391,12 +53375,12 @@ function copySppbTableTabDelimited() {
 
   let tsv = "BIL\tNO_MURID\tNAMA_MURID\tKELAS\tSUBJEK\tMARKAH\tGRED\tTAHAP_PENGUASAAN\tULASAN_PBD\n";
   classStudents.forEach((st, idx) => {
-    const mark = st[`${selectedSubject}_m`] || "-";
+    const mark = st[`${selectedSubject}_m`] ?? "";
     const gred = st[`${selectedSubject}_g`] || "-";
     const rawTp = st[`${selectedSubject}_tp`] || "-";
-    const tpNum = parseInt(String(rawTp).replace(/\D/g, "")) || 3;
+    const tpNum = getSppbTpNumber(rawTp);
     const ulasan = getStandardPbdComment(rawTp);
-    tsv += `${idx + 1}\t${st.id}\t${st.name}\t${st.kelas}\t${SUBJECT_LABELS[selectedSubject]}\t${mark}\t${gred}\tTP ${tpNum}\t${ulasan}\n`;
+    tsv += `${idx + 1}\t${st.id}\t${st.name}\t${st.kelas}\t${SUBJECT_LABELS[selectedSubject]}\t${mark}\t${gred}\t${tpNum === null ? "" : `TP ${tpNum}`}\t${ulasan}\n`;
   });
 
   copyToClipboard(tsv, () => {
@@ -53413,10 +53397,10 @@ function exportSppbTransitCSV() {
   csvContent += "BIL,NO_MURID,NAMA_MURID,KELAS,SUBJEK,MARKAH,GRED,TAHAP_PENGUASAAN,ULASAN_PBD\n";
 
   classStudents.forEach((st, idx) => {
-    const mark = st[`${selectedSubject}_m`] || "-";
+    const mark = st[`${selectedSubject}_m`] ?? "";
     const gred = st[`${selectedSubject}_g`] || "-";
     const rawTp = st[`${selectedSubject}_tp`] || "-";
-    const tpNum = parseInt(String(rawTp).replace(/\D/g, "")) || 3;
+    const tpNum = getSppbTpNumber(rawTp);
     const ulasan = getStandardPbdComment(rawTp);
     const row = [
       idx + 1,
@@ -53426,7 +53410,7 @@ function exportSppbTransitCSV() {
       `"${SUBJECT_LABELS[selectedSubject]}"`,
       mark,
       gred,
-      `"TP ${tpNum}"`,
+      `"${tpNum === null ? "" : `TP ${tpNum}`}"`,
       `"${ulasan}"`
     ].join(",");
     csvContent += row + "\n";
@@ -53464,8 +53448,9 @@ function fallbackCopyText(text, onSuccess) {
   ta.focus();
   ta.select();
   try {
-    document.execCommand("copy");
-    if (onSuccess) onSuccess();
+    const copied = document.execCommand("copy");
+    if (copied) { if (onSuccess) onSuccess(); }
+    else alert("Salinan tidak berjaya. Sila salin teks secara manual dari kotak pratonton.");
   } catch (err) {
     alert("Sila salin teks secara manual dari kotak pratonton.");
   }
@@ -53478,7 +53463,7 @@ function fallbackCopyText(text, onSuccess) {
 let deferredPWAInstallPrompt = null;
 
 if ('serviceWorker' in navigator) {
-  const APP_VERSION = '3.9-appheader';
+  const APP_VERSION = '3.10-sppb';
   let pendingUpdate = false;
   let reloadingUpdate = false;
   let swRegistration = null;
