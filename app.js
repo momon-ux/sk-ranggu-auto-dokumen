@@ -53307,75 +53307,89 @@ function copyAndOpenSppbDashboard(colType = 'tp_num') {
   });
 }
 
+function runSppbTransferReview(dataset, context) {
+  // This function is serialized into the user's explicit, local MOEIS helper.
+  // Opening the review never dispatches events or changes assessment fields.
+  if (location.hostname !== "moeissppb.moe.gov.my") {
+    alert("Buka halaman pengisian PBD di moeissppb.moe.gov.my dahulu.");
+    return;
+  }
+  const normalize = value => String(value || "").toUpperCase().replace(/\s+/g, " ").trim();
+  const page = normalize(document.body.innerText);
+  const yearWords = ["", "SATU", "DUA", "TIGA", "EMPAT", "LIMA", "ENAM"];
+  const parts = context.kelas.split(" ");
+  const validContext = page.includes("PENTAKSIRAN BERTERUSAN") &&
+    page.includes("TAHUN " + context.year) &&
+    page.includes("TAHUN " + yearWords[Number(parts[0])]) &&
+    page.includes(normalize(parts.slice(1).join(" "))) &&
+    page.includes(normalize(context.subject));
+  if (!validContext) {
+    alert("Halaman tidak sepadan. Buka PBD Berterusan untuk tahun, kelas dan subjek yang sama. UASA menggunakan ruangan berbeza dan belum disokong oleh pembantu TP ini.");
+    return;
+  }
+  document.getElementById("ranggu-transfer-review")?.remove();
+  const rows = [...document.querySelectorAll("tr")].filter(row => row.querySelector("input[type='radio']"));
+  const digits = value => String(value || "").replace(/\D/g, "");
+  const radioTp = radio => {
+    const labels = [...(radio.labels || [])].map(label => label.textContent).join(" ");
+    const match = normalize(labels || radio.getAttribute("aria-label")).match(/^TP\s*([1-6])$/);
+    return match ? Number(match[1]) : null;
+  };
+  const plan = dataset.map(item => {
+    const matches = rows.filter(row => {
+      const cells = [...row.querySelectorAll("td")].map(cell => normalize(cell.innerText));
+      return item.ic.length === 12 && cells.some(cell => digits(cell) === item.ic) && cells.includes(normalize(item.name));
+    });
+    if (matches.length !== 1) return {item, status: "Identiti tidak sepadan / berganda"};
+    const row = matches[0];
+    const radios = [...row.querySelectorAll("input[type='radio']")];
+    if (radios.some(radio => radio.checked)) return {item, status: "Sudah berisi — dikekalkan"};
+    const targets = radios.filter(radio => radioTp(radio) === item.tp);
+    if (targets.length !== 1 || targets[0].disabled || radios.length !== 6) return {item, status: "Kawalan TP tidak dikenali / dikunci"};
+    return {item, row, target: targets[0], status: "Kosong — sedia TP " + item.tp};
+  });
+  const panel = document.createElement("section");
+  panel.id = "ranggu-transfer-review";
+  panel.style.cssText = "position:fixed;inset:20px;z-index:2147483647;background:white;color:#172033;padding:20px;overflow:auto;border:2px solid #2563eb;border-radius:12px;box-shadow:0 0 0 100vmax #0008;font:16px sans-serif;";
+  const add = (tag, text) => { const element = document.createElement(tag); element.textContent = text; panel.appendChild(element); return element; };
+  add("h2", "Semakan TP • " + context.kelas + " • " + context.subject);
+  add("p", "Belum ada rekod diubah. Hanya TP yang kosong dan identiti tepat akan diisi selepas anda tekan butang di bawah. Markah, ulasan, intervensi, usaha dan rekod sedia ada dikekalkan. Tiada Simpan atau Hantar automatik.");
+  const ready = plan.filter(entry => entry.target);
+  const summary = add("p", ready.length + " sedia diisi; " + (plan.length - ready.length) + " dilangkau.");
+  const apply = add("button", "Isi " + ready.length + " TP kosong sahaja");
+  apply.disabled = ready.length === 0;
+  apply.style.cssText = "padding:12px;margin:8px;background:#1d4ed8;color:white;border:0;border-radius:6px;";
+  const close = add("button", "Tutup tanpa mengisi");
+  close.style.cssText = "padding:12px;margin:8px;";
+  close.onclick = () => panel.remove();
+  plan.forEach(entry => add("p", entry.item.name + " — " + entry.status));
+  apply.onclick = () => {
+    if (!confirm("Isi TP kosong bagi " + ready.length + " murid? Rekod yang telah berisi tidak akan diganti. Semak semula sebelum Simpan di MOEIS.")) return;
+    apply.disabled = true;
+    let filled = 0;
+    ready.forEach(entry => {
+      // Recheck immediately: the teacher may have edited the underlying row.
+      if (!entry.target.isConnected || entry.target.disabled || [...entry.row.querySelectorAll("input[type='radio']")].some(radio => radio.checked)) return;
+      entry.target.click();
+      if (entry.target.checked) filled++;
+    });
+    summary.textContent = filled + " TP dipilih pada paparan. Belum disahkan tersimpan. Tutup semakan, periksa setiap padanan dan gunakan Simpan MOEIS sendiri.";
+    close.textContent = "Tutup semakan";
+  };
+  document.body.appendChild(panel);
+}
+
 function generateSppbScriptCode() {
-  const selectedClass = document.getElementById("sppb-select-class")?.value || "6 MUMTAZ";
-  const selectedSubject = document.getElementById("sppb-select-subject")?.value || "bm";
-  const classStudents = studentsData.filter(s => s.kelas === selectedClass);
+  const selectedClass = document.getElementById("sppb-select-class")?.value || "";
+  const selectedSubject = document.getElementById("sppb-select-subject")?.value || "";
   const textarea = document.getElementById("sppb-script-textarea");
   if (!textarea) return "";
-
-  const studentItems = classStudents.map(st => {
-    const rawTp = st[`${selectedSubject}_tp`] || "";
-    const tpNum = getSppbTpNumber(rawTp);
-    if (tpNum === null) return null;
-    const rawMark = st[`${selectedSubject}_m`];
-    const mark = rawMark === "" || rawMark == null ? null : Number(rawMark);
-    return "  " + JSON.stringify({id: st.id, name: st.name, tp: tpNum, mark: Number.isFinite(mark) ? mark : null});
-  }).filter(Boolean).join(",\n");
-
-  const scriptCode = `/**
- * SKRANGGU SPPB HELPER (v1.0)
- * Kelas: ${selectedClass} | Subjek: ${SUBJECT_LABELS[selectedSubject] || selectedSubject.toUpperCase()}
- * Tarikh Jana: ${new Date().toLocaleDateString('ms-MY')}
- * Arahan: Buka https://moeissppb.moe.gov.my/ > Modul PBD Berterusan > Buka Console (F12) > Tampal kod ini > Tekan Enter.
- */
-(function() {
-  console.log("%c[SK Ranggu] Memulakan pengisian automatik PBD ke SPPB...", "color:#2563eb; font-weight:bold; font-size:14px;");
-  const dataset = [
-${studentItems}
-  ];
-
-  let matched = 0;
-  const rows = document.querySelectorAll("tr, div.row, [role='row']");
-
-  dataset.forEach(item => {
-    const targetName = item.name.toUpperCase().trim();
-    const firstWord = targetName.split(" ")[0];
-
-    rows.forEach(r => {
-      const rowText = (r.innerText || "").toUpperCase();
-      if (rowText.includes(targetName) || (firstWord.length > 3 && rowText.includes(firstWord) && rowText.includes(item.id))) {
-        // 1. Pilih Dropdown TP
-        const selects = r.querySelectorAll("select");
-        selects.forEach(sel => {
-          for (let opt of sel.options) {
-            const optVal = opt.value.trim();
-            const optTxt = opt.text.trim();
-            if (optVal == item.tp || optTxt == "TP " + item.tp || optTxt == "TP" + item.tp || optTxt == item.tp) {
-              sel.value = opt.value;
-              sel.dispatchEvent(new Event("change", { bubbles: true }));
-              matched++;
-              break;
-            }
-          }
-        });
-
-        // 2. Isi Kotak Markah (jika ada)
-        const inputs = r.querySelectorAll("input[type='number'], input[type='text']");
-        inputs.forEach(inp => {
-          if (item.mark !== null && !inp.readOnly && !inp.disabled && inp.name && inp.name.toLowerCase().includes("mark")) {
-            inp.value = item.mark;
-            inp.dispatchEvent(new Event("input", { bubbles: true }));
-            inp.dispatchEvent(new Event("change", { bubbles: true }));
-          }
-        });
-      }
-    });
-  });
-
-  alert("✅ [SK Ranggu Helper] Selesai! Sebanyak " + matched + " medan murid bagi kelas ${selectedClass} berjaya dipadankan dan diisi ke dalam SPPB.");
-})();`;
-
+  const dataset = studentsData.filter(st => st.kelas === selectedClass).map(st => ({
+    id: st.id, ic: String(st.ic || "").replace(/\D/g, ""), name: st.name,
+    tp: getSppbTpNumber(st[`${selectedSubject}_tp`])
+  })).filter(st => st.tp !== null);
+  const context = {kelas: selectedClass, subject: SUBJECT_LABELS[selectedSubject] || selectedSubject, year: currentYear};
+  const scriptCode = "/* SK Ranggu: semakan dahulu; TP sedia ada dikekalkan. */\n(" + runSppbTransferReview.toString() + ")(" + JSON.stringify(dataset) + "," + JSON.stringify(context) + ");";
   textarea.value = scriptCode;
   return scriptCode;
 }
@@ -53383,7 +53397,7 @@ ${studentItems}
 function copySppbScript() {
   const code = generateSppbScriptCode();
   copyToClipboard(code, () => {
-    showToastNotification("⚡ Skrip Auto-Isi SPPB berjaya disalin! Sedia ditampal di Console pelayar SPPB.");
+    showToastNotification("Kod semakan TP disalin. Menjalankannya membuka semakan dahulu; belum mengubah rekod MOEIS.");
   });
 }
 
@@ -53532,7 +53546,7 @@ function fallbackCopyText(text, onSuccess) {
 let deferredPWAInstallPrompt = null;
 
 if ('serviceWorker' in navigator) {
-  const APP_VERSION = '3.12-drawer';
+  const APP_VERSION = '3.13-sppb-review';
   let pendingUpdate = false;
   let reloadingUpdate = false;
   let swRegistration = null;

@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3.12-drawer">
+  <link rel="stylesheet" href="style.css?v=3.13-sppb-review">
 
   <!-- PWA & Mobile Web App Meta -->
   <link rel="manifest" href="manifest.json">
@@ -1360,10 +1360,10 @@
         <div id="sppb-panel-script" class="sppb-subpanel" style="display:none;">
           <div style="background:var(--bg-surface-alt); border:1px solid var(--border); border-radius:8px; padding:0.85rem; margin-bottom:0.75rem;">
             <div style="font-weight:800; font-size:0.85rem; color:var(--text-main); margin-bottom:0.35rem;">
-              ⚡ Bagaimana Skrip Ini Berfungsi?
+              Semakan TP komputer — percubaan
             </div>
             <p style="font-size:0.8rem; color:var(--text-muted); margin:0; line-height:1.4;">
-              Skrip pintar ini menjana pemetaan nama murid dan Tahap Penguasaan (TP) SK Ranggu yang telah anda isi. Apabila ditampal di Console pelayar pada laman SPPB KPM, skrip ini akan mengautomasikan pemilihan dropdown TP bagi setiap murid secara serta-merta tanpa anda perlu klik satu demi satu!
+              Pembantu komputer ini membuka semakan dahulu di halaman PBD Berterusan MOEIS. Nama penuh dan nombor KP mesti sepadan. Hanya TP kosong boleh dipilih selepas pengesahan; TP sedia ada, markah dan ruangan lain dikekalkan. Sokongan UASA dan penggunaan telefon belum disahkan. Ia tidak muncul sendiri apabila MOEIS dibuka.
             </p>
           </div>
 
@@ -1377,11 +1377,11 @@
           <textarea id="sppb-script-textarea" class="form-control" rows="8" readonly style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; background:var(--bg-main); color:var(--text-main);"></textarea>
 
           <div style="margin-top:0.75rem; background:rgba(245,158,11,0.08); border:1px dashed #fcd34d; border-radius:8px; padding:0.75rem; font-size:0.8rem; color:var(--text-main); line-height:1.5;">
-            🧭 <strong>3 Langkah Mudah Menggunakan Skrip Auto-Isi di SPPB:</strong>
+            🧭 <strong>Pembantu komputer: perlu dijalankan sendiri pada halaman MOEIS</strong>
             <ol style="margin:0.25rem 0 0 1.25rem; padding:0;">
               <li>Klik butang <strong>"📋 Salin Skrip Auto-Isi"</strong> di atas.</li>
-              <li>Buka Dashboard SPPB (<a href="https://moeissppb.moe.gov.my/" target="_blank" style="color:#d97706; font-weight:700;">moeissppb.moe.gov.my/page/dashboard</a>) di tab baharu dan buka paparan kelas anda.</li>
-              <li>Tekan kekunci <kbd style="background:#e2e8f0; padding:1px 5px; border-radius:3px;">F12</kbd> (atau klik kanan > <em>Inspect</em> > klik tab <strong>Console</strong>), tampal kod (<kbd>Ctrl+V</kbd>), dan tekan <kbd>Enter</kbd>! Semua TP murid akan dipilih secara automatik.</li>
+              <li>Buka Dashboard SPPB (<a href="https://moeissppb.moe.gov.my/" target="_blank" style="color:#d97706; font-weight:700;">moeissppb.moe.gov.my</a>) di tab baharu dan buka paparan kelas anda.</li>
+              <li>Tekan kekunci <kbd style="background:#e2e8f0; padding:1px 5px; border-radius:3px;">F12</kbd> (atau klik kanan > <em>Inspect</em> > klik tab <strong>Console</strong>), tampal kod (<kbd>Ctrl+V</kbd>), dan tekan <kbd>Enter</kbd>! Semakan padanan akan dibuka dahulu. Tekan “Isi TP kosong sahaja” hanya selepas menyemak kelas, subjek dan murid. Tiada Simpan atau Hantar automatik.</li>
             </ol>
           </div>
         </div>
@@ -1535,7 +1535,7 @@
   <div id="toast-container" class="toast-container"></div>
 
   <!-- JS APLIKASI -->
-  <script src="app.js?v=3.12-drawer"></script>
+  <script src="app.js?v=3.13-sppb-review"></script>
 
   <!-- =========================================================================
        MODAL EDIT GURU (ADMIN SAHAJA - NAMA GURU, IC, EMEL, PERANAN & KELAS)
