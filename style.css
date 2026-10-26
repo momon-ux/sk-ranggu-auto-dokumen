@@ -2663,3 +2663,12 @@ body.entry-focus #tab-entry .table-wrapper { max-height: calc(100dvh - 90px); }
   .school-compact-brand .school-logo-cutout { width: 28px; height: 35px; }
   .school-compact-brand .school-full-address { font-size: .58rem; }
 }
+
+/* Kedua-dua lambang berkongsi ruang dan skala visual yang sama. */
+.slip-header > .slip-logo { width: 80px; height: 80px; flex: 0 0 80px; }
+.school-compact-brand > img,
+.school-compact-brand > .school-logo-cutout { width: 40px; height: 40px; flex: 0 0 40px; object-fit: contain; }
+@media screen and (max-width: 360px) {
+  .school-compact-brand > img,
+  .school-compact-brand > .school-logo-cutout { width: 34px; height: 34px; flex-basis: 34px; }
+}

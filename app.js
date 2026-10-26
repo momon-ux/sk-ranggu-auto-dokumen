@@ -53478,7 +53478,7 @@ function fallbackCopyText(text, onSuccess) {
 let deferredPWAInstallPrompt = null;
 
 if ('serviceWorker' in navigator) {
-  const APP_VERSION = '3.7-letterhead';
+  const APP_VERSION = '3.8-logosize';
   let pendingUpdate = false;
   let reloadingUpdate = false;
   let swRegistration = null;
