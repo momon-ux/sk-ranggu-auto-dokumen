@@ -2672,3 +2672,9 @@ body.entry-focus #tab-entry .table-wrapper { max-height: calc(100dvh - 90px); }
   .school-compact-brand > img,
   .school-compact-brand > .school-logo-cutout { width: 34px; height: 34px; flex-basis: 34px; }
 }
+
+/* Seimbangkan tinggi visual logo KPM dengan lambang sekolah pada aplikasi. */
+.school-compact-brand > .app-kpm-cutout { display: block; width: 50px; height: 40px; flex: 0 0 50px; overflow: hidden; }
+@media screen and (max-width: 360px) {
+  .school-compact-brand > .app-kpm-cutout { width: 43px; height: 34px; flex-basis: 43px; }
+}
