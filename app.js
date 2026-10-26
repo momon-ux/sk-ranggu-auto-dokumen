@@ -50796,6 +50796,7 @@ let currentUser = null;
 
 // Inisialisasi Apabila Laman Dimuatkan
 document.addEventListener("DOMContentLoaded", () => {
+  setupSchoolDrawer();
   setupCompactEntry();
   initTheme();
   loadAuthAndPermissionsData();
@@ -52253,16 +52254,51 @@ function restoreEntryChoices() {
     document.body.classList.toggle("entry-focus", entryFocus);
   } catch (_) { /* Pilihan baharu boleh dibuat jika simpanan sesi tiada. */ }
 }
+function openSchoolDrawer() {
+  const drawer = document.getElementById("school-menu");
+  if (!drawer.open) drawer.showModal();
+  document.getElementById("school-menu-trigger").setAttribute("aria-expanded", "true");
+}
+function closeSchoolDrawer() {
+  document.getElementById("school-menu").close();
+  document.getElementById("school-menu-trigger").setAttribute("aria-expanded", "false");
+}
+function setupSchoolDrawer() {
+  const drawer = document.getElementById("school-menu");
+  drawer.addEventListener("click", event => {
+    const bounds = drawer.getBoundingClientRect();
+    if (event.target === drawer && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) closeSchoolDrawer();
+  });
+  drawer.addEventListener("close", () => document.getElementById("school-menu-trigger").setAttribute("aria-expanded", "false"));
+  let swipeStart = null;
+  document.addEventListener("pointerdown", event => {
+    swipeStart = null;
+    if (!window.matchMedia("(max-width: 640px)").matches || !event.isPrimary) return;
+    if (!drawer.open && event.clientX > 28) return;
+    swipeStart = {x: event.clientX, y: event.clientY, id: event.pointerId, closing: drawer.open};
+  }, {passive: true});
+  document.addEventListener("pointercancel", () => { swipeStart = null; }, {passive: true});
+  document.addEventListener("pointerup", event => {
+    if (!swipeStart || event.pointerId !== swipeStart.id) return;
+    const dx = event.clientX - swipeStart.x;
+    const dy = event.clientY - swipeStart.y;
+    if (Math.abs(dx) > 64 && Math.abs(dx) > Math.abs(dy) * 2) {
+      if (swipeStart.closing && dx < 0) closeSchoolDrawer();
+      else if (!swipeStart.closing && dx > 0) openSchoolDrawer();
+    }
+    swipeStart = null;
+  }, {passive: true});
+}
 function navigateSchoolTab(tabId) {
   document.querySelector(`.tab-btn[data-tab="${tabId}"]`)?.click();
-  document.getElementById("school-menu").open = false;
+  closeSchoolDrawer();
   document.querySelector(".session-settings").open = false;
   window.scrollTo(0, 0);
 }
 function toggleSchoolSettings() {
   const settings = document.querySelector(".session-settings");
   settings.open = !settings.open;
-  document.getElementById("school-menu").open = false;
+  closeSchoolDrawer();
 }
 function startEntryFocus() {
   if (!document.getElementById("entry-subject").value) {
@@ -53496,7 +53532,7 @@ function fallbackCopyText(text, onSuccess) {
 let deferredPWAInstallPrompt = null;
 
 if ('serviceWorker' in navigator) {
-  const APP_VERSION = '3.11-print';
+  const APP_VERSION = '3.12-drawer';
   let pendingUpdate = false;
   let reloadingUpdate = false;
   let swRegistration = null;
