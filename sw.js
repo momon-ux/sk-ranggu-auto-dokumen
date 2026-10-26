@@ -1,15 +1,16 @@
 // Service Worker untuk Sistem Auto Dokumen SK Ranggu
-const CACHE_NAME = 'sk-ranggu-pwa-v3.5-workspace';
+const CACHE_NAME = 'sk-ranggu-pwa-v3.6-logo';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './version.json',
-  './style.css?v=3.5-workspace',
-  './app.js?v=3.5-workspace',
+  './style.css?v=3.6-logo',
+  './app.js?v=3.6-logo',
   './manifest.json',
   './favicon.ico',
   './Data_Murid_SK_Ranggu_Peperiksaan.csv',
   './assets/logo_skrg.png',
+  './logo-sekolah-rasmi.png',
   './assets/logo_kpm.png',
   './assets/app_icon.png',
   './icons/icon-192x192.png',
