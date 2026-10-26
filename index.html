@@ -28,13 +28,13 @@
   <!-- =========================================================================
        APP HEADER
        ========================================================================= -->
-  <header class="school-compact-header no-print">
+  <header class="school-compact-header no-print" style="justify-content:flex-start">
+    <button class="school-menu-trigger" id="school-menu-trigger" type="button" onclick="openSchoolDrawer()" aria-label="Buka menu sistem" aria-controls="school-menu" aria-expanded="false">☰</button>
     <a class="school-compact-brand" href="#" onclick="event.preventDefault(); navigateSchoolTab('tab-entry');" aria-label="SK Ranggu — Isi markah">
       <svg class="app-kpm-cutout" viewBox="0 19 1388 1103" role="img" aria-label="Logo KPM"><image href="assets/logo_kpm.png" width="1402" height="1122"/></svg>
       <svg class="school-logo-cutout" viewBox="74 155 964 1181" role="img" aria-label="Logo rasmi SK Ranggu"><image href="logo-sekolah-rasmi.png" width="1105" height="1423"/></svg>
       <span><strong>SK RANGGU</strong><small class="school-full-address">Peti Surat 842, 91008 Tawau,<br>Sabah, Malaysia</small></span>
     </a>
-    <button class="school-menu-trigger" id="school-menu-trigger" type="button" onclick="openSchoolDrawer()" aria-label="Buka menu sistem" aria-controls="school-menu" aria-expanded="false">☰</button>
   </header>
   <div class="school-swipe-edge no-print" aria-hidden="true"></div>
   <dialog class="school-drawer no-print" id="school-menu" aria-label="Navigasi SK Ranggu">
